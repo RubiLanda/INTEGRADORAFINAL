@@ -1,0 +1,355 @@
+html {
+    scroll-behavior: smooth;
+}
+a{
+    text-decoration: none;
+}
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 120px;
+    background-color: #9c6644;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 5px #724a32;
+    z-index: 3;
+}
+header div {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header div div {
+    width: 260px;
+}
+header div button {
+    width: 120px;
+    height: 40px;
+}
+header div div button {
+    background-color: transparent;
+    color: #ddb892;
+    border: solid 2px #ddb892;
+    border-radius: 10px;
+}
+header div div button:hover {
+    background-color: #ddb892;
+    color: #9c6644;
+}
+body {
+    background-color: #ddb892;
+}
+.fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+    background-image: url(../img/backgroun.png);
+}
+svg {
+    color: #ddb892;
+}
+.boton {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.oculto {
+    transform: translateX(-100%);
+}
+.mostrar {
+    transform: translateX(0);
+}
+.menu {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 15%;
+    background-color: #ddb892;
+    border-right: solid 5px #724a32;
+    z-index: 3;
+    transition: all 0.8s ease;
+}
+.menu img{
+    width: 20%;
+    height: 80%;
+}
+.menu svg{
+    color: #724a32;
+}
+.menu .boton{
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+.menu div{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+    border-bottom: solid 3px #9c6644;
+    display: flex;
+    justify-content: space-between;
+}
+.inicioMenu{
+    align-items: center;
+}
+.opciones{
+    flex-direction: column;
+    text-align: end;
+    padding-bottom: 11px;
+}
+.opciones a{
+    margin-right: 10px;
+    font-size: 25px;
+    color: #724a32;
+    margin: 8px 0;
+}
+.opciones a:hover{
+    color: #9c6644;
+}
+footer {
+    height: 400px;
+    background-color: #724a32;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ddb892;
+    font-size: 35px;
+    flex-direction: column;
+}
+footer div{
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+.inicio{
+    background-image: url(../img/inicio.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 800px;
+    margin-top: 90px;
+    border-top: solid 5px #724a32;
+    border-bottom: solid 5px #724a32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inicio div{
+    position: absolute;
+    background-color: #9c6644;
+    border-bottom: solid 5px #724a32;
+    border-top: solid 5px #724a32;
+    height: 200px;
+    width: 100%;
+}
+.inicio img{
+    z-index: 2;
+    background-color: #ddb892;
+    border: solid 5px #724a32;
+    border-radius: 100%;
+}
+
+.ProductosDestacados {
+    width: 80%;
+    margin: 100px auto;
+    padding: 60px 0;
+    display: flex;
+    background-color: #9c6644;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+}
+.ProductosDestacados h1 {
+    font-size: 50px;
+    text-align: center;
+    width: 90%;
+    color: #ddb892;
+    border-bottom: solid 3px #ddb892;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+}
+
+.carousel-inner {
+    background-color: #724a32;
+    width: 1000px;
+    height: 500px;
+    border-radius: 15px;
+}
+
+.carousel-item img{
+    width: 500px;
+    height: 500px;
+    object-fit:contain;
+}
+
+.TodoLosProductos {
+    margin: 150px auto;
+    background-color: #9c6644;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+}
+
+.TodoLosProductos .BarraBusqueda {
+    display: flex;
+    background-color: white;
+    border-radius: 50px;
+    width: 40%;
+    height: 50px;
+    margin: 50px 0;
+    margin-bottom: 30px;
+}
+.TodoLosProductos .BarraBusqueda button {
+    background-color: transparent;
+    width: 10%;
+    border: none;
+}
+.TodoLosProductos .BarraBusqueda button svg {
+    color: black;
+}
+.TodoLosProductos .BarraBusqueda input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.TodoLosProductos .Categorias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.TodoLosProductos .Categorias h1 {
+    color: #ddb892;
+    font-size: 50px;
+    text-align: center;
+    width: 90%;
+    margin-bottom: 20px;
+}
+.TodoLosProductos .Categorias .Contenido {
+    padding: 20px 0;
+    border-top: solid 3px #ddb892;
+    border-bottom: solid 3px #ddb892;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+    width: 90%;
+}
+.TodoLosProductos .Categorias .Contenido a {
+    color: #ddb892;
+    font-size: 35px;
+    margin: 0 50px;
+}
+
+.TodoLosProductos .Productos {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    margin-top: 40px;
+}
+.TodoLosProductos .Productos .Producto {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.5s;
+}
+.TodoLosProductos .Productos .Producto img {
+    width: 90%;
+    border-radius: 15px; 
+}
+.TodoLosProductos .Productos .Producto .sombra {
+    opacity: 0;
+    border-radius: 15px; 
+    position: absolute;
+    top: 0%;
+    background-color: rgba(0, 0, 0, 0.548);
+    width: 90%;
+    height: 100%;
+    color: white;
+    transition: opacity 0.5s;
+}
+.TodoLosProductos .Productos .Producto:hover {
+    transform: scale(1.05);
+}
+.TodoLosProductos .Productos .Producto:hover .sombra {
+    opacity: 1;
+}
+.TodoLosProductos .Productos .Producto .sombra h1 {
+    margin: 20px;
+}
+.TodoLosProductos .Productos .Producto .sombra div {
+    margin-left: 20px;
+}
+
+.TodoLosProductos .paginacion {
+    display: flex;
+    margin: 50px 0;
+}
+.TodoLosProductos .paginacion div a {
+    padding: 15px;
+    background-color: #81563b;
+    color: #ddb892;
+}
+
+
+
+
+
+
+/* Personalizar la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 15px;
+    height: 10px;
+}
+
+    /* Fondo de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+    background: #724a32;
+}
+
+    /* Barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+    background: #ddb892;
+    border-radius: 10px;
+    border: 2px solid #ddb892; /* Para crear un espacio entre la barra y el borde */
+}
+
+    /* Barra de desplazamiento al pasar el mouse */
+::-webkit-scrollbar-thumb:hover {
+    background: #ddb892;
+}
+
+@media (max-width: 576px) {  /* sm */
+    
+}
+@media (max-width: 768px) {  /* md */
+
+}
+@media (max-width: 992px) and (min-width: 769px){  /* lg */
+
+}
+@media (max-width: 1200px) and (min-width: 993px) {  /* xl */
+
+}
+@media (max-width: 1400px) {  /* xxl */
+
+}
