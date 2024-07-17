@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <link rel="stylesheet" href="css/Index.css">
+    <link rel="stylesheet" href="css/header.css">
+    <title>La Espiga</title>
 </head>
 <body>
     <div class="fondo"></div>
@@ -17,28 +19,69 @@
                 </svg>
             </button>
             <div>
-                <button>Login</button>
-                <button>Sign-up</button>
+                <?php
+                    session_start();
+                    if (isset($_SESSION['Rol'])){
+                        echo "
+                        <div class='dropdown text-end'>
+                            <a href='#' class='d-block link-dark text-decoration-none perfil' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'>
+                                <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-person-fill' viewBox='0 0 16 16'>
+                                    <path d='M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6'/>
+                                </svg>
+                            </a>
+                            <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1' data-popper-placement='bottom-end' style='position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-112px, 34px);'>
+                                <li><a class='dropdown-item' href='#'>hola</a></li>
+                                <li><a class='dropdown-item' href='#'>Settings</a></li>
+                                <li><a class='dropdown-item' href='#'>Profile</a></li>
+                                <li><hr class='dropdown-divider'></li>
+                                <li><a class='dropdown-item' href='../php/cerrarSeccion.php'>Cerrar Seccion</a></li>
+                            </ul>
+                        </div>";
+                    }
+                    else {
+                        echo "<a href='login.php' class = 'boto'>Login</a>";
+                        echo "<a href='sign-up.php' class = 'boto'>Sign-up</a>";
+
+                    }
+                    
+                ?>
             </div>
         </div>
     </header>
 
     <div class="menu oculto" id="menu">
         <div class="inicioMenu">
-            <img src="img/logo.png">
+            <img src="../img/logo.png">
             <button id="regresar" class="boton">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                  </svg>
+                </svg>
             </button>
         </div>
         <div class="opciones">
             <a href="#">Menu</a>
-            <a href="productos.php">Productos</a>
+            <a href="views/productos.php">Productos</a>
             <a href="">Sobre Nosotros</a>
             <a href="">Contactos</a>
-            <a href="">Realizar Pedido</a>
-            <a href="http://localhost/Boostrap/Vistas/cliente.php">Administrador</a>
+            <?php
+            if (isset($_SESSION['Rol'])){
+                switch ($_SESSION['Rol']){
+                    case 1:
+                        echo "<a href='Administrador.php'>Mi Perfil</a>";
+                        break;
+                    case 2:
+                        echo "<a href='Cliente.php'>Realizar Pedido</a>";
+                        break;
+                    case 3:
+                        echo "<a href='Repartidor.php'>Mi Perfil</a>";
+                        break;
+                }
+            }
+            else {
+                echo "<a href='login.php'>Realizar Pedido</a>";
+            }
+            
+            ?>
         </div>
     </div>
     
@@ -57,21 +100,21 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/pan.jpg" class="d-block w-100" alt="...">
+                    <img src="../img/pan.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>First slide label</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/pan.jpg" class="d-block w-100" alt="...">
+                    <img src="../img/pan.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Second slide label</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="img/pan.jpg" class="d-block w-100" alt="...">
+                    <img src="../img/pan.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Third slide label</h5>
                         <p>Some representative placeholder content for the third slide.</p>
@@ -105,6 +148,12 @@
 
         buttonRegresar.addEventListener('click', function() {
             menu.classList.add('oculto');
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && !buttonMenu.contains(event.target)) {
+                menu.classList.add('oculto');
+            }
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

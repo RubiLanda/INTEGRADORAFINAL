@@ -1,0 +1,135 @@
+html {
+    scroll-behavior: smooth;
+}
+a{
+    text-decoration: none;
+}
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 120px;
+    background-color: #9c6644;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 5px #724a32;
+    z-index: 3;
+}
+header div {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+header div .boto {
+    /* padding: 10px 50px; */
+    width: 140px;
+    height: 45px;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header div div .boto {
+    background-color: transparent;
+    color: #ddb892;
+    border: solid 2px #ddb892;
+    border-radius: 10px;
+}
+header div div .boto:hover {
+    background-color: #ddb892;
+    color: #9c6644;
+}
+header div .perfil {
+    border: solid 2px #ddb892;
+    border-radius: 50px;
+    padding: 10px;
+}
+header div .perfil:hover {
+    background-color: #ddb892;
+}
+header div .perfil:hover svg{
+    color: #9c6644;
+}
+.dropdown-menu {
+    background-color: #dfbe9c;
+    border: solid 2px #63412c;
+    border-radius: 10px;
+}
+#carrito {
+    margin-right: 40px;
+}
+.dropdown-menu a {
+    color: #3d2b1f;
+}
+.dropdown-menu a:hover {
+    background-color: #f8d8b9;
+}
+svg {
+    color: #ddb892;
+}
+.boton {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.oculto {
+    transform: translateX(-100%);
+}
+.mostrar {
+    transform: translateX(0);
+}
+.menu {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 15%;
+    background-color: #ddb892;
+    border-right: solid 5px #724a32;
+    z-index: 3;
+    transition: all 0.8s ease;
+}
+.menu img{
+    width: 20%;
+    height: 80%;
+}
+.menu svg{
+    color: #724a32;
+}
+
+.menu .boton{
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+.menu div{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+    border-bottom: solid 3px #9c6644;
+    display: flex;
+    justify-content: space-between;
+}
+.inicioMenu{
+    align-items: center;
+}
+.opciones{
+    flex-direction: column;
+    text-align: end;
+    padding-bottom: 11px;
+}
+.opciones a{
+    margin-right: 10px;
+    font-size: 25px;
+    color: #724a32;
+    margin: 8px 0;
+}
+.opciones a:hover{
+    color: #9c6644;
+}
+
