@@ -45,8 +45,8 @@ constraint FK_PERADMIN foreign key (id_persona) references PERSONAS (id_persona)
 
 create table TIENDAS(
 id_tienda int(11) auto_increment primary key NOT NULL,
-nombre_tienda varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-direccion varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+nombre_tienda varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+direccion varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
 estatus boolean,
 constraint UQ_TIENDA unique (nombre_tienda)
 );
