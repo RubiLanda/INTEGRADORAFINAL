@@ -6,7 +6,7 @@ class Database {
     private $password = "laespiga2190";
     private $server = "mysql:host=localhost; dbname=laespiga";
 
-    function concetarBD() {
+    function conectarBD() {
         try {
             $this->PDO = new PDO($this->server, $this->user, $this->password);
         } catch (PDOException $e) {
@@ -41,10 +41,10 @@ class Database {
     }
     function verifica($usuario, $password){
         try{
-            $sql = $this->PDO->query("select usuarios.id_usuario as ID, rol_usuario.id_rol as Rol, usuarios.contraseña as Contraseña
-                                      from usuarios
-                                      inner join rol_usuario on usuarios.id_usuario = rol_usuario.id_usuario
-                                      where usuarios.username = '$usuario'");
+            $sql = $this->PDO->query("select USUARIOS.id_usuario as ID, ROL_USUARIO.id_rol as Rol, USUARIOS.contraseña as Contraseña
+                                      from USUARIOS
+                                      inner join ROL_USUARIO on USUARIOS.id_usuario = ROL_USUARIO.id_usuario
+                                      where USUARIOS.username = '$usuario'");
             while($renglon = $sql->fetch(PDO::FETCH_ASSOC)){
                 if (password_verify($password, $renglon['Contraseña'])){
                     session_start();
