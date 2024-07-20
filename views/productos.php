@@ -10,14 +10,14 @@ $offset = ($current_page - 1) * $records_per_page;
 $Conexion = new Database();
 $Conexion->conectarBD();
 try {
-    $productos = $Conexion->selectConsulta("call Ver_Productos_Fltros($categoria_seleccionado, null, $offset, $records_per_page)");
+    $productos = $Conexion->selectConsulta("call Ver_Productos_Filtros($categoria_seleccionado, null, $offset, $records_per_page)");
     
-    $productos_totales = $Conexion->selectConsulta("call Ver_Productos_Fltros($categoria_seleccionado, null, null, null)");
+    $productos_totales = $Conexion->selectConsulta("call Ver_Productos_Filtros($categoria_seleccionado, null, null, null)");
 
     $total_records = count($productos_totales);
     $total_pages = ceil($total_records / $records_per_page);
 
-    $categorias = $Conexion->selectConsulta("select id_categoria as ID, nombre as Nombre from categorias where estado = 1");
+    $categorias = $Conexion->selectConsulta("select id_categoria as ID, nombre as Nombre from CATEGORIAS where estado = 1");
     
 } catch (Exception $e) {
     echo $e->getMessage();
