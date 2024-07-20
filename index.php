@@ -40,7 +40,7 @@
                     }
                     else {
                         echo "<a href='login.php' class = 'boto'>Login</a>";
-                        echo "<a href='sign-up.php' class = 'boto'>Sign-up</a>";
+                        echo "<a href='registro.php' class = 'boto'>Sign-up</a>";
 
                     }
                     
