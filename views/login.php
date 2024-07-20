@@ -13,7 +13,7 @@
 
     <div class="formulario">
         <h1>Inicio de Sesión</h1>
-        <form action="../scripts/verificarlogin.php" method="post">
+        <form action="../php/verificarlogin.php" method="post">
             <div class="username">
                 <input type="text" name="usuario" required autocomplete="off">
                 <label>Ingresa tu usuario:</label>

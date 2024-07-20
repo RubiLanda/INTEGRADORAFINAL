@@ -39,8 +39,8 @@
                         </div>";
                     }
                     else {
-                        echo "<a href='login.php' class = 'boto'>Login</a>";
-                        echo "<a href='registro.php' class = 'boto'>Sign-up</a>";
+                        echo "<a href='views/login.php' class = 'boto'>Login</a>";
+                        echo "<a href='views/registro.php' class = 'boto'>Sign-up</a>";
 
                     }
                     

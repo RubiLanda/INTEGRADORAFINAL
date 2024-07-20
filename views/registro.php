@@ -11,7 +11,7 @@
 <body>
     <div class="formulario">
         <h1>Registrate Ahora!</h1>
-        <form action="../scripts/registro.php" method="post" onsubmit=" return validarFormulario()">
+        <form action="../php/registrarCliente.php" method="post" onsubmit=" return validarFormulario()">
             <div class="inputs">
                 <div class="cajas">
                     <div class="username">

@@ -1,6 +1,6 @@
 
 <?php
-include '../class/conexion.php';
+include 'conexion.php';
 $Conexion = new Database();
 $Conexion->conectarBD();
 extract($_POST);

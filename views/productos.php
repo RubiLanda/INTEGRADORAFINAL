@@ -8,7 +8,7 @@ $categoria_seleccionado = isset($_GET['categoria']) ? $_GET['categoria'] : 0;
 $offset = ($current_page - 1) * $records_per_page;
 
 $Conexion = new Database();
-$Conexion->concetarBD();
+$Conexion->conectarBD();
 try {
     $productos = $Conexion->selectConsulta("call Ver_Productos_Fltros($categoria_seleccionado, null, $offset, $records_per_page)");
     
