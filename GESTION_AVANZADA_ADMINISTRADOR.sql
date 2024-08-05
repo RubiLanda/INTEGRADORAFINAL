@@ -205,3 +205,17 @@ end if;
 
 end //
 DELIMITER ;
+
+
+-- * 3.7.4 Asignar repartidor a pedidos
+DELIMITER //
+create procedure asignar_repartidor(
+in idpedido int,
+in idrepar int
+)
+begin
+update PEDIDOS
+set PEDIDOS.id_repartidor=idrepar
+where PEDIDOS.id_pedido=idpedido;
+end //
+DELIMITER ;
