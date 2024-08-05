@@ -1,6 +1,6 @@
 -- * 1.1.4 Procedimiento. Ver Productos filtrado por Categoria y por Nombre de Producto
 DELIMITER //
-create procedure Ver_Productos_Fltros(
+create procedure Ver_Productos_Filtros(
 	in p_categoria int,
     in p_nombre_producto varchar(50),
     in p_offset int,
