@@ -19,6 +19,7 @@ begin
 end //
 DELIMITER ;
 
+
 -- * 3.7.1 Ver pedidos de clientes con tienda por estado 
 DELIMITER //
 create procedure Ver_Pedidos_Clientes_ConTienda_Estado(
@@ -70,6 +71,7 @@ end if;
 end //
 DELIMITER ;
 
+
 -- * 1.3.2 Ver los detalles de los productos de un pedido
 DELIMITER //
 create procedure Ver_Detalle_Pedido(
@@ -83,6 +85,7 @@ begin
     where id_pedido = p_id_pedido;
 end //
 DELIMITER ;
+
 
 -- * 3.7.5 Calcular el Total a pagar de un pedido
 DELIMITER //
@@ -164,6 +167,7 @@ begin
 end //
 DELIMITER ;
 
+
 -- * 3.7.2 Ver pedidos de clientes sin tienda por estado
 DELIMITER //
 create procedure Ver_Pedidos_Clientes_SinTienda_Estado(
@@ -217,5 +221,19 @@ begin
 update PEDIDOS
 set PEDIDOS.id_repartidor=idrepar
 where PEDIDOS.id_pedido=idpedido;
+end //
+DELIMITER ;
+
+
+-- * 3.7.3 Cambiar estado de pedido
+DELIMITER //
+create procedure cambiar_estado(
+in id int,
+in estadonuev varchar(25)
+)
+begin 
+update PEDIDOS
+set PEDIDOS.estado_pedido=estadonuev
+where PEDIDOS.id_pedido=id;
 end //
 DELIMITER ;
