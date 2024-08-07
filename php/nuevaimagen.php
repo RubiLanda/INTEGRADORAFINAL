@@ -1,5 +1,5 @@
 <?php 
-    include '../php/conexionBD.php';
+    include '../php/conexion.php';
     $Conexion = new Database();
     $Conexion->conectarBD();
    $DireccionTemporal = $_FILES['imagen']['tmp_name'];

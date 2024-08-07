@@ -1,5 +1,5 @@
 <?php 
-include '../php/conexionBD.php';
+include '../php/conexion.php';
 $Conexion = new Database();
 $Conexion->conectarBD();
 $consulta = "SELECT CATEGORIAS.id_categoria,CATEGORIAS.nombre as nombrecat, CATEGORIAS.estado as estadocat from CATEGORIAS";

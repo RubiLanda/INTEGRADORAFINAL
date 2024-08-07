@@ -1,6 +1,6 @@
 
 <?php
-  include '../php/conexionBD.php';
+  include '../php/conexion.php';
   $Conexion = new Database();
   $Conexion->conectarBD();
   extract($_POST);
