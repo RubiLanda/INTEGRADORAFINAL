@@ -65,25 +65,25 @@ begin
 		if p_categoria != 0 and p_nombre_producto is null then
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion
 			from PRODUCTOS
-			where estado = 1 and id_categoria = p_categoria;
+			where PRODUCTOS.estado = 1 and PRODUCTOS.id_categoria = p_categoria;
 		end if;
 		
 		if p_categoria = 0 and p_nombre_producto is not null then
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion
 			from PRODUCTOS
-			where estado = 1 and nombre = p_nombre_producto;
+			where PRODUCTOS.estado = 1 and PRODUCTOS.nombre = p_nombre_producto;
 		end if;
 		
 		if p_categoria = 0 and p_nombre_producto is null then
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion
 			from PRODUCTOS
-			where estado = 1;
+			where PRODUCTOS.estado = 1;
 		end if;
     else 
 		if p_categoria != 0 and p_nombre_producto is null then
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion
 			from PRODUCTOS
-			where estado = 1 and id_categoria = p_categoria
+			where PRODUCTOS.estado = 1 and PRODUCTOS.id_categoria = p_categoria
 			limit p_records_per_page
 			offset p_offset;
 		end if;
@@ -91,7 +91,7 @@ begin
 		if p_categoria = 0 and p_nombre_producto is not null then
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion
 			from PRODUCTOS
-			where estado = 1 and nombre = p_nombre_producto
+			where PRODUCTOS.estado = 1 and PRODUCTOS.nombre = p_nombre_producto
 			limit p_records_per_page
 			offset p_offset;
 		end if;
@@ -99,7 +99,7 @@ begin
 		if p_categoria = 0 and p_nombre_producto is null then
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion
 			from PRODUCTOS
-			where estado = 1
+			where PRODUCTOS.estado = 1
 			limit p_records_per_page
 			offset p_offset;
 		end if;
