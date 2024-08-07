@@ -1,4 +1,21 @@
-
+<?php
+session_start();
+if (isset($_SESSION['Rol']))
+{
+    switch ($_SESSION['Rol'])
+    {
+        case 1:
+            header("Location: ../views/AdministradorVerPedidos.php");
+            break;
+        case 2:
+            header("Location: ../views/ClienteRealizarPedido.php");
+            break;
+        case 3:
+            header("Location: ../views/mispedidosrepa.php");
+            break;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenido!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/diseñologin.css">
+    <link rel="stylesheet" href="../css/DIseñologin.css">
 </head>
 <body>
 
@@ -22,6 +39,7 @@
                 <input type="password" name="contraseña" required >
                 <label>Contraseña:</label>
             </div>
+            
             <input type="submit" value="Iniciar">
             <div class="registrarse">
             ¿No tienes cuenta? <a href="registro.php"> Registrate aquí</a><br>

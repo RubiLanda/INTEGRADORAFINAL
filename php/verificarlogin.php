@@ -1,27 +1,35 @@
 
 <?php
-include 'conexion.php';
+include '../php/conexion.php';
 $Conexion = new Database();
 $Conexion->conectarBD();
-extract($_POST);
 
-if ($_POST)
-{
+if (isset($_GET['usuario']) && isset($_GET['password'])){
+    $usuario = $_GET['usuario'];
+    $contraseña = $_GET['password'];
     $Conexion->verifica($usuario, $contraseña);
-    if (isset($_SESSION['Rol']))
+}
+else {
+    extract($_POST);
+    if ($_POST)
     {
-        switch ($_SESSION['Rol'])
-        {
-            case 1:
-                header("Location: ../views/AdministradorVerPedidos.php");
-                break;
-            case 2:
-                header("Location: ../views/ClienteRealizarPedido.php");
-                break;
-            case 3:
-                header("Location: ../views/repartidor.php");
-                break;
-        }
+        $Conexion->verifica($usuario, $contraseña);
+    }
+}
+
+if (isset($_SESSION['Rol']))
+{
+    switch ($_SESSION['Rol'])
+    {
+        case 1:
+            header("Location: ../views/AdministradorVerPedidos.php");
+            break;
+        case 2:
+            header("Location: ../views/ClienteRealizarPedido.php");
+            break;
+        case 3:
+            header("Location: ../views/mispedidosrepa.php");
+            break;
     }
 }
 ?>
