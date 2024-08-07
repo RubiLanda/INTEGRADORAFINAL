@@ -3,8 +3,8 @@
 class Database {
     private $PDO;
     private $user = "root";
-    private $password = "laespiga2190";
-    private $server = "mysql:host=localhost; dbname=LAESPIGA";
+    private $password = "1234";
+    private $server = "mysql:host=localhost; dbname=laespigafinal";
 
     function conectarBD() {
         try {
