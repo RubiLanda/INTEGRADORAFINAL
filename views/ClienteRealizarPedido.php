@@ -68,7 +68,7 @@ try {
         $.datepicker.setDefaults($.datepicker.regional['es']);
     </script>
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
-    <link rel="stylesheet" href="../css/HEAder.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/clienteRealizarPedidoCarrito.css">
     <title>La Espiga</title>
 </head>
