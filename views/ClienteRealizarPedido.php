@@ -891,7 +891,7 @@ try {
             }
         }
         function IrCarrito() {
-            window.location.href = "carrito.php?mostrarStock=" + mostrarStock;
+            window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
         }
 
         const buttonMenu = document.getElementById('buttonMenu');
