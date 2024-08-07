@@ -1,0 +1,506 @@
+.realizarPedido {
+    background-color: #9c6644;
+    width: 55%;
+    border-radius: 15px;
+    color:#ddb892;
+}
+#fechas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#fechas {
+    margin-top: 20px;
+} 
+#fechas input, #fechas select{
+    background-color: #ddb892;
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+    color: #30231b;
+}
+.VerTienda {
+    margin-bottom: 0 !important;
+    font-size: 15px !important;
+    text-align: start !important;
+    padding-top: 5.5px !important;
+    padding-bottom: 5.5px !important;
+    padding-left: 7px !important;
+    width: 100% !important;
+}
+#fechas input::placeholder {
+    color: #81563b;
+}
+.SeleccionarTienda {
+    width: 85%;
+}
+.SeleccionarTienda select {
+    width: 100%;
+}
+.informacionPedido {
+    width: 80%;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+.informacionPedido p {
+    margin-bottom: 0;
+}
+.fechas {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    width: 95%;
+    margin: auto;
+}
+.fechas div {
+    display: flex;
+}
+.fechas h3 {
+    font-size: 25px;
+    margin: 0 20px ;
+}
+.radius {
+    transform: scale(1.8);
+}
+
+.fecha_seleccionado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 20px;
+}
+.fecha_seleccionado button, .fecha_seleccionado a {
+    border: none;
+    border-radius: 15px;
+    background-color: #ddb892;
+    color: #30231b;
+    padding: 7px 14px;
+    font-size: 20px;
+}
+#fechas button {
+    border: none;
+    border-radius: 15px;
+    background-color: #ddb892;
+    color: #30231b;
+    padding: 7px 0;
+    width: 40%;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+.OcultarProductos {
+    display: none;
+}
+.realizarPedido hr{
+    height: 5px;
+}
+.realizarPedido .producto {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 0;
+}
+.realizarPedido .producto img {
+    width: 30%;
+    border-radius: 15px;
+}
+.realizarPedido .producto .info {
+    width: 35%;
+}
+.Total_Pagar button {
+    border: none;
+    border-radius: 15px;
+    background-color: #ddb892;
+    color: #30231b;
+    padding: 7px 14px;
+    font-size: 20px;
+}
+.realizarPedido .producto .info .info2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.realizarPedido .producto .info .cantidad {
+    display: flex;
+    margin-bottom: 30px;
+} 
+.realizarPedido .producto .info .cantidad button {
+    background-color: #ddb892;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+} 
+.realizarPedido .producto .info .cantidad input {
+    background-color: #ddb892;
+    border: none;
+    height: 40px;
+    width: 60px;
+    text-align: center;
+    font-size: 20px;
+    color: #694731;
+} 
+.realizarPedido .producto .info h4 {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+.realizarPedido .producto .info h4 b {
+    margin-right: 10px;
+}
+.realizarPedido .producto .info h4 svg {
+    margin-left: 20px;
+}
+.realizarPedido .producto .info .cantidad button svg {
+    color: #9c6644;
+}
+.realizarPedido .producto .botones {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.realizarPedido .producto .botones button {
+    margin-bottom: 30px;
+}
+.realizarPedido .producto .botones input, .realizarPedido .producto .botones button {
+    width: 130px;
+    height: 40px;
+    background-color: #ddb892;
+    border: none;
+    border-radius: 15px;
+    color: #30231b;
+}
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginacion a {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.paginacion .activo {
+    background-color: #efeeee;
+    border-radius: 50%;
+}
+.realizarPedido .Categorias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.realizarPedido .Categorias h1 {
+    color: #ddb892;
+    font-size: 50px;
+    text-align: center;
+    width: 90%;
+    margin-bottom: 20px;
+}
+.realizarPedido .Categorias .Contenido {
+    padding: 20px 0;
+    border-top: solid 3px #ddb892;
+    border-bottom: solid 3px #ddb892;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+    width: 90%;
+}
+.realizarPedido .Categorias .Contenido a {
+    color: #ddb892;
+    font-size: 35px;
+    margin: 0 50px;
+}
+.realizarPedido .sinCarrito {
+    font-size: 25px;
+    margin-top: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.realizarPedido .sinCarrito div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.realizarPedido .sinCarrito div a {
+    background-color: #ddb892;
+    color: #694731;
+    padding: 10px;
+    border-radius: 15px;
+    margin-left: 15px;
+}
+.realizarPedido .producto .botones input {
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+}
+.realizarPedido .titulo {
+    text-align: center;
+    font-size: 60px;
+}
+.Total_Pagar {
+    background-color: #9c6644;
+    border-radius: 15px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    color: #ddb892;
+}
+.Total_Pagar h1 {
+    text-align: center;
+    padding-top: 20px;
+}
+.info_pago {
+    border: solid;
+    padding: 0 10px;
+}
+.enCarritoActivo {
+    display: block;
+    margin-left: 15px;
+}
+.enCarritoDesactivado {
+    display: none;
+}
+.infoPago {
+    margin-left: 15px;
+}
+.tabla {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 15px;
+}
+.formaDeRecibirPedido {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    align-items: center;
+    width: 60%;
+    margin: 20px auto;
+}
+.ModalDetalles {
+    max-width: 30%; 
+}
+.modal-content {
+    width: 100%; 
+    height: auto; 
+}
+.modal-body {
+    display: flex;
+    justify-content: center;
+    background-color: #9c6644;
+    color: #ddb892;
+    flex-direction: column;
+}
+.modal-body button{
+    width: 100%;
+    height: 40px;
+    background-color: #ddb892;
+    border: none;
+    border-radius: 15px;
+    color: #30231b;
+}
+.modal-body p {
+    font-size: 30px;
+}
+.modal-header {
+    background-color: #b48263;
+    border: none;
+    
+}
+.modal-header h1 {
+    color: #493c2f;
+}
+.mapa {
+    width: 100%;
+}
+#botonclose {
+    margin-top: 1px;
+    margin-right: 1px;
+    background-color: unset !important;
+    padding: unset !important;
+    width: 30px !important;
+    border-radius: unset !important;
+}
+.divOpcionesRealizarPedido {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+}
+#fechaMañana {
+    margin-left: 60px;
+}
+
+/* Estilos para las fechas bloqueadas */
+.ui-datepicker-calendar .ui-state-blocked {
+    background-color: #ff4d4d !important; /* Color de fondo para fechas bloqueadas */
+    color: white !important; /* Color del texto para fechas bloqueadas */
+    border: 1px solid #ff4d4d !important; /* Color del borde para fechas bloqueadas */
+}
+/* Estilos para las fechas anteriores */
+.ui-datepicker-calendar .ui-state-disabled {
+    background-color: #ddd; /* Color de fondo para fechas pasadas */
+    color: #888; /* Color del texto para fechas pasadas */
+}
+
+@media (max-width: 576px) {  /* sm */
+    body {
+        background-color: red;
+    }
+    .ModalDetalles {
+        max-width: 95%; 
+    }
+    .confirmarCarritoFondo {
+        flex-direction: column-reverse;
+    }
+    .Total_Pagar {
+        border-radius: 0;
+        margin-bottom: 40px;
+    }
+    .Total_Pagar .tabla h2, .Total_Pagar .tabla h3 {
+        font-size: 17px;
+    }
+    .realizarPedido .sinCarrito h1 {
+        width: 90%;
+    }
+    .realizarPedido .sinCarrito div {
+        flex-direction: column;
+    }
+    .realizarPedido .sinCarrito div a {
+        margin-top: 20px;
+    }
+    #fechas button {
+        width: 80%;
+    }
+    .fecha_seleccionado {
+        flex-direction: column;
+    }
+    .divOpcionesRealizarPedido {
+        width: 100%;
+    }
+    .fecha_seleccionado button {
+        padding: 7px 0;
+    }
+    .realizarPedido {
+        width: 100%;
+        border-radius: 0;
+    }
+    .producto {
+        flex-direction: column;
+    }
+    .realizarPedido .producto img {
+        width: 80%;
+    }
+    .realizarPedido .producto .info {
+        width: 80%;
+        margin-top: 30px;
+    }
+    .realizarPedido .producto .info .info2  h3 {
+        font-size: 30px;
+    }
+    .realizarPedido .producto .botones {
+        margin-top: 30px;
+        width: 80%;
+    }
+    .realizarPedido .producto .botones button {
+        width: 100%;
+    }
+    .fechas {
+        flex-direction: column;
+    }
+    .fecha_sercanos {
+        margin-bottom: 25px;
+    }
+    #opcionesFormaPedido h2 {
+        width: 90%;
+        margin: auto;
+    }
+}
+@media (max-width: 768px) and (min-width: 577px){  /* md */
+    body {
+        background-color: orange;
+    }
+    .fecha_seleccionado {
+        flex-direction: column;
+    }
+    .realizarPedido {
+        width: 90%;
+    }
+    .divOpcionesRealizarPedido {
+        width: 90%;
+    }
+    .producto {
+        flex-direction: column;
+    }
+    .realizarPedido .producto img {
+        width: 80%;
+    }
+    .realizarPedido .producto .info {
+        width: 80%;
+        margin-top: 30px;
+    }
+    .realizarPedido .producto .info .info2  h3 {
+        font-size: 30px;
+    }
+    .realizarPedido .producto .botones {
+        margin-top: 30px;
+        width: 80%;
+    }
+    .realizarPedido .producto .botones button {
+        width: 100%;
+    }
+    .fechas {
+        flex-direction: column;
+    }
+    .fecha_sercanos {
+        margin-bottom: 25px;
+    }
+}
+@media (max-width: 992px) and (min-width: 769px){  /* lg */
+    body {
+        background-color: yellow;
+    }
+    .realizarPedido {
+        width: 90%;
+    }
+    .fechas {
+        flex-direction: column;
+    }
+    .fecha_sercanos {
+        margin-bottom: 25px;
+    }
+}
+@media (max-width: 1200px) and (min-width: 993px) {  /* xl */
+    body {
+        background-color: greenyellow;
+    }
+    .realizarPedido {
+        width: 80%;
+    }
+}
+@media (max-width: 1400px) and (min-width: 1201px){  /* xxl */
+    body {
+        background-color: green;
+    }
+    .realizarPedido {
+        width: 80%;
+    }
+}

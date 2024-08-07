@@ -4,7 +4,7 @@ if (isset($_SESSION['Rol'])){
     if ($_SESSION['Rol'] != 1){
         switch ($_SESSION['Rol']){
             case 2:
-                header("Location: Cliente.php");
+                header("Location: ClienteRealizarPedido.php");
                 break;
             case 3:
                 header("Location: Repartidor.php");

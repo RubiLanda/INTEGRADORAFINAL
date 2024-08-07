@@ -13,10 +13,10 @@ if ($_POST)
         switch ($_SESSION['Rol'])
         {
             case 1:
-                header("Location: ../views/administrador.php");
+                header("Location: ../views/AdministradorVerPedidos.php");
                 break;
             case 2:
-                header("Location: ../views/cliente.php");
+                header("Location: ../views/ClienteRealizarPedido.php");
                 break;
             case 3:
                 header("Location: ../views/repartidor.php");

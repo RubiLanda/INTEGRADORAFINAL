@@ -63,7 +63,7 @@ class Database {
     function CerrarSeccion(){
         session_start();
         session_destroy();
-        header("Location: ../vistas/index.php");
+        header("Location: ../index.php");
     }
 }
 
