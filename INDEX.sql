@@ -32,7 +32,7 @@ IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
 AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -100 YEAR)
  -- si la fecha de nacimineto es menor que la fecha que se genere de hoy menos 18 años
 then   
-insert into USUARIOS (username, contraseña, f_registro)  -- insertar en usuarios los datos
+insert into USUARIOS (username, contrasena, f_registro)  -- insertar en usuarios los datos
 values (N_username, N_contraseña,now());
 set ultimaid_usuario = last_insert_id(); -- guardar la ultima id que se genero con el auto-increment
 INSERT INTO ROL_USUARIO (id_rol,id_usuario) -- inmediatamente 
