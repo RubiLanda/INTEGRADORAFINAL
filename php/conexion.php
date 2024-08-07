@@ -41,7 +41,7 @@ class Database {
     }
     function verifica($usuario, $password){
         try{
-            $sql = $this->PDO->query("SELECT USUARIOS.id_usuario AS ID, ROL_USUARIO.id_rol AS Rol, USUARIOS.contraseña AS Contrasena
+            $sql = $this->PDO->query("SELECT USUARIOS.id_usuario AS ID, ROL_USUARIO.id_rol AS Rol, USUARIOS.contrasena AS Contrasena
                                       FROM USUARIOS
                                       inner join ROL_USUARIO ON USUARIOS.id_usuario = ROL_USUARIO.id_usuario
                                       WHERE USUARIOS.username = '$usuario'");
