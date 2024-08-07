@@ -1162,7 +1162,7 @@ else
 IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
 AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -100 YEAR)
 then
-insert into USUARIOS (username, contraseña, f_registro)  -- insertar en usuarios los datos
+insert into USUARIOS (username, contrasena, f_registro)  -- insertar en usuarios los datos
 values (N_username, N_contraseña,now());
 set ultimaid_usuario = last_insert_id(); -- guardar la ultima id que se genero con el auto-increment
 insert into ROL_USUARIO (id_rol,id_usuario) -- inmediatamente en la tabla de rol se le dara el rol de administrador
