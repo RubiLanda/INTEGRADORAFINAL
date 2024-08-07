@@ -464,6 +464,7 @@ try {
                     conTienda.style.display = 'block';
                 }
                 if (radiusSinTienda.checked) {
+                    select.value = 0;
                     fechaHoy.disabled = true;
                     fechaMañana.disabled = true;
                     fechaHoy.parentElement.children[1].style.color = '#ddb8929c';

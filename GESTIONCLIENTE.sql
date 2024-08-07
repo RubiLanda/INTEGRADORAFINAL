@@ -693,3 +693,160 @@ begin
     end if;
 end //
 DELIMITER ;
+
+-- * 1.2.4 Realizar Pedido 
+DELIMITER //
+create procedure Realizar_Pedido(
+	in p_id_usuario int,  
+    in p_fecha_requerido date,
+    in p_tienda_seleccionado int,
+    in p_habilitar_stock boolean,
+    out mensaje text
+)
+begin
+
+declare p_id_pedido int;
+declare P_TOTALCARRITO int;
+
+declare p_total_pedidos_del_mismo_dia int;
+
+declare p_stock_actual int;
+declare p_id_inventario int;
+declare p_cantidad int;
+declare p_fecha_limite datetime;
+declare p_id_cliente int;
+declare done int default 0;
+    
+declare cur cursor for
+	select id_inventario, cantidad from CARRITO where id_cliente = p_id_cliente;
+declare continue handler for not found set done = true;
+    
+set mensaje = '';    
+    
+select CLIENTES.id_cliente into p_id_cliente
+from CLIENTES
+inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+where USUARIOS.id_usuario = p_id_usuario;
+
+
+select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
+from PEDIDOS
+where id_cliente = p_id_cliente and f_requerido = p_fecha_requerido;
+
+if p_tienda_seleccionado is null then
+	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
+	from PEDIDOS
+	where id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
+else 
+	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
+	from PEDIDOS
+	where id_cliente = p_id_cliente and id_tiendas = p_tienda_seleccionado and f_requerido = p_fecha_requerido;
+end if;
+
+select SUM(CARRITO.cantidad) into P_TOTALCARRITO from CARRITO inner join CLIENTES
+on CARRITO.id_cliente = CLIENTES.id_cliente inner join INVENTARIO on 
+CARRITO.id_inventario = INVENTARIO.id_inventario
+where CLIENTES.id_cliente = p_id_cliente;
+
+if(P_TOTALCARRITO<=20 or P_TOTALCARRITO >=50) or P_TOTALCARRITO is null then -- if para mostrar un error si la cantidad de los pedidos es menor a 20 y mayor a 50
+	set mensaje = 'Cantidad de panes insuficientes para realizar pedido';
+else 
+	if(p_fecha_requerido > date_add(date(now()),interval 6 month)) then -- if para evitar que la fecha elegida sea para fechas mayores a 6 medes y anteriores a hoy
+		set mensaje = 'Fecha Invalida para realzar Pedido 1231231';
+	else
+		if (p_fecha_requerido < date(now())) then
+			set mensaje = 'Fecha Invalida para realzar Pedido fecha anterior';
+		else 
+			-- if para evitar que los clientes sin tienda realizen un pedido del mismo dia 
+			if day(p_fecha_requerido) = day(now()) and p_tienda_seleccionado = 0 then
+				set mensaje = 'Fecha Invalida para realzar Pedido adsdsadsa';
+			else
+				-- if para evitar que un cliente con  tienda realize un pedido del mismo dia despues de las 11:00 am
+				if year(p_fecha_requerido) = year(now()) and month(p_fecha_requerido) = month(now()) and day(p_fecha_requerido) = day(now()) and p_tienda_seleccionado != 0 and hour(now()) > hour('10:00:00') then
+					set mensaje = 'Fecha Invalida para realzar Pedido ya pasaron las 11:00 am';
+				else 
+					-- if para evitar realizar un pedido para el mismo dia 
+					if p_total_pedidos_del_mismo_dia > 0 then
+						set mensaje = 'Fecha Invalida para realzar Pedido ya hico un pedido para esta fecha';
+					else 
+						if p_habilitar_stock = 1 then
+							set done = false;
+							open cur;
+
+							-- Evita que se realize un pedido con un producto que no tiene suficiente stock
+							read_loop: LOOP   
+								fetch cur into p_id_inventario, p_cantidad;
+								if done then
+									leave read_loop;
+								end if;
+
+								-- Verificar el stock actual
+								select stock into p_stock_actual
+								from INVENTARIO
+								where id_inventario = p_id_inventario;
+
+								if p_stock_actual < p_cantidad then
+									set mensaje = 'No hay suficiente inventario para uno de los productos. Te lo ganaron ¯\_( ͡° ͜ʖ ͡°)_/¯.';
+									leave read_loop;
+								end if;
+							end LOOP;
+
+							close cur;
+							
+							if mensaje = '' then
+								set done = false;
+								open cur;
+
+								-- Evita que se realize un pedido con un producto que no tiene suficiente stock
+								read_loop: LOOP   
+									fetch cur into p_id_inventario, p_cantidad;
+									if done then
+										leave read_loop;
+									end if;
+
+									update INVENTARIO
+									set stock = stock - p_cantidad
+									where id_inventario = p_id_inventario; 
+								end LOOP;
+
+								close cur;
+							end if;
+						end if;
+						
+						if mensaje = '' then
+							-- Calcula la fecha limite
+							if p_fecha_requerido < date_add(now(), interval 14 day) then
+								set p_fecha_limite = date_add(p_fecha_requerido, interval -1 day);
+								set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
+							else
+								set p_fecha_limite = date_add(p_fecha_requerido, interval -7 day);
+								set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
+							end if;
+
+							if p_tienda_seleccionado = 0 then
+							insert into PEDIDOS value (null, p_id_cliente, null, now(), p_fecha_requerido, p_fecha_limite, '0000-00-00 00:00:00', null, 'pendiente');
+							else
+							insert into PEDIDOS value (null, p_id_cliente, p_tienda_seleccionado, now(), p_fecha_requerido, null, '0000-00-00 00:00:00', null, 'pendiente');
+							end if;
+
+							set p_id_pedido = last_insert_id(); -- ultimo pedido insertado
+
+							insert into DETALLE_PEDIDO (id_pedido, id_inventario, cantidad)
+							select p_id_pedido, id_inventario, cantidad 
+							from CARRITO
+							where id_cliente = p_id_cliente;
+								
+							delete from CARRITO
+							where id_cliente = p_id_cliente;
+							
+							set mensaje = 'pedido realizado';
+						end if;
+					end if;
+				end if;
+			end if;
+		end if;
+	end if;
+end if;
+end //
+DELIMITER ;
