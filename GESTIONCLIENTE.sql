@@ -628,3 +628,68 @@ begin
 	where id_cliente = p_id_cliente and id_inventario = p_id_producto; -- Borra todo los registros del carrito del cliente seleccionado 
 end //
 DELIMITER ;
+
+-- 1.2.7 Calcular el total a pagar del carrito
+DELIMITER //
+create procedure Calcular_Total(
+	in p_id_usuario int,
+    in p_tienda_seleccionado int
+)
+begin 
+	declare p_id_cliente int;
+    
+    select CLIENTES.id_cliente into p_id_cliente 
+	from CLIENTES
+	inner join PERSONAS on CLIENTES.id_persona=PERSONAS.id_persona
+	inner join USUARIOS on PERSONAS.id_usuario=USUARIOS.id_usuario
+	where USUARIOS.id_usuario = p_id_usuario;
+ 
+	if p_tienda_seleccionado = 0 then
+		select sum(CARRITO.cantidad * PRODUCTOS.precio) as Total
+        from CARRITO
+        inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
+        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+        where CARRITO.id_cliente = p_id_cliente;
+    else
+		select sum(CARRITO.cantidad * (PRODUCTOS.precio - 1 )) as Total
+        from CARRITO
+        inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
+        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+        where CARRITO.id_cliente = p_id_cliente;
+    end if;
+end //
+DELIMITER ;
+
+-- * 1.2.5 Procedimiento Ver Carrito
+DELIMITER //
+create procedure Ver_Carrito(
+	in p_id_usuario int,
+	in p_offset int,
+    in p_records_per_page int
+)
+begin
+	declare p_id_cliente int;
+    
+    select CLIENTES.id_cliente into p_id_cliente
+    from CLIENTES
+    inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+    inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+    where USUARIOS.id_usuario = p_id_usuario;
+    
+    if p_offset is not null and p_records_per_page is not null then
+		select CARRITO.id_inventario as Producto, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, CARRITO.cantidad as Cantidad, INVENTARIO.stock as Disponible, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, (CARRITO.cantidad * PRODUCTOS.precio) as Total
+		from CARRITO
+		inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
+		inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+		where CARRITO.id_cliente = p_id_cliente
+        limit p_records_per_page
+        offset p_offset;
+    else
+		select CARRITO.id_inventario as Producto, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, CARRITO.cantidad as Cantidad, INVENTARIO.stock as Disponible, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, (CARRITO.cantidad * PRODUCTOS.precio) as Total
+		from CARRITO
+		inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
+		inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+		where CARRITO.id_cliente = p_id_cliente;
+    end if;
+end //
+DELIMITER ;
