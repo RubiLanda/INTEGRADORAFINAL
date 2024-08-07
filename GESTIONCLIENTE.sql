@@ -1,3 +1,56 @@
+-- 1.3.1 ver mis pedidos
+DELIMITER //
+create procedure mispedidos_cliente(
+	in iduser INT,
+    in estado varchar(50)
+)
+begin
+declare idcliente int;
+
+select CLIENTES.id_cliente into idcliente 
+from CLIENTES
+inner join PERSONAS on CLIENTES.id_persona=PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario=USUARIOS.id_usuario
+where USUARIOS.id_usuario=iduser;
+
+	if estado is not null then
+		select PEDIDOS.id_pedido as ID, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_entrega as Fecha_entregada, PEDIDOS.f_requerido as Fecha_Requerida, PEDIDOS.estado_pedido as Estado, R.Nombre as Repartidor
+		from PEDIDOS
+		inner join (
+		select PEDIDOS.id_pedido as ID, PERSONAS.nombre as Nombre
+		from PEDIDOS
+		left join REPARTIDORES on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+		left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
+		where PEDIDOS.id_cliente = idcliente and PEDIDOS.estado_pedido = estado 
+		order by Fecha_Pedido desc;
+	else 
+		select PEDIDOS.id_pedido as ID, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_entrega as Fecha_entregada, PEDIDOS.f_requerido as Fecha_Requerida, PEDIDOS.estado_pedido as Estado, R.Nombre as Repartidor
+		from PEDIDOS
+		inner join (
+		select PEDIDOS.id_pedido as ID, PERSONAS.nombre as Nombre
+		from PEDIDOS
+		left join REPARTIDORES on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+		left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
+		where PEDIDOS.id_cliente = idcliente 
+		order by Fecha_Pedido desc;
+    end if;
+END //
+DELIMITER ;
+
+-- * 1.3.2 Ver los detalles de los productos de un pedido
+DELIMITER //
+create procedure Ver_Detalle_Pedido(
+    in p_id_pedido int
+)
+begin 
+	select PRODUCTOS.nombre as Producto, DETALLE_PEDIDO.cantidad as Cantidad, concat('$', (DETALLE_PEDIDO.cantidad * PRODUCTOS.precio)) as Total
+    from DETALLE_PEDIDO
+    inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+    inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+    where id_pedido = p_id_pedido;
+end //
+DELIMITER ;
+
 -- * 1.4.4 dar de alta tiendas
 DELIMITER //
 CREATE PROCEDURE ALTA_TIENDAS( 
@@ -373,3 +426,20 @@ if estadoT =0 then
 end //
 DELIMITER ;
 
+-- * 3.7.5 Calcular el Total a pagar de un pedido
+DELIMITER //
+create procedure Calcular_Total_Pagar_Pedido(
+	in p_id_pedido int
+)
+begin
+	select case 
+    when PEDIDOS.id_tiendas is null then sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) 
+    else sum((PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) - 1) 
+    end as Total
+    from PEDIDOS
+    inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+    inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+    inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+    where PEDIDOS.id_pedido = p_id_pedido;
+end //
+DELIMITER ;

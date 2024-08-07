@@ -1114,3 +1114,122 @@ if fecha_requerida is not null and p_Mes is null and p_Año is null and p_nombre
         end if ;
 end //
 DELIMITER ;
+
+------  * 3.5.1  AÑADIR STOCK--------------------------------------------------
+DROP procedure AÑADIR_STOCK
+DELIMITER //
+create procedure AÑADIR_STOCK (
+in iddproducto int, -- id del producto
+IN n_stock int -- cantidad de stock que desea añadir
+)
+begin
+update inventario
+set stock = n_stock -- sumarle inventario
+where id_producto = iddproducto; -- donde el id de la consulta sea igual a la id del producto en la tabla inventario
+end //
+DELIMITER ;
+
+------ * 3.6.1 INSERTAR NUEVO ADMIN--------------------------------------------
+DELIMITER //
+CREATE PROCEDURE INSERTAR_ADMINISTRADORES(
+IN N_username VARCHAR(150),    -- varibales de entrada para el registro 
+IN N_contraseña VARCHAR(255),
+IN N_nombre VARCHAR(40),
+IN N_a_p VARCHAR(40),
+IN N_a_m VARCHAR(40),
+IN N_f_nac DATE,
+IN N_genero ENUM('M','F','O'),
+IN N_telefono CHAR(10),
+OUT message text
+)
+BEGIN
+declare ultimaid_usuario int; -- declaramos algunas variables para guardar la id de algunas cosas
+declare ultimaid_persona int;
+declare ultimaid_admin int;
+declare userrepetido int;
+IF N_username = '' or N_contraseña = '' or N_nombre = '' or N_a_p = '' or N_f_nac = '' or 
+N_genero = '' or N_telefono = ''   -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
+then 
+set message = 'NO PUEDES DEJAR CAMPOS VACIOS';
+else
+select count(USUARIOS.username) into userrepetido from USUARIOS where username = N_username ;
+if userrepetido > 0 then
+set message = 'USUARIO EXISTENTE';
+else
+if length(N_telefono)<10 then
+set message='Numero de telefono invalido';
+else
+IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
+AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -100 YEAR)
+then
+insert into USUARIOS (username, contraseña, f_registro)  -- insertar en usuarios los datos
+values (N_username, N_contraseña,now());
+set ultimaid_usuario = last_insert_id(); -- guardar la ultima id que se genero con el auto-increment
+insert into ROL_USUARIO (id_rol,id_usuario) -- inmediatamente en la tabla de rol se le dara el rol de administrador
+values(1,ultimaid_usuario);
+insert into PERSONAS(nombre, a_p, a_m, f_nac, genero, telefono,id_usuario) -- insertar en la tabla de personas todos los datos personales
+VALUES (N_nombre, N_a_p, N_a_m, N_f_nac, N_genero, N_telefono,ultimaid_usuario);
+set ultimaid_persona = last_insert_id(); -- guardar la ultima id de persona generada con el autoincrement 
+insert into ADMINISTRADORES(id_persona,fecha_cargo,estatus) values(ultimaid_persona,date(now()),1);
+set message ='REGISTRO EXITOSO';
+ELSE
+SET message = 'DEBES SER MAYOR DE EDAD EL ADMIN PARA REGISTRARLO O LA EDAD ES EXCESIVA';
+END IF;
+end if;
+end if;
+end if;
+END //
+DELIMITER ;
+
+-------- * 3.6.2 VER ADMINS POR ESTADO (HABILITADO/DESHABILITADO)-------------
+DELIMITER //
+create procedure Ver_Administrador_Estado(
+	in p_estatus boolean
+)
+begin
+	if p_estatus is null then 
+		select ADMINISTRADORES.id_admin as ID, USUARIOS.username as Usuario,concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Administrador, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, ADMINISTRADORES.fecha_cargo as Fecha_cargo, ADMINISTRADORES.estatus as Estatus
+        from ADMINISTRADORES
+        inner join PERSONAS on ADMINISTRADORES.id_persona = PERSONAS.id_persona
+        inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario;
+    end if;
+    if p_estatus = 0 then
+		select ADMINISTRADORES.id_admin as ID, USUARIOS.username as Usuario, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Administrador, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, ADMINISTRADORES.fecha_cargo as Fecha_cargo, ADMINISTRADORES.estatus as Estatus
+        from ADMINISTRADORES
+        inner join PERSONAS on ADMINISTRADORES.id_persona = PERSONAS.id_persona
+        inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+        where ADMINISTRADORES.estatus = 0;
+    end if;
+    if p_estatus = 1 then
+		select ADMINISTRADORES.id_admin as ID, USUARIOS.username as Usuario, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Administrador, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, ADMINISTRADORES.fecha_cargo as Fecha_cargo, ADMINISTRADORES.estatus as Estatus
+        from ADMINISTRADORES
+        inner join PERSONAS on ADMINISTRADORES.id_persona = PERSONAS.id_persona
+        inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+        where ADMINISTRADORES.estatus = 1;
+    end if;
+    
+end //
+DELIMITER ;
+
+-- * 3.6.3 Procedimiento. Habilitar o Deshabilitar Administrador
+DELIMITER //
+create procedure Habilitar_Deshabilitar_Administrador(
+	in p_id_administrador int,
+    in p_nuevo_estatus boolean,
+    out message text
+)
+begin
+if p_nuevo_estatus = 0 then
+	update ADMINISTRADORES
+    set estatus = p_nuevo_estatus
+    where id_admin = p_id_administrador;
+    set message = 'Administrador Deshabilitado Exitosamente!';
+    end if;
+    if p_nuevo_estatus = 1 then
+	update ADMINISTRADORES
+    set estatus = p_nuevo_estatus
+    where id_admin = p_id_administrador;
+    set message = 'Administrador Habilitado Exitosamente!';
+    end if;
+end //
+DELIMITER ;
