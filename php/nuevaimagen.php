@@ -1,14 +1,14 @@
 <?php 
     include '../php/conexionBD.php';
-    $conexion = new Database();
-    $conexion->conectarBD();
+    $Conexion = new Database();
+    $Conexion->conectarBD();
    $DireccionTemporal = $_FILES['imagen']['tmp_name'];
    $NombreArchivo = $_FILES['imagen']['name'];
    $Direccion = '../img/productos/';
    $DireccionConImagen = $Direccion.$NombreArchivo;
 
    $id = $_POST['id'];
-   $Imagenes = $conexion->selectConsulta("SELECT * FROM PRODUCTOS WHERE id_producto = $id");
+   $Imagenes = $Conexion->selectConsulta("SELECT * FROM PRODUCTOS WHERE id_producto = $id");
    $ImagenAntigua = $Imagenes[0]->imagen;
 
    if($ImagenAntigua && $ImagenAntigua !== $NombreArchivo){
@@ -20,8 +20,8 @@
    
 
    if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){
-      $conexion->ejecutar("CALL Modificar_Imagen_Producto($id,'$NombreArchivo',@mensaje)");
-      $consulta = $conexion->selectConsulta("SELECT @mensaje as resultado");
+      $Conexion->ejecutar("CALL Modificar_Imagen_Producto($id,'$NombreArchivo',@mensaje)");
+      $consulta = $Conexion->selectConsulta("SELECT @mensaje as resultado");
       $mensaje = $consulta[0]->resultado;
       echo $mensaje;
    }

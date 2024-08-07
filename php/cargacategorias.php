@@ -1,9 +1,9 @@
 <?php 
 include '../php/conexionBD.php';
-$conexion = new Database();
-$conexion->conectarBD();
+$Conexion = new Database();
+$Conexion->conectarBD();
 $consulta = "SELECT CATEGORIAS.id_categoria,CATEGORIAS.nombre as nombrecat, CATEGORIAS.estado as estadocat from CATEGORIAS";
-$tabla =$conexion->selectConsulta($consulta);
+$tabla =$Conexion->selectConsulta($consulta);
 foreach ($tabla as $reg)
 {
   // DIV GENERAL DE LA CLASE PADRE2

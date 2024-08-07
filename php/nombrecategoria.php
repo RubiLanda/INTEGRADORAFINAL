@@ -1,11 +1,11 @@
 <?php 
 include '../php/conexionBD.php';
-$conexion= new Database();
-$conexion->conectarBD();
+$Conexion= new Database();
+$Conexion->conectarBD();
 extract($_POST);
 if($_POST){
-    $conexion->ejecutar("CALL actualizarnombrecat('$id_categoria','$Nombre', @mensaje)");
-    $consulta = $conexion->selectConsulta("SELECT @mensaje as resultado");
+    $Conexion->ejecutar("CALL actualizarnombrecat('$id_categoria','$Nombre', @mensaje)");
+    $consulta = $Conexion->selectConsulta("SELECT @mensaje as resultado");
     $mensaje = $consulta[0]->resultado;
     echo $mensaje;
 }

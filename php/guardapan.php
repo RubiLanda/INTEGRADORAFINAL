@@ -1,7 +1,7 @@
 <?php
   include '../php/conexionBD.php';
-  $conexion= new Database();
-  $conexion->conectarBD();
+  $Conexion= new Database();
+  $Conexion->conectarBD();
   $imagenPuesto = $_POST['imagenPuesto'];
   if ($imagenPuesto == 1) {
      $DireccionTemporal = $_FILES['imagen']['tmp_name'];
@@ -21,15 +21,15 @@
   
  if ($imagenPuesto == 1) {
     if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){
-       $conexion->ejecutar("CALL NUEVO_PRODUCTO('$panombre2','$pancategoria2','$NombreArchivo','$panprecio2','$pandescripcion2',@mensaje)");
-       $consulta = $conexion->selectConsulta("SELECT @mensaje as resultado");
+       $Conexion->ejecutar("CALL NUEVO_PRODUCTO('$panombre2','$pancategoria2','$NombreArchivo','$panprecio2','$pandescripcion2',@mensaje)");
+       $consulta = $Conexion->selectConsulta("SELECT @mensaje as resultado");
        $mensaje = $consulta[0]->resultado;
        echo $mensaje;
     }
  }
  else {
-   $conexion->ejecutar("CALL NUEVO_PRODUCTO('$panombre2','$pancategoria2', '','$panprecio2','$pandescripcion2',@mensaje)");
-   $consulta = $conexion->selectConsulta("SELECT @mensaje as resultado");
+   $Conexion->ejecutar("CALL NUEVO_PRODUCTO('$panombre2','$pancategoria2', '','$panprecio2','$pandescripcion2',@mensaje)");
+   $consulta = $Conexion->selectConsulta("SELECT @mensaje as resultado");
    $mensaje = $consulta[0]->resultado;
    echo $mensaje;
  }

@@ -1,10 +1,10 @@
 <?php
  include '../php/conexionBD.php';
- $conexion = new Database();
- $conexion->conectarBD();
+ $Conexion = new Database();
+ $Conexion->conectarBD();
  $consulta = "SELECT categorias.id_categoria , categorias.nombre as nombreC FROM categorias
  WHERE categorias.estado = 1";
- $reg = $conexion->selectConsulta($consulta);
+ $reg = $Conexion->selectConsulta($consulta);
  echo "<label class='control-label'>
  Categoria</label>";
  echo "<select id='selectcatpan' name='panescategoria' class='form-select'>";
