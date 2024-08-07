@@ -41,12 +41,12 @@ class Database {
     }
     function verifica($usuario, $password){
         try{
-            $sql = $this->PDO->query("select USUARIOS.id_usuario as ID, ROL_USUARIO.id_rol as Rol, USUARIOS.contraseña as Contraseña
+            $sql = $this->PDO->query("select USUARIOS.id_usuario as ID, ROL_USUARIO.id_rol as Rol, USUARIOS.contraseña as Contrasena
                                       from USUARIOS
                                       inner join ROL_USUARIO on USUARIOS.id_usuario = ROL_USUARIO.id_usuario
                                       where USUARIOS.username = '$usuario'");
             while($renglon = $sql->fetch(PDO::FETCH_ASSOC)){
-                if (password_verify($password, $renglon['Contraseña'])){
+                if (password_verify($password, $renglon['Contrasena'])){
                     session_start();
                     $_SESSION['ID'] = $renglon['ID'];
                     $_SESSION['Rol'] = $renglon['Rol'];
