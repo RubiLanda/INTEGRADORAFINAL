@@ -675,30 +675,36 @@ in p_imagen varchar(255),
 out mensaje text
 )
 begin
+
 declare Imagen_actual varchar(255);
 declare Imagen_existente int;
 
 select  imagen into Imagen_actual 
 from PRODUCTOS
-where  id_producto = p_id_producto;
+where  PRODUCTOS.id_producto = p_id_producto;
+
 select COUNT(*) into Imagen_existente
 from PRODUCTOS
-where imagen = p_imagen and id_producto != p_id_producto;
+where PRODUCTOS.imagen = p_imagen and PRODUCTOS.id_producto != p_id_producto;
 
 if Imagen_existente > 0 
-	then
-		set mensaje = 'La Imagen ya esta asignada en otro producto';
-	else
-		if Imagen_actual = p_imagen 
-			then
-				set mensaje = 'Error Imagen Repetida';
-		else
-			update PRODUCTOS
-			set imagen = p_imagen
-			where id_producto = p_id_producto;
-			set mensaje = 'Imagen Agregada Correctamente';
-		end if;
- end if;
+then
+
+set mensaje = 'La Imagen ya esta asignada en otro producto';
+else
+if Imagen_actual = p_imagen 
+then
+
+set mensaje = 'Error Imagen Repetida';
+else
+
+update PRODUCTOS
+set imagen = p_imagen
+where PRODUCTOS.id_producto = p_id_producto;
+
+set mensaje = 'Imagen Agregada Correctamente';
+end if;
+end if;
 end //
 DELIMITER ;
 
