@@ -180,7 +180,7 @@ try {
                         <h3>Mañana</h3>
                     </div>
                 </div>
-                <div>
+                <div class="calendario">
                     <h3 id="h3soloseleccionarFecha">Otra fecha:</h3>
                     <input type="text" id="fecha_pedido" autocomplete="off" placeholder="Introduce una fecha" onfocus="inputFecha()" readonly>
                 </div>

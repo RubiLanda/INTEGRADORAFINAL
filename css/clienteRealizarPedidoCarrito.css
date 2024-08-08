@@ -362,8 +362,10 @@
 }
 
 @media (max-width: 576px) {  /* sm */
-    body {
-        background-color: red;
+    .calendario {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .ModalDetalles {
         max-width: 95%; 
@@ -435,9 +437,6 @@
     }
 }
 @media (max-width: 768px) and (min-width: 577px){  /* md */
-    body {
-        background-color: orange;
-    }
     .fecha_seleccionado {
         flex-direction: column;
     }
@@ -475,9 +474,6 @@
     }
 }
 @media (max-width: 992px) and (min-width: 769px){  /* lg */
-    body {
-        background-color: yellow;
-    }
     .realizarPedido {
         width: 90%;
     }
@@ -489,17 +485,11 @@
     }
 }
 @media (max-width: 1200px) and (min-width: 993px) {  /* xl */
-    body {
-        background-color: greenyellow;
-    }
     .realizarPedido {
         width: 80%;
     }
 }
 @media (max-width: 1400px) and (min-width: 1201px){  /* xxl */
-    body {
-        background-color: green;
-    }
     .realizarPedido {
         width: 80%;
     }
