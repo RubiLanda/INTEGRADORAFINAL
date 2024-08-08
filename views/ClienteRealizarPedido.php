@@ -35,9 +35,9 @@ try {
     $total_records = count($productos_totales);
     $total_pages = ceil($total_records / $records_per_page);
 
-    $max_links = 3;
+    $max_links = 5;
     $start = max(1, $current_page - floor($max_links / 2));
-            $end = min($total_pages, $current_page + floor($max_links / 2));
+    $end = min($total_pages, $current_page + floor($max_links / 2));
 } catch (Exception $e) {
     echo $e->getMessage();
 }
