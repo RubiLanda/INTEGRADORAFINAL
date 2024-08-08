@@ -12,7 +12,7 @@ else if ($Fecha_Pedido == "Mañana") {
     $Fecha_Pedido = date('Y-m-d', strtotime('+1 day'));
 }
 
-$categorias = $Conexion->selectConsulta("select id_categoria as ID, nombre as Nombre from CATEGORIAS where estado = 1");
+$categorias = $Conexion->selectConsulta("select id_categoria as ID, nombre as Nombre from CATEGORIAS where CATEGORIAS.estado = 1");
 
 $temporada = $Conexion->selectConsulta("call Calcular_Fechas_Temporada('$Fecha_Pedido', @habilitado)");
 
