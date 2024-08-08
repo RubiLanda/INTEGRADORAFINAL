@@ -264,13 +264,13 @@ try {
             for($i = $start; $i <= $end; $i++): ?>
                 <a href="?pagina=<?php echo $i?>" class="<?php if($i == $current_page) echo 'activo'; ?>"><?php echo $i ?></a>
             <?php endfor;
-            
-            if ($end < $total_pages) {
-                if ($end < $total_pages - 1) {
-                    echo '...';
-                }
-                echo '<a href="?pagina='.$total_pages.'>' . $total_pages . '</a>';
-            }
+
+            if ($end < $total_pages): ?>
+                <?php if ($end < $total_pages - 1): ?>
+                    ...
+                <?php endif ?>
+                <a href="?pagina=<?php echo $total_pages?>"><?php echo $total_pages?></a>
+            <?php endif;
 
             if($current_page < $total_pages): ?>
                 <a href="?pagina=<?php echo ($current_page + 1)?>"> ></a>
