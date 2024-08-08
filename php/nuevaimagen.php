@@ -25,4 +25,7 @@
       $mensaje = $consulta[0]->resultado;
       echo $mensaje;
    }
+   else {
+      echo "error";
+   }
 ?>
