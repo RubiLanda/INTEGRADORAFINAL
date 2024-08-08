@@ -501,9 +501,7 @@ try {
                 }
             });
         }
-        if (sessionStorage.getItem("seleccionando_fecha") == null) {
-            mostrarProductos(<?php echo $current_page ?>, <?php echo $categoria_seleccionado ?>)
-        }
+        mostrarProductos(<?php echo $current_page ?>, <?php echo $categoria_seleccionado ?>)
 
         function cambiarValorParametroUrl(parametro, valor){
             const url = new URL(window.location.href); 
@@ -588,7 +586,9 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
     
                         mostrarCategorias()
-                        mostrarProductos(1, 0)
+                        if (<?php echo $_GET['categoria']?> == null) {
+                            mostrarProductos(1, 0)
+                        }
 
                         div.style.display = 'block';
                         fechas.style.display = 'none';
@@ -614,7 +614,9 @@ try {
                     tienda_seleccionado.textContent = "Forma de recibir pedido: Recoger en sucursal";
 
                     mostrarCategorias()
-                    mostrarProductos(1, 0)
+                    if (<?php echo $_GET['categoria']?> == null) {
+                        mostrarProductos(1, 0)
+                    }
 
                     div.style.display = 'block';
                     fechas.style.display = 'none';
@@ -640,7 +642,9 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
         
                         mostrarCategorias()
-                        mostrarProductos(1, 0)
+                        if (<?php echo $_GET['categoria']?> == null) {
+                            mostrarProductos(1, 0)
+                        }
 
                         div.style.display = 'block';
                         fechas.style.display = 'none';
