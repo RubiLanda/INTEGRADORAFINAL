@@ -527,7 +527,7 @@ select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen
 from PRODUCTOS
 inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
 left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
-where PRODUCTOS.estado = 1 and CATEGORIAS.id_categoria = p_categoria
+where PRODUCTOS.estado = 1 and PRODUCTOS.id_categoria = p_categoria
 order by ID;
 end if;
 
@@ -552,14 +552,16 @@ left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.i
 where PRODUCTOS.estado = 1 and CATEGORIAS.estado = 1
 order by ID;
 end if;
+
 else 
+
 if p_categoria != 0 and p_nombre_producto is null then
 
 select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
 from PRODUCTOS
 inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
 left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
-where PRODUCTOS.estado = 1 and CATEGORIAS.id_categoria = p_categoria
+where PRODUCTOS.estado = 1 and PRODUCTOS.id_categoria = p_categoria
 order by ID
 limit p_records_per_page
 offset p_offset;

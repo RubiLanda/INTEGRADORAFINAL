@@ -496,7 +496,8 @@ try {
                 url: '../php/MostrarProductos.php',
                 data: { current_page: current_page, categoria_seleccionado: categoria_seleccionado, mostrarStock: mostrarStock },
                 success: function(response) {
-                    $('#productos').html(response);
+                    // $('#productos').html(response);
+                    alert(response);
                 }
             });
         }
