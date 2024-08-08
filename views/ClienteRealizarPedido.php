@@ -305,7 +305,6 @@ try {
         
         if (sessionStorage.getItem("mostrarStock") != null) {
             mostrarStock = sessionStorage.getItem("mostrarStock");
-            mostrarProductos(1, 0)
         }
         document.addEventListener('DOMContentLoaded', function() {
             if (sessionStorage.getItem("mensaje") != null) {
@@ -586,9 +585,7 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
     
                         mostrarCategorias()
-                        if (<?php echo isset($_GET['categoria']) ?>) {
-                            mostrarProductos(1, 0)
-                        }
+                        mostrarProductos(1, 0)
 
                         div.style.display = 'block';
                         fechas.style.display = 'none';
@@ -614,9 +611,7 @@ try {
                     tienda_seleccionado.textContent = "Forma de recibir pedido: Recoger en sucursal";
 
                     mostrarCategorias()
-                    if (<?php echo isset($_GET['categoria']) ?>) {
-                        mostrarProductos(1, 0)
-                    }
+                    mostrarProductos(1, 0)
 
                     div.style.display = 'block';
                     fechas.style.display = 'none';
@@ -642,9 +637,7 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
         
                         mostrarCategorias()
-                        if (<?php echo isset($_GET['categoria'])?>) {
-                            mostrarProductos(1, 0)
-                        }
+                        mostrarProductos(1, 0)
 
                         div.style.display = 'block';
                         fechas.style.display = 'none';
