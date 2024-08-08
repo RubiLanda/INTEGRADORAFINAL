@@ -5,16 +5,20 @@ create procedure Ver_Repartidores(
 )
 begin
 	if p_estatus is not null then
+
     	select REPARTIDORES.id_repartidor as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, personas.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, personas.telefono as Telefono, 
 		repartidores.f_ingreso as Fecha_Ingreso, REPARTIDORES.fol_liconducir as licencia_conducir, REPARTIDORES.estatus as Estatus, REPARTIDORES.f_ingreso as Fecha_ingreso
 		from REPARTIDORES
 		inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
 		where REPARTIDORES.estatus = p_estatus;
+
     else
+
     	select REPARTIDORES.id_repartidor as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, 
 		REPARTIDORES.f_ingreso as Fecha_Ingreso, REPARTIDORES.fol_liconducir as licencia_conducir, REPARTIDORES.estatus as Estatus, REPARTIDORES.f_ingreso as Fecha_ingreso
 		from REPARTIDORES
 		inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona;
+
     end if;
 end //
 DELIMITER ;
@@ -72,19 +76,7 @@ end //
 DELIMITER ;
 
 
--- * 1.3.2 Ver los detalles de los productos de un pedido
-DELIMITER //
-create procedure Ver_Detalle_Pedido(
-    in p_id_pedido int
-)
-begin 
-	select PRODUCTOS.nombre as Producto, DETALLE_PEDIDO.cantidad as Cantidad, concat('$', (DETALLE_PEDIDO.cantidad * PRODUCTOS.precio)) as Total
-    from DETALLE_PEDIDO
-    inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-    inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-    where id_pedido = p_id_pedido;
-end //
-DELIMITER ;
+
 
 
 -- * 3.7.5 Calcular el Total a pagar de un pedido
@@ -286,77 +278,114 @@ from PRODUCTOS
 where nombre = n_nombre;
 
 		if n_nombre = '' then
+
 			set MensajeError = 'No puedes dejar el nombre del producto vacio';
 			set contadorError = contadorError + 1;
+
 		end if;
      
 		if n_id_categoria = 0 then 
+
            if contadorError = 0 then
+
 				set MensajeError = 'No puedes dejar la categoria del  producto vacio';
+
 			elseif contadorError = 1 then 
+
 				set MensajeError = concat(MensajeError, ' ni tampoco la catgoria del producto');
+
 			elseif contadorError > 1 then 
+
 			set MensajeError = concat(MensajeError, ', ni la categoria del producto');
 			end if;
 			set contadorError = contadorError + 1;
 		end if;
     
     if n_imagen = '' then 
+
 		if contadorError = 0 then
+
 			set MensajeError = 'No puedes dejar la imagen del producto vacia';
+
      elseif contadorError = 1 then 
+
 			set MensajeError = concat(MensajeError, ' ni tampoco la imagen del producto');
+
 	elseif contadorError > 1 then 
+
 				set MensajeError = concat(MensajeError, ', ni la imagen del producto');
 		end if;
 			set contadorError = contadorError + 1;
 	end if;
     
     if n_precio = '' then 
+
 		if contadorError = 0 then
+
 			set MensajeError = 'No puedes dejar el precio del producto vacio';
      elseif contadorError = 1 then 
+
 			set MensajeError = concat(MensajeError, ' ni tampoco el precio del producto');
+
 	elseif contadorError > 1 then 
+
 				set MensajeError = concat(MensajeError, ', ni el precio del producto');
 		end if;
 			set contadorError = contadorError + 1;
 	end if;
     
      if n_descripcion = '' then 
+
 		if contadorError = 0 then
+
 			set MensajeError = 'No puedes dejar la descripcion del producto vacia';
+
      elseif contadorError = 1 then 
+
 			set MensajeError = concat(MensajeError, ' ni tampoco la descripcion del prodcuto');
+
 	elseif contadorError > 1 then 
+
 				set MensajeError = concat(MensajeError, ', ni la descripcion del producto');
+
 		end if;
+
 			set contadorError = contadorError + 1;
+
 	end if;
      
 	if contador > 0 then 
+
       if contadorError = 0 then
+
 	set MensajeError = 'Este producto ya existe';
 		elseif contadorError = 1 then 
+		
 			set MensajeError = concat(MensajeError, ' Este nombre de producto ya existe');
 		elseif contadorError > 1 then 
+
 				set MensajeError = concat(MensajeError, ',  nombre del producto ya existe');
 		end if;
 			set contadorError = contadorError + 1;
 	end if;
     
     if Imagen_existente > 0 then
+
 		if contadorError = 0 then
+
      set MensajeError = 'Esta imagen ya esta asignada en otro producto';
        elseif contadorError = 1 then 
+
           set  MensajeError = concat(MensajeError, ' Esta imagen ya esta asignada en otro producto');
 		elseif contadorError > 1 then
+
             set MensajeError = concat(MensajeError, ',  imagen del producto asignada en otro producto');
 		end if;
 			set contadorError = contadorError + 1;
 		end if;
 
     if contadorError = 0 then
+
 	Insert into PRODUCTOS (nombre,id_categoria,imagen,precio,estado,descripcion)
 	values (n_nombre, n_id_categoria, n_imagen, n_precio, 1, n_descripcion);
 	set ultimaid_producto = last_insert_id(); -- guardar el id para mandarla al inventario
@@ -365,7 +394,9 @@ where nombre = n_nombre;
 	(ultimaid_producto, 0);
 	set mensaje = 'Producto añadido correctamente';
       else
+
         set mensaje = MensajeError;
+		
     end if;
 
 end //

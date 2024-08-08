@@ -74,7 +74,7 @@ begin
     
     select  count(*) into contadortienda
     from CLIENTE_TIENDA
-    where id_cliente= p_id_cliente;
+    where CLIENTE_TIENDA.id_cliente= p_id_cliente;
     
     if contadortienda>=5 then
 		set mensaje='No puedes tener mas de 5 tiendas';
@@ -152,58 +152,88 @@ begin
 	where PERSONAS.telefono = telefononuev and USUARIOS.id_usuario = id_u;
 
 	if ModificacionNombre = 1 and ModificacionA_p = 1 and ModificacionA_m = 1 and ModificacionTelefono = 1 then
+
 		set mensaje = 'No se hizo ninguna modificacion';
 	else 
 		if nombrenuev = '' then
+
 			set mensajeError = 'No puedes dejar el nombre vacio';
 			set contadorError = contadorError + 1;
 		end if;
         
         
         if a_pnuev = '' then
+
 			if contadorError = 0 then 
+
 				set mensajeError = 'No puedes dejar el apellido paterno vacio';
+
 			elseif contadorError = 1 then
+
 				set mensajeError = concat(mensajeError, ' ni tampoco apellido paterno');
-			elseif contadorError >1 then 
+
+			elseif contadorError > 1 then 
+
 				set mensajeError = concat(mensajeError, ', apellido paterno');
+
 			end if;
+
 			set contadorError = contadorError + 1;
+
 		end if;
         
         if telefononuev = ''  then
+
 			if contadorError = 0 then 
+
 				set mensajeError = 'No puedes dejar el numero de telefono vacio';
+
 			elseif contadorError = 1 then 
+
 				set mensajeError = concat(mensajeError, ' ni tampoco el numero de telefono');
-			elseif contadorError >1 then 
-				set mensajeError = concat(mensajeError
-                , ', numero de telefono');
+
+			elseif contadorError > 1 then 
+
+				set mensajeError = concat(mensajeError, ', numero de telefono');
+
 			end if;
+
 			set contadorError = contadorError + 1;
+
 		end if;
         
         if length(telefononuev)<10 then
+
         		if contadorError = 0 then 
+
 				set mensajeError = 'El numero de telefono no puede tener menos de 10 numeros';
+
 			elseif contadorError = 1 then 
-				set mensajeError = concat(mensajeError, ' número de teléfono inválido');
-			elseif contadorError >1 then 
-				set mensajeError = concat(mensajeError
-                , ', número de teléfono inválido');
+
+				set mensajeError = concat(mensajeError, ' numero de telefono invalido');
+
+			elseif contadorError > 1 then 
+
+				set mensajeError = concat(mensajeError , ', número de teléfono inválido');
+
 			end if;
+
 			set contadorError = contadorError + 1;
+
 		end if;
         
         
 		if ModificacionNombre = 0 then
+
 			if nombrenuev != '' then
+
 				update PERSONAS
 				inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
-				set PERSONAS.nombre= nombrenuev
+				set PERSONAS.nombre = nombrenuev
 				where USUARIOS.id_usuario=id_u;
 				
                 if contadorError = 0 then
+
 					set mensajeBueno = 'Nombre actualizado corectamente';
                 elseif contadorError > 0 then
 					set mensajeBueno = ' pero si se modifico el nombre';
@@ -213,17 +243,21 @@ begin
         end if;
 
 		if ModificacionA_p = 0 then 
+
 			if a_pnuev != '' then
+
 				update PERSONAS
 				inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
-				set PERSONAS.a_p=a_pnuev
-				where USUARIOS.id_usuario=id_u;
+				set PERSONAS.a_p = a_pnuev
+				where USUARIOS.id_usuario = id_u;
+
                 if contadorError = 0 and contadorBueno = 0 then 
 					set mensajeBueno = 'Apellido paterno actualizado corectamente';
 				end if;
                 
 				if contadorError > 0 and contadorBueno = 0 then
 					set mensajeBueno = ' pero si se modifico el apellido paterno';
+
 				elseif contadorError > 0 and contadorBueno > 1 then
 					set mensajeBueno = concat(mensajeBueno, ', apellido paterno');
 				end if;
@@ -232,41 +266,50 @@ begin
         end if;
         
         if ModificacionA_m = 0 then 
+
 			update PERSONAS
 			inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
-			set PERSONAS.a_m=a_mnuev
+			set PERSONAS.a_m = a_mnuev
 			where USUARIOS.id_usuario=id_u;
             
             if contadorError = 0 and contadorBueno = 0 then 
+
 				set mensajeBueno = 'Apellido actualizado corectamente';
 			end if;
             
 			if contadorError > 0 and contadorBueno = 0 then
+
 				set mensajeBueno = ' pero si se modifico el apellido materno';
 			elseif contadorError > 0 and contadorBueno > 1 then
+
 				set mensajeBueno = concat(mensajeBueno, ', apellido materno');
 			end if;
             set contadorBueno = contadorBueno + 1;
         end if;
 		
         if ModificacionTelefono = 0 then
-			if telefononuev != ''  and length(telefononuev)=10 then
+
+			if telefononuev != ''  and length(telefononuev) = 10 then
+
 				update PERSONAS
 				inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
-				set PERSONAS.telefono=telefononuev
+				set PERSONAS.telefono = telefononuev
 				where USUARIOS.id_usuario = id_u;
                 
                 if contadorError = 0 and contadorBueno = 0 then 
+
 					set mensajeBueno = 'Numero de telefono actualizado corectamente';
 				end if;
                 
                 if contadorError > 0 and contadorBueno = 0 then
+
 					set mensajeBueno = ' pero si se modifico el numero de telefono';
                 elseif contadorError > 0 and contadorBueno > 1 then
 					set mensajeBueno = concat(mensajeBueno, ', numero de telefono');
 				end if;
                 set contadorBueno = contadorBueno + 1;
 			end if;
+
         end if;
         set mensaje = concat(mensajeError, mensajeBueno);
 	end if;
@@ -331,11 +374,11 @@ end if;
 
 if length(direnueva)>100 then
 if contadorError=0 then
-set mensajeError='Máximo 100 caracteres ';
+set mensajeError='Maximo 100 caracteres ';
 elseif contadorError=1 then
-set mensajeError= concat(mensajeError, ' ni tampoco puedes poner mas de 100 caracteres en la dirección');
+set mensajeError= concat(mensajeError, ' ni tampoco puedes poner mas de 100 caracteres en la direccion');
 elseif contadorError>1 then
-set mensajeError= concat(mensajeError, ', máximo 100 caracteres');
+set mensajeError= concat(mensajeError, ', maximo 100 caracteres');
 end if;
 set contadorError=contadorError+1;
 end if;
@@ -645,17 +688,20 @@ begin
 	where USUARIOS.id_usuario = p_id_usuario;
  
 	if p_tienda_seleccionado = 0 then
+
 		select sum(CARRITO.cantidad * PRODUCTOS.precio) as Total
         from CARRITO
         inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
         inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
         where CARRITO.id_cliente = p_id_cliente;
     else
+
 		select sum(CARRITO.cantidad * (PRODUCTOS.precio - 1 )) as Total
         from CARRITO
         inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
         inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
         where CARRITO.id_cliente = p_id_cliente;
+
     end if;
 end //
 DELIMITER ;
@@ -718,7 +764,9 @@ declare p_id_cliente int;
 declare done int default 0;
     
 declare cur cursor for
+
 	select id_inventario, cantidad from CARRITO where id_cliente = p_id_cliente;
+
 declare continue handler for not found set done = true;
     
 set mensaje = '';    
@@ -732,16 +780,18 @@ where USUARIOS.id_usuario = p_id_usuario;
 
 select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
 from PEDIDOS
-where id_cliente = p_id_cliente and f_requerido = p_fecha_requerido;
+where PEDIDOS.id_cliente = p_id_cliente and f_requerido = p_fecha_requerido;
 
 if p_tienda_seleccionado is null then
+
 	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
 	from PEDIDOS
-	where id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
+	where PEDIDOS.id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
+
 else 
 	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
 	from PEDIDOS
-	where id_cliente = p_id_cliente and id_tiendas = p_tienda_seleccionado and f_requerido = p_fecha_requerido;
+	where PEDIDOS.id_cliente = p_id_cliente and id_tiendas = p_tienda_seleccionado and f_requerido = p_fecha_requerido;
 end if;
 
 select SUM(CARRITO.cantidad) into P_TOTALCARRITO from CARRITO inner join CLIENTES
@@ -749,84 +799,121 @@ on CARRITO.id_cliente = CLIENTES.id_cliente inner join INVENTARIO on
 CARRITO.id_inventario = INVENTARIO.id_inventario
 where CLIENTES.id_cliente = p_id_cliente;
 
-if(P_TOTALCARRITO<=20 or P_TOTALCARRITO >=50) or P_TOTALCARRITO is null then -- if para mostrar un error si la cantidad de los pedidos es menor a 20 y mayor a 50
+if(P_TOTALCARRITO<=20 or P_TOTALCARRITO >=50) or P_TOTALCARRITO is null then
+ -- if para mostrar un error si la cantidad de los pedidos es menor a 20 y mayor a 50
 	set mensaje = 'Cantidad de panes insuficientes para realizar pedido';
+
 else 
-	if(p_fecha_requerido > date_add(date(now()),interval 6 month)) then -- if para evitar que la fecha elegida sea para fechas mayores a 6 medes y anteriores a hoy
+	if(p_fecha_requerido > date_add(date(now()),interval 6 month)) then
+	 -- if para evitar que la fecha elegida sea para fechas mayores a 6 medes y anteriores a hoy
 		set mensaje = 'Fecha Invalida para realzar Pedido 1231231';
+
 	else
+
 		if (p_fecha_requerido < date(now())) then
+
 			set mensaje = 'Fecha Invalida para realzar Pedido fecha anterior';
 		else 
 			-- if para evitar que los clientes sin tienda realizen un pedido del mismo dia 
 			if day(p_fecha_requerido) = day(now()) and p_tienda_seleccionado = 0 then
+
 				set mensaje = 'Fecha Invalida para realzar Pedido adsdsadsa';
+
 			else
 				-- if para evitar que un cliente con  tienda realize un pedido del mismo dia despues de las 11:00 am
 				if year(p_fecha_requerido) = year(now()) and month(p_fecha_requerido) = month(now()) and day(p_fecha_requerido) = day(now()) and p_tienda_seleccionado != 0 and hour(now()) > hour('10:00:00') then
+
 					set mensaje = 'Fecha Invalida para realzar Pedido ya pasaron las 11:00 am';
+
 				else 
 					-- if para evitar realizar un pedido para el mismo dia 
 					if p_total_pedidos_del_mismo_dia > 0 then
+
 						set mensaje = 'Fecha Invalida para realzar Pedido ya hico un pedido para esta fecha';
+
 					else 
 						if p_habilitar_stock = 1 then
+
 							set done = false;
+
 							open cur;
 
 							-- Evita que se realize un pedido con un producto que no tiene suficiente stock
-							read_loop: LOOP   
+							read_loop: LOOP 
+
 								fetch cur into p_id_inventario, p_cantidad;
+
 								if done then
+
 									leave read_loop;
+
 								end if;
 
 								-- Verificar el stock actual
 								select stock into p_stock_actual
 								from INVENTARIO
-								where id_inventario = p_id_inventario;
+								where INVENTARIO.id_inventario = p_id_inventario;
 
 								if p_stock_actual < p_cantidad then
-									set mensaje = 'No hay suficiente inventario para uno de los productos. Te lo ganaron ¯\_( ͡° ͜ʖ ͡°)_/¯.';
+
+									set mensaje = 'No hay suficiente inventario para uno de los productos.';
+
 									leave read_loop;
+
 								end if;
+
 							end LOOP;
 
 							close cur;
 							
 							if mensaje = '' then
+
 								set done = false;
+
 								open cur;
 
 								-- Evita que se realize un pedido con un producto que no tiene suficiente stock
 								read_loop: LOOP   
+
 									fetch cur into p_id_inventario, p_cantidad;
+
 									if done then
+
 										leave read_loop;
+
 									end if;
 
 									update INVENTARIO
 									set stock = stock - p_cantidad
-									where id_inventario = p_id_inventario; 
+									where INVENTARIO.id_inventario = p_id_inventario; 
+
 								end LOOP;
 
 								close cur;
+
 							end if;
+
 						end if;
 						
 						if mensaje = '' then
 							-- Calcula la fecha limite
 							if p_fecha_requerido < date_add(now(), interval 14 day) then
+
 								set p_fecha_limite = date_add(p_fecha_requerido, interval -1 day);
 								set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
+
 							else
 								set p_fecha_limite = date_add(p_fecha_requerido, interval -7 day);
 								set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
+
 							end if;
 
 							if p_tienda_seleccionado = 0 then
+
 							insert into PEDIDOS value (null, p_id_cliente, null, now(), p_fecha_requerido, p_fecha_limite, '0000-00-00 00:00:00', null, 'pendiente');
+
 							else
+
 							insert into PEDIDOS value (null, p_id_cliente, p_tienda_seleccionado, now(), p_fecha_requerido, null, '0000-00-00 00:00:00', null, 'pendiente');
 							end if;
 
@@ -835,12 +922,13 @@ else
 							insert into DETALLE_PEDIDO (id_pedido, id_inventario, cantidad)
 							select p_id_pedido, id_inventario, cantidad 
 							from CARRITO
-							where id_cliente = p_id_cliente;
+							where CARRITO.id_cliente = p_id_cliente;
 								
 							delete from CARRITO
 							where id_cliente = p_id_cliente;
 							
 							set mensaje = 'pedido realizado';
+
 						end if;
 					end if;
 				end if;
