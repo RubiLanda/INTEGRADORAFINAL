@@ -17,7 +17,7 @@
          unlink($DireccionAntigua);
       }
    }
-   
+   echo __DIR__;
 
    if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){
       $Conexion->ejecutar("CALL Modificar_Imagen_Producto($id,'$NombreArchivo',@mensaje)");
