@@ -67,13 +67,13 @@
             if (isset($_SESSION['Rol'])){
                 switch ($_SESSION['Rol']){
                     case 1:
-                        echo "<a href='Administrador.php'>Mi Perfil</a>";
+                        echo "<a href='views/AdministradorVerPedidos.php'>Mi Perfil</a>";
                         break;
                     case 2:
-                        echo "<a href='Cliente.php'>Realizar Pedido</a>";
+                        echo "<a href='views/ClienteRealizarPedido.php'>Realizar Pedido</a>";
                         break;
                     case 3:
-                        echo "<a href='Repartidor.php'>Mi Perfil</a>";
+                        echo "<a href='views/Repartidor.php'>Mi Perfil</a>";
                         break;
                 }
             }

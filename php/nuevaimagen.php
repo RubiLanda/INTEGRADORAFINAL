@@ -14,7 +14,8 @@
    if($ImagenAntigua && $ImagenAntigua !== $NombreArchivo){
       $DireccionAntigua = $Direccion . $ImagenAntigua;
       if (file_exists($DireccionAntigua)){
-       unlink($DireccionAntigua);
+         echo "a";
+         unlink($DireccionAntigua);
       }
    }
    
@@ -26,6 +27,6 @@
       echo $mensaje;
    }
    else {
-      echo "error";
+      // echo "error";
    }
 ?>
