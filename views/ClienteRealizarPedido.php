@@ -262,7 +262,7 @@ try {
             <?php endif;
 
             for($i = $start; $i <= $end; $i++): ?>
-                <a href="?pagina=<?php echo $i?>" class="<?php if($i == $current_page) echo 'activo'; ?>&&categoria=<?php echo $categoria_seleccionado?>"><?php echo $i ?></a>
+                <a href="?pagina=<?php echo $i?>&&categoria=<?php echo $categoria_seleccionado?>" class="<?php if($i == $current_page) echo 'activo'; ?>"><?php echo $i ?></a>
             <?php endfor;
 
             if ($end < $total_pages): ?>
