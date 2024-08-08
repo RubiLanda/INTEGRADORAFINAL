@@ -1090,3 +1090,128 @@ insert into CARRITO value (null, p_id_cliente, p_id_producto, p_cantidad);
 end if;
 end //
 DELIMITER ;
+
+
+
+
+-- 3.4.3 Agregar un nuevo producto
+DELIMITER //
+CREATE PROCEDURE NUEVO_PRODUCTO (
+IN n_nombre varchar(40), -- parametros para el nuevo producto
+IN n_id_categoria int,
+IN n_imagen varchar(255),
+IN n_precio decimal(10,2),
+IN n_descripcion varchar(255),
+out mensaje text
+)
+begin 
+declare ultimaid_producto int; 
+declare contador int; 
+
+declare MensajeError text;
+declare contadorError int;
+
+declare Imagen_actual varchar(255);
+declare Imagen_existente int;
+
+set MensajeError = '';
+set contadorError = 0;
+
+
+select COUNT(*) into Imagen_existente
+from PRODUCTOS
+where PRODUCTOS.imagen = n_imagen;
+
+select count(PRODUCTOS.nombre) into contador
+from PRODUCTOS
+where PRODUCTOS.nombre = n_nombre;
+
+if n_nombre = '' then
+set MensajeError = 'No puedes dejar el nombre del producto vacio';
+set contadorError = contadorError + 1;
+end if;
+
+if n_id_categoria = 0 then 
+if contadorError = 0 then
+set MensajeError = 'No puedes dejar la categoria del  producto vacio';
+elseif contadorError = 1 then 
+set MensajeError = concat(MensajeError, ' ni tampoco la catgoria del producto');
+elseif contadorError > 1 then 
+set MensajeError = concat(MensajeError, ', ni la categoria del producto');
+end if;
+set contadorError = contadorError + 1;
+end if;
+
+if n_imagen = '' then 
+if contadorError = 0 then
+set MensajeError = 'No puedes dejar la imagen del producto vacia';
+elseif contadorError = 1 then 
+set MensajeError = concat(MensajeError, ' ni tampoco la imagen del producto');
+elseif contadorError > 1 then 
+set MensajeError = concat(MensajeError, ', ni la imagen del producto');
+end if;
+set contadorError = contadorError + 1;
+end if;
+
+if n_precio = '' then 
+if contadorError = 0 then
+set MensajeError = 'No puedes dejar el precio del producto vacio';
+elseif contadorError = 1 then 
+set MensajeError = concat(MensajeError, ' ni tampoco el precio del producto');
+elseif contadorError > 1 then 
+set MensajeError = concat(MensajeError, ', ni el precio del producto');
+end if;
+set contadorError = contadorError + 1;
+end if;
+
+if n_descripcion = '' then 
+if contadorError = 0 then
+set MensajeError = 'No puedes dejar la descripcion del producto vacia';
+elseif contadorError = 1 then 
+set MensajeError = concat(MensajeError, ' ni tampoco la descripcion del prodcuto');
+elseif contadorError > 1 then 
+set MensajeError = concat(MensajeError, ', ni la descripcion del producto');
+end if;
+set contadorError = contadorError + 1;
+end if;
+
+if contador > 0 then 
+if contadorError = 0 then
+set MensajeError = 'Este producto ya existe';
+elseif contadorError = 1 then 
+set MensajeError = concat(MensajeError, ' Este nombre de producto ya existe');
+elseif contadorError > 1 then 
+set MensajeError = concat(MensajeError, ',  nombre del producto ya existe');
+end if;
+set contadorError = contadorError + 1;
+end if;
+
+if Imagen_existente > 0 then
+if contadorError = 0 then
+set MensajeError = 'Esta imagen ya esta asignada en otro producto';
+elseif contadorError = 1 then 
+set  MensajeError = concat(MensajeError, ' Esta imagen ya esta asignada en otro producto');
+elseif contadorError > 1 then
+set MensajeError = concat(MensajeError, ',  imagen del producto asignada en otro producto');
+end if;
+set contadorError = contadorError + 1;
+end if;
+
+if contadorError = 0 then
+
+Insert into PRODUCTOS (nombre,id_categoria,imagen,precio,estado,descripcion)
+values (n_nombre, n_id_categoria, n_imagen, n_precio, 1, n_descripcion);
+
+set ultimaid_producto = last_insert_id(); -- guardar el id para mandarla al inventario
+
+insert into INVENTARIO (id_producto, stock)
+values
+(ultimaid_producto, 0);
+
+set mensaje = 'Producto añadido correctamente';
+else
+set mensaje = MensajeError;
+end if;
+
+end //
+DELIMITER ;

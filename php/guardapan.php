@@ -5,7 +5,7 @@
   $imagenPuesto = $_POST['imagenPuesto'];
   if ($imagenPuesto == 1) {
      $DireccionTemporal = $_FILES['imagen']['tmp_name'];
-     $NombreArchivo = $_FILES['imagen']['name'];
+     $NombreArchivo = basename($_FILES['imagen']['name']);
      $Direccion = '../img/productos/';
      $DireccionConImagen = $Direccion.$NombreArchivo;
   }
@@ -18,6 +18,7 @@
   $panprecio2 = trim($panprecio);
   $pandescripcion2 = trim($pandescripcion);
 
+  echo $NombreArchivo;
   
  if ($imagenPuesto == 1) {
     if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){
