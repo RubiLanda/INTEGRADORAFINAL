@@ -586,7 +586,7 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
     
                         mostrarCategorias()
-                        if (<?php echo $_GET['categoria']?> == null) {
+                        if (<?php echo isset($_GET['categoria']) ?>) {
                             mostrarProductos(1, 0)
                         }
 
@@ -614,7 +614,7 @@ try {
                     tienda_seleccionado.textContent = "Forma de recibir pedido: Recoger en sucursal";
 
                     mostrarCategorias()
-                    if (<?php echo $_GET['categoria']?> == null) {
+                    if (<?php echo isset($_GET['categoria']) ?>) {
                         mostrarProductos(1, 0)
                     }
 
@@ -642,7 +642,7 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
         
                         mostrarCategorias()
-                        if (<?php echo $_GET['categoria']?> == null) {
+                        if (<?php echo isset($_GET['categoria'])?>) {
                             mostrarProductos(1, 0)
                         }
 
