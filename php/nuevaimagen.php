@@ -4,7 +4,7 @@
     $Conexion->conectarBD();
    $DireccionTemporal = $_FILES['imagen']['tmp_name'];
    $NombreArchivo = $_FILES['imagen']['name'];
-   $Direccion = 'http://3.129.66.201/var/www/html/img/productos/';
+   $Direccion = 'var/www/html/img/productos/';
    $DireccionConImagen = $Direccion.$NombreArchivo;
 
    $id = $_POST['id'];
