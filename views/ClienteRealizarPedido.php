@@ -269,7 +269,7 @@ try {
                 if ($end < $total_pages - 1) {
                     echo '...';
                 }
-                echo '<a href="?pagina=$total_pages">' . $total_pages . '</a>';
+                echo '<a href="?pagina='.$total_pages.'>' . $total_pages . '</a>';
             }
 
             if($current_page < $total_pages): ?>
