@@ -251,29 +251,29 @@ try {
         <div class="paginacion">
         <?php
             if ($current_page > 1): ?>
-                <a href="?pagina=<?php echo ($current_page - 1)?>"> < </a>
+                <a href="?pagina=<?php echo ($current_page - 1)?>&&categoria=<?php echo $categoria_seleccionado?>"> < </a>
             <?php endif;
 
-            if ($start > 1) {
-                echo '<a href="?pagina=1">1</a>';
-                if ($start > 2) {
-                    echo '...';
-                }
-            }
+            if ($start > 1): ?>
+                <a href="?pagina=1&&categoria=<?php echo $categoria_seleccionado?>">1</a>
+                <?php if ($start > 2): ?>
+                    ...
+                <?php endif?>
+            <?php endif;
 
             for($i = $start; $i <= $end; $i++): ?>
-                <a href="?pagina=<?php echo $i?>" class="<?php if($i == $current_page) echo 'activo'; ?>"><?php echo $i ?></a>
+                <a href="?pagina=<?php echo $i?>" class="<?php if($i == $current_page) echo 'activo'; ?>&&categoria=<?php echo $categoria_seleccionado?>"><?php echo $i ?></a>
             <?php endfor;
 
             if ($end < $total_pages): ?>
                 <?php if ($end < $total_pages - 1): ?>
                     ...
                 <?php endif ?>
-                <a href="?pagina=<?php echo $total_pages?>"><?php echo $total_pages?></a>
+                <a href="?pagina=<?php echo $total_pages?>&&categoria=<?php echo $categoria_seleccionado?>"><?php echo $total_pages?></a>
             <?php endif;
 
             if($current_page < $total_pages): ?>
-                <a href="?pagina=<?php echo ($current_page + 1)?>"> ></a>
+                <a href="?pagina=<?php echo ($current_page + 1)?>&&categoria=<?php echo $categoria_seleccionado?>"> ></a>
             <?php endif;
         ?>
         </div>
@@ -585,6 +585,7 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
     
                         mostrarCategorias()
+                        mostrarProductos(1, 0)
 
                         div.style.display = 'block';
                         fechas.style.display = 'none';
@@ -610,6 +611,7 @@ try {
                     tienda_seleccionado.textContent = "Forma de recibir pedido: Recoger en sucursal";
 
                     mostrarCategorias()
+                    mostrarProductos(1, 0)
 
                     div.style.display = 'block';
                     fechas.style.display = 'none';
@@ -635,6 +637,7 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
         
                         mostrarCategorias()
+                        mostrarProductos(1, 0)
 
                         div.style.display = 'block';
                         fechas.style.display = 'none';
