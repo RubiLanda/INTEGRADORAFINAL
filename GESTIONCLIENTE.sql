@@ -799,142 +799,152 @@ on CARRITO.id_cliente = CLIENTES.id_cliente inner join INVENTARIO on
 CARRITO.id_inventario = INVENTARIO.id_inventario
 where CLIENTES.id_cliente = p_id_cliente;
 
-if(P_TOTALCARRITO<=20 or P_TOTALCARRITO >=50) or P_TOTALCARRITO is null then
+if(P_TOTALCARRITO<=20 or P_TOTALCARRITO >=50) or P_TOTALCARRITO is null 
+then
  -- if para mostrar un error si la cantidad de los pedidos es menor a 20 y mayor a 50
 	set mensaje = 'Cantidad de panes insuficientes para realizar pedido';
 
 else 
-	if(p_fecha_requerido > date_add(date(now()),interval 6 month)) then
-	 -- if para evitar que la fecha elegida sea para fechas mayores a 6 medes y anteriores a hoy
-		set mensaje = 'Fecha Invalida para realzar Pedido 1231231';
+if(p_fecha_requerido > date_add(date(now()),interval 6 month))
+then
+-- if para evitar que la fecha elegida sea para fechas mayores a 6 medes y anteriores a hoy
+set mensaje = 'Fecha Invalida para realzar Pedido 1231231';
 
-	else
+else
 
-		if (p_fecha_requerido < date(now())) then
+if (p_fecha_requerido < date(now())) 
+then
 
-			set mensaje = 'Fecha Invalida para realzar Pedido fecha anterior';
-		else 
-			-- if para evitar que los clientes sin tienda realizen un pedido del mismo dia 
-			if day(p_fecha_requerido) = day(now()) and p_tienda_seleccionado = 0 then
+set mensaje = 'Fecha Invalida para realzar Pedido fecha anterior';
+else 
+-- if para evitar que los clientes sin tienda realizen un pedido del mismo dia 
+if day(p_fecha_requerido) = day(now()) and p_tienda_seleccionado = 0 
+then
 
-				set mensaje = 'Fecha Invalida para realzar Pedido adsdsadsa';
+set mensaje = 'Fecha Invalida para realzar Pedido adsdsadsa';
 
-			else
+else
 				-- if para evitar que un cliente con  tienda realize un pedido del mismo dia despues de las 11:00 am
-				if year(p_fecha_requerido) = year(now()) and month(p_fecha_requerido) = month(now()) and day(p_fecha_requerido) = day(now()) and p_tienda_seleccionado != 0 and hour(now()) > hour('10:00:00') then
+if year(p_fecha_requerido) = year(now()) and month(p_fecha_requerido) = month(now()) and day(p_fecha_requerido) = day(now()) and p_tienda_seleccionado != 0 and hour(now()) > hour('10:00:00') 
+then
 
-					set mensaje = 'Fecha Invalida para realzar Pedido ya pasaron las 11:00 am';
+set mensaje = 'Fecha Invalida para realzar Pedido ya pasaron las 11:00 am';
 
-				else 
+else 
 					-- if para evitar realizar un pedido para el mismo dia 
-					if p_total_pedidos_del_mismo_dia > 0 then
+if p_total_pedidos_del_mismo_dia > 0 
+then
 
-						set mensaje = 'Fecha Invalida para realzar Pedido ya hico un pedido para esta fecha';
+set mensaje = 'Fecha Invalida para realzar Pedido ya hico un pedido para esta fecha';
 
-					else 
-						if p_habilitar_stock = 1 then
+else 
+if p_habilitar_stock = 1
+then
+set done = false;
 
-							set done = false;
-
-							open cur;
+open cur;
 
 							-- Evita que se realize un pedido con un producto que no tiene suficiente stock
-							read_loop: LOOP 
+read_loop: LOOP 
 
-								fetch cur into p_id_inventario, p_cantidad;
+fetch cur into p_id_inventario, p_cantidad;
 
-								if done then
+if done 
+then
 
-									leave read_loop;
+leave read_loop;
 
-								end if;
+end if;
 
 								-- Verificar el stock actual
-								select stock into p_stock_actual
-								from INVENTARIO
-								where INVENTARIO.id_inventario = p_id_inventario;
+select stock into p_stock_actual
+from INVENTARIO
+where INVENTARIO.id_inventario = p_id_inventario;
 
-								if p_stock_actual < p_cantidad then
+if p_stock_actual < p_cantidad 
+then
 
-									set mensaje = 'No hay suficiente inventario para uno de los productos.';
+set mensaje = 'No hay suficiente inventario para uno de los productos.';
 
-									leave read_loop;
+call Insertar_Modificar_Carrito(p_id_usuario, p_id_inventario, p_stock_actual,1);
 
-								end if;
+leave read_loop;
 
-							end LOOP;
+end if;
 
-							close cur;
+end LOOP;
+
+close cur;
 							
-							if mensaje = '' then
+if mensaje = '' then
 
-								set done = false;
+set done = false;
 
-								open cur;
+open cur;
 
 								-- Evita que se realize un pedido con un producto que no tiene suficiente stock
-								read_loop: LOOP   
+read_loop: LOOP   
 
-									fetch cur into p_id_inventario, p_cantidad;
+fetch cur into p_id_inventario, p_cantidad;
 
-									if done then
+if done then
 
-										leave read_loop;
+leave read_loop;
 
-									end if;
+end if;
 
-									update INVENTARIO
-									set stock = stock - p_cantidad
-									where INVENTARIO.id_inventario = p_id_inventario; 
+update INVENTARIO
+set stock = stock - p_cantidad
+where INVENTARIO.id_inventario = p_id_inventario; 
 
-								end LOOP;
+end LOOP;
 
-								close cur;
+close cur;
 
-							end if;
+end if;
 
-						end if;
+end if;
 						
-						if mensaje = '' then
+if mensaje = '' then
 							-- Calcula la fecha limite
-							if p_fecha_requerido < date_add(now(), interval 14 day) then
+if p_fecha_requerido < date_add(now(), interval 14 day) then
 
-								set p_fecha_limite = date_add(p_fecha_requerido, interval -1 day);
-								set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
+set p_fecha_limite = date_add(p_fecha_requerido, interval -1 day);
+set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
 
-							else
-								set p_fecha_limite = date_add(p_fecha_requerido, interval -7 day);
-								set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
+else
+set p_fecha_limite = date_add(p_fecha_requerido, interval -7 day);
+set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
 
-							end if;
+end if;
 
-							if p_tienda_seleccionado = 0 then
+if p_tienda_seleccionado = 0 then
 
-							insert into PEDIDOS value (null, p_id_cliente, null, now(), p_fecha_requerido, p_fecha_limite, '0000-00-00 00:00:00', null, 'pendiente');
+insert into PEDIDOS value (null, p_id_cliente, null, now(), p_fecha_requerido, p_fecha_limite, '0000-00-00 00:00:00', null, 'pendiente');
 
-							else
+else
 
-							insert into PEDIDOS value (null, p_id_cliente, p_tienda_seleccionado, now(), p_fecha_requerido, null, '0000-00-00 00:00:00', null, 'pendiente');
-							end if;
+insert into PEDIDOS value (null, p_id_cliente, p_tienda_seleccionado, now(), p_fecha_requerido, null, '0000-00-00 00:00:00', null, 'pendiente');
+end if;
 
-							set p_id_pedido = last_insert_id(); -- ultimo pedido insertado
+set p_id_pedido = last_insert_id(); -- ultimo pedido insertado
 
-							insert into DETALLE_PEDIDO (id_pedido, id_inventario, cantidad)
-							select p_id_pedido, id_inventario, cantidad 
-							from CARRITO
-							where CARRITO.id_cliente = p_id_cliente;
+insert into DETALLE_PEDIDO (id_pedido, id_inventario, cantidad)
+select p_id_pedido, id_inventario, cantidad 
+from CARRITO
+where CARRITO.id_cliente = p_id_cliente;
 								
-							delete from CARRITO
-							where id_cliente = p_id_cliente;
+delete from CARRITO
+where id_cliente = p_id_cliente;
 							
-							set mensaje = 'pedido realizado';
+set mensaje = 'pedido realizado';
 
-						end if;
-					end if;
-				end if;
-			end if;
-		end if;
-	end if;
+end if;
+end if;
+end if;
+end if;
+end if;
+end if;
 end if;
 end //
 DELIMITER ;

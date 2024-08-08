@@ -286,7 +286,7 @@ where nombre = n_nombre;
      
 		if n_id_categoria = 0 then 
 
-           if contadorError = 0 then
+          	 if contadorError = 0 then
 
 				set MensajeError = 'No puedes dejar la categoria del  producto vacio';
 
@@ -457,44 +457,55 @@ if ModificacionNombre = 1 and ModificacionPrecio = 1 and ModificacionDescripcion
         
         
          if nuevo_precio = '' then
-			if contadorError = 0 then 
+
+				if contadorError = 0 then 
 				set mensajeError = 'No puedes dejar el precio del producto vacio';
-			elseif contadorError = 1 then
-				set mensajeError = concat(mensajeError, ' ni tampoco el precio del producto');
-			elseif contadorError >1 then 
-				set mensajeError = concat(mensajeError, ', precio del producto');
-			end if;
-			set contadorError = contadorError + 1;
-		end if;
+					elseif contadorError = 1 then
+
+					 set mensajeError = concat(mensajeError, ' ni tampoco el precio del producto');
+						elseif contadorError >1 then 
+					      set mensajeError = concat(mensajeError, ', precio del producto');
+				end if;
+					set contadorError = contadorError + 1;
+		  end if;
         
         if nueva_descripcion = '' then
-			if contadorError = 0 then 
-				set mensajeError = 'No puedes dejar la descripcion del producto vacia';
-			elseif contadorError = 1 then 
-				set mensajeError = concat(mensajeError, ' ni tampoco la descripcion del producto');
-			elseif contadorError >1 then 
-				set mensajeError = concat(mensajeError, ', descripcion del producto');
-			end if;
-			set contadorError = contadorError + 1;
+
+				if contadorError = 0 then 
+
+					set mensajeError = 'No puedes dejar la descripcion del producto vacia';
+					elseif contadorError = 1 then
+
+						set mensajeError = concat(mensajeError, ' ni tampoco la descripcion del producto');
+					elseif contadorError > 1 then 
+
+						set mensajeError = concat(mensajeError, ', descripcion del producto');
+				end if;
+					set contadorError = contadorError + 1;
 		end if;
         
         if ModificacionNombre = 0 then
-			if nuevo_nombre != '' then
+
+				if nuevo_nombre != '' then
 				update PRODUCTOS
 				set PRODUCTOS.nombre= nuevo_nombre
 				where PRODUCTOS.id_producto = id;
 				
                 if contadorError = 0 then
+
 					set mensajeBueno = 'Nombre del producto actualizado corectamente';
-                elseif contadorError > 0 then
-					set mensajeBueno = ' pero si se modifico el nombre del producto';
+                	  elseif contadorError > 0 then
+
+					   set mensajeBueno = ' pero si se modifico el nombre del producto';
                 end if;
-                set contadorBueno = contadorBueno + 1;
-			end if;
+                	set contadorBueno = contadorBueno + 1;
+				end if;
         end if;
         
         if ModificacionPrecio = 0 then 
+
 			if nuevo_precio != '' then
+
 				update PRODUCTOS
 				set PRODUCTOS.precio = nuevo_precio
 				where PRODUCTOS.id_producto = id;
@@ -503,8 +514,10 @@ if ModificacionNombre = 1 and ModificacionPrecio = 1 and ModificacionDescripcion
 				end if;
                 
 				if contadorError > 0 and contadorBueno = 0 then
+
 					set mensajeBueno = ' pero si se modifico el precio del producto';
 				elseif contadorError > 0 and contadorBueno > 1 then
+
 					set mensajeBueno = concat(mensajeBueno, ', precio delproducto');
 				end if;
                 set contadorBueno = contadorBueno + 1;
@@ -512,17 +525,22 @@ if ModificacionNombre = 1 and ModificacionPrecio = 1 and ModificacionDescripcion
         end if;
         
         if ModificacionDescripcion = 0 then
+
 			if nueva_descripcion != '' then
+
 				update PRODUCTOS
 				set PRODUCTOS.descripcion = nueva_descripcion
 				where PRODUCTOS.id_producto = id;
                 if contadorError = 0 and contadorBueno = 0 then 
+
 					set mensajeBueno = 'Descripcion del producto actualizado corectamente';
 				end if;
                 
                 if contadorError > 0 and contadorBueno = 0 then
+
 					set mensajeBueno = ' pero si se modifico la descripcion del producto';
                 elseif contadorError > 0 and contadorBueno > 1 then
+
 					set mensajeBueno = concat(mensajeBueno, ', descripcion del producto');
 				end if;
                 set contadorBueno = contadorBueno + 1;
@@ -550,10 +568,13 @@ from CATEGORIAS
 where nombre = nuevo_nombre;
 
 if Modificacion = 1 then 
+
 	set mensaje = 'No se hizo ninguna modificacion';
 	else 
+
 	if nuevo_nombre is not null
 	then 
+
 	update CATEGORIAS
 	set nombre = nuevo_nombre
 	where id_categoria = id;
@@ -695,23 +716,27 @@ create procedure Ver_Productos_Informacion(
 begin
 	if p_offset is null and p_records_per_page is null then
 		if p_categoria != 0 and p_nombre_producto is null then
+		
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion, estado as Estado
 			from PRODUCTOS   
 			where id_categoria = p_categoria;
 		end if;
 		
 		if p_categoria = 0 and p_nombre_producto is not null then
+
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion, estado as Estado
 			from PRODUCTOS
 			where  nombre = p_nombre_producto;
 		end if;
 		
 		if p_categoria = 0 and p_nombre_producto is null then
+
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion, estado as Estado
 			from PRODUCTOS;
 		end if;
     else 
 		if p_categoria != 0 and p_nombre_producto is null then
+
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion, estado as Estado
 			from PRODUCTOS
 			where id_categoria = p_categoria
@@ -720,6 +745,7 @@ begin
 		end if;
 		
 		if p_categoria = 0 and p_nombre_producto is not null then
+
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion, estado as Estado
 			from PRODUCTOS
 			where nombre = p_nombre_producto
@@ -728,6 +754,7 @@ begin
 		end if;
 		
 		if p_categoria = 0 and p_nombre_producto is null then
+
 			select id_producto as ID, nombre as Nombre, imagen as Imagen, precio as Precio, descripcion as Descripcion, estado as Estado
 			from PRODUCTOS
 			limit p_records_per_page
