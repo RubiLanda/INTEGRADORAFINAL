@@ -99,61 +99,61 @@ DELIMITER ;
 -- Calcular Fechas de Temporada
 DELIMITER //
 create procedure Calcular_Fechas_Temporada(
-	in p_fecha_pedido date,
-	out p_habilitar_Temporada boolean
+in p_fecha_pedido date,
+out p_habilitar_Temporada boolean
 )
 begin
 
-	declare p_estado int;
+declare p_estado int;
     
-    select CATEGORIAS.estado into p_estado
-    from CATEGORIAS
-    where CATEGORIAS.id_categoria = 4;
+select CATEGORIAS.estado into p_estado
+from CATEGORIAS
+where CATEGORIAS.id_categoria = 4;
     
-	if p_estado = 1 then
+if p_estado = 1 then
     
-		if p_fecha_pedido >= '2024-10-01' and p_fecha_pedido <= '2024-11-01' then
+if p_fecha_pedido >= '2024-10-01' and p_fecha_pedido <= '2024-11-01' then
 			
-			set p_habilitar_Temporada = 1;
+set p_habilitar_Temporada = 1;
 			
-			update PRODUCTOS
-			set PRODUCTOS.estado = 1
-			where PRODUCTOS.id_producto = 29;
+update PRODUCTOS
+set estado = 1
+where PRODUCTOS.id_producto = 29;
 			
-			update PRODUCTOS
-			set PRODUCTOS.estado = 0
-			where PRODUCTOS.id_producto = 30;
+update PRODUCTOS
+set estado = 0
+where PRODUCTOS.id_producto = 30;
             
-            update PRODUCTOS
-			set PRODUCTOS.estado = 0
-			where PRODUCTOS.id_producto >= 32 and id_producto <= 38;
+update PRODUCTOS
+set estado = 0
+where PRODUCTOS.id_producto >= 32 and PRODUCTOS.id_producto <= 38;
 		
-		elseif p_fecha_pedido >= '2024-07-01' and p_fecha_pedido <= '2024-08-01' then
+elseif p_fecha_pedido >= '2024-07-01' and p_fecha_pedido <= '2024-08-01' then
 		
-			set p_habilitar_Temporada = 1;
+set p_habilitar_Temporada = 1;
 			
-			update PRODUCTOS
-			set PRODUCTOS.estado = 0
-			where PRODUCTOS.id_producto = 29;
+update PRODUCTOS
+set estado = 0
+where PRODUCTOS.id_producto = 29;
 			
-			update PRODUCTOS
-			set PRODUCTOS.estado = 1
-			where PRODUCTOS.id_producto = 30;
+update PRODUCTOS
+set estado = 1
+where PRODUCTOS.id_producto = 30;
             
-            update PRODUCTOS
-			set PRODUCTOS.estado = 1
-			where PRODUCTOS.id_producto >= 32 and id_producto <= 38;
+update PRODUCTOS
+set estado = 1
+where PRODUCTOS.id_producto >= 32 and PRODUCTOS.id_producto <= 38;
 			
-		else 
+else 
 		
-			set p_habilitar_Temporada = 0;
+set p_habilitar_Temporada = 0;
 		
-		end if;
+end if;
         
-	else 
+else 
     
-    set p_habilitar_Temporada = 0;
-    end if;
+set p_habilitar_Temporada = 0;
+end if;
 end //
 DELIMITER ;
 

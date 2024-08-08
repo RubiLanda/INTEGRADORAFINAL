@@ -482,18 +482,18 @@ DELIMITER ;
 -- * 3.7.5 Calcular el Total a pagar de un pedido
 DELIMITER //
 create procedure Calcular_Total_Pagar_Pedido(
-	in p_id_pedido int
+in p_id_pedido int
 )
 begin
-	select case 
-    when PEDIDOS.id_tiendas is null then sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) 
-    else sum((PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) - 1) 
-    end as Total
-    from PEDIDOS
-    inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-    inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-    inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-    where PEDIDOS.id_pedido = p_id_pedido;
+select case 
+when PEDIDOS.id_tiendas is null then sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) 
+else sum((PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) - 1) 
+end as Total
+from PEDIDOS
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where PEDIDOS.id_pedido = p_id_pedido;
 end //
 DELIMITER ;
 
@@ -504,86 +504,93 @@ DELIMITER ;
 -- * 1.1.4 Procedimiento. Ver Productos filtrado por Categoria y por Nombre de Producto en realizar pedido
 DELIMITER //
 create procedure Ver_Productos_Realizar_Pedido(
-	in p_id_usuario int,
-	in p_categoria int,
-    in p_nombre_producto varchar(50),
-    in p_offset int,
-    in p_records_per_page int
+in p_id_usuario int,
+in p_categoria int,
+in p_nombre_producto varchar(50),
+in p_offset int,
+in p_records_per_page int
 )
 begin
-	declare p_id_cliente int;
-    
-    select CLIENTES.id_cliente into p_id_cliente
-    from CLIENTES
-    inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
-    inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
-    where USUARIOS.id_usuario = p_id_usuario;
-    
-	if p_offset is null and p_records_per_page is null then
-		if p_categoria != 0 and p_nombre_producto is null then
-			select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
-			from PRODUCTOS
-            inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
-			left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
-			where PRODUCTOS.estado = 1 and PRODUCTOS.id_categoria = p_categoria
-            order by ID;
-		end if;
+declare p_id_cliente int;
+
+select CLIENTES.id_cliente into p_id_cliente
+from CLIENTES
+inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+where USUARIOS.id_usuario = p_id_usuario;
+
+if p_offset is null and p_records_per_page is null then
+
+if p_categoria != 0 and p_nombre_producto is null then
+
+select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
+from PRODUCTOS
+inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
+left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
+where PRODUCTOS.estado = 1 and CATEGORIAS.id_categoria = p_categoria
+order by ID;
+end if;
+
+if p_categoria = 0 and p_nombre_producto is not null then
+
+select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
+from PRODUCTOS
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
+left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
+where PRODUCTOS.estado = 1 and PRODUCTOS.nombre = p_nombre_producto and CATEGORIAS.estado = 1
+order by ID;
+end if;
+
+if p_categoria = 0 and p_nombre_producto is null then
+
+select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
+from PRODUCTOS
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
+left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
+where PRODUCTOS.estado = 1 and CATEGORIAS.estado = 1
+order by ID;
+end if;
+else 
+if p_categoria != 0 and p_nombre_producto is null then
+
+select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
+from PRODUCTOS
+inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
+left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
+where PRODUCTOS.estado = 1 and CATEGORIAS.id_categoria = p_categoria
+order by ID
+limit p_records_per_page
+offset p_offset;
+end if;
+
+if p_categoria = 0 and p_nombre_producto is not null then
+
+select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
+from PRODUCTOS
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
+left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
+where PRODUCTOS.estado = 1 and PRODUCTOS.nombre = p_nombre_producto and CATEGORIAS.estado = 1
+order by ID
+limit p_records_per_page
+offset p_offset;
+end if;
 		
-		if p_categoria = 0 and p_nombre_producto is not null then
-			select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
-			from PRODUCTOS
-            inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-            inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
-			left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
-			where PRODUCTOS.estado = 1 and PRODUCTOS.nombre = p_nombre_producto and CATEGORIAS.estado = 1
-            order by ID;
-		end if;
-		
-		if p_categoria = 0 and p_nombre_producto is null then
-			select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
-			from PRODUCTOS
-            inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-            inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
-			left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
-			where PRODUCTOS.estado = 1 and CATEGORIAS.estado = 1
-            order by ID;
-		end if;
-    else 
-		if p_categoria != 0 and p_nombre_producto is null then
-			select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
-			from PRODUCTOS
-            inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
-			left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
-			where PRODUCTOS.estado = 1 and PRODUCTOS.id_categoria = p_categoria
-            order by ID
-			limit p_records_per_page
-			offset p_offset;
-		end if;
-		
-		if p_categoria = 0 and p_nombre_producto is not null then
-			select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
-			from PRODUCTOS
-            inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-            inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
-			left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
-			where PRODUCTOS.estado = 1 and PRODUCTOS.nombre = p_nombre_producto and CATEGORIAS.estado = 1
-            order by ID
-			limit p_records_per_page
-			offset p_offset;
-		end if;
-		
-		if p_categoria = 0 and p_nombre_producto is null then
-			select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
-			from PRODUCTOS
-            inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-            inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
-			left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
-			where PRODUCTOS.estado = 1 and CATEGORIAS.estado = 1
-            order by ID
-			limit p_records_per_page
-			offset p_offset;
-		end if;
-    end if;
+if p_categoria = 0 and p_nombre_producto is null then
+
+select PRODUCTOS.id_producto as ID, PRODUCTOS.nombre as Nombre, PRODUCTOS.imagen as Imagen, PRODUCTOS.precio as Precio, PRODUCTOS.descripcion as Descripcion, INVENTARIO.stock as Disponible, case when CARRITO.id_cliente is not null then CARRITO.cantidad else 0 end as CantidadCarrito
+from PRODUCTOS
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+inner join INVENTARIO on PRODUCTOS.id_producto = INVENTARIO.id_producto
+left join CARRITO on PRODUCTOS.id_producto = CARRITO.id_inventario and CARRITO.id_cliente = p_id_cliente
+where PRODUCTOS.estado = 1 and CATEGORIAS.estado = 1
+order by ID
+limit p_records_per_page
+offset p_offset;
+end if;
+end if;
 end //
 DELIMITER ;
 
@@ -636,30 +643,30 @@ DELIMITER ;
 -- 1.2.8 Insertar o Modificar un producto en el Carrito
 DELIMITER //
 create procedure Insertar_Modificar_Carrito(
-	in p_id_usuario int,
-    in p_id_producto int,
-    in p_cantidad int,
-    in p_verificarStock boolean
+in p_id_usuario int,
+in p_id_producto int,
+in p_cantidad int,
+in p_verificarStock boolean
 )
 begin
-	declare p_id_cliente int;
-    declare p_total int;
-    
-    select CLIENTES.id_cliente into p_id_cliente
-    from CLIENTES
-    inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
-    inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
-    where USUARIOS.id_usuario = p_id_usuario;
-    
-    select count(*) into p_total
-    from CARRITO
-    where id_cliente = p_id_cliente and id_inventario = p_id_producto;
-    
-    if p_total > 0 then
-		call Modificar_Carrito(p_id_cliente, p_id_producto, p_cantidad, p_verificarStock);
-    else
-		call Insertar_Producto_Carrito(p_id_cliente, p_id_producto, p_cantidad, p_verificarStock);
-    end if;
+declare p_id_cliente int;
+declare p_total int;
+
+select CLIENTES.id_cliente into p_id_cliente
+from CLIENTES
+inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+where USUARIOS.id_usuario = p_id_usuario;
+
+select count(*) into p_total
+from CARRITO
+where CARRITO.id_cliente = p_id_cliente and CARRITO.id_inventario = p_id_producto;
+
+if p_total > 0 then
+call Modificar_Carrito(p_id_cliente, p_id_producto, p_cantidad, p_verificarStock);
+else
+call Insertar_Producto_Carrito(p_id_cliente, p_id_producto, p_cantidad, p_verificarStock);
+end if;
 end //
 DELIMITER ;
 
@@ -1010,5 +1017,74 @@ end if;
 end LOOP;
 
 close cur;
+end //
+DELIMITER ;
+
+
+
+-- * 1.2.2 Modificar Carrito
+DELIMITER //
+create procedure Modificar_Carrito(
+in p_id_cliente int, -- Variable para saber cual cliente es el carrito  
+in p_id_producto int, -- Variable para saber cual producto del carrito se va a cancelar
+in p_cantidad int, -- Variable para saber cual va a ser la modificacion del la cantidad del producto en el carrito 
+in p_verificarStock boolean
+)
+begin
+declare stock_disponible int;
+
+select stock into stock_disponible
+from INVENTARIO
+where id_producto = p_id_producto;
+
+if p_cantidad = 0 then
+
+delete from CARRITO
+where CARRITO.id_inventario = p_id_producto;
+else 
+if p_verificarStock = 1 then
+
+if p_cantidad <= stock_disponible then
+
+update CARRITO
+set cantidad = p_cantidad
+where CARRITO.id_cliente = p_id_cliente and CARRITO.id_inventario = p_id_producto;
+end if;
+else 
+
+update CARRITO
+set cantidad = p_cantidad
+where CARRITO.id_cliente = p_id_cliente and CARRITO.id_inventario = p_id_producto;
+end if;
+end if;
+end //
+DELIMITER ;
+
+
+-- * 1.1.3 Procedimiento. Insertar Producto al Carrito
+DELIMITER //
+create procedure Insertar_Producto_Carrito(
+in p_id_cliente int,
+in p_id_producto int,
+in p_cantidad int,
+in p_verificarStock boolean
+)
+begin
+declare stock_disponible int;
+
+select stock into stock_disponible
+from INVENTARIO
+where INVENTARIO.id_producto = p_id_producto;
+
+if p_verificarStock = 1 then
+
+if p_cantidad <= stock_disponible then
+
+insert into CARRITO value (null, p_id_cliente, p_id_producto, p_cantidad);
+end if;
+else
+
+insert into CARRITO value (null, p_id_cliente, p_id_producto, p_cantidad);
+end if;
 end //
 DELIMITER ;

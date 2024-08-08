@@ -4,11 +4,13 @@ class Database {
     private $PDO;
     private $user = "root";
     private $password = "laespiga2190";
-    private $server = "mysql:host=localhost; dbname=LAESPIGA";
+    private $server = "mysql:host=localhost; dbname=LAESPIGA;charset=utf8mb4";
 
     function conectarBD() {
         try {
             $this->PDO = new PDO($this->server, $this->user, $this->password);
+            
+            $this->PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
