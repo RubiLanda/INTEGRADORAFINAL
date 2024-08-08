@@ -426,7 +426,8 @@ DELIMITER ;
 -- * 1.4.2 Consulta de las tiendas de determinado cliente
 DELIMITER //
 create procedure Ver_Tiendas_Cliente(
-	in p_id_usuario int
+	in p_id_usuario int,
+    in p_activos boolean
 )
 begin
 	declare p_id_cliente int;
@@ -437,10 +438,17 @@ begin
 	inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
 	where USUARIOS.id_usuario = p_id_usuario;
     
-    select TIENDAS.id_tienda as IDTI, TIENDAS.nombre_tienda as Nombre, TIENDAS.direccion as Direccion, TIENDAS.estatus as Estatus
-    from TIENDAS
-    inner join CLIENTE_TIENDA on TIENDAS.id_tienda = CLIENTE_TIENDA.id_tienda
-    where CLIENTE_TIENDA.id_cliente = p_id_cliente;
+    if p_activos = 0 then
+		select TIENDAS.id_tienda as ID, TIENDAS.nombre_tienda as Nombre, TIENDAS.direccion as Direccion, TIENDAS.estatus as Estatus
+		from TIENDAS
+		inner join CLIENTE_TIENDA on TIENDAS.id_tienda = CLIENTE_TIENDA.id_tienda
+		where CLIENTE_TIENDA.id_cliente = p_id_cliente;
+    else 
+		select TIENDAS.id_tienda as ID, TIENDAS.nombre_tienda as Nombre, TIENDAS.direccion as Direccion, TIENDAS.estatus as Estatus
+		from TIENDAS
+		inner join CLIENTE_TIENDA on TIENDAS.id_tienda = CLIENTE_TIENDA.id_tienda
+		where CLIENTE_TIENDA.id_cliente = p_id_cliente and TIENDAS.estatus = 1;
+    end if;
 end //
 DELIMITER ;
 
