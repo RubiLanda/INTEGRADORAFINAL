@@ -106,9 +106,9 @@ begin
 
 	declare p_estado int;
     
-    select estado into p_estado
-    from categorias
-    where id_categoria = 4;
+    select CATEGORIAS.estado into p_estado
+    from CATEGORIAS
+    where CATEGORIAS.id_categoria = 4;
     
 	if p_estado = 1 then
     
@@ -116,33 +116,33 @@ begin
 			
 			set p_habilitar_Temporada = 1;
 			
-			update productos
-			set estado = 1
-			where id_producto = 29;
+			update PRODUCTOS
+			set PRODUCTOS.estado = 1
+			where PRODUCTOS.id_producto = 29;
 			
-			update productos
-			set estado = 0
-			where id_producto = 30;
+			update PRODUCTOS
+			set PRODUCTOS.estado = 0
+			where PRODUCTOS.id_producto = 30;
             
-            update productos
-			set estado = 0
-			where id_producto >= 32 and id_producto <= 38;
+            update PRODUCTOS
+			set PRODUCTOS.estado = 0
+			where PRODUCTOS.id_producto >= 32 and id_producto <= 38;
 		
 		elseif p_fecha_pedido >= '2024-07-01' and p_fecha_pedido <= '2024-08-01' then
 		
 			set p_habilitar_Temporada = 1;
 			
-			update productos
-			set estado = 0
-			where id_producto = 29;
+			update PRODUCTOS
+			set PRODUCTOS.estado = 0
+			where PRODUCTOS.id_producto = 29;
 			
-			update productos
-			set estado = 1
-			where id_producto = 30;
+			update PRODUCTOS
+			set PRODUCTOS.estado = 1
+			where PRODUCTOS.id_producto = 30;
             
-            update productos
-			set estado = 1
-			where id_producto >= 32 and id_producto <= 38;
+            update PRODUCTOS
+			set PRODUCTOS.estado = 1
+			where PRODUCTOS.id_producto >= 32 and id_producto <= 38;
 			
 		else 
 		
