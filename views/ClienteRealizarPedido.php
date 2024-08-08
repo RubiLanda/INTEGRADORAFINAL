@@ -501,6 +501,9 @@ try {
                 }
             });
         }
+        if (sessionStorage.getItem("seleccionando_fecha") == null) {
+            mostrarProductos(<?php echo $current_page ?>, <?php echo $categoria_seleccionado ?>)
+        }
 
         function cambiarValorParametroUrl(parametro, valor){
             const url = new URL(window.location.href); 
