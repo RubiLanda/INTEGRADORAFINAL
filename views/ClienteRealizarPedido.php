@@ -585,7 +585,6 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
     
                         mostrarCategorias()
-                        mostrarProductos(1, 0)
 
                         div.style.display = 'block';
                         fechas.style.display = 'none';
@@ -611,7 +610,6 @@ try {
                     tienda_seleccionado.textContent = "Forma de recibir pedido: Recoger en sucursal";
 
                     mostrarCategorias()
-                    mostrarProductos(1, 0)
 
                     div.style.display = 'block';
                     fechas.style.display = 'none';
@@ -637,7 +635,6 @@ try {
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
         
                         mostrarCategorias()
-                        mostrarProductos(1, 0)
 
                         div.style.display = 'block';
                         fechas.style.display = 'none';
