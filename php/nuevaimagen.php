@@ -18,7 +18,10 @@
       }
    }
    if (isset($_FILES['imagen'])){
-      echo $NombreArchivo;
+      echo $DireccionConImagen;
+      echo $Direccion;
+      echo $DireccionTemporal;
+      echo $id;
    }
    else {
       echo "No";
