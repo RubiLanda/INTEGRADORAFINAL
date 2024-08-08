@@ -28,18 +28,6 @@ $Conexion = new Database();
 $Conexion->conectarBD();
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function MostrarPedidos(estado, TipoCliente){
-        $.ajax({
-            type: 'POST',
-            url: '../php/MostrarPedidos.php',
-            data: { estado: estado, TipoCliente: TipoCliente },
-            success: function(response) {
-                $('#pedidos' + estado).html(response);
-            }
-        });
-    }
-</script>
 
 <!DOCTYPE html>
 <html lang="en">

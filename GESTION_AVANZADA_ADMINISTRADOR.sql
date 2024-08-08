@@ -1,25 +1,23 @@
 -- 3.1.3 Ver repartidores por Estatus
 DELIMITER //
 create procedure Ver_Repartidores(
-	in p_estatus boolean
+in p_estatus boolean
 )
 begin
-	if p_estatus is not null then
+if p_estatus is not null then
 
-    	select REPARTIDORES.id_repartidor as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, personas.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, personas.telefono as Telefono, 
-		repartidores.f_ingreso as Fecha_Ingreso, REPARTIDORES.fol_liconducir as licencia_conducir, REPARTIDORES.estatus as Estatus, REPARTIDORES.f_ingreso as Fecha_ingreso
-		from REPARTIDORES
-		inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-		where REPARTIDORES.estatus = p_estatus;
+select REPARTIDORES.id_repartidor as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, 
+REPARTIDORES.f_ingreso as Fecha_Ingreso, REPARTIDORES.fol_liconducir as licencia_conducir, REPARTIDORES.estatus as Estatus, REPARTIDORES.f_ingreso as Fecha_ingreso
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+where REPARTIDORES.estatus = p_estatus;
+else
 
-    else
-
-    	select REPARTIDORES.id_repartidor as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, 
-		REPARTIDORES.f_ingreso as Fecha_Ingreso, REPARTIDORES.fol_liconducir as licencia_conducir, REPARTIDORES.estatus as Estatus, REPARTIDORES.f_ingreso as Fecha_ingreso
-		from REPARTIDORES
-		inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona;
-
-    end if;
+select REPARTIDORES.id_repartidor as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, 
+REPARTIDORES.f_ingreso as Fecha_Ingreso, REPARTIDORES.fol_liconducir as licencia_conducir, REPARTIDORES.estatus as Estatus, REPARTIDORES.f_ingreso as Fecha_ingreso
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona;
+end if;
 end //
 DELIMITER ;
 
@@ -1291,5 +1289,21 @@ if p_nuevo_estatus = 0 then
     where id_admin = p_id_administrador;
     set message = 'Administrador Habilitado Exitosamente!';
     end if;
+end //
+DELIMITER ;
+
+
+-- * 3.2.1 Procedimiento. Consulta de tiendas filtrado por nombre de tienda.
+DELIMITER //
+create procedure Ver_Tiendas ()
+begin
+    
+	-- seleccionar información de todas las tiendas
+select TIENDAS.id_tienda as ID, TIENDAS.nombre_tienda as Tienda, TIENDAS.direccion as Dirección, PERSONAS.nombre as Propietario, PERSONAS.telefono as Telefono
+from TIENDAS
+join CLIENTE_TIENDA on TIENDAS.id_tienda = CLIENTE_TIENDA.id_tienda
+join CLIENTES on CLIENTES.id_cliente = CLIENTE_TIENDA.id_cliente
+join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona;
+    
 end //
 DELIMITER ;
