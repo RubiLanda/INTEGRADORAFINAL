@@ -2,8 +2,8 @@
  include '../php/conexion.php';
  $Conexion = new Database();
  $Conexion->conectarBD();
- $consulta = "SELECT categorias.id_categoria , categorias.nombre as nombreC FROM categorias
- WHERE categorias.estado = 1";
+ $consulta = "SELECT CATEGORIAS.id_categoria , CATEGORIAS.nombre as nombreC FROM CATEGORIAS
+ WHERE CATEGORIAS.estado = 1";
  $reg = $Conexion->selectConsulta($consulta);
  echo "<label class='control-label'>
  Categoria</label>";
