@@ -36,20 +36,8 @@ try {
     $total_pages = ceil($total_records / $records_per_page);
 
     $max_links = 3;
-    switch ($current_page) {
-        case 1 || 2 || 3:
-            $start = 1;
-            $end = 5;
-            break;
-        case $total_pages || $total_pages - 1 || $total_pages - 2:
-            $start = $total_pages - 4;
-            $end = $total_pages;
-            break;
-        default:
-            $start = max(1, $current_page - floor($max_links / 2));
+    $start = max(1, $current_page - floor($max_links / 2));
             $end = min($total_pages, $current_page + floor($max_links / 2));
-            break;
-    }
 } catch (Exception $e) {
     echo $e->getMessage();
 }
