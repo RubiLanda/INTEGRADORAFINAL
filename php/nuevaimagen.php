@@ -18,7 +18,7 @@
       }
    }
    if (isset($_FILES['imagen'])){
-      echo "SI";
+      echo $NombreArchivo;
    }
    else {
       echo "No";
