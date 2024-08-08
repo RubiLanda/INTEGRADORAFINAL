@@ -799,10 +799,10 @@ on CARRITO.id_cliente = CLIENTES.id_cliente inner join INVENTARIO on
 CARRITO.id_inventario = INVENTARIO.id_inventario
 where CLIENTES.id_cliente = p_id_cliente;
 
-if(P_TOTALCARRITO<=20 or P_TOTALCARRITO >=50) or P_TOTALCARRITO is null 
+if(P_TOTALCARRITO<20 or P_TOTALCARRITO >50) or P_TOTALCARRITO is null 
 then
  -- if para mostrar un error si la cantidad de los pedidos es menor a 20 y mayor a 50
-	set mensaje = 'Cantidad de panes insuficientes para realizar pedido';
+	set mensaje = 'La Cantidad de productos debe ser entre 20 y 50';
 
 else 
 if(p_fecha_requerido > date_add(date(now()),interval 6 month))
@@ -946,5 +946,59 @@ end if;
 end if;
 end if;
 end if;
+end //
+DELIMITER ;
+
+
+
+-- * Verificar Carrito
+DELIMITER //
+create procedure Verificar_Carrito(
+in p_id_usuario int,
+out mensaje text
+)
+begin
+declare p_id_cliente int;
+declare p_stock_actual int;
+declare p_id_inventario int;
+declare p_cantidad int;
+
+declare done int default 0;
+
+declare cur cursor for
+select id_inventario, cantidad from CARRITO where id_cliente = p_id_cliente;
+declare continue handler for not found set done = true;
+    
+select CLIENTES.id_cliente into p_id_cliente
+from CLIENTES
+inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+where USUARIOS.id_usuario = p_id_usuario;
+    
+set done = false;
+open cur;
+
+-- Evita que se realize un pedido con un producto que no tiene suficiente stock
+read_loop: LOOP   
+fetch cur into p_id_inventario, p_cantidad;
+if done then
+leave read_loop;
+end if;
+
+-- Verificar el stock actual
+select stock into p_stock_actual
+from INVENTARIO
+where id_inventario = p_id_inventario;
+
+if p_stock_actual < p_cantidad then
+        
+set mensaje = 'El carrito se modifico por falta de inventario.';
+call Insertar_Modificar_Carrito(p_id_usuario, p_id_inventario, p_stock_actual, 1);
+                                    
+leave read_loop;
+end if;
+end LOOP;
+
+close cur;
 end //
 DELIMITER ;

@@ -27,7 +27,6 @@ $offset = ($current_page - 1) * $records_per_page;
 $Conexion = new Database();
 $Conexion->conectarBD();
 try {
-    $productos = $Conexion->selectConsulta("call Ver_Carrito($id_usuario, $offset, $records_per_page)");
     
     $productos_totales = $Conexion->selectConsulta("call Ver_Carrito($id_usuario, null, null)"); 
 
@@ -109,59 +108,7 @@ try {
     <div class="confirmarCarritoFondo" style="display: flex; justify-content: space-around;">
         <div class="realizarPedido" id="divProductos">
             <hr>
-            <?php
-        
-            foreach ($productos as $fila) {
-                $total_Producto = $fila->Cantidad * $fila->Precio;
-                echo "
-                <div class=\"producto\" id=\"div{$fila->Producto}\">
-                    <img src=\"../img/productos/{$fila->Imagen}\">
-                    <div class=\"info\">
-                        <div class=\"info2\">
-                            <h3>{$fila->Nombre}</h3>
-                        </div>
-                        <div class=\"cantidad\">
-                            <button type=\"button\" onclick=\"cambiarCantidad(-1, this.nextElementSibling, {$fila->Producto}, 'input{$fila->Producto}', 'precio{$fila->Producto}', {$fila->Precio}, {$fila->Disponible})\" style=\"border-radius: 15px 0 0 15px;\">
-                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-left-fill\" viewBox=\"0 0 16 16\">
-                                    <path d=\"m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z\"/>
-                                </svg>
-                            </button>
-                            <input type=\"text\" name=\"cantidad\" id=\"input{$fila->Producto}\" value=\"{$fila->Cantidad}\" oninput=\"validarNumero(this, {$fila->Disponible})\" onblur=\"ejecutarBoton(1, {$fila->Producto}, 'input{$fila->Producto}', 'precio{$fila->Producto}', {$fila->Precio})\" onkeydown=\"if (this.value <= 0 || this.value == '') {return event.key != 'Enter';}\">
-                            <button type=\"button\" onclick=\"cambiarCantidad(1, this.previousElementSibling, {$fila->Producto}, 'input{$fila->Producto}', 'precio{$fila->Producto}', {$fila->Precio}, {$fila->Disponible})\" style=\"border-radius: 0 15px 15px 0;\">
-                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-right-fill\" viewBox=\"0 0 16 16\">
-                                    <path d=\"m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z\"/>
-                                </svg>
-                            </button>
-                            <h3 class=\"infoPago\" id=\"precio{$fila->Producto}\"> x \${$fila->Precio} = \${$total_Producto} </h3>
-                        </div>";
-                        if ($_GET['mostrarStock'] == 1) {
-                            echo "<h4><b>Disponible:</b> {$fila->Disponible} piezas</h4>";
-                        }
-                echo "</div> 
-                    <div class=\"botones\">
-                        <button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalDescipcion{$fila->Producto}\">
-                            Descripcion
-                        </button>
-                        <button type=\"button\" onclick=\"ejecutarBoton(2, {$fila->Producto}, 'input{$fila->Producto}', 'precio{$fila->Producto}', {$fila->Precio})\">Eliminar</button>
-                    </div>
-                </div>
-                <div class=\"modal fade\" id=\"ModalDescipcion{$fila->Producto}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
-                    <div class=\"modal-dialog modal-dialog-centered\">
-                        <div class=\"modal-content\">
-                        <div class=\"modal-header\">
-                            <h5 class=\"modal-title\" id=\"exampleModalLabel\">{$fila->Nombre}</h5>
-                            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
-                        </div>
-                        <div class=\"modal-body\">
-                            {$fila->Descripcion}
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <hr id=\"hr{$fila->Producto}\">
-                ";
-            }
-            ?>
+            <div id="VerCarrito"></div>
     
             <div class="paginacion">
                 <?php if ($total_pages > 1): ?>
@@ -271,6 +218,49 @@ try {
         var fecha;
         var formaDePago;
 
+        $.ajax({
+            type: 'POST',
+            url: '../php/VerificarCarrito.php',
+            success: function(response) {
+                if (response == "El carrito se modifico por falta de inventario.") {
+                    var toastContainer = document.getElementById('imprimirnoti');
+                    var newToast = document.createElement('div');  // Crear un nuevo elemento toast
+                    newToast.className = 'toast';
+                    newToast.setAttribute('role', 'alert');
+                    newToast.setAttribute('aria-live', 'assertive');
+                    newToast.setAttribute('aria-atomic', 'true');
+                    newToast.innerHTML = 
+                    `  
+                    <div class="toast-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                        </svg>
+                        <strong class="me-auto">Nueva Notificación</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${response}
+                    </div>
+                    `;
+                    toastContainer.appendChild(newToast);  // Añadir el nuevo toast al contenedor
+                    var toast = new bootstrap.Toast(newToast, {  // Inicializar y mostrar el nuevo toast
+                        delay: 5000 // Duración del toast en milisegundos
+                    });
+                    toast.show();
+                }
+            }
+        });
+        function mostrarCarrito(current_page){
+            $.ajax({
+                type: 'POST',
+                url: '../php/MostrarCarrito.php',
+                data: { current_page: <?php echo $current_page ?>, mostrarStock: <?php echo $_GET['mostrarStock']?> },
+                success: function(response) {
+                    $('#VerCarrito').html(response);
+                }
+            });
+        }
+        mostrarCarrito()
         if (sessionStorage.getItem("mostrarStock") != null) {
             mostrarStock = sessionStorage.getItem("mostrarStock");
         }
@@ -415,6 +405,9 @@ try {
                         sessionStorage.clear();
                         sessionStorage.setItem("mensaje", response)
                         window.location.href = "ClienteRealizarPedido.php";
+                    }
+                    if (response == "No hay suficiente inventario para uno de los productos.") {
+                        mostrarCarrito()
                     }
                     var toastContainer = document.getElementById('imprimirnoti');
                     var newToast = document.createElement('div');  // Crear un nuevo elemento toast
