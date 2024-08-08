@@ -14,19 +14,20 @@
    if($ImagenAntigua && $ImagenAntigua !== $NombreArchivo){
       $DireccionAntigua = $Direccion . $ImagenAntigua;
       if (file_exists($DireccionAntigua)){
-         echo "a";
          unlink($DireccionAntigua);
       }
    }
-   
+   if (isset($_FILES['imagen'])){
+      echo "SI";
+   }
+   else {
+      echo "No";
+   }
 
    if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){
       $Conexion->ejecutar("CALL Modificar_Imagen_Producto($id,'$NombreArchivo',@mensaje)");
       $consulta = $Conexion->selectConsulta("SELECT @mensaje as resultado");
       $mensaje = $consulta[0]->resultado;
       echo $mensaje;
-   }
-   else {
-      // echo "error";
    }
 ?>
