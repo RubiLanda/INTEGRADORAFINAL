@@ -1358,12 +1358,18 @@ declare ultimaid_persona int;
 declare ultimaid_repartidor int;
 declare userepetido int;
 declare licrepe int;
-IF N_username = '' or N_contraseña = ''  or N_nombre = ''  or N_a_p = '' or N_f_nac = ''  or 
+IF N_username = '' or N_contraseña = ''  or N_nombre = ''  or N_a_p = '' or N_f_nac is null  or 
 N_genero = '' or N_telefono = ''  or N_folioconducir = '' or f_ingreso = ''  -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
 then 
 
-set mensaje = 'NO PUEDES DEJAR ALGUN CAMPO VACIO';
+set mensaje = 'No puedes dejar algún campo vacío';
 else
+
+if N_f_nac is null then 
+
+set mensaje = 'Ingresa la fecha de nacimiento';
+
+else 
 
 select count(USUARIOS.username) into userepetido from USUARIOS where USUARIOS.username=N_username;
 if userepetido>0 then
@@ -1401,10 +1407,11 @@ values (N_nombre, N_a_p, N_a_m, N_f_nac, N_genero, N_telefono,ultimaid_usuario);
 set ultimaid_persona = last_insert_id(); -- guardar la ultima id de persona generada con el autoincrement 
 insert into REPARTIDORES(f_ingreso,fol_liconducir,id_persona,estatus) -- inserta en la tabla administradores
 values(f_ingreso,N_folioconducir,ultimaid_persona,1);
-set mensaje='REGISTRO EXITOSO';
+set mensaje='Registro exitoso.';
 else
 
-set mensaje = 'DEBES SER MAYOR DE EDAD EL REPARTIDOR PARA REGISTRARLO O LA FECHA QUE INGRESASTE ES EXCESIVA';
+set mensaje = 'Debes ser mayor de edad el repartidor para registrarlo o la fecha que ingresaste es excesiva.';
+end if;
 end if;
 end if;
 end if;
