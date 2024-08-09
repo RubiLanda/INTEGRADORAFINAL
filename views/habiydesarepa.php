@@ -45,6 +45,7 @@
                 echo"<h3><b>Fecha entregada:</b> {$pedidos->Fecha_entregada}</h3>";
             }
             
+            
             echo"<h3><b>Estado del Pedido:</b> {$pedidos->Estado}</h3>";
             echo "<button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalDetalles{$pedidos->ID}\">
             Ver detalles del pedido
