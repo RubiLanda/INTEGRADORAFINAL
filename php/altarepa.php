@@ -9,6 +9,12 @@ $patetrim=trim($pate);
 $matetrim=trim($mate);
 $teletrim=trim($tele);
 $folitrim=trim($folio);
+if(trim($naci)==''){
+    $naci='0000-00-00';
+}
+if(trim($ingreso)==''){
+    $ingreso='0000-00-00';
+}
 
 
 $contraencri= password_hash($contra, PASSWORD_DEFAULT);
