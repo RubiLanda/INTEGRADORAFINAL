@@ -1335,3 +1335,514 @@ join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona;
     
 end //
 DELIMITER ;
+
+
+drop PROCEDURE INSERTAR_REPARTIDORES
+DELIMITER //
+create PROCEDURE INSERTAR_REPARTIDORES (
+IN N_username VARCHAR(150),    -- varibales de entrada para el registro del nuevo administrador
+IN N_contraseña VARCHAR(255),
+IN N_nombre VARCHAR(40),
+IN N_a_p VARCHAR(40),
+IN N_a_m VARCHAR(40),
+IN N_f_nac DATE,
+IN N_genero ENUM('M','F','O'),
+IN N_telefono CHAR(10),
+IN N_folioconducir CHAR(11),
+IN f_ingreso date,
+out mensaje text
+)
+BEGIN
+declare ultimaid_usuario int; -- declaramos algunas variables para guardar la id de algunas cosas
+declare ultimaid_persona int;
+declare ultimaid_repartidor int;
+declare userepetido int;
+declare licrepe int;
+IF N_username = '' or N_contraseña = ''  or N_nombre = ''  or N_a_p = '' or N_f_nac = ''  or 
+N_genero = '' or N_telefono = ''  or N_folioconducir = '' or f_ingreso = ''  -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
+then 
+
+set mensaje = 'NO PUEDES DEJAR ALGUN CAMPO VACIO';
+else
+
+select count(USUARIOS.username) into userepetido from USUARIOS where USUARIOS.username=N_username;
+if userepetido>0 then
+
+set mensaje='Ya Existe un usuario con ese nombre';
+else
+select count(REPARTIDORES.fol_liconducir) into licrepe from REPARTIDORES where REPARTIDORES.fol_liconducir=N_folioconducir;
+if licrepe>0 then
+
+set mensaje='Ya Esta Registrada esa licencia de conducir, por favor ingresa otra';
+else
+if length(N_telefono)<10 then
+
+set mensaje='Numero de telefono invalido';
+else
+if length(N_folioconducir)<11 then
+
+set mensaje='Folio de licencia de conducir invalido';
+else
+if f_ingreso<=DATE_ADD(CURDATE(), INTERVAL -50 YEAR) or f_ingreso>DATE_ADD(date(now()), INTERVAL 1 year) then
+
+set mensaje='Ingresa una fecha valida';
+else
+IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
+AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -80 YEAR) -- si la fecha de nacimineto es menor que la fecha que se genere de hoy menos 18 años
+then
+
+insert into USUARIOS (username, contrasena, f_registro)  -- insertar en usuarios los datos
+values (N_username, N_contraseña,now());
+set ultimaid_usuario = last_insert_id(); -- guardar la ultima id que se genero con el auto-increment
+insert into ROL_USUARIO (id_rol,id_usuario) -- inmediatamente en la tabla de rol se le dara el rol de administrador
+values(3,ultimaid_usuario);
+insert into PERSONAS(nombre, a_p, a_m, f_nac, genero, telefono,id_usuario) -- insertar en la tabla de personas todos los datos personales
+values (N_nombre, N_a_p, N_a_m, N_f_nac, N_genero, N_telefono,ultimaid_usuario);
+set ultimaid_persona = last_insert_id(); -- guardar la ultima id de persona generada con el autoincrement 
+insert into REPARTIDORES(f_ingreso,fol_liconducir,id_persona,estatus) -- inserta en la tabla administradores
+values(f_ingreso,N_folioconducir,ultimaid_persona,1);
+set mensaje='REGISTRO EXITOSO';
+else
+
+set mensaje = 'DEBES SER MAYOR DE EDAD EL REPARTIDOR PARA REGISTRARLO O LA FECHA QUE INGRESASTE ES EXCESIVA';
+end if;
+end if;
+end if;
+end if;
+end if;
+end if;
+end if;
+end //
+DELIMITER ;
+
+
+
+
+drop PROCEDURE INSERTAR_REPARTIDORES
+DELIMITER //
+create PROCEDURE INSERTAR_REPARTIDORES (
+IN N_username VARCHAR(150),    -- varibales de entrada para el registro del nuevo administrador
+IN N_contraseña VARCHAR(255),
+IN N_nombre VARCHAR(40),
+IN N_a_p VARCHAR(40),
+IN N_a_m VARCHAR(40),
+IN N_f_nac DATE,
+IN N_genero ENUM('M','F','O'),
+IN N_telefono CHAR(10),
+IN N_folioconducir CHAR(11),
+IN f_ingreso date,
+out mensaje text
+)
+BEGIN
+declare ultimaid_usuario int; -- declaramos algunas variables para guardar la id de algunas cosas
+declare ultimaid_persona int;
+declare ultimaid_repartidor int;
+declare userepetido int;
+declare licrepe int;
+
+IF N_username = '' or N_contraseña=''  or N_nombre=''  or N_a_p='' or N_f_nac=''  or 
+N_genero='' or N_telefono=''  or N_folioconducir='' or f_ingreso=''  -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
+then 
+
+set mensaje = 'NO PUEDES DEJAR ALGUN CAMPO VACIO';
+else
+select count(USUARIOS.username) into userepetido from USUARIOS where USUARIOS.username=N_username;
+if userepetido>0 then
+set mensaje='Ya Existe un usuario con ese nombre';
+else
+select count(REPARTIDORES.fol_liconducir) into licrepe from REPARTIDORES where REPARTIDORES.fol_liconducir=N_folioconducir;
+if licrepe>0 then
+set mensaje='Ya Esta Registrada esa licencia de conducir, por favor ingresa otra';
+else
+if length(N_telefono)<10 then
+set mensaje='Numero de telefono invalido';
+else
+if length(N_folioconducir)<11 then
+set mensaje='Folio de licencia de conducir invalido';
+else
+if f_ingreso<=DATE_ADD(CURDATE(), INTERVAL -50 YEAR) or f_ingreso>DATE_ADD(date(now()), INTERVAL 1 year) then
+set mensaje='Ingresa una fecha valida';
+else
+IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
+AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -80 YEAR) -- si la fecha de nacimineto es menor que la fecha que se genere de hoy menos 18 años
+then
+insert into USUARIOS (username, contraseña, f_registro)  -- insertar en usuarios los datos
+values (N_username, N_contraseña,now());
+set ultimaid_usuario = last_insert_id(); -- guardar la ultima id que se genero con el auto-increment
+insert into ROL_USUARIO (id_rol,id_usuario) -- inmediatamente en la tabla de rol se le dara el rol de administrador
+values(3,ultimaid_usuario);
+insert into PERSONAS(nombre, a_p, a_m, f_nac, genero, telefono,id_usuario) -- insertar en la tabla de personas todos los datos personales
+values (N_nombre, N_a_p, N_a_m, N_f_nac, N_genero, N_telefono,ultimaid_usuario);
+set ultimaid_persona = last_insert_id(); -- guardar la ultima id de persona generada con el autoincrement 
+insert into REPARTIDORES(f_ingreso,fol_liconducir,id_persona,estatus) -- inserta en la tabla administradores
+values(f_ingreso,N_folioconducir,ultimaid_persona,1);
+set mensaje='REGISTRO EXITOSO';
+else
+set mensaje = 'DEBES SER MAYOR DE EDAD EL REPARTIDOR PARA REGISTRARLO O LA FECHA QUE INGRESASTE ES EXCESIVA';
+end if;
+end if;
+end if;
+end if;
+end if;
+end if;
+end if;
+end //
+DELIMITER ;
+
+
+
+-- 4.2.1 Consulta de la informacion de determinado Repartidor 
+call Ver_Informacion_Repartidor(2);
+DELIMITER //
+CREATE PROCEDURE Ver_Informacion_Repartidor(
+IN p_id_usuario INT
+)
+BEGIN
+SELECT 
+USUARIOS.username AS Usuario,
+CONCAT(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) AS Nombre,
+PERSONAS.f_nac AS Fecha_nacimiento, 
+PERSONAS.genero AS Genero, 
+PERSONAS.telefono AS Telefono, 
+DATE(USUARIOS.f_registro) AS Fecha_registro,  
+REPARTIDORES.fol_liconducir AS Licencia_conducir, 
+REPARTIDORES.f_ingreso AS Fecha_Ingreso 
+FROM 
+REPARTIDORES
+INNER JOIN 
+PERSONAS ON REPARTIDORES.id_persona = PERSONAS.id_persona
+INNER JOIN 
+USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
+WHERE 
+USUARIOS.id_usuario = p_id_usuario;
+END //
+
+DELIMITER ;
+
+
+
+drop procedure Actualizar_Informacion_Repartidor
+-- * 4.2.2 ACTUALIZAR INFORMACIÓN REPARTIDOR
+DELIMITER //
+create procedure Actualizar_Informacion_Repartidor(
+in p_id_usuario int,
+in n_nom varchar(40),
+in n_ap varchar(40),
+in n_am varchar(40),
+in n_tel char(10),
+in p_fol_liconducir char(11),
+out message text
+)
+begin
+declare mod_nom boolean;
+declare mod_ap boolean;
+declare mod_am boolean;
+declare mod_fol boolean;
+declare mod_tel boolean;
+declare msj_b text;
+declare msj_m text;
+declare contB int;
+declare contM int;
+
+set msj_b='';
+set msj_m='';
+set contB = 0;
+set contM = 0;
+set mod_nom = 0;
+set mod_ap = 0 ;
+set mod_am = 0;
+set mod_fol = 0;
+set mod_tel = 0 ;
+
+Select true into mod_nom
+from PERSONAS
+inner join USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
+where PERSONAS.nombre = n_nom
+and USUARIOS.id_usuario =  p_id_usuario;
+
+Select true into mod_ap
+from PERSONAS
+inner join USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
+where PERSONAS.a_p = n_ap
+and USUARIOS.id_usuario =  p_id_usuario;
+
+Select true into mod_am
+from PERSONAS
+inner join USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
+where PERSONAS.a_m = n_am
+and USUARIOS.id_usuario =  p_id_usuario;
+
+Select true into mod_tel
+from PERSONAS
+inner join USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
+where PERSONAS.telefono = n_tel
+and USUARIOS.id_usuario =  p_id_usuario;
+
+Select true into mod_fol
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+where REPARTIDORES.fol_liconducir = p_fol_liconducir
+and USUARIOS.id_usuario =  p_id_usuario;
+
+if  mod_nom = 1 and mod_ap = 1 and mod_am = 1 and mod_fol = 1 and mod_tel = 1 then
+
+set message = 'No se hizo ningún cambio';
+
+else 
+if n_nom = '' then
+
+set msj_m = 'No puedes dejar el nombre vacío';
+set contM = contM + 1; 
+
+end if;
+if n_ap = '' then
+
+if contM = 0 then
+
+set msj_m = 'No puedes dejar el apellido vacío';
+
+elseif contM = 1 then
+
+set msj_m = concat(msj_m, ' Ni tampoco el Apellido Paterno');
+
+elseif contM > 1 then
+
+set msj_m = concat(msj_m, 'Apelldo paterno');
+
+end if;
+
+set contM = contM + 1; 
+
+end if;
+
+if n_tel = '' then
+
+if contM = 0 then
+
+set msj_m = 'No puedes dejar el telefono vacío';
+
+elseif contM = 1 then
+
+set msj_m = concat(msj_m, ' Ni tampoco el Número de telefono');
+
+elseif contM > 1 then
+
+set msj_m = concat(msj_m, 'Número de telefono');
+
+end if;
+
+set contM = contM + 1; 
+
+end if;
+
+if length(n_tel) < 10 then
+
+if contM = 0 then
+
+set msj_m = 'Numero de telefono invalido';
+
+elseif contM = 1 then
+
+set msj_m = concat(msj_m, ' Ni tampoco el telefono');
+
+elseif contM > 1 then
+
+set msj_m = concat(msj_m, 'Número de telefono');
+
+end if;
+
+set contM = contM + 1; 
+
+end if;
+
+if p_fol_liconducir = '' then
+
+if contM = 0 then
+
+set msj_m = 'No puedes dejar el folio vacío';
+
+elseif contM = 1 then
+
+set msj_m = concat(msj_m, ' Ni tampoco el folio de conducir');
+
+elseif contM > 1 then
+
+set msj_m = concat(msj_m, 'Folio de conducir');
+
+end if;
+
+set contM = contM + 1; 
+
+end if;
+
+if length(p_fol_liconducir) < 11 then
+
+if contM = 0 then
+
+set msj_m = 'Folio de conducir invalido';
+
+elseif contM = 1 then
+
+set msj_m = concat(msj_m, ' Ni tampoco el folio de conducir');
+
+elseif contM > 1 then
+
+set msj_m = concat(msj_m, 'Folio de conducir');
+
+end if;
+
+set contM = contM + 1; 
+
+end if;
+
+if mod_nom = 0 then
+
+if n_nom != '' then
+
+update PERSONAS
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+set PERSONAS.nombre = n_nom
+where USUARIOS.id_usuario = p_id_usuario;
+
+if contM = 0 then
+
+set msj_b = 'Nombre atualizado exitosamente';
+
+elseif contM > 0 then
+
+set msj_b = ' Pero si se modifico el nombre';
+
+end if;
+
+set contB = contB + 1;
+
+end if;
+end if ;
+
+if mod_ap = 0 then
+
+iF n_ap != '' then
+
+update PERSONAS
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+set PERSONAS.a_p = n_ap
+where USUARIOS.id_usuario = p_id_usuario;
+
+if contM = 0 and contB = 0  then
+
+set msj_b = 'Apellido Paterno actualizado exitosamente';
+
+end if;
+
+if contM > 0 and contB = 0  then
+
+set msj_b = ' Pero si se modifico el apellido paterno';
+
+elseif contM > 0 and contB = 1 then 
+
+set msj_b = concat(msj_b, ' Apellido paterno');
+
+end if;
+
+set contB = contB + 1;
+
+end if;
+end if;
+-- apellido materno --
+if mod_am = 0 then
+
+iF n_am != '' then
+
+update PERSONAS
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+set PERSONAS.a_m = n_am
+where USUARIOS.id_usuario = p_id_usuario;
+
+if contM = 0 and contB = 0  then
+
+set msj_b = 'Apellido Materno actualizado exitosamente';
+
+end if;
+
+if contM > 0 and contB = 0  then
+
+set msj_b = ' Pero si se modifico el apellido materno';
+
+elseif contM > 0 and contB = 1 then 
+
+set msj_b = concat(msj_b, ' Apellido materno');
+
+end if;
+
+set contB = contB + 1;
+
+end if;
+end if;
+-- telefono --
+if mod_tel = 0 then
+
+iF n_tel != '' and length(n_tel) = 10 then
+
+update PERSONAS
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+set PERSONAS.telefono = n_tel
+where USUARIOS.id_usuario = p_id_usuario;
+
+if contM = 0 and contB = 0  then
+
+set msj_b = 'Telefono actualizado exitosamente';
+
+end if;
+
+if contM > 0 and contB = 0  then
+
+set msj_b = ' Pero si se modifico el telefono';
+
+elseif contM > 0 and contB = 1 then 
+
+set msj_b = concat(msj_b, ' Telefono');
+
+end if;
+
+set contB = contB + 1;
+
+end if;
+end if;
+-- folio de conducior --
+if mod_fol = 0 then
+
+iF p_fol_liconducir != '' and  length(p_fol_liconducir) = 11 then
+
+update REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
+set REPARTIDORES.fol_liconducir = p_fol_liconducir
+where USUARIOS.id_usuario = p_id_usuario;
+
+if contM = 0 and contB = 0  then
+
+set msj_b = 'Folio actualizado exitosamente';
+
+end if;
+
+if contM > 0 and contB = 0  then
+
+set msj_b = ' Pero si se modifico el folio de conducir';
+
+elseif contM > 0 and contB = 1 then 
+
+set msj_b = concat(msj_b, 'Folio de conducir');
+
+end if;
+
+set contB = contB + 1;
+
+end if;
+end if;
+
+set message = concat (msj_m , msj_b);
+
+end if;
+end //
+DELIMITER ;
