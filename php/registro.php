@@ -10,7 +10,9 @@ $nomtrim=trim($nom);
 $patetrim=trim($pate);
 $matetrim=trim($mate);
 $teletrim=trim($tele);
-
+if(trim($naci)==''){
+    $naci=NULL;
+}
 
 $conexion->ejecutar("CALL INSERTAR_CLIENTES('$nameusertrim', '$contraencri', '$nomtrim', '$patetrim', '$matetrim', '$naci', '$gene', '$teletrim', @mensaje)");
 $consulta=$conexion->selectConsulta("SELECT @mensaje as resultado");
