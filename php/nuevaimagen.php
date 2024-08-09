@@ -2,9 +2,8 @@
     include '../php/conexion.php';
     $Conexion = new Database();
     $Conexion->conectarBD();
-   $DireccionTemporal = $_FILES['imagen']['tmp_name'];
    $NombreArchivo = $_FILES['imagen']['name'];
-   // $DireccionTemporal = '/var/www/html/img/temporal'.$NombreArchivo;
+   $DireccionTemporal = '/var/www/html/img/temporal'.$NombreArchivo;
    $Direccion = 'var/www/html/img/productos/';
    $DireccionConImagen = $Direccion.$NombreArchivo;
 
