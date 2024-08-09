@@ -14,7 +14,7 @@
       <h1>REPORTE DE VENTAS</h1>
       <div class="inicio">
         <div class=cuadro>
-          <input type="date" id="fecha" name="fecha" ">
+          <input type="date" id="fecha" name="fecha">
 
         <div class="Selects">
           <select class="select" id='años' aria-label="Default select example" onchange="Ver_Ventas_Producto()">
