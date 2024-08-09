@@ -88,7 +88,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             <a href="?apartado=5">Ver Repartidores</a>
             <a href="?apartado=6">Ver Administradores</a>
             <a href="AdministradorVerTiendas.php">Ver Tiendas</a>
-            <a href="?apartado=8">Mi cuenta</a>
+            <a href="administrador.php">Mi cuenta</a>
         </div>
     </div>
     <div style="height: 170px;"></div>
