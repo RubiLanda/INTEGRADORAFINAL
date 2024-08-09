@@ -4,6 +4,7 @@
     $Conexion->conectarBD();
    $DireccionTemporal = $_FILES['imagen']['tmp_name'];
    $NombreArchivo = $_FILES['imagen']['name'];
+   // $DireccionTemporal = '/var/www/html/img/temporal'.$NombreArchivo;
    $Direccion = 'var/www/html/img/productos/';
    $DireccionConImagen = $Direccion.$NombreArchivo;
 
@@ -17,7 +18,6 @@
          unlink($DireccionAntigua);
       }
    }
-   echo __DIR__;
 
    if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){
       $Conexion->ejecutar("CALL Modificar_Imagen_Producto($id,'$NombreArchivo',@mensaje)");
