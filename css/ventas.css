@@ -1,0 +1,127 @@
+
+body{
+    background-color: #ddb892;
+    height: 100%;
+
+}
+.fondo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+    background-image: url(../img/backgroun.png);
+}
+
+.contenedor{
+    color: #ddb892;
+    background-color: #9c6644;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.contenedor h1{
+    margin: 25px;
+    text-align: center;
+    border-bottom:solid 3px #ddb892;
+    width: 80%;
+
+}
+
+.inicio{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 40px;
+    align-items: center;
+    color: #ddb892;
+    font-size: 20px;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 30px;
+}
+.cuadro{
+    width: 80%;
+    border-bottom:solid 3px #ddb892;
+    border-top:solid 3px #ddb892;
+    padding: 10px;
+
+}
+.select{
+    width: 300px;
+    border-radius: 15px;
+    border: none;
+    background-color: #ddb892;
+    color: #9c6644;
+    padding: 10px;
+    cursor:pointer;
+}
+
+.Selects {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 10px;
+}
+
+.juntitos{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 10px;
+}
+
+.inicio input[type="radio"] {
+    background-color: #ddb892;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+}
+
+.inicio input[type="radio"]:checked::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #A04000;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.inicio input[type="date"]{
+    background-color: #ddb892;
+    border:none;
+    color: #9c6644;
+    border-radius: 15px;
+    padding: 10px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: #fff; /* Fondo del icono del calendario */
+    color: #3498db; /* Color del icono del calendario */
+    border-radius: 5px; /* Esquinas redondeadas del icono */
+}
+
+input::placeholder {
+    color: #9c6644; /* Cambia este valor al color que desees */
+}
+.tabla{
+    background-color:  #ddb892 ;
+    display: grid; /* Es para hacer una tabla  */
+    grid-template-columns: repeat(4,1fr);
+    color:#9c6644;
+    border-radius: 15px;
+    padding: 10px;
+    border:#A04000;
+}
