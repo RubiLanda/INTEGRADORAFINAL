@@ -13,10 +13,14 @@
 
    if($ImagenAntigua && $ImagenAntigua !== $NombreArchivo){
       $DireccionAntigua = $Direccion . $ImagenAntigua;
-      echo $DireccionAntigua;
       if (file_exists($DireccionAntigua)){
          unlink($DireccionAntigua);
       }
+   }
+
+      // Verifica si el directorio es escribible
+   if (!is_writable($uploadDir)) {
+      die('El directorio de subida no es escribible.');
    }
 
    if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){
