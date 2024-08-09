@@ -1,21 +1,6 @@
 <?php
 session_start();
-$persona = $_SESSION['ID'];
-if (isset($_SESSION['Rol'])){
-    if ($_SESSION['Rol'] != 2){
-        switch ($_SESSION['Rol']){
-            case 1:
-                header("Location: Administrador.php");
-                break;
-            case 3:
-                header("Location: Repartidor.php");
-                break;
-        }
-    }
-}
-else {
-    header("Location: login.php");
-}
+
 
 ?>
 
