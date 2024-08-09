@@ -498,7 +498,107 @@ end //
 DELIMITER ;
 
 
+DELIMITER //
+create procedure historial (
+  in id_u int,
+  in año int,
+  in mes int
+)
+begin 
+-- Variables para contalizar si el cliente tiene tienda
+declare idcliente int;
+declare cantidad_tiendas int;
 
+-- consulta de la id del cliente de nuestro usuario
+select CLIENTES.id_cliente into idcliente 
+from CLIENTES
+inner join PERSONAS on CLIENTES.id_persona=PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario=USUARIOS.id_usuario
+where USUARIOS.id_usuario=id_u;
+
+-- consulta para contar si tiene tiendas
+select count(*) into cantidad_tiendas
+from CLIENTE_TIENDA
+where id_cliente = idcliente;
+
+-- el cliente con tienda año nulo y mes nulo
+if cantidad_tiendas >0  and año is null and mes is null 
+then
+select PEDIDOS.id_pedido as IDPEDIDO, PEDIDOS.f_pedido as FECHAREALIZADA, PEDIDOS.f_entrega as FECHAENVIO ,TIENDAS.nombre_tienda as TIENDA, PEDIDOS.estado_pedido as ESTADO
+from PEDIDOS inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente inner join CLIENTE_TIENDA on CLIENTES.id_cliente = CLIENTE_TIENDA.id_clientien 
+inner join TIENDAS on CLIENTE_TIENDA.id_tienda = TIENDAS.id_tienda inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona inner join USUARIOS on
+PERSONAS.id_usuario = USUARIOS.id_usuario 
+where USUARIOS.id_usuario = id_u and (PEDIDOS.estado_pedido = 'entregado' or PEDIDOS.estado_pedido = 'cancelado');
+end if;
+
+-- el cliente con tienda año elegido  y mes nulo
+if cantidad_tiendas >0  and año is not null and mes is null 
+then
+select PEDIDOS.id_pedido as IDPEDIDO, PEDIDOS.f_pedido as FECHAREALIZADA, PEDIDOS.f_entrega as FECHAENVIO ,TIENDAS.nombre_tienda as TIENDA, PEDIDOS.estado_pedido as ESTADO
+from PEDIDOS inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente inner join CLIENTE_TIENDA on CLIENTES.id_cliente = CLIENTE_TIENDA.id_clientien 
+inner join TIENDAS on CLIENTE_TIENDA.id_tienda = TIENDAS.id_tienda inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona inner join USUARIOS on
+PERSONAS.id_usuario = USUARIOS.id_usuario 
+where USUARIOS.id_usuario = id_u and year(PEDIDOS.f_pedido)= año and (PEDIDOS.estado_pedido = 'entregado' or PEDIDOS.estado_pedido = 'cancelado');
+end if;
+
+-- el cliente con tienda año nulo y mes elegido
+if cantidad_tiendas >0  and año is null and mes is not null 
+then
+select PEDIDOS.id_pedido as IDPEDIDO, PEDIDOS.f_pedido as FECHAREALIZADA, PEDIDOS.f_entrega as FECHAENVIO ,TIENDAS.nombre_tienda as TIENDA, PEDIDOS.estado_pedido as ESTADO
+from PEDIDOS inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente inner join CLIENTE_TIENDA on CLIENTES.id_cliente = CLIENTE_TIENDA.id_clientien 
+inner join TIENDAS on CLIENTE_TIENDA.id_tienda = TIENDAS.id_tienda inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona inner join USUARIOS on
+PERSONAS.id_usuario = USUARIOS.id_usuario 
+where USUARIOS.id_usuario = id_u and month(PEDIDOS.f_pedido)= mes and (PEDIDOS.estado_pedido = 'entregado' or PEDIDOS.estado_pedido = 'cancelado');
+end if;
+
+-- el cliente con tienda año elegido y mes elegido
+if cantidad_tiendas >0  and año is not null and mes is not null 
+then
+select PEDIDOS.id_pedido as IDPEDIDO, pedidos.f_pedido as FECHAREALIZADA, PEDIDOS.f_entrega as FECHAENVIO, tiendas.nombre_tienda as TIENDA, PEDIDOS.estado_pedido as ESTADO
+from PEDIDOS inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente inner join CLIENTE_TIENDA on CLIENTES.id_cliente = CLIENTE_TIENDA.id_clientien 
+inner join TIENDAS on CLIENTE_TIENDA.id_tienda = TIENDAS.id_tienda inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona inner join USUARIOS on
+PERSONAS.id_usuario = USUARIOS.id_usuario 
+where USUARIOS.id_usuario = id_u and year(PEDIDOS.f_pedido)= año and month(PEDIDOS.f_pedido)= mes and (PEDIDOS.estado_pedido = 'entregado' or PEDIDOS.estado_pedido = 'cancelado');
+end if;
+
+-- el cliente sin  tienda año nulo y mes nulo
+if cantidad_tiendas =0 and año is null and mes is null 
+then
+select PEDIDOS.id_pedido as IDPEDIDO, pedidos.f_pedido as FECHAREALIZADA, PEDIDOS.estado_pedido as ESTADO
+from PEDIDOS inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona inner join USUARIOS on
+PERSONAS.id_usuario = USUARIOS.id_usuario 
+where USUARIOS.id_usuario = id_u and  (PEDIDOS.estado_pedido = 'entregado' or PEDIDOS.estado_pedido = 'cancelado');
+end if;
+
+-- el cliente sin tienda año elegido y mes nulo
+if cantidad_tiendas =0 and año is not null and mes is null 
+then
+select PEDIDOS.id_pedido as IDPEDIDO, pedidos.f_pedido as FECHAREALIZADA, PEDIDOS.estado_pedido as ESTADO
+from PEDIDOS inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona inner join USUARIOS on
+PERSONAS.id_usuario = USUARIOS.id_usuario 
+where USUARIOS.id_usuario = id_u and year(PEDIDOS.f_pedido)= año and (PEDIDOS.estado_pedido = 'entregado' or PEDIDOS.estado_pedido = 'cancelado');
+end if;
+
+-- el cliente sin tienda año nulo y mes elegido
+if cantidad_tiendas = 0 and año is null and mes is not null 
+then
+select PEDIDOS.id_pedido as IDPEDIDO, pedidos.f_pedido as FECHAREALIZADA, PEDIDOS.estado_pedido as ESTADO
+from PEDIDOS inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona inner join USUARIOS on
+PERSONAS.id_usuario = USUARIOS.id_usuario 
+where USUARIOS.id_usuario = id_u and month(PEDIDOS.f_pedido)= mes and (PEDIDOS.estado_pedido = 'entregado' or PEDIDOS.estado_pedido = 'cancelado');
+end if;
+
+-- el cliente sin tienda año elegido y mes elegido
+if cantidad_tiendas = 0 and año is not null and mes is not null 
+then
+select PEDIDOS.id_pedido as IDPEDIDO, pedidos.f_pedido as FECHAREALIZADA, PEDIDOS.estado_pedido as ESTADO
+from PEDIDOS inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona inner join USUARIOS on
+PERSONAS.id_usuario = USUARIOS.id_usuario 
+where USUARIOS.id_usuario = id_u and year(PEDIDOS.f_pedido)= año and month(PEDIDOS.f_pedido)= mes and (PEDIDOS.estado_pedido = 'entregado' or PEDIDOS.estado_pedido = 'cancelado');
+end if;
+
+end //
+DELIMITER ;
 
 
 -- * 1.1.4 Procedimiento. Ver Productos filtrado por Categoria y por Nombre de Producto en realizar pedido

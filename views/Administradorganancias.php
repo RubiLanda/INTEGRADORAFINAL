@@ -24,8 +24,8 @@
             include '../php/conexion.php';
             $conexion=new Database();
             $conexion->conectarBD();
-            $consulta="SELECT distinct year(f_entrega) as Año FROM PEDIDOS
-            where estado_pedido='entregado' order by Año";
+            $consulta="SELECT distinct year(PEDIDOS.f_entrega) as Año FROM PEDIDOS
+            where PEDIDOS.estado_pedido='entregado' order by Año";
             $años=$conexion->selectConsulta($consulta);
             foreach ($años as $value) {
               echo "<option value='$value->Año'>$value->Año</option>";
