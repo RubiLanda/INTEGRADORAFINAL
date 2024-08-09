@@ -68,7 +68,7 @@ if (isset($_SESSION['Rol']))
                     </div>
                     <div class="username">
                     <select class="form-select" aria-label="Default select example" id="genero" name="genero" required>
-                            <option disabled selected>Género</option>
+                    <option disabled selected value="NULL">Género</option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                             <option value="O">Otro</option>
