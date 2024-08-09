@@ -5,6 +5,7 @@ $conexion->conectarBD();
 extract($_POST);
 // esto es de productos
 if ($meses=="REPORTE POR MES"){
+    
     $mes = "NULL";
 }
 else{

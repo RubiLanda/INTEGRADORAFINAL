@@ -116,6 +116,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 input::placeholder {
     color: #9c6644; /* Cambia este valor al color que desees */
 }
+
 .tabla{
     background-color:  #ddb892 ;
     display: grid; /* Es para hacer una tabla  */
