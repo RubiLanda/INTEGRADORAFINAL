@@ -11,7 +11,7 @@ $patetrim=trim($pate);
 $matetrim=trim($mate);
 $teletrim=trim($tele);
 if(trim($naci)==''){
-    $naci=NULL;
+    $naci='0000-00-00';
 }
 
 $conexion->ejecutar("CALL INSERTAR_CLIENTES('$nameusertrim', '$contraencri', '$nomtrim', '$patetrim', '$matetrim', '$naci', '$gene', '$teletrim', @mensaje)");
