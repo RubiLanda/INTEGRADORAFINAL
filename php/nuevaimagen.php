@@ -13,7 +13,6 @@
 
    if($ImagenAntigua && $ImagenAntigua !== $NombreArchivo){
       $DireccionAntigua = $Direccion . $ImagenAntigua;
-      echo $DireccionAntigua;
       if (file_exists($DireccionAntigua)){
          unlink($DireccionAntigua);
       }
