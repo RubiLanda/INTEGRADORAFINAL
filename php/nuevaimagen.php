@@ -13,7 +13,7 @@ $DireccionConImagen = $Direccion . $NombreArchivo;
 $id = (int)$_POST['id'];
 
 // Consultar la imagen existente usando consultas preparadas
-$Imagenes = $Conexion->selectConsulta("SELECT imagen FROM PRODUCTOS WHERE id_producto = ?", [$id]);
+$Imagenes = $Conexion->selectConsulta("SELECT imagen FROM PRODUCTOS WHERE id_producto = $id");
 if (!$Imagenes || !isset($Imagenes[0]->imagen)) {
     die('No se encontró el producto o la imagen.');
 }
@@ -31,7 +31,7 @@ if ($ImagenAntigua && $ImagenAntigua !== $NombreArchivo) {
 
 if (move_uploaded_file($DireccionTemporal, $DireccionConImagen)) {
     // Llamada segura a la consulta
-    $resultado = $Conexion->ejecutar("CALL Modificar_Imagen_Producto(?, ?, @mensaje)", [$id, $NombreArchivo]);
+    $resultado = $Conexion->ejecutar("CALL Modificar_Imagen_Producto($id, '$NombreArchivo', @mensaje)");
     
     // Obtener el mensaje
     $consulta = $Conexion->selectConsulta("SELECT @mensaje as resultado");
