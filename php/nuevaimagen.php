@@ -11,9 +11,9 @@
    $Imagenes = $Conexion->selectConsulta("SELECT * FROM PRODUCTOS WHERE PRODUCTOS.id_producto = $id");
    $ImagenAntigua = $Imagenes[0]->imagen;
 
-   echo $DireccionAntigua;
    if($ImagenAntigua && $ImagenAntigua !== $NombreArchivo){
       $DireccionAntigua = $Direccion . $ImagenAntigua;
+      echo $DireccionAntigua;
       if (file_exists($DireccionAntigua)){
          unlink($DireccionAntigua);
       }
