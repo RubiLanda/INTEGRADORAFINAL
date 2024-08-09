@@ -3,8 +3,8 @@
     $Conexion = new Database();
     $Conexion->conectarBD();
    $NombreArchivo = $_FILES['imagen']['name'];
-   $DireccionTemporal = '/var/www/html/img/temporal'.$NombreArchivo;
-   $Direccion = 'var/www/html/img/productos/';
+   $DireccionTemporal = '/var/www/html/img/temporal/'.$NombreArchivo;
+   $Direccion = '/var/www/html/img/productos/';
    $DireccionConImagen = $Direccion.$NombreArchivo;
 
    $id = $_POST['id'];
