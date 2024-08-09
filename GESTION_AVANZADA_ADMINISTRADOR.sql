@@ -229,6 +229,18 @@ end //
 DELIMITER ;
 
 
+DELIMITER //
+CREATE PROCEDURE Ver_Informacion_Usuario(
+IN p_id_usuario INT 
+)
+BEGIN
+SELECT USUARIOS.username AS usuariop, CONCAT(nombre, ' ', a_p, ' ', a_m) AS Nombre, f_nac AS Fecha_nacimiento, genero AS Genero, telefono AS Telefono, DATE(USUARIOS.f_registro) AS FECHA
+FROM PERSONAS 
+INNER JOIN USUARIOS
+ON PERSONAS.id_usuario = USUARIOS.id_usuario
+WHERE USUARIOS.id_usuario = p_id_usuario;
+END //
+DELIMITER ;
 
 
 
