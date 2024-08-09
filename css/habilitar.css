@@ -1,0 +1,27 @@
+body{
+    background-color: #ddb892;
+    height: 100%;
+
+}
+.fondo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+    background-image: url(../img/backgroun.png);
+}
+.contenedor{
+    color: #ddb892;
+    background-color: #9c6644;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+    flex-direction: column;
+    border-radius: 15px;
+    
+}
