@@ -241,7 +241,6 @@ DELIMITER ;
 
 
 
-
 /* GESTION DEL MODULO DE PRODUCTOS*/
 -- 3.4.3 Agregar un nuevo producto
 DELIMITER //
