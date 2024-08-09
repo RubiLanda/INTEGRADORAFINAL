@@ -90,7 +90,7 @@ session_start();
                     <div class="dentro1">
                         <label for=""></label>
                         <select class="select" id="genero" aria-label="Default select example" name="genero" required>
-                            <option disabled selected>Género</option>
+                        <option disabled selected value="0">Género</option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                             <option value="O">Otro</option>

@@ -11,6 +11,9 @@ if (isset($nameuser, $contra, $nom, $pate, $mate, $naci, $gene, $tele)) {
     $aptrim = trim($pate);
     $amtrim = trim($mate);
     $teltrim = trim($tele);
+    if(trim($naci)==''){
+        $naci='0000-00-00';
+    }
 
     $conexion->ejecutar("CALL INSERTAR_ADMINISTRADORES('$usertrim', '$contraencrypt', '$nomtrim', '$aptrim', '$amtrim', '$naci', '$gene', '$teltrim', @message)");
     $consulta = $conexion->selectConsulta("SELECT @message as noti");
