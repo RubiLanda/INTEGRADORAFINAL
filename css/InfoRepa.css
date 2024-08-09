@@ -1,0 +1,255 @@
+body {
+    background-color: #ddb892;
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+    background-image: url('../img/backgroun.png');
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 120px;
+    background-color: #724a32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+header div {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header div .boto {
+    width: 140px;
+    height: 45px;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #ddb892;
+    border: 2px solid #ddb892;
+    border-radius: 10px;
+}
+
+
+img {
+    width: 9%;
+    height: auto;
+}
+
+.conte {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    width: 85%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 40px;
+    border-radius: 44px;
+    background-color: yellowgreen;
+}
+
+/* Main container styles */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    width: 85%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 40px;
+    background-color: violet;
+    border: 3px solid #724a32;
+    border-radius: 20px;
+}
+
+.contebut {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    width: 85%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 40px;
+    background-color: thistle;
+    border: 3px solid #724a32;
+    border-radius: 44px;
+}
+
+
+.contenedor {
+    color: #ddb892;
+    background-color: #9c6644;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+    border-radius: 15px;
+    width: 60%;
+    margin-top: 30px;
+
+
+}
+
+a {
+    border-radius: 15px;
+    padding: 10px;
+    color: #9c6644;
+    background-color: #ddb892;
+    border: #ddb892;
+    text-decoration: none;
+}
+
+.div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.tarjeta {
+    width: 10%;
+    height: 10%;
+    margin-right: 20px;
+    /* es para que si mi elemento esta a la izquierda, la informacion que esta a ala derecha me la empuje*/
+
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0 0;
+
+}
+
+/* Responsivo para pantallas más pequeñas */
+@media (max-width: 768px) {
+    header {
+        height: 100px;
+    }
+
+    header div .boto {
+        width: 120px;
+        height: 40px;
+    }
+
+    img {
+        width: 15%;
+    }
+
+    h1{
+        font-size: 40px;
+        padding-top: 10px;
+    }
+
+
+    .conte,
+    .contenedor,
+    .contebut {
+        width: 90%;
+        padding: 15px 30px;
+    }
+
+    .contenedor {
+        width: 80%;
+    }
+
+    .tarjeta {
+        width: 20%;
+        height: 20%;
+        padding-left: 20px;
+    }
+
+    input, table button {
+        width: 80px;
+        padding: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 80px;
+    }
+
+    header div {
+        width: 90%;
+    }
+
+    header div .boto {
+        width: 100px;
+        height: 35px;
+    }
+
+    img {
+        width: 10px;
+    }
+
+    h1{
+        font-size: 20px;
+        padding-top: 10px;
+    }
+
+    .conte,
+    .contenedor,
+    .contebut {
+        width: 900%;
+        padding: 10px 20px;
+    }
+
+    .contenedor {
+        width: 80%;
+    }
+
+    .tarjeta {
+        width: 20%;
+        height: 10%;
+        padding-left: 20px;
+    }
+
+    .titulo {
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    table input, table button {
+        width: 60px;
+        padding: 3px;
+    }
+}
