@@ -1494,27 +1494,27 @@ DELIMITER ;
 -- 4.2.1 Consulta de la informacion de determinado Repartidor 
 call Ver_Informacion_Repartidor(2);
 DELIMITER //
-CREATE PROCEDURE Ver_Informacion_Repa(
-    IN p_id_usuario INT
+CREATE PROCEDURE Ver_Informacion_Repartidor(
+IN p_id_usuario INT
 )
 BEGIN
-    SELECT 
-        USUARIOS.username AS Usuario,
-        CONCAT(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) AS Nombre,
-        PERSONAS.f_nac AS Fecha_nacimiento, 
-        PERSONAS.genero AS Genero, 
-        PERSONAS.telefono AS Telefono, 
-        DATE(USUARIOS.f_registro) AS Fecha_registro,  
-        REPARTIDORES.fol_liconducir AS Licencia_conducir, 
-        REPARTIDORES.f_ingreso AS Fecha_Ingreso 
-    FROM 
-        REPARTIDORES
-    INNER JOIN 
-        PERSONAS ON REPARTIDORES.id_persona = PERSONAS.id_persona
-    INNER JOIN 
-        USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
-    WHERE 
-        USUARIOS.id_usuario = p_id_usuario;
+SELECT 
+USUARIOS.username AS Usuario,
+CONCAT(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) AS Nombre,
+PERSONAS.f_nac AS Fecha_nacimiento, 
+PERSONAS.genero AS Genero, 
+PERSONAS.telefono AS Telefono, 
+DATE(USUARIOS.f_registro) AS Fecha_registro,  
+REPARTIDORES.fol_liconducir AS Licencia_conducir, 
+REPARTIDORES.f_ingreso AS Fecha_Ingreso 
+FROM 
+REPARTIDORES
+INNER JOIN 
+PERSONAS ON REPARTIDORES.id_persona = PERSONAS.id_persona
+INNER JOIN 
+USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
+WHERE 
+USUARIOS.id_usuario = p_id_usuario;
 END //
 
 DELIMITER ;
