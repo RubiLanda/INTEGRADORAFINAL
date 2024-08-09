@@ -96,7 +96,7 @@
 
         echo"<div class='contenedor'>";
         echo"<h1>INFORMACIÓN DE REPARTIDORES</h1>";
-      echo"<a href=\"gestionarepa.php
+      echo"<a href=\"gestionrepa.php
             \" >Dar de alta nuevo repartidor!</a>";
         foreach($repartidor as $repa){
             echo"<h3>$repa->Nombre</h3>";
