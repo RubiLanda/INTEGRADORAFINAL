@@ -1,8 +1,28 @@
+
 <?php
 session_start();
+if (isset($_SESSION['Rol'])){
+    if ($_SESSION['Rol'] != 1){
+        switch ($_SESSION['Rol']){
+            case 2:
+                header("Location: ClienteRealizarPedido.php");
+                break;
+            case 3:
+                header("Location: Repartidor.php");
+                break;
+        }
+    }
+}
+else {
+    header("Location: login.php");
+}
 
+$menu1 = isset($_GET['estado']) ? false : true;
+$menu2 = isset($_GET['estado']) ? false : true;
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +35,9 @@ session_start();
     <link rel="stylesheet" href="../css/AñadirAdmin.css">
     <title>La Espiga</title>
 </head>
-<body>
+<body style="display: flex; align-items: center; flex-direction: column;">
     <div class="fondo"></div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="toastContainer"></div>
     <header>
         <div>
             <button id="buttonMenu" class="boton">
@@ -24,13 +45,8 @@ session_start();
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                 </svg>
             </button>
-            <div>
+            <div> 
                 <div class='dropdown text-end'>
-                    <button id="carrito">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
-                        </svg>
-                    </button>
                     <a href='#' class='d-block link-dark text-decoration-none perfil' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'>
                         <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-person-fill' viewBox='0 0 16 16'>
                             <path d='M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6'/>
@@ -48,20 +64,31 @@ session_start();
         </div>
     </header>
 
-    <div class="menu oculto" id="menu">
+    <?php 
+    if ($menu1 && $menu2) {
+        echo "<div class=\"menu mostrar\" id=\"menu\">";
+    }
+    else {
+        echo "<div class=\"menu oculto\" id=\"menu\">";
+    }
+    ?>
         <div class="inicioMenu">
             <img src="../img/logo.png">
             <button id="regresar" class="boton">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                </svg>
+                  </svg>
             </button>
         </div>
         <div class="opciones">
-            <a href="ClienteRealizarPedido.php">Realizar Pedido</a>
-            <a href="">Ver historial</a>
-            <a href="#">Ver pedido</a>
-            <a href="">Mi cuenta</a>
+            <a href="AdministradorVerPedidos.php">Ver pedidos</a>
+            <a href="Administradorganancias.php">Ver Ganancias</a>
+            <a href="AdministradorGestionProductos.php">Gestionar productos y categorías</a>
+            <a href="AdminInventario.php">Añadir inventario</a>
+            <a href="habiydesarepa.php">Ver Repartidores</a>
+            <a href="#">Ver Administradores</a>
+            <a href="AdministradorVerTiendas.php">Ver Tiendas</a>
+            <a href="administrador.php">Mi cuenta</a>
         </div>
     </div>
     <div style="height: 170px;"></div>
