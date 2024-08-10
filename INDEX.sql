@@ -1,4 +1,5 @@
 -- 2.2.1 Registrar un cliente nuevo
+drop PROCEDURE INSERTAR_CLIENTES;
 DELIMITER //
 CREATE  PROCEDURE INSERTAR_CLIENTES(
 IN N_username VARCHAR(150),    -- varibales de entrada para el registro 
@@ -7,7 +8,7 @@ IN N_nombre VARCHAR(40),
 IN N_a_p VARCHAR(40),
 IN N_a_m VARCHAR(40),
 IN N_f_nac DATE,
-IN N_genero ENUM('M','F','O'),
+IN N_genero char(1),
 IN N_telefono CHAR(10),
 out mensaje text
 )
@@ -16,8 +17,8 @@ declare ultimaid_usuario int; -- declaramos algunas variables para guardar la id
 declare ultimaid_persona int;
 declare ultimaid_cliente int;
 declare userepe int;
-IF N_username='' or N_contraseña=''  or N_nombre=''  or N_a_p='' or N_f_nac=''  or 
-N_genero='' or N_telefono=''   -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
+IF N_username='' or N_contraseña=''  or N_nombre=''  or N_a_p='' or N_f_nac = '0000-00-00'  or 
+N_genero = '0' or N_telefono=''   -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
 then 
  set mensaje = 'NO PUEDES DEJAR ALGUN CAMPO VACIO';
 else

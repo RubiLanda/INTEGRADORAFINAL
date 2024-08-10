@@ -43,18 +43,24 @@ class Database {
     }
     function verifica($usuario, $password){
         try{
-            $sql = $this->PDO->query("SELECT USUARIOS.id_usuario AS ID, ROL_USUARIO.id_rol AS Rol, USUARIOS.contrasena AS Contrasena
-                                      FROM USUARIOS
-                                      inner join ROL_USUARIO ON USUARIOS.id_usuario = ROL_USUARIO.id_usuario
-                                      WHERE USUARIOS.username = '$usuario'");
-            while($renglon = $sql->fetch(PDO::FETCH_ASSOC)){
-                if (password_verify($password, $renglon['Contrasena'])){
-                    session_start();
-                    $_SESSION['ID'] = $renglon['ID'];
-                    $_SESSION['Rol'] = $renglon['Rol'];
-                }
-                else {
-                    echo "Contraseña Invalido";
+            $sql = $this->PDO->query("call BuscarUsuario('$usuario', @mensaje)");
+            $renglon = $sql->fetchAll(PDO::FETCH_OBJ);
+            if (count($renglon) == 0) {
+                $consulta = $this->PDO->query("SELECT @mensaje as resultado");
+                $mensaje = $consulta->fetchAll(PDO::FETCH_OBJ);
+                echo $mensaje[0]->resultado;
+            }
+            else {
+                foreach ($renglon as $fila) {
+                    if (password_verify($password, $fila->Contraseña)){
+                        session_start();
+                        $_SESSION['ID'] = $fila->ID;
+                        $_SESSION['Rol'] = $fila->Rol;
+                        echo $fila->Rol;
+                    }
+                    else {
+                        echo "Contraseña Invalido";
+                    }
                 }
             }
         }

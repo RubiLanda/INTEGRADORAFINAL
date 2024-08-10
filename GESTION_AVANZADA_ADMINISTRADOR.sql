@@ -1215,6 +1215,7 @@ where id_producto = iddproducto; -- donde el id de la consulta sea igual a la id
 end //
 DELIMITER ;
 
+drop PROCEDURE INSERTAR_ADMINISTRADORES
 ------ * 3.6.1 INSERTAR NUEVO ADMIN--------------------------------------------
 DELIMITER //
 CREATE PROCEDURE INSERTAR_ADMINISTRADORES(
@@ -1224,7 +1225,7 @@ IN N_nombre VARCHAR(40),
 IN N_a_p VARCHAR(40),
 IN N_a_m VARCHAR(40),
 IN N_f_nac DATE,
-IN N_genero ENUM('M','F','O'),
+IN N_genero char(1),
 IN N_telefono CHAR(10),
 OUT message text
 )
@@ -1233,8 +1234,8 @@ declare ultimaid_usuario int; -- declaramos algunas variables para guardar la id
 declare ultimaid_persona int;
 declare ultimaid_admin int;
 declare userrepetido int;
-IF N_username = '' or N_contraseña = '' or N_nombre = '' or N_a_p = '' or N_f_nac = '' or 
-N_genero = '' or N_telefono = ''   -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
+IF N_username = '' or N_contraseña = '' or N_nombre = '' or N_a_p = '' or N_f_nac = '0000-00-00' or 
+N_genero = '0' or N_telefono = ''   -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
 then 
 set message = 'NO PUEDES DEJAR CAMPOS VACIOS';
 else
@@ -1337,7 +1338,7 @@ end //
 DELIMITER ;
 
 
-drop PROCEDURE INSERTAR_REPARTIDORES
+drop PROCEDURE INSERTAR_REPARTIDORES;
 DELIMITER //
 create PROCEDURE INSERTAR_REPARTIDORES (
 IN N_username VARCHAR(150),    -- varibales de entrada para el registro del nuevo administrador
@@ -1346,7 +1347,7 @@ IN N_nombre VARCHAR(40),
 IN N_a_p VARCHAR(40),
 IN N_a_m VARCHAR(40),
 IN N_f_nac DATE,
-IN N_genero ENUM('M','F','O'),
+IN N_genero char(1),
 IN N_telefono CHAR(10),
 IN N_folioconducir CHAR(11),
 IN f_ingreso date,
@@ -1358,14 +1359,14 @@ declare ultimaid_persona int;
 declare ultimaid_repartidor int;
 declare userepetido int;
 declare licrepe int;
-IF N_username = '' or N_contraseña = ''  or N_nombre = ''  or N_a_p = '' or N_f_nac is null  or 
+IF N_username = '' or N_contraseña = ''  or N_nombre = ''  or N_a_p = '' or N_f_nac = '0000-00-00'  or 
 N_genero = '' or N_telefono = ''  or N_folioconducir = '' or f_ingreso = ''  -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
 then 
 
 set mensaje = 'No puedes dejar algún campo vacío';
 else
 
-if N_f_nac is null then 
+if N_f_nac = '0000-00-00' then 
 
 set mensaje = 'Ingresa la fecha de nacimiento';
 
@@ -1447,8 +1448,8 @@ declare ultimaid_repartidor int;
 declare userepetido int;
 declare licrepe int;
 
-IF N_username = '' or N_contraseña=''  or N_nombre=''  or N_a_p='' or N_f_nac=''  or 
-N_genero='' or N_telefono=''  or N_folioconducir='' or f_ingreso=''  -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
+IF N_username = '' or N_contraseña=''  or N_nombre=''  or N_a_p='' or N_f_nac='0000-00-00'  or 
+N_genero='0' or N_telefono=''  or N_folioconducir='' or f_ingreso='0000-00-00'  -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
 then 
 
 set mensaje = 'NO PUEDES DEJAR ALGUN CAMPO VACIO';
@@ -1473,7 +1474,7 @@ else
 IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
 AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -80 YEAR) -- si la fecha de nacimineto es menor que la fecha que se genere de hoy menos 18 años
 then
-insert into USUARIOS (username, contraseña, f_registro)  -- insertar en usuarios los datos
+insert into USUARIOS (username, contrasena, f_registro)  -- insertar en usuarios los datos
 values (N_username, N_contraseña,now());
 set ultimaid_usuario = last_insert_id(); -- guardar la ultima id que se genero con el auto-increment
 insert into ROL_USUARIO (id_rol,id_usuario) -- inmediatamente en la tabla de rol se le dara el rol de administrador
@@ -1851,5 +1852,60 @@ end if;
 set message = concat (msj_m , msj_b);
 
 end if;
+end //
+DELIMITER ;
+
+
+
+
+DELIMITER //
+create procedure BuscarUsuario(
+    in p_nombre_usuario varchar(150),
+    out mensaje text
+)
+begin
+
+declare p_id_usuario int;
+declare p_tipo_usuario int;
+declare p_estatus boolean;
+
+select ROL_USUARIO.id_rol, USUARIOS.id_usuario into p_tipo_usuario, p_id_usuario
+from ROL_USUARIO
+inner join USUARIOS on ROL_USUARIO.id_usuario = USUARIOS.id_usuario
+where USUARIOS.username = p_nombre_usuario;
+
+if p_tipo_usuario = 1 then
+
+select ADMINISTRADORES.estatus into p_estatus
+from USUARIOS
+inner join PERSONAS on USUARIOS.id_usuario = PERSONAS.id_usuario
+inner join ADMINISTRADORES on PERSONAS.id_persona = ADMINISTRADORES.id_persona
+where USUARIOS.id_usuario = p_id_usuario;
+
+end if;
+
+if p_tipo_usuario = 3 then
+
+select REPARTIDORES.estatus into p_estatus
+from USUARIOS
+inner join PERSONAS on USUARIOS.id_usuario = PERSONAS.id_usuario
+inner join REPARTIDORES on PERSONAS.id_persona = REPARTIDORES.id_persona
+where USUARIOS.id_usuario = p_id_usuario;
+
+end if;
+
+if p_estatus = 1 then
+
+select USUARIOS.id_usuario as ID, ROL_USUARIO.id_rol as Rol, USUARIOS.contrasena as Contraseña
+from USUARIOS
+inner join ROL_USUARIO on USUARIOS.id_usuario = ROL_USUARIO.id_usuario
+where USUARIOS.username = p_nombre_usuario;
+
+else 
+
+set mensaje = 'Este usuario esta desabilitado';
+    
+end if;
+
 end //
 DELIMITER ;
