@@ -87,11 +87,11 @@ $Conexion->conectarBD();
         </div>
         <div class="opciones">
             <a href="AdministradorVerPedidos.php">Ver pedidos</a>
-            <a href="?apartado=2">Ver Ganancias</a>
+            <a href="Administradorganancias.php">Ver Ganancias</a>
             <a href="AdministradorGestionProductos.php">Gestionar productos y categorías</a>
-            <a href="?apartado=4">Añadir inventario</a>
-            <a href="?apartado=5">Ver Repartidores</a>
-            <a href="?apartado=6">Ver Administradores</a>
+            <a href="AdminInventario.php">Añadir inventario</a>
+            <a href="habiydesarepa.php">Ver Repartidores</a>
+            <a href="AdminAñadir.php">Ver Administradores</a>
             <a href="#">Ver Tiendas</a>
             <a href="administrador.php">Mi cuenta</a>
         </div>
