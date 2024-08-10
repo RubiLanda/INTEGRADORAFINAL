@@ -6,7 +6,7 @@ $Conexion = new Database();
 $Conexion->conectarBD();
 $id_usuario = $_SESSION['ID'];
 
-$estado = $Conexion->selectConsulta("call verificarEstadoCuenta($persona)");
+$estado = $Conexion->selectConsulta("call verificarEstadoCuenta($id_usuario)");
 if ($estado == 0) {
     header("Location: ../php/cerrarSeccion.php");
 }
