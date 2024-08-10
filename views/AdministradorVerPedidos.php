@@ -6,9 +6,7 @@ $Conexion = new Database();
 $Conexion->conectarBD();
 $id_usuario = $_SESSION['ID'];
 
-if ($Conexion->selectConsulta("call verificarEstadoCuenta($persona)") == 0) {
-    header("Location: ../php/cerrarSeccion.php");
-}
+
 
 if (isset($_SESSION['Rol'])){
     if ($_SESSION['Rol'] != 1){
