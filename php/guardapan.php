@@ -17,8 +17,6 @@
   $pancategoria2=trim($pancategoria);
   $panprecio2 = trim($panprecio);
   $pandescripcion2 = trim($pandescripcion);
-
-  echo $NombreArchivo;
   
  if ($imagenPuesto == 1) {
     if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){

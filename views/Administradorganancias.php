@@ -21,8 +21,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
