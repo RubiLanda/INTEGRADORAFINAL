@@ -253,14 +253,7 @@ input[type="reset"]{
 
     
 }
- a{
-    border-radius: 15px;
-    padding: 10px;
-    color: #9c6644;
-    background-color: #ddb892;
-    border: #ddb892;
-    text-decoration: none;
-}
+ 
 .div{
     width: 100%;
     display: flex;
