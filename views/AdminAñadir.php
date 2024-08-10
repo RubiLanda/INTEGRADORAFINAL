@@ -8,55 +8,6 @@ $id = $_SESSION['ID'];
 
 $estado = $Conexion->selectConsulta("call verificarEstadoCuenta($id)");
 if ($estado == 0) {
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
     header("Location: ../php/cerrarSeccion.php");
 }
 
@@ -124,6 +75,57 @@ $menu2 = isset($_GET['estado']) ? false : true;
     </header>
 
     <?php 
+    if ($estado == 0) {
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+    }
     if ($menu1 && $menu2) {
         echo "<div class=\"menu mostrar\" id=\"menu\">";
     }
