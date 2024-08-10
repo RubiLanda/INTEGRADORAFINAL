@@ -336,8 +336,9 @@ $menu2 = isset($_GET['estado']) ? false : true;
             });
         }
     </script>
-    
+
     <script>
+        alert(1);
          const buttonMenu = document.getElementById('buttonMenu');
         const menu = document.getElementById('menu');
         const buttonRegresar = document.getElementById('regresar');
