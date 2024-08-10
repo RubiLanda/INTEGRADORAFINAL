@@ -337,9 +337,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
         }
     </script>
 
-    <script>
-        alert(1);
-         const buttonMenu = document.getElementById('buttonMenu');
+<script>
+      const buttonMenu = document.getElementById('buttonMenu');
         const menu = document.getElementById('menu');
         const buttonRegresar = document.getElementById('regresar');
 
@@ -349,11 +348,13 @@ $menu2 = isset($_GET['estado']) ? false : true;
 
         buttonRegresar.addEventListener('click', function() {
             menu.classList.add('oculto');
+            menu.classList.remove('mostrar')
         });
 
         document.addEventListener('click', function(event) {
             if (!menu.contains(event.target) && !buttonMenu.contains(event.target)) {
-                menu.classList.add('oculto');
+            menu.classList.remove('mostrar')
+            menu.classList.add('oculto');
             }
         });
     </script>
