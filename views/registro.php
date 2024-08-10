@@ -5,10 +5,10 @@ if (isset($_SESSION['Rol']))
     switch ($_SESSION['Rol'])
     {
         case 1:
-            header("Location: ../views/AdministradorVerPedidos.php");
+            header("Location: ../views/administrador.php");
             break;
         case 2:
-            header("Location: ../views/ClienteRealizarPedido.php");
+            header("Location: ../views/clientevista.php");
             break;
         case 3:
             header("Location: ../views/repartidor.php");
@@ -26,7 +26,7 @@ if (isset($_SESSION['Rol']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrate Ahora!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/diseñologin.css">
+    <link rel="stylesheet" href="../css/Diseñologin.css">
 </head>
 <body>
     <div class="formulario">
@@ -45,7 +45,7 @@ if (isset($_SESSION['Rol']))
                     <div class="username">
                         <input type="password"  minlength="7" name="vercontra" id="vercontra" required autocomplete="off" >
                         <label>Confirmar Contraseña:</label>
-                        <span id="errorVerificarContra" style="color: red; display: none;">las contraseñas no coinciden </span>
+
                     </div>
                 </div>
                 <div class="cajas">
@@ -68,7 +68,7 @@ if (isset($_SESSION['Rol']))
                     </div>
                     <div class="username">
                     <select class="form-select" aria-label="Default select example" id="genero" name="genero" required>
-                    <option disabled selected value="0">Género</option>
+                            <option disabled selected value="">Género</option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                             <option value="O">Otro</option>
@@ -103,16 +103,6 @@ function validartelefono(input){
 }; 
 
 function validarFormulario() {
-    const contraseña = document.getElementById('contraseña').value;
-    const vercontra = document.getElementById('vercontra').value;
-    const errorVerificarContra = document.getElementById('errorVerificarContra');
-        //validar contraseñas
-        if (contraseña !== vercontra) {
-        errorVerificarContra.style.display = 'block';
-        return false;
-    } else {
-        errorVerificarContra.style.display = 'none';
-    }
 
     // Si todo es válido, proceder con el registro
     registro();
@@ -131,6 +121,9 @@ function validarFormulario() {
 
         var contraseña=document.getElementById('contraseña');
         var contra=contraseña.value;
+
+        var vericontraseña=document.getElementById('vercontra');
+        var vericontra=vericontraseña.value;
 
         var nombre= document.getElementById('nombre');
         var nom=nombre.value;
@@ -178,7 +171,7 @@ if (contra.length<=7){
     $.ajax({
             type: 'POST',
             url: '../php/registro.php',
-            data: { nameuser: nameuser,contra:contra, nom:nom, pate:pate,
+            data: { nameuser: nameuser,contra:contra,vericontra:vericontra, nom:nom, pate:pate,
              mate:mate, gene:gene, naci:naci, tele:tele },
             success: function(response) {
 

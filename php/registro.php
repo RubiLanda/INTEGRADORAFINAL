@@ -14,14 +14,18 @@ if(trim($naci)==''){
     $naci='0000-00-00';
 }
 
-$conexion->ejecutar("CALL INSERTAR_CLIENTES('$nameusertrim', '$contraencri', '$nomtrim', '$patetrim', '$matetrim', '$naci', '$gene', '$teletrim', @mensaje)");
-$consulta=$conexion->selectConsulta("SELECT @mensaje as resultado");
-$mensaje = $consulta[0]->resultado;
-if ($mensaje == "REGISTRO EXITOSO") {
-    echo true;    
-}
-else {
-    echo $mensaje;
+if($contra==$vericontra){
+    $conexion->ejecutar("CALL INSERTAR_CLIENTES('$nameusertrim', '$contraencri', '$nomtrim', '$patetrim', '$matetrim', '$naci', '$gene', '$teletrim', @mensaje)");
+    $consulta=$conexion->selectConsulta("SELECT @mensaje as resultado");
+    $mensaje = $consulta[0]->resultado;
+    if ($mensaje == "REGISTRO EXITOSO") {
+        echo true;    
+    }
+    else {
+        echo $mensaje;
+    }
+}else{
+    echo "Las contraseñas no coinciden";
 }
 
 ?>
