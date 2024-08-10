@@ -290,12 +290,6 @@ input[type="reset"]{
     font-size: 20px;
     margin: 0 15px;
 }
-.opciones {
-    display: flex;
-    justify-content: center;
-    gap: 10px; 
-    margin-bottom: 20px;
-}
 .conthistorial{
     background-color: #9c6644; 
     border-radius: 15px; 
