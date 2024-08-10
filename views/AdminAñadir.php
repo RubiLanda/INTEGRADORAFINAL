@@ -104,62 +104,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
     </div>
     <div style="height: 170px;"></div>
 
-    <?php 
-    
-    if ($estado == 0) {
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-        echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
-    }
-    
-    ?>
-
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="toastContainer"></div>
     <div class="conte">
         <form class="contenedor">
