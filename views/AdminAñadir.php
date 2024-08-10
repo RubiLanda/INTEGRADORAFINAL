@@ -75,6 +75,37 @@ $menu2 = isset($_GET['estado']) ? false : true;
     </header>
 
     <?php 
+    
+    if ($menu1 && $menu2) {
+        echo "<div class=\"menu mostrar\" id=\"menu\">";
+    }
+    else {
+        echo "<div class=\"menu oculto\" id=\"menu\">";
+    }
+    ?>
+        <div class="inicioMenu">
+            <img src="../img/logo.png">
+            <button id="regresar" class="boton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                  </svg>
+            </button>
+        </div>
+        <div class="opciones">
+            <a href="AdministradorVerPedidos.php">Ver pedidos</a>
+            <a href="Administradorganancias.php">Ver Ganancias</a>
+            <a href="AdministradorGestionProductos.php">Gestionar productos y categorías</a>
+            <a href="AdminInventario.php">Añadir inventario</a>
+            <a href="habiydesarepa.php">Ver Repartidores</a>
+            <a href="#">Ver Administradores</a>
+            <a href="AdministradorVerTiendas.php">Ver Tiendas</a>
+            <a href="administrador.php">Mi cuenta</a>
+        </div>
+    </div>
+    <div style="height: 170px;"></div>
+
+    <?php 
+    
     if ($estado == 0) {
         echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
         echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
@@ -126,33 +157,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
         echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
         echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
     }
-    if ($menu1 && $menu2) {
-        echo "<div class=\"menu mostrar\" id=\"menu\">";
-    }
-    else {
-        echo "<div class=\"menu oculto\" id=\"menu\">";
-    }
+    
     ?>
-        <div class="inicioMenu">
-            <img src="../img/logo.png">
-            <button id="regresar" class="boton">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                  </svg>
-            </button>
-        </div>
-        <div class="opciones">
-            <a href="AdministradorVerPedidos.php">Ver pedidos</a>
-            <a href="Administradorganancias.php">Ver Ganancias</a>
-            <a href="AdministradorGestionProductos.php">Gestionar productos y categorías</a>
-            <a href="AdminInventario.php">Añadir inventario</a>
-            <a href="habiydesarepa.php">Ver Repartidores</a>
-            <a href="#">Ver Administradores</a>
-            <a href="AdministradorVerTiendas.php">Ver Tiendas</a>
-            <a href="administrador.php">Mi cuenta</a>
-        </div>
-    </div>
-    <div style="height: 170px;"></div>
 
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="toastContainer"></div>
     <div class="conte">
