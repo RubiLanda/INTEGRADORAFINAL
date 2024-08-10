@@ -5,9 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>GESTIONAR REPARTIDORES</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="../css/gestionrepa.css">
+        <link rel="stylesheet" href="../css/Gestionrepa.css">
     </head>
-    
     <body>
         <div class="fondo"></div>
         <form class="contenedor" action="" method="">
@@ -20,7 +19,11 @@
                     <input type="password" minlength="7" name="contraseña" id="contraseña" required autocomplete="off" >
                     <label>Confirmar Contraseña:</label>
                     <input type="password"  minlength="7" name="vercontra" id="vercontra" required autocomplete="off" >
-                    <span id="errorVerificarContra" style="color: red; display: none;">las contraseñas no coinciden </span>
+                  
+                    
+                    
+                    
+
                     <label>Nombre Completo:</label>
                     <input type="text" name="nombre" class="nombre" id="nombre" minlength="3" maxlength="50" required autocomplete="off">
                     <label>Apellido Paterno:</label>
@@ -31,7 +34,7 @@
                 
                 <div class="solo">
                     <div class="dentro1">
-                        <label for=""></label>
+                        <label for="">Género</label>
                         <select class="select" id="genero" aria-label="Default select example" name="genero" required>
                         <option disabled selected value="0">Género</option>
                             <option value="M">Masculino</option>
@@ -70,18 +73,9 @@
         };
 
         function validarFormulario() {
-            const contraseña = document.getElementById('contraseña').value;
-            const vercontra = document.getElementById('vercontra').value;
-            const errorVerificarContra = document.getElementById('errorVerificarContra');
-            const telefonoInput = document.getElementById('telefono');
-            //validar contraseñas
-            if (contraseña !== vercontra) {
-                errorVerificarContra.style.display = 'block';
-                return false;
-            } else {
-                errorVerificarContra.style.display = 'none';
-            }
             
+            const telefonoInput = document.getElementById('telefono');
+           
             // Si todo es válido, proceder con el registro
             añadirepa();
             return true;
@@ -99,6 +93,9 @@
                  
                  var contraseña=document.getElementById('contraseña');
                  var contra=contraseña.value;
+
+                 var vericontraseña=document.getElementById('vercontra');
+                 var vericontra=vericontraseña.value;
                  
                  var nombre= document.getElementById('nombre');
                  var nom=nombre.value;
@@ -154,7 +151,7 @@
                     $.ajax({
                      type: 'POST',
                      url: '../php/altarepa.php',
-                     data: { nameuser: nameuser,contra:contra, nom:nom, pate:pate,
+                     data: { nameuser: nameuser,contra:contra, vericontra:vericontra, nom:nom, pate:pate,
                         mate:mate, gene:gene, naci:naci, tele:tele,ingreso:ingreso,
                         folio:folio },
                         success: function(response) {

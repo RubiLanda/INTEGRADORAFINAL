@@ -18,9 +18,15 @@ if(trim($ingreso)==''){
 
 
 $contraencri= password_hash($contra, PASSWORD_DEFAULT);
-$conexion->ejecutar("CALL INSERTAR_REPARTIDORES('$usertrim', '$contraencri', '$nomtrim', '$patetrim', '$matetrim', '$naci', '$gene', '$teletrim', '$folitrim','$ingreso', @mensaje)");
-$consulta=$conexion->selectConsulta("SELECT @mensaje as resultado");
-$mensaje = $consulta[0]->resultado;
-echo $mensaje;
+
+if ($contra == $vericontra) {
+    $conexion->ejecutar("CALL INSERTAR_REPARTIDORES('$usertrim', '$contraencri','$nomtrim', '$patetrim', '$matetrim', '$naci', '$gene', '$teletrim', '$folitrim','$ingreso', @mensaje)");
+    $consulta=$conexion->selectConsulta("SELECT @mensaje as resultado");
+    $mensaje = $consulta[0]->resultado;
+    echo $mensaje;
+}
+else {
+    echo "Las contraseñas no coinciden";
+}
 
 ?>
