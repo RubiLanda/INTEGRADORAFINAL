@@ -8,6 +8,15 @@ $id = $_SESSION['ID'];
 
 $estado = $Conexion->selectConsulta("call verificarEstadoCuenta($id)");
 if ($estado == 0) {
+    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
+    echo "dsahkjhsadhsdahdadhghsahdjsadjadhajkdhsjdhajdhsajkhdaksdakjdasdkahdjshk";
     header("Location: ../php/cerrarSeccion.php");
 }
 
