@@ -59,10 +59,10 @@ if (isset($_SESSION['Rol']))
                 success: function(response) {
                     if (response == 1 || response == 2 || response == 3) {
                         if (response == 1) {
-                            window.location.href = 'Administrador.php';
+                            window.location.href = 'AdministradorVerPedidos.php';
                         }
                         if (response == 2) {
-                            window.location.href = 'Cliente.php';
+                            window.location.href = 'ClienteRealizarPedido.php';
                         }
                         if (response == 3) {
                             window.location.href = 'repartidor.php';
