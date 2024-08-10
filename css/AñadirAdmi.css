@@ -1,68 +1,7 @@
-body {
-    background-color: #ddb892;
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.fondo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    opacity: 0.3;
-    background-image: url('../img/backgroun.png'); 
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-a {
-    text-decoration: none;
-}
-
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    height: 120px;
-    background-color: #724a32;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3;
-}
-
-header div {
-    width: 90%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-header div .boto {
-    width: 140px;
-    height: 45px;
-    margin: 0 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    color: #ddb892;
-    border: 2px solid #ddb892;
-    border-radius: 10px;
-}
-
-
 img {
     width: 8.5%;
     height: auto;
 }
-
 .conten {
     color: #ddb892;
     display: flex;
@@ -254,22 +193,6 @@ tbody {
 
 /* Responsive design */
 @media (max-width: 576px)  { /* sm */
-    body { background-color: aqua;} 
-    header {
-        height: 100px;
-    }
-
-    header div {
-        width: 100%;
-        justify-content: right;
-    }
-
-    header div .boto {
-        width: 100px;
-        height: 35px;
-        margin: 0 5px;
-    }
-
     img {
         width: 23%;
         padding-right: 10px;
@@ -309,22 +232,6 @@ tbody {
     }
 }
 @media (max-width: 768px) and (min-width: 577px){/* md */
-    body { background-color: gold;}
-    header {
-        height: 100px;
-    }
-
-    header div {
-        width: 100%;
-        justify-content: right;
-    }
-
-    header div .boto {
-        width: 100px;
-        height: 35px;
-        margin: 0 5px;
-    }
-
     img {
         width: 13%;
         padding-right: 10px;
@@ -372,19 +279,6 @@ tbody {
     }
 }
 @media (max-width: 992px) and (min-width: 769px){  /* lg */
-    body {background-color: crimson;};
-    header {
-        height: 100px;
-    }
-    header div {
-        width: 100%;
-        justify-content: right;
-    }
-    header div .boto {
-        width: 100px;
-        height: 35px;
-        margin: 0 5px;
-    }
     img {
         width: 14%;
         padding-right: 15px;
@@ -418,22 +312,6 @@ tbody {
     }
 }
 @media (max-width: 1200px) and (min-width: 993px) {  /* xl */
-    body {background-color: violet;}
-    header {
-        height: 100px;
-    }
-
-    header div {
-        width: 100%;
-        justify-content: right;
-    }
-
-    header div .boto {
-        width: 100px;
-        height: 45px;
-        margin: 0 5px;
-    }
-
     img {
         width: 10%;
         padding-right: 13px;

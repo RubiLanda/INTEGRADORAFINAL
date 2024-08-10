@@ -1,30 +1,3 @@
-body {
-    background-color: #ddb892;
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.fondo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    opacity: 0.3;
-    background-image: url('../img/backgroun.png'); 
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-a {
-    text-decoration: none;
-}
-
 .conte {
     display: flex;
     flex-direction: column;
@@ -166,22 +139,6 @@ form{
 
 /*   */
 @media (max-width: 576px)  { /* sm */
-    body { background-color: aqua;} 
-    header {
-        height: 100px;
-    }
-
-    header div {
-        width: 100%;
-        justify-content: right;
-    }
-
-    header div .boto {
-        width: 100px;
-        height: 35px;
-        margin: 0 5px;
-    }
-
     img {
         width: 19%;
         padding-right: 10px;
@@ -221,22 +178,6 @@ form{
     }
 }
 @media (max-width: 768px) and (min-width: 577px){/* md */
-    body { background-color: gold;}
-    header {
-        height: 90px;
-    }
-
-    header div {
-        width: 100%;
-        justify-content: right;
-    }
-
-    header div .boto {
-        width: 100px;
-        height: 35px;
-        margin: 0 5px;
-    }
-
     img {
         width: 10%;
         padding-right: 10px;
@@ -269,22 +210,6 @@ form{
     }
 }
 @media (max-width: 992px) and (min-width: 769px){  /* lg */
-    body {background-color: crimson;}
-    header {
-        height: 100px;
-    }
-
-    header div {
-        width: 100%;
-        justify-content: right;
-    }
-
-    header div .boto {
-        width: 100px;
-        height: 35px;
-        margin: 0 5px;
-    }
-
     img {
         width: 12%;
         padding-right: 15px;
@@ -318,22 +243,6 @@ form{
     }
 }
 @media (max-width: 1200px) and (min-width: 993px) {  /* xl */
-    body {background-color: violet;}
-    header {
-        height: 1'spx;
-    }
-
-    header div {
-        width: 100%;
-        justify-content: right;
-    }
-
-    header div .boto {
-        width: 100px;
-        height: 35px;
-        margin: 0 5px;
-    }
-
     img {
         width: 12%;
         padding-right: 15px;
