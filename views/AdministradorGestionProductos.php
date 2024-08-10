@@ -1,6 +1,16 @@
 
 <?php
 session_start();
+
+include '../php/conexion.php';
+$Conexion=new Database();
+$Conexion->conectarBD();
+$persona = $_SESSION['ID'];
+
+if ($Conexion->selectConsulta("call verificarEstadoCuenta($persona)") == 0) {
+    header("Location: ../php/cerrarSeccion.php");
+}
+
 if (isset($_SESSION['Rol'])){
     if ($_SESSION['Rol'] != 1){
         switch ($_SESSION['Rol']){
@@ -133,9 +143,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
                                 <input class="dineros btn" type="text" id="inputpreciopan" name="panesprecio" maxlength="3" placeholder="Precio" oninput="validarprecio(this)">
                             <!-- este es mi select para asignarle una categoria al nuevo producto -->
                                 <?php
-                                include '../php/conexion.php';
-                                $Conexion = new Database();
-                                $Conexion->conectarBD();
                                
                                 echo "<div class= 'mb-3' id='consultacategoriasotravez'>";
                                

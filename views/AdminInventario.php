@@ -1,6 +1,16 @@
 
 <?php
 session_start();
+
+include '../php/conexion.php';
+$conexion = new Database();
+$conexion->conectarBD();
+$id = $_SESSION['ID'];
+
+if ($conexion->selectConsulta("call verificarEstadoCuenta($id)") == 0) {
+    header("Location: ../php/cerrarSeccion.php");
+}
+
 if (isset($_SESSION['Rol'])){
     if ($_SESSION['Rol'] != 1){
         switch ($_SESSION['Rol']){
@@ -92,10 +102,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
     </div>
     <div style="height: 170px;"></div>
     <?php
-    // Incluye el archivo que contiene la clase Database
-    include '../php/conexion.php';
-    $conexion = new Database();
-    $conexion->conectarBD(); // Establece la conexión a la base de datos
 
 
     // consulta para obtener el stock de productos

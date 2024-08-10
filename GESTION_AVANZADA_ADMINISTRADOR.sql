@@ -1909,3 +1909,38 @@ end if;
 
 end //
 DELIMITER ;
+
+
+DELIMITER //
+create procedure verificarEstadoCuenta(
+in p_id_usuario int
+)
+begin
+declare p_tipo_usuario int;
+
+select ROL_USUARIO.id_rol into p_tipo_usuario
+from USUARIOS
+inner join ROL_USUARIO on USUARIOS.id_usuario = ROL_USUARIO.id_usuario
+where USUARIOS.id_usuario = p_id_usuario;
+
+if p_tipo_usuario = 1 then
+
+select ADMINISTRADORES.estatus as Estatus
+from ADMINISTRADORES
+inner join PERSONAS on ADMINISTRADORES.id_persona = PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+where USUARIOS.id_usuario = p_id_usuario;
+
+end if;
+
+if p_tipo_usuario = 3 then 
+
+select REPARTIDORES.estatus as Estatus
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+where USUARIOS.id_usuario = p_id_usuario;
+
+end if;
+end //
+DELIMITER ;

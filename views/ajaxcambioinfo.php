@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+if (isset($_SESSION['Rol'])){
+    if ($_SESSION['Rol'] != 2){
+        switch ($_SESSION['Rol']){
+            case 1:
+                header("Location: AdministradorVerPedidos.php");
+                break;
+            case 3:
+                header("Location: Repartidor.php");
+                break;
+        }
+    }
+}
+else {
+    header("Location: login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

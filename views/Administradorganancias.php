@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+include '../php/conexion.php';
+$Conexion=new Database();
+$Conexion->conectarBD();
+$persona = $_SESSION['ID'];
+
+if ($Conexion->selectConsulta("call verificarEstadoCuenta($persona)") == 0) {
+    header("Location: ../php/cerrarSeccion.php");
+}
+
 if (isset($_SESSION['Rol'])){
     if ($_SESSION['Rol'] != 1){
         switch ($_SESSION['Rol']){
@@ -101,9 +111,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
           <select class="select" id='años' aria-label="Default select example" onchange="Ver_Ventas_Producto()">
             <option selected>REPORTE POR AÑO</option>
             <?php
-            include '../php/conexion.php';
-            $Conexion=new Database();
-            $Conexion->conectarBD();
             $consulta="SELECT distinct year(PEDIDOS.f_entrega) as Año FROM PEDIDOS
             where PEDIDOS.estado_pedido='entregado' order by Año";
             $años=$Conexion->selectConsulta($consulta);

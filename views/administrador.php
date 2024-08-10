@@ -1,6 +1,15 @@
 <?php
 session_start();
-$persona = $_SESSION['ID']; // ESTA ES EL ID DEL USUARIO NO DE LA PERSONA
+
+include '../php/conexion.php';
+$conexion = new Database();
+$conexion->conectarBD();
+$persona = $_SESSION['ID'];
+
+if ($conexion->selectConsulta("call verificarEstadoCuenta($persona)") == 0) {
+    header("Location: ../php/cerrarSeccion.php");
+}
+ // ESTA ES EL ID DEL USUARIO NO DE LA PERSONA
 if (isset($_SESSION['Rol'])){
     if ($_SESSION['Rol'] != 1){
         switch ($_SESSION['Rol']){
@@ -99,12 +108,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
       <!--FONDO DE LA PAGINA-->
     <div class="fondo"></div>
 
-    <?php
-     include '../php/conexion.php';
-     $conexion = new Database();
-     $conexion->conectarBD();
-    
-    
+    <?php    
 
      // AQUI LLAMO AL PROCEDIMIENTO ALMACENADO PARA MOSTRAR LA INFORMACION DEL USUARIO 
      $reg = $conexion->selectConsulta("CALL Ver_Informacion_Usuario($persona)");

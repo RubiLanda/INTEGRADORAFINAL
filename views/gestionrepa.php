@@ -1,3 +1,34 @@
+<?php
+session_start();
+
+require '../php/conexion.php';
+$Conexion = new Database();
+$Conexion->conectarBD();
+$id_usuario = $_SESSION['ID'];
+if ($Conexion->selectConsulta("call verificarEstadoCuenta($persona)") == 0) {
+    header("Location: ../php/cerrarSeccion.php");
+}
+
+if (isset($_SESSION['Rol'])){
+    if ($_SESSION['Rol'] != 1){
+        switch ($_SESSION['Rol']){
+            case 2:
+                header("Location: ClienteRealizarPedido.php");
+                break;
+            case 3:
+                header("Location: Repartidor.php");
+                break;
+        }
+    }
+}
+else {
+    header("Location: login.php");
+}
+
+$menu1 = isset($_GET['estado']) ? false : true;
+$menu2 = isset($_GET['estado']) ? false : true;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
