@@ -37,7 +37,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
 </head>
 <body style="display: flex; align-items: center; flex-direction: column;">
     <div class="fondo"></div>
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="toastContainer"></div>
     <header>
         <div>
             <button id="buttonMenu" class="boton">
@@ -107,7 +106,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
     // Ejecuta la consulta y almacena los resultados
     $stock = $conexion->selectConsulta($consultastock);
     ?>
-    <div class="fondo"></div>
     <div class="conte">
         <h1>STOCK PRODUCTOS</h1>
         <div class="contenedor">
@@ -190,6 +188,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         }
     </script>
     <script>
+        alert(1);
          const buttonMenu = document.getElementById('buttonMenu');
         const menu = document.getElementById('menu');
         const buttonRegresar = document.getElementById('regresar');
