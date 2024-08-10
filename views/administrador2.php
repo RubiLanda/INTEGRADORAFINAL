@@ -6,7 +6,8 @@ $conexion = new Database();
 $conexion->conectarBD();
 $persona = $_SESSION['ID'];
 
-if ($conexion->selectConsulta("call verificarEstadoCuenta($persona)") == 0) {
+$estado = $conexion->selectConsulta("call verificarEstadoCuenta($persona)");
+if ($estado == 0) {
     header("Location: ../php/cerrarSeccion.php");
 }
  // ESTA ES EL ID DEL USUARIO NO DE LA PERSONA
