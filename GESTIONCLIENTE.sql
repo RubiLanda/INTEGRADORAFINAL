@@ -456,27 +456,34 @@ end //
 DELIMITER ;
 
 
+drop procedure Cambiar_Estatus_Tienda;
  -- 1.4.5 cambiar estatus tienda
- DELIMITER //
+DELIMITER //
 create procedure Cambiar_Estatus_Tienda (
-	in dtienda int,
-    in estadoT boolean,
-    out mensaje text
+in dtienda int,
+in estadoT boolean,
+out mensaje text
 )
 begin 
-if estadoT =0 then
-	update TIENDAS
-    set estatus = estadoT
-    where id_tienda =dtienda ;
-    set mensaje='Tienda dada de baja exitosamente';
-    end if ;
-    if estadoT=1 then
-	update TIENDAS
-    set estatus = estadoT
-    where id_tienda = dtienda;
-    set mensaje='Tienda habilitada exitosamente';
-    end if ;
-    
+if estadoT = 0 then
+
+update TIENDAS
+set estatus = estadoT
+where TIENDAS.id_tienda = dtienda ;
+
+set mensaje='Tienda dada de baja exitosamente';
+
+end if ;
+if estadoT=1 then
+
+update TIENDAS
+set estatus = estadoT
+where TIENDAS.id_tienda = dtienda;
+
+set mensaje='Tienda habilitada exitosamente';
+
+end if ;
+
 end //
 DELIMITER ;
 
