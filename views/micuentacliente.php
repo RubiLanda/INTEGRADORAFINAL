@@ -177,9 +177,6 @@ else {
         });
     }
     cargarInformacionUsuario()
-</script>
-
-<script>
     function editarinfotienda(IDTI,nombretienda,direccion) {
         alert(1);
         // var nombre = document.getElementById(nombretienda);
