@@ -15,14 +15,45 @@ body {
     background-image: url(../img/backgroun.png);
 }
 
-.titulo {
+.botonV {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.botonV .button{
+    width: 140px;
+    height: 45px;
+    margin: 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
-    
+    background-color: #ddb892;
+    color: #9c6644;
+    border: 2px solid #ddb892;
+    border-radius: 10px;
 }
 
+.botonV {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+}
+
+.titulo {
+    width: 180px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.titulo2 {
+    width: 80%;
+    display: flex;
+}
 .contenedor {
     color: #ddb892;
     background-color: #9c6644;
@@ -30,7 +61,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 30px;
+    border-radius: 15px;
     width: 90%;
     max-width: 800px;
     margin: 30px auto;
@@ -78,11 +109,25 @@ body {
     .titulo h1 {
         font-size: 24px;
     }
+
+    .botonV {
+        width: 90%;
+    }
+
+    .botonV{
+        width: 100px;
+        height: 35px;
+    }
 }
 
 @media (max-width: 768px) and (min-width: 577px) {  /* md */
     .contenedor {
         padding: 18px;
+    }
+
+    .botonV{
+        width: 120px;
+        height: 40px;
     }
     
     .titulo h1 {
