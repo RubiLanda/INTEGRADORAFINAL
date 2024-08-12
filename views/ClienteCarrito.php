@@ -206,17 +206,17 @@ try {
                 }
             }
         });
-        function mostrarCarrito(){
+        function mostrarCarrito(current_page){
             $.ajax({
                 type: 'POST',
                 url: '../php/MostrarCarrito.php',
-                data: { current_page: pagina, mostrarStock: <?php echo $_GET['mostrarStock']?> },
+                data: { current_page: current_page, mostrarStock: <?php echo $_GET['mostrarStock']?> },
                 success: function(response) {
                     $('#VerCarrito').html(response);
                 }
             });
         }
-        mostrarCarrito()
+        mostrarCarrito(<?php echo $current_page?>)
         function mostrarPaginacion() {
             $.ajax({
                 type: 'POST',
@@ -231,7 +231,7 @@ try {
         function cambiarPaginacion(cambio) {
             pagina = cambio;
             mostrarPaginacion()
-            mostrarCarrito()
+            mostrarCarrito(pagina)
         }
 
         if (sessionStorage.getItem("mostrarStock") != null) {
