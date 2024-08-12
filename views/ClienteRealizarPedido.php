@@ -460,7 +460,7 @@ try {
             $.ajax({
                 type: 'POST',
                 url: '../php/MostrarPaginacion.php',
-                data: { pagina: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado?> },
+                data: { pagina: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado?>, tipo: 1 },
                 success: function(response) {
                     $('#paginacion').html(response);
                 }

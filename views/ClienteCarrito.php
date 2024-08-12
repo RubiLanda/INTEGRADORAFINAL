@@ -35,10 +35,6 @@ try {
     $total_records = count($productos_totales);
     $total_pages = ceil($total_records / $records_per_page);
 
-    if (empty($productos) && $current_page > 1) {
-        $current_page = $current_page - 1;
-    }
-
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -110,53 +106,7 @@ try {
             <hr>
             <div id="VerCarrito"></div>
     
-            <div class="paginacion">
-                <?php if ($total_pages > 1): ?>
-                    <?php if ($current_page > 1): ?>
-                        <div>
-                            <a style="border-radius: 30px 0 0 30px;" href="?page=<?php echo $current_page - 1; ?>">Anterior</a>
-                        </div>
-                    <?php endif; ?>
-                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                        <?php if ($current_page == 1 && $i == 1): ?>
-                            <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                <a style="border-radius: 30px 0 0 30px; background-color: #724a32; color: #ddb892; box-shadow: none;" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            </div>
-                        <?php elseif ($i == 1): ?>
-                            <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            </div>
-                        <?php endif ?>
-    
-                        <?php if ($current_page == $total_pages && $i == $current_page): ?>
-                            <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                <a style="border-radius: 0 30px 30px 0; background-color: #724a32; color: #ddb892; box-shadow: none;" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            </div>
-                        <?php elseif ($i == $total_pages): ?>
-                            <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            </div>
-                        <?php endif ?>
-                                
-                        <?php if ($i != 1 && $i != $total_pages): ?>
-                            <?php if ($i == $current_page): ?>
-                                <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                    <a style="background-color: #724a32; color: #ddb892; box-shadow: none;" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                                </div>
-                            <?php else: ?>
-                                <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                    <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                                </div>
-                            <?php endif ?>
-                        <?php endif ?>
-                    <?php endfor; ?>
-                    <?php if ($current_page < $total_pages): ?>
-                        <div>
-                            <a style="border-radius: 0 30px 30px 0;" href="?page=<?php echo $current_page + 1; ?>">Siguiente</a>
-                        </div>
-                    <?php endif; ?>
-                <?php endif ?>
-            </div>
+            <div class="paginacion" id="paginacion"></div>
             <hr>
         </div>
     
@@ -218,6 +168,12 @@ try {
         var fecha;
         var formaDePago;
 
+        var pagina;
+        
+        if (pagina == null){
+            pagina = 1;
+        }
+
         $.ajax({
             type: 'POST',
             url: '../php/VerificarCarrito.php',
@@ -250,17 +206,34 @@ try {
                 }
             }
         });
-        function mostrarCarrito(current_page){
+        function mostrarCarrito(){
             $.ajax({
                 type: 'POST',
                 url: '../php/MostrarCarrito.php',
-                data: { current_page: <?php echo $current_page ?>, mostrarStock: <?php echo $_GET['mostrarStock']?> },
+                data: { current_page: pagina, mostrarStock: <?php echo $_GET['mostrarStock']?> },
                 success: function(response) {
                     $('#VerCarrito').html(response);
                 }
             });
         }
         mostrarCarrito()
+        function mostrarPaginacion() {
+            $.ajax({
+                type: 'POST',
+                url: '../php/MostrarPaginacion.php',
+                data: { pagina: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado?>, tipo: 1 },
+                success: function(response) {
+                    $('#paginacion').html(response);
+                }
+            });
+        }
+        mostrarPaginacion()
+        function cambiarPaginacion(cambio) {
+            pagina = cambio;
+            mostrarPaginacion()
+            mostrarCarrito()
+        }
+
         if (sessionStorage.getItem("mostrarStock") != null) {
             mostrarStock = sessionStorage.getItem("mostrarStock");
         }
