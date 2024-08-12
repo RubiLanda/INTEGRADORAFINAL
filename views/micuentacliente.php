@@ -180,44 +180,44 @@ else {
 </script>
 
 <script>
-    alert(1);
     function editarinfotienda(IDTI,nombretienda,direccion) {
-        var nombre = document.getElementById(nombretienda);
-        var direccion = document.getElementById(direccion);
-        alert(nombre.value);
-        alert(direccion.value);
-        $.ajax({
-            type:'POST',
-            url:'../php/calleditartienda.php',
-            data: { IDTI: IDTI, nombre: nombre.value, direccion:direccion.value },
-            success: function(response) {
-                cargarInformacionUsuario()
-                var toastContainer = document.getElementById('imprimirnoti');
-                var newToast = document.createElement('div'); 
-                newToast.className = 'toast';
-                newToast.setAttribute('role', 'alert');
-                newToast.setAttribute('aria-live', 'assertive');
-                newToast.setAttribute('aria-atomic', 'true');
-                newToast.innerHTML =
-                `  
-                <div class="toast-header">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
-                </svg>
-                <strong class="me-auto">Nueva Notificación</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                ${response}
-                </div>
-                `;
-                toastContainer.appendChild(newToast);  
-                var toast = new bootstrap.Toast(newToast, {
-                    delay: 7000 
-                });
-                toast.show();
-            }
-        });
+        alert(1);
+        // var nombre = document.getElementById(nombretienda);
+        // var direccion = document.getElementById(direccion);
+        // alert(nombre.value);
+        // alert(direccion.value);
+        // $.ajax({
+        //     type:'POST',
+        //     url:'../php/calleditartienda.php',
+        //     data: { IDTI: IDTI, nombre: nombre.value, direccion:direccion.value },
+        //     success: function(response) {
+        //         cargarInformacionUsuario()
+        //         var toastContainer = document.getElementById('imprimirnoti');
+        //         var newToast = document.createElement('div'); 
+        //         newToast.className = 'toast';
+        //         newToast.setAttribute('role', 'alert');
+        //         newToast.setAttribute('aria-live', 'assertive');
+        //         newToast.setAttribute('aria-atomic', 'true');
+        //         newToast.innerHTML =
+        //         `  
+        //         <div class="toast-header">
+        //         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+        //         <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+        //         </svg>
+        //         <strong class="me-auto">Nueva Notificación</strong>
+        //         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        //         </div>
+        //         <div class="toast-body">
+        //         ${response}
+        //         </div>
+        //         `;
+        //         toastContainer.appendChild(newToast);  
+        //         var toast = new bootstrap.Toast(newToast, {
+        //             delay: 7000 
+        //         });
+        //         toast.show();
+        //     }
+        // });
     }
 
     buttonMenu.addEventListener('click', function() {
