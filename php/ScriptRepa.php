@@ -13,20 +13,22 @@ $consulta = "SELECT  PERSONAS.nombre as Nombre_A, PERSONAS.a_p as AP_A, PERSONAS
                 INNER JOIN REPARTIDORES ON PERSONAS.id_persona = REPARTIDORES.id_persona
                 WHERE USUARIOS.id_usuario = $persona";
 $reg = $conexion->selectConsulta($consulta);
-
-
-echo "<div class='fondoAdmin'>";
-echo "<div class='fondoAdmin2'>";
-echo "<div class='d-grid gap-2 d-md-flex justify-content-md-end '>";
-echo "<button class='botones' type='button'>";
-echo "<a href='../views/RepartidorMicuenta.php' class='button'>Volver</a>";
-echo "</button>";
-echo "</div>";
-echo "<h2>Mi Cuenta</h2>";
-echo "</div>";
-echo "<br>";
-echo "<div>";
-echo "<form>";
+echo "<div>
+    <div class=\"card contenedor\">
+        <div class=\"titulo2\">
+            <div class=\"botonV\">
+                <a href=\"../views/MiCuentaRepa.php\" class=\"button\">Volver</a>
+            </div>
+        </div>
+        <div class=\"titulo\">
+            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" fill=\"currentColor\" class=\"icono\" viewBox=\"0 0 16 16\">
+            <path d=\"M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325\"/>
+            </svg>
+            <h1 class=\"card-title\">EDITAR</h1>
+        </div>
+    <div class=\"tiende\">";
+echo "<p class=\"card-text\">";
+echo "<div class=\"div\">";
 
 foreach ($reg as $r) {
     echo "<div>";
