@@ -23,21 +23,11 @@ $categoria_seleccionado = isset($_GET['categoria']) ? $_GET['categoria'] : 0;
 
 $id_usuario = $_SESSION['ID'];
 
-$offset = ($current_page - 1) * $records_per_page;
-
 $Conexion = new Database();
 $Conexion->conectarBD();
 try {
     $Tiendas = $Conexion->selectConsulta("call Ver_Tiendas_Cliente('$id_usuario', 1)");
 
-    $productos_totales = $Conexion->selectConsulta("call Ver_Productos_Realizar_Pedido($id_usuario, $categoria_seleccionado, null, null, null)");
-    
-    $total_records = count($productos_totales);
-    $total_pages = ceil($total_records / $records_per_page);
-
-    $max_links = 5;
-    $start = max(1, $current_page - floor($max_links / 2));
-    $end = min($total_pages, $current_page + floor($max_links / 2));
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -236,35 +226,7 @@ try {
 
         </div>
 
-        <div class="paginacion">
-        <?php
-            if ($current_page > 1): ?>
-                <a href="?pagina=<?php echo ($current_page - 1)?>&&categoria=<?php echo $categoria_seleccionado?>"> < </a>
-            <?php endif;
-
-            if ($start > 1): ?>
-                <a href="?pagina=1&&categoria=<?php echo $categoria_seleccionado?>">1</a>
-                <?php if ($start > 2): ?>
-                    ...
-                <?php endif?>
-            <?php endif;
-
-            for($i = $start; $i <= $end; $i++): ?>
-                <a href="?pagina=<?php echo $i?>&&categoria=<?php echo $categoria_seleccionado?>" class="<?php if($i == $current_page) echo 'activo'; ?>"><?php echo $i ?></a>
-            <?php endfor;
-
-            if ($end < $total_pages): ?>
-                <?php if ($end < $total_pages - 1): ?>
-                    ...
-                <?php endif ?>
-                <a href="?pagina=<?php echo $total_pages?>&&categoria=<?php echo $categoria_seleccionado?>"><?php echo $total_pages?></a>
-            <?php endif;
-
-            if($current_page < $total_pages): ?>
-                <a href="?pagina=<?php echo ($current_page + 1)?>&&categoria=<?php echo $categoria_seleccionado?>"> ></a>
-            <?php endif;
-        ?>
-        </div>
+        <div class="paginacion" id="paginacion"></div>
         <hr>
         </div>
     </div>
@@ -291,6 +253,12 @@ try {
         var mostrarStock;
         var fechasBloqueadas;
         
+        var pagina;
+        
+        if (pagina == null){
+            pagina = 1;
+        }
+
         if (sessionStorage.getItem("mostrarStock") != null) {
             mostrarStock = sessionStorage.getItem("mostrarStock");
         }
@@ -487,7 +455,23 @@ try {
                 }
             });
         }
-        mostrarProductos(<?php echo $current_page ?>, <?php echo $categoria_seleccionado ?>)
+        mostrarProductos(pagina, <?php echo $categoria_seleccionado ?>)
+        function mostrarPaginacion() {
+            $.ajax({
+                type: 'POST',
+                url: '../php/MostrarPaginacion.php',
+                data: { pagina: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado?> },
+                success: function(response) {
+                    $('#paginacion').html(response);
+                }
+            });
+        }
+        mostrarPaginacion()
+        function cambiarPaginacion(cambio) {
+            pagina = cambio;
+            mostrarPaginacion()
+            mostrarProductos(pagina, <?php echo $categoria_seleccionado ?>)
+        }
 
         function cambiarValorParametroUrl(parametro, valor){
             const url = new URL(window.location.href); 
