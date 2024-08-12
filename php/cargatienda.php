@@ -4,7 +4,7 @@
  $conexion->conectarBD();
  session_start();
  $persona = $_SESSION['ID'];
- $tiendass=$conexion->selectConsulta("call Ver_Tiendas_Cliente($persona)");
+ $tiendass=$conexion->selectConsulta("call Ver_Tiendas_Cliente($persona, 0)");
  echo "<div>
  
  <div class=\"card contenedor\">
