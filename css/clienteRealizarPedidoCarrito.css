@@ -440,6 +440,13 @@
     .fecha_seleccionado {
         flex-direction: column;
     }
+    .confirmarCarritoFondo {
+        flex-direction: column-reverse;
+    }
+    .Total_Pagar {
+        border-radius: 0;
+        margin-bottom: 40px;
+    }
     .realizarPedido {
         width: 90%;
     }
@@ -476,6 +483,13 @@
 @media (max-width: 992px) and (min-width: 769px){  /* lg */
     .realizarPedido {
         width: 90%;
+    }
+    .confirmarCarritoFondo {
+        flex-direction: column-reverse;
+    }
+    .Total_Pagar {
+        border-radius: 0;
+        margin-bottom: 40px;
     }
     .fechas {
         flex-direction: column;
