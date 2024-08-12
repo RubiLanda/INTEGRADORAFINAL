@@ -180,8 +180,8 @@ else {
 </script>
 
 <script>
+    alert(1);
     function editarinfotienda(IDTI,nombretienda,direccion) {
-        alert(1);
         var nombre = document.getElementById(nombretienda);
         var direccion = document.getElementById(direccion);
         alert(nombre.value);
