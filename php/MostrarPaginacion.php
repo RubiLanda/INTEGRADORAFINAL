@@ -7,13 +7,24 @@ $Conexion->conectarBD();
 
 $id_usuario = $_SESSION['ID'];
 
-$categoria_seleccionado = $_POST['categoria_seleccionado'];
 $current_page = $_POST['pagina'];
 $records_per_page = 5;
 
 $offset = ($current_page - 1) * $records_per_page;
 
-$productos_totales = $Conexion->selectConsulta("call Ver_Productos_Realizar_Pedido($id_usuario, $categoria_seleccionado, null, null, null)");
+if ($_POST['tipo'] == 1) {
+    $categoria_seleccionado = $_POST['categoria_seleccionado'];
+    $productos_totales = $Conexion->selectConsulta("call Ver_Productos_Realizar_Pedido($id_usuario, $categoria_seleccionado, null, null, null)");
+    $productos = $Conexion->selectConsulta("call Ver_Productos_Realizar_Pedido($id_usuario, $categoria_seleccionado, null, $offset, $records_per_page)");
+}
+else if ($_POST['tipo'] == 2) {
+    $productos_totales = $Conexion->selectConsulta("call Ver_Carrito($id_usuario, null, null)"); 
+    $productos = $Conexion->selectConsulta("call Ver_Carrito($id_usuario, $offset, $records_per_page)");
+}
+
+if (empty($productos) && $current_page > 1) {
+    $current_page = $current_page - 1;
+}
 
 $total_records = count($productos_totales);
 $total_pages = ceil($total_records / $records_per_page);
