@@ -1501,6 +1501,7 @@ DELIMITER ;
 
 -- 4.2.1 Consulta de la informacion de determinado Repartidor 
 call Ver_Informacion_Repartidor(2);
+drop PROCEDURE Ver_Informacion_Repartidor
 DELIMITER //
 CREATE PROCEDURE Ver_Informacion_Repartidor(
 IN p_id_usuario INT
