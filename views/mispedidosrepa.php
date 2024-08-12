@@ -123,11 +123,13 @@ const buttonMenu = document.getElementById('buttonMenu');
 
         buttonRegresar.addEventListener('click', function() {
             menu.classList.add('oculto');
+            menu.classList.remove('mostrar')
         });
 
         document.addEventListener('click', function(event) {
             if (!menu.contains(event.target) && !buttonMenu.contains(event.target)) {
-                menu.classList.add('oculto');
+            menu.classList.remove('mostrar')
+            menu.classList.add('oculto');
             }
         });
   </script>
