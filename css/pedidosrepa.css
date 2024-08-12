@@ -1,0 +1,347 @@
+body {
+    background-color: #ddb892;
+    height: 100%;
+}
+
+.fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+    background-image: url(../img/backgroun.png);
+}
+
+.tabla {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    row-gap: 30px;
+}
+
+.pedido {
+    background-color: #9c6644;
+    color: #ddb892;
+    padding: 15px;
+    padding-bottom: 30px;
+    border-radius: 15px;
+}
+
+.pedido a, .pedido button, .Cancelar {
+    background-color: #ddb892;
+    color: #30231b;
+    border-radius: 15px;
+    font-size: 25px;
+    padding: 10px;
+    border: none;
+    font-weight: normal;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.check {
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.modal-header {
+    background-color: #b48263;
+    border: none;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    background-color: #9c6644;
+    color: #ddb892;
+}
+
+.pedido b {
+    font-size: 35px;
+    color: #f7d6b5;
+}
+
+.pedido h3 {
+    font-size: 28px;
+}
+
+.detalle {
+    padding: 100px;
+}
+
+.modal-header h1 {
+    color: #493c2f;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: 2fr 0.4fr 1fr;
+    text-align: center;
+}
+
+.info h3 {
+    border-bottom: solid 3px #ddb892;
+    padding: 10px 40px;
+}
+
+.info h2 {
+    border-bottom: solid 3px #ddb892;
+    padding-bottom: 10px;
+}
+
+.ModalDetalles {
+    max-width: 80%; 
+}
+
+.modal-content {
+    width: 100%; 
+    height: auto; 
+}
+
+.Titulo {
+    background-color: #9c6644;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ddb892;
+    width: 60%;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+
+.Titulo h1 {
+    border-bottom: solid 3px #ddb892;
+    width: 90%;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+hr {
+    padding: 2px;
+    border-radius: 15px;
+}
+
+.Tiendas {
+    background-color: #9c6644;
+    color:#ddb892;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.Tiendas .TituloTienda {
+    margin-bottom: 20px;
+    font-size: 60px;
+    border-bottom: solid 3px #ddb892;
+    width: 95%;
+    padding-bottom: 15px;
+}
+
+.Tienda {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: solid 3px #ddb892;
+    width: 95%;
+}
+
+.Tienda h3 {
+    font-size: 40px;
+    display: flex;
+    justify-content: start;
+    margin-left: 40px;
+    align-items: center;
+}
+
+.Tienda button, .Tienda a {
+    font-size: 25px;
+    background-color: #ddb892;
+    color: #30231b;
+    border: none;
+    border-radius: 15px;
+    font-weight: normal;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TituloPedidosTienda {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 62.9%;
+    background-color: #9c6644;
+    border-radius: 15px;
+    margin:auto;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+}
+
+.TituloPedidosTienda svg, .TituloPedidosTienda {
+    color: #ddb892;
+}
+
+.SinPedidos {
+    background-color: #9c6644;
+    color: #ddb892;
+    font-size: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.Contenedor {
+    display: flex; 
+    width: 100%; 
+    justify-content: center;
+}
+
+
+@media (max-width: 576px) {
+
+    .tabla {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+
+    .OpcionesPedidos {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .Tiendas .TituloTienda {
+        font-size: 40px;
+        width: 100%;
+    }
+
+    .Tienda {
+        grid-template-columns: 1fr;
+    }
+
+    .Tienda h3 {
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+    .Tienda button, .Tienda a {
+        font-size: 18px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .pedido h3, .pedido b {
+        font-size: 20px;
+    }
+
+
+    .pedido button, .pedido a {
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    .Titulo h1 {
+        font-size: 24px;
+    }
+
+    .info {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+ 
+    .Tiendas .TituloTienda{
+        font-size: 20px;
+    }
+    .ModalDetalles {
+        max-width: 95%; 
+    }
+
+    
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+
+   .TituloPedidosTienda {
+    width: 100%;
+    text-align: center;
+}
+.pedido h3, .pedido b {
+    font-size: 20px;
+}
+
+
+.pedido button, .pedido a {
+    font-size: 16px;
+    padding: 5px;
+}
+
+}
+
+/* Responsivo para pantallas medianas */
+@media (max-width: 992px) and (min-width: 769px) {
+
+    .tabla {
+        grid-template-columns: 1fr;
+    }
+
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+
+    .OpcionesPedidos {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .pedido h3 {
+        font-size: 24px;
+    }
+
+    .pedido button, .pedido a {
+        font-size: 20px;
+        padding: 8px;
+    }
+
+    .Titulo h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 993px) {
+
+
+   .TituloPedidosTienda {
+    width: 100%;
+    text-align: center;
+}
+}
+
+
+@media (max-width: 1400px) and (min-width: 1201px){  /* xxl */
+
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+    
+}
+
+
+
+

@@ -1,109 +1,30 @@
-<?php
-session_start();
-if (isset($_SESSION['Rol'])){
-    if ($_SESSION['Rol'] != 1){
-        switch ($_SESSION['Rol']){
-            case 2:
-                header("Location: ClienteRealizarPedido.php");
-                break;
-            case 3:
-                header("Location: Repartidor.php");
-                break;
-        }
-    }
-}
-else {
-    header("Location: login.php");
-}
-
-$menu1 = isset($_GET['estado']) ? false : true;
-$menu2 = isset($_GET['estado']) ? false : true;
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="icon" type="image/x-icon" href="../img/logo.png">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/habilitar.css">
-    <title>La Espiga</title>
-</head>
-<body style="display: flex; align-items: center; flex-direction: column;">
-    <div class="fondo"></div>
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="toastContainer"></div>
-    <header>
-        <div>
-            <button id="buttonMenu" class="boton">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                </svg>
-            </button>
-            <div> 
-                <div class='dropdown text-end'>
-                    <a href='#' class='d-block link-dark text-decoration-none perfil' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'>
-                        <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='currentColor' class='bi bi-person-fill' viewBox='0 0 16 16'>
-                            <path d='M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6'/>
-                        </svg>
-                    </a>
-                    <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1' data-popper-placement='bottom-end' style='position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-112px, 34px);'>
-                        <li><a class='dropdown-item' href='#'>hola</a></li>
-                        <li><a class='dropdown-item' href='#'>Settings</a></li>
-                        <li><a class='dropdown-item' href='#'>Profile</a></li>
-                        <li><hr class='dropdown-divider'></li>
-                        <li><a class='dropdown-item' href='../php/cerrarSeccion.php'>Cerrar Seccion</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <?php 
-    if ($menu1 && $menu2) {
-        echo "<div class=\"menu mostrar\" id=\"menu\">";
-    }
-    else {
-        echo "<div class=\"menu oculto\" id=\"menu\">";
-    }
-    ?>
-        <div class="inicioMenu">
-            <img src="../img/logo.png">
-            <button id="regresar" class="boton">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-                  </svg>
-            </button>
-        </div>
-        <div class="opciones">
-            <a href="AdministradorVerPedidos.php">Ver pedidos</a>
-            <a href="Administradorganancias.php">Ver Ganancias</a>
-            <a href="AdministradorGestionProductos.php">Gestionar productos y categorías</a>
-            <a href="AdminInventario.php">Añadir inventario</a>
-            <a href="#">Ver Repartidores</a>
-            <a href="AdminAñadir.php">Ver Administradores</a>
-            <a href="AdministradorVerTiendas.php">Ver Tiendas</a>
-            <a href="administrador.php">Mi cuenta</a>
-        </div>
-    </div>
-    <div style="height: 170px;"></div>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/pedidosrepa.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <title>HABILITAR Y DESHABILITAR REPAS</title>
+    </head>
+    <body>
+        <div class="fondo"></div>
         <?php 
+
+
+
     include '../php/conexion.php';
     $conexion=new Database();
     $conexion->conectarBD();
     
     //EN ESTE IF EL ISSET VA A VERIFICAR CUANDO UN VALOR ES NULO O NO ES NULO, DENTRO DE LA VARIABLE $id_repa guardo el get 
     // de la id para saber si es nulo o no es, cuando es nulo me va a mandar a ver repartidores, osea que es cuando ningun repartidor esta seleccionado
-    // y cuando no es nulo me va mandar a ver los pedidos de dicho repartidor seleccionado, o bueno de esa ID
+    // y cuando no es nulo me va mandar a ver los pedlidos de dicho repartidor seleccionado, o bueno de esa ID
     if (isset($_GET['idrepa'])){
         $id_repa = $_GET['idrepa'];
         $pedidosrepa=$conexion->selectConsulta("call Ver_Pedidos_Cliente_SinTienda_Repartidor('$id_repa',null)");
-        echo"<div class=\"cabeza\">
+        
+        echo"<div class=\"TituloPedidosTienda\">
         <h1> PEDIDOS</h1>
             <a href=\"?apartado=5&&estado=5\">
                 <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"50\" height=\"50\" fill=\"currentColor\" class=\"bi bi-arrow-left\" viewBox=\"0 0 16 16\">
@@ -111,83 +32,79 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 </svg>
             </a>
         </div>";
-        echo "<div class= \"tabla\">";
-        foreach($pedidosrepa as $pedidos){
-            $Cons = $conexion->selectConsulta("call Ver_Detalle_Pedido({$pedidos->ID})");
-            $Total_Pagar = $conexion->selectConsulta("call Calcular_Total_Pagar_Pedido({$pedidos->ID})");
-            echo"
-            <div class= \"pedido\">
-            <h1>#{$pedidos->ID}</h1>
-            <h3><b>Tienda:</b> {$pedidos->Tienda}</h3>
-            <h3><b>Direccion:</b> {$pedidos->Direccion}</h3>
-            <h3><b>Cliente:</b> {$pedidos->Cliente}</h3>
-            <h3><b>Fecha Pedido:</b> {$pedidos->Fecha_Pedido}</h3>
-            <h3><b>Fecha Requerido:</b> {$pedidos->Fecha_Requerido}</h3>";          
-            if($pedidos->Estado=='entregado'){
-                
-                echo"<h3><b>Fecha entregada:</b> {$pedidos->Fecha_entregada}</h3>";
-            }
-            
-            
-            echo"<h3><b>Estado del Pedido:</b> {$pedidos->Estado}</h3>";
-            echo "<button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalDetalles{$pedidos->ID}\">
-            Ver detalles del pedido
-            </button>";
-            
-            echo "<div class=\"modal fade\" id=\"ModalDetalles{$pedidos->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
-            <div class=\"modal-dialog ModalDetalles modal-dialog-centered modal-dialog-scrollable\">
-            <div class=\"modal-content\">
-            <div class=\"modal-header\">
-            <h1>Detalle del pedido #{$pedidos->ID}</h1>
-            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
-            </div>
-            <div class=\"modal-body\">";
-            if (count($Cons) == 0){
-                echo "<h2>El pedido no tiene productos</h2>";
-            }
-            else{
-                echo "<div class=\"info\">
-                <h2>Producto</h2>
-                <h2>Cantidad</h2>
-                <h2>Subtotal</h2>";
-                foreach ($Cons as $fi) {
-                    echo "<h3>{$fi->Producto}</h3>";
-                    echo "<h3>{$fi->Cantidad}</h3>";
-                    echo "<h3>{$fi->Total}</h3>";
-                }
-                echo "<h2></h2>
-                <h2>Total</h2>
-                <h2>\${$Total_Pagar[0]->Total}</h2>
-                </div>";
-            }
-            echo "</div>
-            </div>
-            </div>
-            </div>";
-            
-            
-            echo "</div>";
-            
+
+        if(count($pedidosrepa)==0){
+            echo "<div class=\"SinPedidos\">Este repartidor no ha entregado ningún pedido</div>";
         }
-        echo "</div>";
+        else{
+            echo "<div class=\"tabla\">";
+            foreach($pedidosrepa as $pedidos){
+                $Cons = $conexion->selectConsulta("call Ver_Detalle_Pedido({$pedidos->ID})");
+                $Total_Pagar = $conexion->selectConsulta("call Calcular_Total_Pagar_Pedido({$pedidos->ID})");
+                echo"<div class= \"pedido\">
+                <h1>#{$pedidos->ID}</h1>
+                <h3><b>Tienda:</b> {$pedidos->Tienda}</h3>
+                <h3><b>Direccion:</b> {$pedidos->Direccion}</h3>
+                <h3><b>Cliente:</b> {$pedidos->Cliente}</h3>
+                <h3><b>Fecha Pedido:</b> {$pedidos->Fecha_Pedido}</h3>
+                <h3><b>Fecha Requerido:</b> {$pedidos->Fecha_Requerido}</h3>";          
+                if($pedidos->Estado=='entregado'){
+                    
+                    echo"<h3><b>Fecha entregada:</b> {$pedidos->Fecha_entregada}</h3>";
+                }
+                echo"<h3><b>Estado del Pedido:</b> {$pedidos->Estado}</h3>";
+                echo "<button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalDetalles{$pedidos->ID}\">
+                Ver detalles del pedido
+                </button>";
+                echo "</div>";
+                echo "<div class=\"modal fade\" id=\"ModalDetalles{$pedidos->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+                <div class=\"modal-dialog ModalDetalles modal-dialog-centered modal-dialog-scrollable\">
+                <div class=\"modal-content\">
+                <div class=\"modal-header\">
+                <h1>Detalle del pedido #{$pedidos->ID}</h1>
+                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                </div>
+                <div class=\"modal-body\">";
+                if (count($Cons) == 0){
+                    echo "<h2>El pedido no tiene productos</h2>";
+                }
+                else{
+                    echo "<div class=\"info\">
+                    <h2>Producto</h2>
+                    <h2>Cantidad</h2>
+                    <h2>Subtotal</h2>";
+                    foreach ($Cons as $fi) {
+                        echo "<h3>{$fi->Producto}</h3>";
+                        echo "<h3>{$fi->Cantidad}</h3>";
+                        echo "<h3>{$fi->Total}</h3>";
+                    }
+                    echo "<h2></h2>
+                    <h2>Total</h2>
+                    <h2>\${$Total_Pagar[0]->Total}</h2>
+                    </div>";
+                }
+                echo "</div>
+            </div>
+        </div>
+    </div>";
+        }
+        echo"</div>";
     }
-    
-    
-    
-    
-    else {
+}
+else{
         $repartidor=$conexion->selectConsulta("call Ver_Repartidores(null)");
 
-        echo"<div class='contenedor'>";
-        echo"<h1>INFORMACIÓN DE REPARTIDORES</h1>";
-      echo"<a href=\"gestionrepa.php
-            \" >Dar de alta nuevo repartidor!</a>";
+        echo"<div class='Tiendas'>";
+        echo"<h1 class='TituloTienda'>INFORMACIÓN DE REPARTIDORES</h1>";
+       
+    
         foreach($repartidor as $repa){
+            echo"<div class='Tienda'>";
             echo"<h3>$repa->Nombre</h3>";
             if($repa->Estatus){
-                echo"<h3>Estado Actual: <input type='checkbox' onclick=\"HABILITAR(this,{$repa->ID})\" checked></h3>";
+                echo"<h3>Estado: <input type='checkbox' class=\"check\"  onclick=\"HABILITAR(this,{$repa->ID})\" checked></h3>";
             }else{
-                echo"<h3>Estado Actual: <input type='checkbox' onclick=\"HABILITAR(this,{$repa->ID})\" ></h3>";
+                echo"<h3>Estado: <input type='checkbox' class=\"check\" onclick=\"HABILITAR(this,{$repa->ID})\" ></h3>";
 
             }
             echo"<button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$repa->ID}\">
@@ -195,10 +112,9 @@ $menu2 = isset($_GET['estado']) ? false : true;
             </button>";
 
             //declaro mi variable y esa variable va a valer el id del repartidor que ya habia sacado anterioremente de mi consulta
-            echo  //AQUI EN VES DE QUE ME REDIRECCIONE A OTRA PAGINA ME DIRECCIONA A OTRA DENTRO DE ESTA MISMA PERO DEPENDIENDO DEL ID DEL REPARTIDOR
+             //AQUI EN VES DE QUE ME REDIRECCIONE A OTRA PAGINA ME DIRECCIONA A OTRA DENTRO DE ESTA MISMA PERO DEPENDIENDO DEL ID DEL REPARTIDOR
 
-            "<div class=\"a\">
-            <a href=\"?idrepa={$repa->ID}
+            echo"<a href=\"?idrepa={$repa->ID}
             \" >Ver Pedidos!</a>
             </div>";
             
@@ -212,6 +128,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             </div>
 
             <div class=\"modal-body\">
+            <h3><b>Usuario:</b> {$repa->usuario}<h3>
             <h3><b>Nombre:</b> {$repa->Nombre}<h3>
             <h3><b>Fecha Nacimiento:</b> {$repa->Fecha_nacimiento}</h3>
             <h3><b>Genero:</b> {$repa->Genero}</h3>
@@ -222,9 +139,9 @@ $menu2 = isset($_GET['estado']) ? false : true;
             </div>
             </div>
             </div>";
+            
         }
         echo"</div>";
-        
     }
     ?>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -271,30 +188,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
     });
 }
 </script>
-
-<script>
-      const buttonMenu = document.getElementById('buttonMenu');
-        const menu = document.getElementById('menu');
-        const buttonRegresar = document.getElementById('regresar');
-
-        buttonMenu.addEventListener('click', function() {
-            menu.classList.toggle('oculto');
-        });
-
-        buttonRegresar.addEventListener('click', function() {
-            menu.classList.add('oculto');
-            menu.classList.remove('mostrar')
-        });
-
-        document.addEventListener('click', function(event) {
-            if (!menu.contains(event.target) && !buttonMenu.contains(event.target)) {
-            menu.classList.remove('mostrar')
-            menu.classList.add('oculto');
-            }
-        });
-    </script>
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
 </body>
 </html>
 

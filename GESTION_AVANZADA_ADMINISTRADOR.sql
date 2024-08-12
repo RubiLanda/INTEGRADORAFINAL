@@ -5,18 +5,18 @@ in p_estatus boolean
 )
 begin
 if p_estatus is not null then
-
-select REPARTIDORES.id_repartidor as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, 
-REPARTIDORES.f_ingreso as Fecha_Ingreso, REPARTIDORES.fol_liconducir as licencia_conducir, REPARTIDORES.estatus as Estatus, REPARTIDORES.f_ingreso as Fecha_ingreso
-from REPARTIDORES
-inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+select REPARTIDORES.id_repartidor as ID, USUARIOS.username as usuario, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, 
+REPARTIDORES.f_ingreso as Fecha_Ingreso, REPARTIDORES.fol_liconducir as licencia_conducir, REPARTIDORES.estatus as Estatus
+from PERSONAS
+inner join USUARIOS on PERSONAS.id_usuario=USUARIOS.id_usuario
+inner join REPARTIDORES on PERSONAS.id_persona = REPARTIDORES.id_persona
 where REPARTIDORES.estatus = p_estatus;
 else
-
-select REPARTIDORES.id_repartidor as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, 
+select REPARTIDORES.id_repartidor as ID, USUARIOS.username as usuario, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, PERSONAS.telefono as Telefono, 
 REPARTIDORES.f_ingreso as Fecha_Ingreso, REPARTIDORES.fol_liconducir as licencia_conducir, REPARTIDORES.estatus as Estatus, REPARTIDORES.f_ingreso as Fecha_ingreso
-from REPARTIDORES
-inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona;
+from PERSONAS
+inner join USUARIOS on PERSONAS.id_usuario=USUARIOS.id_usuario
+inner join REPARTIDORES on PERSONAS.id_persona = REPARTIDORES.id_persona;
 end if;
 end //
 DELIMITER ;
