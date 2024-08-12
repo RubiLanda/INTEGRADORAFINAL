@@ -4,9 +4,10 @@
     $conexion->conectarBD();
     extract($_POST);
     if($_POST){
-        $conexion->ejecutar("CALL Cambiar_Estatus_Tienda($ID, $Estado, @mensaje)");
-        $consulta=$conexion->selectConsulta("SELECT @mensaje as resultado");
-        $mensaje = $consulta[0]->resultado;
-        echo $mensaje;
+        echo $Estado;
+        // $conexion->ejecutar("CALL Cambiar_Estatus_Tienda($ID, $Estado, @mensaje)");
+        // $consulta=$conexion->selectConsulta("SELECT @mensaje as resultado");
+        // $mensaje = $consulta[0]->resultado;
+        // echo $mensaje;
     }
 ?>
