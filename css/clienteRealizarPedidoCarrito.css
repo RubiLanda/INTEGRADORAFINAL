@@ -491,6 +491,13 @@
         border-radius: 0;
         margin-bottom: 40px;
     }
+    .confirmarCarritoFondo {
+        flex-direction: column-reverse;
+    }
+    .Total_Pagar {
+        border-radius: 0;
+        margin-bottom: 40px;
+    }
     .fechas {
         flex-direction: column;
     }
@@ -502,9 +509,23 @@
     .realizarPedido {
         width: 80%;
     }
+    .confirmarCarritoFondo {
+        flex-direction: column-reverse;
+    }
+    .Total_Pagar {
+        border-radius: 0;
+        margin-bottom: 40px;
+    }
 }
 @media (max-width: 1400px) and (min-width: 1201px){  /* xxl */
     .realizarPedido {
         width: 80%;
+    }
+    .confirmarCarritoFondo {
+        flex-direction: column-reverse;
+    }
+    .Total_Pagar {
+        border-radius: 0;
+        margin-bottom: 40px;
     }
 }
