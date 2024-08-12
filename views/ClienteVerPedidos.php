@@ -7,7 +7,7 @@ if (isset($_SESSION['Rol'])){
                 header("Location: AdministradorVerPedidos.php");
                 break;
             case 3:
-                header("Location: Repartidor.php");
+                header("Location: mispedidosrepa.php");
                 break;
         }
     }
