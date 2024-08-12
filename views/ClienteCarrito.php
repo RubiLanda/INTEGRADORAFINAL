@@ -216,7 +216,7 @@ try {
                 }
             });
         }
-        mostrarCarrito(<?php echo $current_page?>)
+        mostrarCarrito(pagina)
         function mostrarPaginacion() {
             $.ajax({
                 type: 'POST',
