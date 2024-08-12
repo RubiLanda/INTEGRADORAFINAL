@@ -322,12 +322,12 @@ hr {
         align-items: center;
     }
     .ContenedorOpciones {
-        width: 100%;
+        width: 60%;
     }
     .OpcionesPedidos {
         width: 100%;
         margin-left: 0;
-        border-radius: 0;
+        border-radius: 15px;
         margin-bottom: 30px;
     }
     .OpcionesAcomodadas {
@@ -356,12 +356,12 @@ hr {
         align-items: center;
     }
     .ContenedorOpciones {
-        width: 100%;
+        width: 60%;
     }
     .OpcionesPedidos {
         width: 100%;
         margin-left: 0;
-        border-radius: 0;
+        border-radius: 15px;
         margin-bottom: 30px;
     }
     .OpcionesAcomodadas {
@@ -379,9 +379,6 @@ hr {
     }
 }
 @media (max-width: 1400px) and (min-width: 1201px){  /* xxl */
-    body {
-        /* background-color: green; */
-    }
     .Pedidos {
         width: 100%;
     }
@@ -390,12 +387,12 @@ hr {
         align-items: center;
     }
     .ContenedorOpciones {
-        width: 100%;
+        width: 60%;
     }
     .OpcionesPedidos {
         width: 100%;
         margin-left: 0;
-        border-radius: 0;
+        border-radius: 15px;
         margin-bottom: 30px;
     }
     .OpcionesAcomodadas {
