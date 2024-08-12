@@ -2,10 +2,10 @@
 session_start();
 
 require '../php/conexion.php';
-$Conexion = new Database();
-$Conexion->conectarBD();
+$conexion = new Database();
+$conexion->conectarBD();
 $persona = $_SESSION['ID'];
-$consulta = $Conexion->selectConsulta("call verificarEstadoCuenta($persona)");
+$consulta = $conexion->selectConsulta("call verificarEstadoCuenta($persona)");
 $estado = $consulta[0]->Estatus;
 if ($estado == 0) {
     header("Location: ../php/cerrarSeccion.php");
@@ -88,9 +88,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
     <div style="height: 170px;"></div>
 <body>
     <?php
-    include '../php/conexion.php';
-    $conexion = new DataBase();
-    $conexion->conectarBD();
     $stmt = $conexion->selectConsulta("call Ver_Informacion_Repartidor($persona)");
 
     foreach ($stmt as $st) {
