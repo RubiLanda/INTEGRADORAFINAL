@@ -423,6 +423,7 @@ end //
 DELIMITER ;
 
 
+drop procedure Ver_Tiendas_Cliente;
 -- * 1.4.2 Consulta de las tiendas de determinado cliente
 DELIMITER //
 create procedure Ver_Tiendas_Cliente(
