@@ -23,14 +23,14 @@
  </div>";
  foreach($tiendass as $tienda){
      
-     echo "<h3><b>Nombre de la tienda:</b> <input type=\"text\" name=\"nombre\" class=\"inputs\" id='nombretienda{$tienda->IDTI}' value='{$tienda->Nombre}' minlength=\"3\" maxlength=\"50\"><h3>
-     <h3><b>Dirección: </b> <textarea name=\"direccion\" class=\"inputs direccion\" id='direccion{$tienda->IDTI}'  minlength=\"20\" maxlength=\"100\">{$tienda->Direccion}</textarea><h3>";
+     echo "<h3><b>Nombre de la tienda:</b> <input type=\"text\" name=\"nombre\" class=\"inputs\" id='nombretienda{$tienda->ID}' value='{$tienda->Nombre}' minlength=\"3\" maxlength=\"50\"><h3>
+     <h3><b>Dirección: </b> <textarea name=\"direccion\" class=\"inputs direccion\" id='direccion{$tienda->ID}'  minlength=\"20\" maxlength=\"100\">{$tienda->Direccion}</textarea><h3>";
      if($tienda->Estatus){
-         echo"<h3><b>Estado Actual:</b><input type='checkbox' class=\"check\" onclick=\"HABILITAR(this,{$tienda->IDTI})\" checked></h3>";
+         echo"<h3><b>Estado Actual:</b><input type='checkbox' class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID})\" checked></h3>";
         }else{
-            echo"<h3><b>Estado Actual:</b><input type='checkbox'  class=\"check\" onclick=\"HABILITAR(this,{$tienda->IDTI})\"</h3>";
+            echo"<h3><b>Estado Actual:</b><input type='checkbox'  class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID})\"</h3>";
         }
-        echo"<button type='button' class=\"inputs\" onclick=\"editarinfotienda({$tienda->IDTI},'nombretienda{$tienda->IDTI}','direccion{$tienda->IDTI}')\" class=\"div\">EDITAR</button>";
+        echo"<button type='button' class=\"inputs\" onclick=\"editarinfotienda({$tienda->ID},'nombretienda{$tienda->ID}','direccion{$tienda->ID}')\" class=\"div\">EDITAR</button>";
         echo"<hr>";
     }
     echo "</p>";
