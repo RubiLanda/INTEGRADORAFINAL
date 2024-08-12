@@ -17,7 +17,7 @@ echo "<div>
     <div class=\"card contenedor\">
         <div class=\"titulo2\">
             <div class=\"botonV\">
-                <a href=\"../views/RepartidorMiCuenta.php\" class=\"button\">Volver</a>
+                <a href=\"../views/RepartidorMicuenta.php\" class=\"button\">Volver</a>
             </div>
         </div>
         <div class=\"titulo\">
