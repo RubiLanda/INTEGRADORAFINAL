@@ -526,6 +526,9 @@ input[type="reset"]{
         margin-bottom: 20px;
         width: 100%;
     }
+    .centrarcategorias{
+        width: 85%;
+    }
     
     
 }
