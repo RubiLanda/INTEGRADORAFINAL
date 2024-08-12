@@ -491,7 +491,7 @@ input[type="reset"]{
     .botoncat{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
     }
     .radical{
         width: 95%;
@@ -592,7 +592,7 @@ input[type="reset"]{
     .botoncat{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
     }
     .radical{
         width: 70%;
@@ -675,7 +675,7 @@ input[type="reset"]{
     .botoncat{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
     }
     .radical{
         width: 75%;
@@ -753,7 +753,7 @@ input[type="reset"]{
     .botoncat{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
     }
     .radical{
         width: 75%;
