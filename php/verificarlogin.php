@@ -19,7 +19,7 @@ if (isset($_GET['usuario']) && isset($_GET['password'])){
                 header("Location: ../views/ClienteRealizarPedido.php");
                 break;
             case 3:
-                header("Location: ../views/repartidor.php");
+                header("Location: ../views/mispedidosrepa.php");
                 break;
         }
     }
