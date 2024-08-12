@@ -221,7 +221,7 @@ try {
             $.ajax({
                 type: 'POST',
                 url: '../php/MostrarPaginacion.php',
-                data: { pagina: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado?>, tipo: 1 },
+                data: { pagina: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado?>, tipo: 2 },
                 success: function(response) {
                     $('#paginacion').html(response);
                 }
