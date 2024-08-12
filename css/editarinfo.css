@@ -1,0 +1,91 @@
+body {
+    background-color: #ddb892;
+    height: 100%;
+}
+
+.fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+    background-image: url(../img/backgroun.png);
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    
+}
+
+.contenedor {
+    color: #ddb892;
+    background-color: #9c6644;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+
+.icono{
+    margin-right: 20px;
+}
+
+
+.inputs {
+    background-color: #ddb892;
+    border: none;
+    color: #9c6644;
+    border-radius: 15px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+
+.btn-guardar, .btn-cancelar {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+   
+}
+.botoncat button{
+    background-color: transparent;
+    border: none;
+}
+
+.botoncat input[type="reset"] {
+    display: none;
+}
+
+@media (max-width: 576px) {  /* sm */
+    .contenedor {
+        padding: 15px;
+    }
+    
+    .titulo h1 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 577px) {  /* md */
+    .contenedor {
+        padding: 18px;
+    }
+    
+    .titulo h1 {
+        font-size: 28px;
+    }
+}
