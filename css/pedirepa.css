@@ -1,0 +1,237 @@
+body{
+    background-color: #e4be98;
+    height: 100%;
+
+}
+.fondo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+    background-image: url(../img/backgroun.png);
+}
+
+.titulo {
+    background-color: #9c6644;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ddb892;
+    width: 60%;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.titulo h1 {
+    border-bottom: solid 3px #ddb892;
+    width: 90%;
+    text-align: center;
+    padding-bottom: 10px;}
+
+.contenedor {
+        display: flex; 
+        width: 100%; 
+        justify-content: center;
+    }
+
+.pedidos
+{
+        width: 70%;
+}
+
+.tabla 
+    {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+    
+
+    .pedido {
+        background-color: #9c6644;
+        color: #ddb892;
+        padding: 15px;
+        padding-bottom: 30px;
+        border-radius: 15px;
+    }
+    .pedido a, .pedido button, .Cancelar{
+        background-color: #ddb892;
+        color: #30231b;
+        border-radius: 15px;
+        font-size: 25px;
+        padding: 10px;
+        border: none;
+        font-weight: normal;
+        margin-right: 20px;
+        margin-top: 10px;
+    }
+    .modal-header {
+        background-color: #b48263;
+        border: none;
+    }
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        background-color: #9c6644;
+        color: #ddb892;
+    }
+
+    
+    .pedido b {
+        font-size: 35px;
+        color: #f7d6b5;
+    }
+    .pedido h3 {
+        font-size: 28px;
+    }
+    .detalle {
+        padding: 100px;
+    }
+    .modal-header h1 {
+        color: #493c2f;
+    }
+    .info {
+        display: grid;
+        grid-template-columns: 2fr 0.4fr 1fr;
+        text-align: center;
+    }
+    .info h3 {
+        border-bottom: solid 3px #ddb892;
+        padding: 10px 40px;
+    }
+    .info h2 {
+        border-bottom: solid 3px #ddb892;
+        padding-bottom: 10px;
+    }
+    .ModalDetalles {
+        max-width: 80%; 
+    }
+    
+    .modal-content {
+        width: 100%; 
+        height: auto; 
+    }
+       
+    .SinPedidos {
+     background-color: #9c6644;
+    color: #ddb892;
+    font-size: 40px;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    text-align: center;
+    width: 90%;
+    }
+ 
+    @media (max-width: 576px) {  /* sm */
+        .titulo{
+            width: 90%;
+        }
+        .titulo h1{
+            font-size: 35px;
+        }
+        .pedidos {
+            width: 90%;
+        }
+        .pedidos h3, .pedidos b {
+            font-size: 25px;
+        }
+        .pedido button{
+            padding: 10px 20px;
+            font-size: 15px; 
+            width: 25; 
+            height: 25%; 
+        }
+        .tabla {
+            display: flex;
+            flex-direction: column;
+        }
+        .ModalDetalles {
+            max-width: 100%; 
+        }
+
+        .contenedor {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+   
+    }
+    @media (max-width: 768px) and (min-width: 577px){  /* md */
+        .titulo{
+            width: 90%;
+        }
+        .titulo h1{
+            font-size: 45px;
+        }
+
+        .tabla {
+            display: flex;
+            flex-direction: column;
+        }
+        .Contenedor {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        
+    }
+    @media (max-width: 992px) and (min-width: 769px){  /* lg */
+        .titulo{
+            width: 90%;
+        }
+        .titulo h1{
+            font-size: 55px;
+        }
+
+        .tabla {
+            display: flex;
+            flex-direction: column;
+        }
+        .Contenedor {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+       
+    }
+    @media (max-width: 1200px) and (min-width: 993px) {  /* xl */
+        .titulo{
+            width: 90%;
+        }
+        .titulo h1{
+            font-size: 55px;
+        }
+
+        .pedidos {
+            width: 90%;
+        }
+        .contenedor {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+       
+    }
+    @media (max-width: 1400px) and (min-width: 1201px){  /* xxl */
+        .titulo{
+            width: 90%;
+        }
+        .titulo h1{
+            font-size: 60px;
+        }
+
+        .pedidos {
+            width: 90%;
+        }
+        .contenedor {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+       
+    }
