@@ -88,7 +88,7 @@ $usuario = $_SESSION['ID'];
             <a href="ClienteRealizarPedido.php">Realizar Pedido</a>
             <a href="#">Ver historial</a>
             <a href="ClienteVerPedidos.php">Ver pedido</a>
-            <a href="">Mi cuenta</a>
+            <a href="micuentacliente.php">Mi cuenta</a>
         </div>
     </div>
     <div style="height: 150px;"></div>

@@ -96,7 +96,7 @@ try {
             <a href="#">Realizar Pedido</a>
             <a href="ClienteHistorial.php">Ver historial</a>
             <a href="ClienteVerPedidos.php">Ver pedido</a>
-            <a href="">Mi cuenta</a>
+            <a href="micuentacliente.php">Mi cuenta</a>
         </div>
     </div>
     <div style="height: 150px;"></div>
