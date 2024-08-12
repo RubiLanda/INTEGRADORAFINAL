@@ -95,7 +95,7 @@ try {
         <div class="opciones">
             <a href="#">Realizar Pedido</a>
             <a href="ClienteHistorial.php">Ver historial</a>
-            <a href="">Ver pedido</a>
+            <a href="ClienteVerPedidos.php">Ver pedido</a>
             <a href="">Mi cuenta</a>
         </div>
     </div>
