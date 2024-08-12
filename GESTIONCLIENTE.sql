@@ -461,7 +461,7 @@ drop procedure Cambiar_Estatus_Tienda;
 DELIMITER //
 create procedure Cambiar_Estatus_Tienda (
 in dtienda int,
-in estadoT boolean,
+in estadoT int,
 out mensaje text
 )
 begin 
