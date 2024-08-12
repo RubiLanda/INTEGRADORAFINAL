@@ -5,13 +5,13 @@ if (isset($_SESSION['Rol']))
     switch ($_SESSION['Rol'])
     {
         case 1:
-            header("Location: ../views/AdministradorVerPedidos.php");
+            header("Location: AdministradorVerPedidos.php");
             break;
         case 2:
-            header("Location: ../views/ClienteRealizarPedido.php");
+            header("Location: ClienteRealizarPedido.php");
             break;
         case 3:
-            header("Location: ../views/repartidor.php");
+            header("Location: repartidor.php");
             break;
     }
 }

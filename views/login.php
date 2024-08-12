@@ -5,13 +5,13 @@ if (isset($_SESSION['Rol']))
     switch ($_SESSION['Rol'])
     {
         case 1:
-            header("Location: ../views/AdministradorVerPedidos.php");
+            header("Location: AdministradorVerPedidos.php");
             break;
         case 2:
-            header("Location: ../views/ClienteRealizarPedido.php");
+            header("Location: ClienteRealizarPedido.php");
             break;
         case 3:
-            header("Location: ../views/mispedidosrepa.php");
+            header("Location: mispedidosrepa.php");
             break;
     }
 }
@@ -65,7 +65,7 @@ if (isset($_SESSION['Rol']))
                             window.location.href = 'ClienteRealizarPedido.php';
                         }
                         if (response == 3) {
-                            window.location.href = 'repartidor.php';
+                            window.location.href = 'mispedidosrepa.php';
                         }
                     }
                     else {
