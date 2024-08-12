@@ -200,6 +200,36 @@ end if;
 end //
 DELIMITER ;
 
+ -- *3.1.4 ver los pedidos de un repartidor desde la vista del admin
+DELIMITER //
+create PROCEDURE Ver_Pedidos_Cliente_SinTienda_Repartidor(
+in idrepar int,
+in estado varchar(30)
+)
+begin
+
+if estado is not null then
+	select pedidos.id_pedido as ID, tiendas.nombre_tienda as Tienda, tiendas.direccion as Direccion, concat(personas.nombre, ' ', personas.a_p, ' ', personas.a_m) as Cliente, pedidos.f_pedido as Fecha_Pedido, pedidos.f_requerido as Fecha_Requerido, 
+	pedidos.f_entrega as Fecha_entregada, pedidos.estado_pedido as Estado
+	from pedidos
+	inner join tiendas on pedidos.id_tiendas = tiendas.id_tienda
+	inner join cliente_tienda on tiendas.id_tienda = cliente_tienda.id_tienda
+	inner join clientes on cliente_tienda.id_cliente = clientes.id_cliente
+	inner join personas on clientes.id_persona = personas.id_persona
+	where pedidos.id_repartidor = idrepar and pedidos.estado_pedido = estado;
+else 
+	select pedidos.id_pedido as ID, tiendas.nombre_tienda as Tienda, tiendas.direccion as Direccion, concat(personas.nombre, ' ', personas.a_p, ' ', personas.a_m) as Cliente, pedidos.f_pedido as Fecha_Pedido, pedidos.f_requerido as Fecha_Requerido, 
+	pedidos.f_entrega as Fecha_entregada, pedidos.estado_pedido as Estado
+	from pedidos
+	inner join tiendas on pedidos.id_tiendas = tiendas.id_tienda
+	inner join cliente_tienda on tiendas.id_tienda = cliente_tienda.id_tienda
+	inner join clientes on cliente_tienda.id_cliente = clientes.id_cliente
+	inner join personas on clientes.id_persona = personas.id_persona
+	where pedidos.id_repartidor = idrepar;
+end if;
+    
+end //
+DELIMITER ;
 
 -- * 3.7.4 Asignar repartidor a pedidos
 DELIMITER //
