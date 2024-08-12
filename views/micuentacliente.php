@@ -180,8 +180,6 @@ else {
     function editarinfotienda(IDTI,nombretienda,direccion) {
         var nombre = document.getElementById(nombretienda);
         var direccion = document.getElementById(direccion);
-        alert(nombre.value);
-        alert(direccion.value);
         $.ajax({
             type:'POST',
             url:'../php/calleditartienda.php',
