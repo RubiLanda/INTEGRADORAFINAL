@@ -386,7 +386,7 @@ end if;
 if modinombre=0 then
 if nombrenuevo !='' then
 update TIENDAS
-set TIENDAS.nombre_tienda=nombrenuevo
+set nombre_tienda=nombrenuevo
 where TIENDAS.id_tienda=idtienda;
 
 if contadorError=0 then
@@ -402,7 +402,7 @@ if modidire=0 then
 if direnueva !=''  then
 if length(direnueva)<=100 then
 update TIENDAS
-set TIENDAS.direccion=direnueva
+set direccion=direnueva
 where TIENDAS.id_tienda=idtienda;
 if contadorError=0 and contadorBueno=0 then
 set mensajeBueno='Direccion actualizada correctamente';
