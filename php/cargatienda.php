@@ -30,7 +30,7 @@
         }else{
             echo"<h3><b>Estado Actual:</b><input type='checkbox'  class=\"check\" onclick=\"HABILITAR(this,{$tienda->IDTI})\"</h3>";
         }
-        echo"<button type='button' class=\"inputs\" onclick=\"editarinfotienda({$tienda->IDTI},'nombretienda{$tienda->IDTI}','direccion{$tienda->IDTI}')\" class=\"div\">EDITAR</button>";
+        echo"<button type='button' class=\"inputs\" onclick=\"alert({tienda->IDTI}); editarinfotienda({$tienda->IDTI},'nombretienda{$tienda->IDTI}','direccion{$tienda->IDTI}')\" class=\"div\">EDITAR</button>";
         echo"<hr>";
     }
     echo "</p>";
