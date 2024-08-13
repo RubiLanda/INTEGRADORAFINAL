@@ -274,6 +274,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
             var fileInput = $(id_imagen)[0];
             var file = fileInput.files[0];
             
+            alert(1);
+
             var formData = new FormData();
             formData.append('nombre', nombre);
             formData.append('categoria',categoria);
