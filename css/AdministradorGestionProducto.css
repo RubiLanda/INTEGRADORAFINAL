@@ -460,6 +460,18 @@ input[type="reset"]{
 a {
     color: black;
 }
+.titulo2{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px 0;
+    width: 90%;
+   }
+   .botonV{
+    display: flex;
+    width: 25%;
+    justify-content: center;
+   }
 
 
 
@@ -941,18 +953,7 @@ a {
    
 }
 @media (max-width: 1400px) and (min-width: 1201){ /* xxl */
-    .titulo2{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin: 20px 0;
-        width: 90%;
-       }
-       .botonV{
-        display: flex;
-        width: 25%;
-        justify-content: center;
-       }
+   
     
 
 }
