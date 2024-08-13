@@ -416,7 +416,7 @@ try {
                 url: '../php/calcularFechaLimite.php',
                 data: { fecha: fecha },
                 success: function(response) {
-                    fecha_limite.innerHTML = "<b>Destino seleccionado: </b> " + response;
+                    fecha_limite.innerHTML = "<b>Fecha Limite: </b> " + response;
                 }
             });
         }
