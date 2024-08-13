@@ -158,6 +158,7 @@ $usuario = $_SESSION['ID'];
                 url: '../php/historial.php',
                 data: { a: a, m: m },
                 success: function(response) {
+                    alert(response);
                     // if (response == true) {
                     //     resultados.style.display = 'block';
                     //     // MENSAJDE DE SIN RESULTADOS 
@@ -166,9 +167,9 @@ $usuario = $_SESSION['ID'];
                     // else {
                     //     resultados.style.display = 'grid';
                     //     // MENSAJE CON RESULTADOS 
-                        
+                    //     $('#resultados').html(response);
+
                     // }
-                    $('#resultados').html(response);
                 }
             });
         }
