@@ -32,7 +32,21 @@ foreach($consulta as $h){
         <h1>#{$h->ID}</h1>
         <h3><b>Estado:</b> {$h->Estado}</h3>
         <h3><b>Fecha Realizada:</b> {$h->Fecha_Pedido}</h3>
-        <h3><b>Fecha Envío:</b> {$h->Fecha_Requerida}</h3>
+        <h3><b>Fecha Envío:</b> {$h->Fecha_Requerida}</h3>";
+        if($h ->Fecha_Limite != NULL){
+            echo"<h3><b>Fecha limite de pago:</b> {$h->Fecha_Limite}</h3>";
+        }
+        if($h ->Repartidor != NULL){
+            echo"<h3><b>Repartidor:</b> {$h->Repartidor}</h3>";
+        }
+        if($h ->Tienda != NULL){
+            echo"<h3><b>Tienda:</b> {$h->Tienda}</h3>";
+        }
+        if($h ->Direccion != NULL){
+            echo"<h3><b>Dirección:</b> {$h->Direccion}</h3>";
+        }
+
+        echo"
         <br>
         <button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalDetalles{$h->ID}\">
             Ver detalles del pedido
