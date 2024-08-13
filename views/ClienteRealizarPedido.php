@@ -555,6 +555,7 @@ try {
                         fecha_seleccionado.textContent = "Fecha seleccionado: " + valorSeleccionado;
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
     
+                        cancelarCarrito()
                         mostrarCategorias()
                         mostrarProductos(1, 0)
 
@@ -581,6 +582,7 @@ try {
                     fecha_seleccionado.textContent = "Fecha seleccionado: " + valorSeleccionado;
                     tienda_seleccionado.textContent = "Forma de recibir pedido: Recoger en sucursal";
 
+                    cancelarCarrito()
                     mostrarCategorias()
                     mostrarProductos(1, 0)
 
@@ -607,6 +609,7 @@ try {
                         fecha_seleccionado.textContent = "Fecha seleccionado: " + valorSeleccionado;
                         tienda_seleccionado.textContent = "Destino seleccionado: " + opcion_seleccionado.textContent;
         
+                        cancelarCarrito()
                         mostrarCategorias()
                         mostrarProductos(1, 0)
 

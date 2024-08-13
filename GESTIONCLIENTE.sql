@@ -1337,3 +1337,22 @@ end if;
 
 end //
 DELIMITER ;
+
+
+-- Calcular fecha limite
+DELIMITER //
+create procedure Calcular_Fecha_Limite(
+	in p_fecha_requerido date
+)
+begin
+	declare p_fecha_limite date;
+	if p_fecha_requerido < date_add(date(now()), interval 14 day) then
+		set p_fecha_limite = date_add(p_fecha_requerido, interval -1 day);
+		set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
+	else
+		set p_fecha_limite = date_add(p_fecha_requerido, interval -7 day);
+		set p_fecha_limite = date_add(date(p_fecha_limite), interval 20 hour);
+	end if;
+    select p_fecha_limite as Fecha;
+end //
+DELIMITER ;
