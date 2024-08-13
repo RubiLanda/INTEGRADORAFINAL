@@ -453,9 +453,11 @@ input[type="reset"]{
     background-color: transparent;
     border: none;
 }
-.botonV{
+.botonV a{
     background-color: #e7d2bc;
     border-radius: 15px;
+    color: black;
+    padding: 20px 30px;
 }
 a {
     color: black;
