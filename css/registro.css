@@ -1,0 +1,101 @@
+
+body {
+    background: linear-gradient(150deg, #F6DDCC, #BA4A00);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+form{
+    background-color: #ffffff;
+    box-shadow:0 0 20px rgb(0, 0, 0,0.2) ;
+    padding: 50px;
+    border-radius: 15px;
+    display:flex;
+    flex-direction:column;
+    text-align: center;
+    width: 380px;
+}
+
+
+form h2{
+    margin-bottom: 30px;
+}
+
+.inputs{
+    position: relative;
+    width: 305px;
+    margin-bottom: 20px ;
+}
+
+input{
+    color:#0D0D0D;
+    padding: 10px 10px 10px 10px;
+    width: 80%;
+    border-radius: 15px;
+    border: 0;
+    box-shadow: 0 0 10px rgba(131, 130, 130, 0.7);
+    
+}
+
+input::placeholder{
+    color: #BA4A00;
+}
+
+select#genero {
+    color: #BA4A00; /* Color inicial para el placeholder */
+}
+
+input[type="date"]::placeholder {
+    color: #BA4A00;
+}
+
+/* Estilo para navegadores que no soportan ::placeholder en input date */
+input[type="date"] {
+    color: #BA4A00;
+}
+
+.icono{
+   color:#BA4A00;
+   fill: #BA4A00;
+   margin-right: 15px;
+}
+.botonn{
+    padding: 15px;
+    background: linear-gradient(90deg,#dd915e, #BA4A00 );
+    border-radius: 20px;
+    border: 0;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
+a{
+    color:#a74300;
+}
+
+select{
+    color:#0D0D0D;
+    padding: 10px 10px 10px 10px;
+    width: 80%;
+    border-radius: 15px;
+    border: 0;
+    box-shadow: 0 0 10px rgba(131, 130, 130, 0.7);
+}
+
+@media (max-width: 576px) {  /* sm */
+   form{
+    width: 290px;
+   }
+   .inputs{
+    width: 215px;
+   }
+   .icono{
+    width: 20px;
+    height: 20px;
+   }
+}
+
+
