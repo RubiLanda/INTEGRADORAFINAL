@@ -18,7 +18,8 @@ if ($_POST) {
             <input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\">";
 
 
-            echo "<button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$fila->ID}\">
+            echo "<div>
+                    <button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$fila->ID}\">
                     Ver Informacion
                     </button>
                 </div>";
@@ -44,7 +45,6 @@ if ($_POST) {
                 </div>
                 </div>";
         }
-
-        echo "</div>";
     }
+    echo "</div>";
 }
