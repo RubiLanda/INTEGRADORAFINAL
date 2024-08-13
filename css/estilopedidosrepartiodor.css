@@ -13,6 +13,21 @@
     border-radius: 15px;
 }
 
+.refe{
+    background-color: #ddb892;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    font-weight: normal;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #000 !important; /* Reemplaza con el color deseado */
+    text-decoration: none !important; /* Elimina la línea subrayada */
+ 
+}
+
 .pedido a, .pedido button, .Cancelar {
     background-color: #ddb892;
     color: #30231b;

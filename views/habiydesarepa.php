@@ -97,6 +97,8 @@ else{
 
         echo"<div class='Tiendas'>";
         echo"<h1 class='TituloTienda'>INFORMACIÓN DE REPARTIDORES</h1>";
+        echo"<a class=\"refe\" href=\"gestionarepa.php
+        \" >Dar de alta nuevo repartidor!</a>";
        
     
         foreach($repartidor as $repa){
@@ -115,7 +117,7 @@ else{
             //declaro mi variable y esa variable va a valer el id del repartidor que ya habia sacado anterioremente de mi consulta
              //AQUI EN VES DE QUE ME REDIRECCIONE A OTRA PAGINA ME DIRECCIONA A OTRA DENTRO DE ESTA MISMA PERO DEPENDIENDO DEL ID DEL REPARTIDOR
 
-            echo"<a href=\"?idrepa={$repa->ID}
+            echo"<a class=\"refe\" href=\"?idrepa={$repa->ID}
             \" >Ver Pedidos!</a>
             </div>";
             
