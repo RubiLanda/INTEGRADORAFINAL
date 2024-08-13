@@ -158,18 +158,17 @@ $usuario = $_SESSION['ID'];
                 url: '../php/historial.php',
                 data: { a: a, m: m },
                 success: function(response) {
-                    alert(response);
-                    // if (response == true) {
-                    //     resultados.style.display = 'block';
-                    //     // MENSAJDE DE SIN RESULTADOS 
-                    //     $('#resultados').html("<div class=\"sinPedidos\">No se encontraron resultados</div>");
-                    // }
-                    // else {
-                    //     resultados.style.display = 'grid';
-                    //     // MENSAJE CON RESULTADOS 
-                    //     $('#resultados').html(response);
+                    if (response == true) {
+                        resultados.style.display = 'block';
+                        // MENSAJDE DE SIN RESULTADOS 
+                        $('#resultados').html("<div class=\"sinPedidos\">No se encontraron resultados</div>");
+                    }
+                    else {
+                        resultados.style.display = 'grid';
+                        // MENSAJE CON RESULTADOS 
+                        $('#resultados').html(response);
 
-                    // }
+                    }
                 }
             });
         }
