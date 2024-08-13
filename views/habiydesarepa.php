@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-include '../php/conexion.php';
-$conexion=new Database();
-$conexion->conectarBD();
-$persona = $_SESSION['ID'];
+require '../php/conexion.php';
+$Conexion = new Database();
+$Conexion->conectarBD();
+$id_usuario = $_SESSION['ID'];
 
-$consulta = $conexion->selectConsulta("call verificarEstadoCuenta($persona)");
+$consulta = $Conexion->selectConsulta("call verificarEstadoCuenta($id_usuario)");
 $estado = $consulta[0]->Estatus;
 if ($estado == 0) {
     header("Location: ../php/cerrarSeccion.php");
@@ -28,12 +28,12 @@ else {
     header("Location: login.php");
 }
 
+
 $menu1 = isset($_GET['estado']) ? false : true;
 $menu2 = isset($_GET['estado']) ? false : true;
 
 ?>
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,10 +43,12 @@ $menu2 = isset($_GET['estado']) ? false : true;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/estilopedidosrepartiodor.css">
     <title>La Espiga</title>
 </head>
 <body style="display: flex; align-items: center; flex-direction: column;">
     <div class="fondo"></div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="toastContainer"></div>
     <header>
         <div>
             <button id="buttonMenu" class="boton">
@@ -92,16 +94,16 @@ $menu2 = isset($_GET['estado']) ? false : true;
         <div class="opciones">
             <a href="AdministradorVerPedidos.php">Ver pedidos</a>
             <a href="Administradorganancias.php">Ver Ganancias</a>
-            <a href="#">Gestionar productos y categorías</a>
+            <a href="AdministradorGestionProductos.php">Gestionar productos y categorías</a>
             <a href="AdminInventario.php">Añadir inventario</a>
             <a href="habiydesarepa.php">Ver Repartidores</a>
             <a href="AdminAñadir.php">Ver Administradores</a>
-            <a href="AdministradorVerTiendas.php">Ver Tiendas</a>
+            <a href="#">Ver Tiendas</a>
             <a href="administrador.php">Mi cuenta</a>
         </div>
     </div>
     <div style="height: 170px;"></div>
-    
+
     <?php 
     //EN ESTE IF EL ISSET VA A VERIFICAR CUANDO UN VALOR ES NULO O NO ES NULO, DENTRO DE LA VARIABLE $id_repa guardo el get 
     // de la id para saber si es nulo o no es, cuando es nulo me va a mandar a ver repartidores, osea que es cuando ningun repartidor esta seleccionado
