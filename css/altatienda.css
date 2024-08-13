@@ -14,6 +14,25 @@ body{
     opacity: 0.3;
     background-image: url(../img/backgroun.png);
 }
+.refe{
+    background-color: #ddb892;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    font-weight: normal;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #000 !important; /* Reemplaza con el color deseado */
+    text-decoration: none !important; /* Elimina la línea subrayada */
+}
+.divrefe{
+    display: flex;
+    justify-content: end;
+    width: 90%;
+    margin-top: 5px;
+}
 .contenedor{
     color: #ddb892;
     background-color: #9c6644;

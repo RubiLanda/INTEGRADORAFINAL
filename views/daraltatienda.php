@@ -10,6 +10,10 @@
     <body>
         <div class="fondo"></div>
         <form class="contenedor" action="" method="">
+        <div class="divrefe">
+            <a class="refe" href="micuentacliente.php
+            " >Volver</a>
+            </div>
             <h1>REGISTRAR NUEVA TIENDA</h1>
             <div class=contenedoruno>
                 <div class="dentro1 solo" >
