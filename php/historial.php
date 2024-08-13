@@ -14,7 +14,6 @@ $historial = $Conexion->selectConsulta("CALL historial($ID, $a, $m)");
         echo true;
     }
     else {
-        echo count($historial);
         foreach($historial as $h){
             // PROCEDIMIENTO ALMACENADO PARA CALCULAR EL TOTAL A PAGAR DEL PEDIDO MEDIANTE LA ID
             $Total_Pagar = $Conexion->selectConsulta("call Calcular_Total_Pagar_Pedido({$h->IDPEDIDO})");

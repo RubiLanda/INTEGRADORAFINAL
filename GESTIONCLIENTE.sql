@@ -1,8 +1,8 @@
 -- 1.3.1 ver mis pedidos
 DELIMITER //
 create procedure mispedidos_cliente(
-	in iduser INT,
-    in estado varchar(50)
+in iduser INT,
+in estado varchar(50)
 )
 begin
 declare idcliente int;
@@ -13,27 +13,41 @@ inner join PERSONAS on CLIENTES.id_persona=PERSONAS.id_persona
 inner join USUARIOS on PERSONAS.id_usuario=USUARIOS.id_usuario
 where USUARIOS.id_usuario=iduser;
 
-	if estado is not null then
-		select PEDIDOS.id_pedido as ID, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_entrega as Fecha_entregada, PEDIDOS.f_requerido as Fecha_Requerida, PEDIDOS.estado_pedido as Estado, R.Nombre as Repartidor
-		from PEDIDOS
-		inner join (
-		select PEDIDOS.id_pedido as ID, PERSONAS.nombre as Nombre
-		from PEDIDOS
-		left join REPARTIDORES on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-		left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
-		where PEDIDOS.id_cliente = idcliente and PEDIDOS.estado_pedido = estado 
-		order by Fecha_Pedido desc;
-	else 
-		select PEDIDOS.id_pedido as ID, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_entrega as Fecha_entregada, PEDIDOS.f_requerido as Fecha_Requerida, PEDIDOS.estado_pedido as Estado, R.Nombre as Repartidor
-		from PEDIDOS
-		inner join (
-		select PEDIDOS.id_pedido as ID, PERSONAS.nombre as Nombre
-		from PEDIDOS
-		left join REPARTIDORES on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-		left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
-		where PEDIDOS.id_cliente = idcliente 
-		order by Fecha_Pedido desc;
-    end if;
+if estado is not null then
+select PEDIDOS.id_pedido as ID, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_requerido as Fecha_Requerida,
+case when
+TIENDAS.id_tienda is null then PEDIDOS.f_limitepago 
+else null 
+end as Fecha_limite,
+PEDIDOS.estado_pedido as Estado, R.Nombre as Repartidor,
+TIENDAS.nombre_tienda as Tienda, TIENDAS.direccion as Direccion
+from PEDIDOS
+inner join (
+select PEDIDOS.id_pedido as ID, PERSONAS.nombre as Nombre
+from PEDIDOS
+left join REPARTIDORES on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
+left join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
+where PEDIDOS.id_cliente = idcliente and PEDIDOS.estado_pedido = estado 
+order by Fecha_Pedido desc;
+else 
+select PEDIDOS.id_pedido as ID, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_requerido as Fecha_Requerida,
+case when
+TIENDAS.id_tienda is null then PEDIDOS.f_limitepago 
+else null 
+end as Fecha_limite,
+PEDIDOS.estado_pedido as Estado, R.Nombre as Repartidor,
+TIENDAS.nombre_tienda as Tienda, TIENDAS.direccion as Direccion
+from PEDIDOS
+inner join (
+select PEDIDOS.id_pedido as ID, PERSONAS.nombre as Nombre
+from PEDIDOS
+left join REPARTIDORES on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
+left join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
+where PEDIDOS.id_cliente = idcliente and PEDIDOS.estado_pedido not in ('cancelado', 'entregado')
+order by Fecha_Pedido desc;
+end if;
 END //
 DELIMITER ;
 
