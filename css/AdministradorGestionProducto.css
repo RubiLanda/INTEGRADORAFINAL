@@ -609,6 +609,10 @@ input[type="reset"]{
     flex-direction: column;
     margin: auto;
    }
+   .div200 b{
+    text-align: center;
+    align-items: center;
+   }
    
     
     
