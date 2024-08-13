@@ -699,10 +699,10 @@ input[type="reset"]{
         border-radius: 0px;
     }
     .contenedor2{
-        width: 85%;
+        width: 60%;
        }
        .inputs{
-        width: 85%;
+        width: 95%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -798,11 +798,9 @@ input[type="reset"]{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
-    .contenedor2{
-        width: 85%;
-       }
+   
        .inputs{
-        width: 85%;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
