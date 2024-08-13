@@ -433,6 +433,10 @@ input[type="reset"]{
     box-sizing: border-box;
     margin-top: 5px;
 }
+.tiende{
+    display: flex;
+    flex-direction: column;
+}
 
 
 
