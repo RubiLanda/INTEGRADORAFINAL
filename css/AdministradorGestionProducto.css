@@ -455,6 +455,7 @@ input[type="reset"]{
 }
 .botonV{
     background-color: #e7d2bc;
+    border-radius: 15px;
 }
 
 
@@ -598,7 +599,14 @@ input[type="reset"]{
     gap: 0px;
    }
    .contenedor2{
-    width: 90%;
+    width: 70%;
+   }
+   .inputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
    }
    
     

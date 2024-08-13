@@ -29,7 +29,7 @@ echo "<p class=\"card-text\">";
 echo "<div class=\"div200\">";
 
 foreach($reg as $r){
-   
+  
    echo"
     <h3><b>Nombre:</b><input type='text' name='nombre' class='inputs' id='nombre' value='{$r->Nombre_A}'oninput=Validarletras(this) minlength='3' maxlength='40'></h3>
     <h3><b>Apellido Paterno:</b><input type='text' name='paterno' class='inputs' id='paterno' value='{$r->AP_A}' oninput=Validarletras(this) minlength='3' maxlength='40'></h3>
