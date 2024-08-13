@@ -32,11 +32,11 @@ echo "<div class=\"div\">";
 
 foreach ($reg as $r) {
     echo "
-    <h3><b>Nombre:</b><input type=\"text\" name=\"NombreA\" class=\"inputs\" id=\"NombreA\" value='{$r->Nombre_A}'oninput=validarinputs(this) minlength=\"3\" maxlength=\"50\"></h3>
-    <h3><b>Apellido Paterno:</b><input type=\"text\" name=\"ApellidoP\" class=\"inputs\" id=\"ApellidoP\" value='{$r->AP_A}' oninput=validarinputs(this) minlength=\"3\" maxlength=\"50\"></h3>
-    <h3><b>Apellido Materno:</b><input type=\"text\" name=\"ApellidoM\" class=\"inputs\" id=\"ApellidoM\" value='{$r->AM_A}' oninput=validarinputs(this) minlength=\"3\" maxlength=\"50\"></h3>
-    <h3><b>Telefono:</b> <input type=\"tel\" name=\"TelefonoA\" id=\"TelefonoA\" class=\"inputs\" value='{$r->T_A}' oninput=validartelefono(this) minlength=\"10\" maxlength=\"10\"> </h3>
-    <h3><b>Folio de conducir:</b> <input type=\"text\" name=\"FolCondu\" id=\"FolCondu\" class=\"inputs\" value='{$r->FL_R}' oninput=validartelefono(this) minlength=\"10\" maxlength=\"10\"> </h3>
+    <h3><b>Nombre:</b><input type=\"text\" name=\"NombreA\" class=\"inputs\" id=\"NombreA\" value='{$r->Nombre_A}' oninput=Validarletras(this) minlength=\"3\" maxlength=\"50\"></h3>
+    <h3><b>Apellido Paterno:</b><input type=\"text\" name=\"ApellidoP\" class=\"inputs\" id=\"ApellidoP\" value='{$r->AP_A}' oninput=Validarletras(this) minlength=\"3\" maxlength=\"50\"></h3>
+    <h3><b>Apellido Materno:</b><input type=\"text\" name=\"ApellidoM\" class=\"inputs\" id=\"ApellidoM\" value='{$r->AM_A}' oninput=Validarletras(this) minlength=\"3\" maxlength=\"50\"></h3>
+    <h3><b>Telefono:</b> <input type=\"tel\" name=\"TelefonoA\" id=\"TelefonoA\" class=\"inputs\" value='{$r->T_A}' oninput=validarprecio(this) minlength=\"10\" maxlength=\"10\"> </h3>
+    <h3><b>Folio de conducir:</b> <input type=\"text\" name=\"FolCondu\" id=\"FolCondu\" class=\"inputs\" value='{$r->FL_R}' oninput=validarprecio(this) minlength=\"10\" maxlength=\"10\"> </h3>
     <div class='botoncat'>
     <button type='button' onclick=\"CambiarInfo($persona)\" >
     <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='green' class='bi bi-check-circle-fill' viewBox='0 0 16 16'>
