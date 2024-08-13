@@ -44,6 +44,11 @@ $menu2 = isset($_GET['estado']) ? false : true;
     <body>
         <div class="fondo"></div>
         <form class="contenedor" action="" method="">
+        <div class="divrefe">
+            <a class="refe" href="habiydesarepa.php
+            " >Volver</a>
+            </div>
+
             <h1>REGISTRAR NUEVO REPARTIDOR</h1>
             <div class=contenedoruno>
                 <div class="dentro1 solo" >
