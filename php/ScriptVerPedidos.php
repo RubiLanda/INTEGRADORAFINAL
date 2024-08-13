@@ -33,8 +33,8 @@ foreach($consulta as $h){
         <h3><b>Estado:</b> {$h->Estado}</h3>
         <h3><b>Fecha Realizada:</b> {$h->Fecha_Pedido}</h3>
         <h3><b>Fecha Envío:</b> {$h->Fecha_Requerida}</h3>";
-        if($h ->Fecha_Limite != NULL){
-            echo"<h3><b>Fecha limite de pago:</b> {$h->Fecha_Limite}</h3>";
+        if($h ->f_limitepago != NULL){
+            echo"<h3><b>Fecha limite de pago:</b> {$h->f_limitepago}</h3>";
         }
         if($h ->Repartidor != NULL){
             echo"<h3><b>Repartidor:</b> {$h->Repartidor}</h3>";
