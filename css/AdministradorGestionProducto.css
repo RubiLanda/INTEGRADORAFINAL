@@ -602,6 +602,7 @@ input[type="reset"]{
     width: 85%;
    }
    .inputs{
+    width: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
