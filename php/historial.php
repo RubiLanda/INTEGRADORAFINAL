@@ -10,10 +10,11 @@ if($_POST)
 {
   // AQUI LLAMAMOS EL PROCEDIMIENTO ALMACENADO PARA FILTRAR LOS PRODUCTOS   
 $historial = $Conexion->selectConsulta("CALL historial($ID, $a, $m)");
-    if (0 == 0) {
+    if (count($historial) == 0) {
         echo true;
     }
     else {
+        echo count($historial);
         foreach($historial as $h){
             // PROCEDIMIENTO ALMACENADO PARA CALCULAR EL TOTAL A PAGAR DEL PEDIDO MEDIANTE LA ID
             $Total_Pagar = $Conexion->selectConsulta("call Calcular_Total_Pagar_Pedido({$h->IDPEDIDO})");
