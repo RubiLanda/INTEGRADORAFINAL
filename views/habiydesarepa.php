@@ -285,6 +285,7 @@ else{
         });
 
         buttonRegresar.addEventListener('click', function() {
+            alert(1);
             menu.classList.add('oculto');
             menu.classList.remove('mostrar')
         });
