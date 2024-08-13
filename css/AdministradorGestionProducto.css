@@ -727,6 +727,18 @@ a {
         display: flex;
         justify-content: center;
        }
+       .titulo2{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 20px 0;
+        width: 90%;
+       }
+       .botonV{
+        display: flex;
+        width: 25%;
+        justify-content: center;
+       }
        
     
 }
@@ -825,6 +837,18 @@ a {
         display: flex;
         justify-content: center;
        }
+       .titulo2{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 20px 0;
+        width: 90%;
+       }
+       .botonV{
+        display: flex;
+        width: 25%;
+        justify-content: center;
+       }
        
     
     
@@ -900,12 +924,35 @@ a {
     .centrarcategorias input{
         margin-bottom: 10%;
     }
+    .titulo2{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 20px 0;
+        width: 90%;
+       }
+       .botonV{
+        display: flex;
+        width: 25%;
+        justify-content: center;
+       }
     
 
    
 }
 @media (max-width: 1400px) and (min-width: 1201){ /* xxl */
-   
+    .titulo2{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 20px 0;
+        width: 90%;
+       }
+       .botonV{
+        display: flex;
+        width: 25%;
+        justify-content: center;
+       }
     
 
 }
