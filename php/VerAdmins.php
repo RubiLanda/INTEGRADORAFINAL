@@ -11,19 +11,20 @@ if ($_POST) {
         echo "<div class='Tienda'>";
         echo "<h3>$fila->Nombre</h3>";
         if ($fila->Estatus) {
-            echo "<h3>Estado: <input type='checkbox' class=\"check\"  onclick=\"HABILITAR(this,{$fila->ID})\" checked></h3>";
+            echo "
+            <input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\" checked>";
         } else {
-            echo "<h3>Estado: <input type='checkbox' class=\"check\" onclick=\"HABILITAR(this,{$fila->ID})\" ></h3>";
-        }
-        echo "<button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$fila->ID}\">
+            echo "
+            <input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\">";
+
+
+            echo "<button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$fila->ID}\">
                     Ver Informacion
-                    </button>";
-        echo "<a href=\"?idrepa={$fila->ID}
-                \" >Ver Pedidos!</a>
+                    </button>
                 </div>";
 
 
-        echo "<div class=\"modal fade\" id=\"ModalInformacion{$fila->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+            echo "<div class=\"modal fade\" id=\"ModalInformacion{$fila->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
                 <div class=\"modal-dialog modal-dialog-centered\">
                 <div class=\"modal-content\">
                 <div class=\"modal-header\">
@@ -42,8 +43,8 @@ if ($_POST) {
                 </div>
                 </div>
                 </div>";
-    }
+        }
 
-    echo "</div>";
+        echo "</div>";
+    }
 }
-?>

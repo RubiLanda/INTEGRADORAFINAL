@@ -193,6 +193,67 @@ tbody {
         width: 23%;
         padding-right: 10px;
     }
+
+    .tabla {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+
+    .OpcionesPedidos {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .Tiendas .TituloTienda {
+        font-size: 40px;
+        width: 100%;
+    }
+
+    .Tienda {
+        grid-template-columns: 1fr;
+    }
+
+    .Tienda h3 {
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+    .Tienda button, .Tienda a {
+        font-size: 18px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .pedido h3, .pedido b {
+        font-size: 20px;
+    }
+
+
+    .pedido button, .pedido a {
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    .Titulo h1 {
+        font-size: 24px;
+    }
+
+    .info {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .Tiendas .TituloTienda{
+        font-size: 20px;
+    }
+    .ModalDetalles {
+        max-width: 95%; 
+    }
+
     .conte{
         padding-top: 25%;
         display: flex;
@@ -232,6 +293,21 @@ tbody {
         width: 13%;
         padding-right: 10px;
     }
+    
+    .TituloPedidosTienda {
+    width: 100%;
+    text-align: center;
+}
+.pedido h3, .pedido b {
+    font-size: 20px;
+}
+
+
+.pedido button, .pedido a {
+    font-size: 16px;
+    padding: 5px;
+}
+
     .conte{
         padding-top: 10%;
         display: flex;
@@ -279,6 +355,34 @@ tbody {
         width: 14%;
         padding-right: 15px;
     }
+
+    .tabla {
+        grid-template-columns: 1fr;
+    }
+
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+
+    .OpcionesPedidos {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .pedido h3 {
+        font-size: 24px;
+    }
+
+    .pedido button, .pedido a {
+        font-size: 20px;
+        padding: 8px;
+    }
+
+    .Titulo h1 {
+        font-size: 28px;
+    }
+
     .conte{
         padding-top: 10%;
         display: flex;
@@ -312,6 +416,12 @@ tbody {
         width: 10%;
         padding-right: 13px;
     }
+
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+
     .conte{
         padding-top: 7%;
         display: flex;
@@ -355,4 +465,12 @@ tbody {
         width: 97%;
         margin-bottom: 20px;
     }
+}
+@media (max-width: 1400px) and (min-width: 1201px){  /* xxl */
+
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+    
 }
