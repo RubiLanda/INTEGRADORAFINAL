@@ -26,7 +26,7 @@
         </div>
     <div class=\"tiende\">";
 echo "<p class=\"card-text\">";
-echo "<div class=\"div\">";
+echo "<div class=\"div200\">";
 
 foreach($reg as $r){
    

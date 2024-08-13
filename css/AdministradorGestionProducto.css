@@ -437,6 +437,12 @@ input[type="reset"]{
     display: flex;
     flex-direction: column;
 }
+.div200 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 
 
