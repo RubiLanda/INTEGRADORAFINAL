@@ -443,7 +443,7 @@ input[type="reset"]{
     justify-content: center;
     flex-direction: column;
 }
-.botoncat2 {
+.botoncat2 .botoncat2 button {
     background-color: transparent;
     border: none;
     display: flex;
