@@ -398,6 +398,43 @@ input[type="reset"]{
     margin: 0 auto;
 }
 
+.titulo2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    
+}
+
+.contenedor2 {
+    color: #ddb892;
+    background-color: #9c6644;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+
+.icono{
+    margin-right: 20px;
+}
+.inputs {
+    background-color: #ddb892;
+    border: none;
+    color: #9c6644;
+    border-radius: 15px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
 
 
 
@@ -536,6 +573,7 @@ input[type="reset"]{
     width: 96%;
     gap: 0px;
    }
+   
     
     
 }
