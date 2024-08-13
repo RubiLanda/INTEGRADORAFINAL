@@ -447,11 +447,17 @@ input[type="reset"]{
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
+  
 }
 .botoncat2 button {
     background-color: transparent;
     border: none;
 }
+.botonV{
+    background-color: #e7d2bc;
+}
+
+
 
 
 
@@ -590,6 +596,9 @@ input[type="reset"]{
    .div10{
     width: 96%;
     gap: 0px;
+   }
+   .contenedor2{
+    width: 90%;
    }
    
     
