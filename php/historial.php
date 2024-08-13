@@ -11,7 +11,7 @@ if($_POST)
   // AQUI LLAMAMOS EL PROCEDIMIENTO ALMACENADO PARA FILTRAR LOS PRODUCTOS   
 $historial = $Conexion->selectConsulta("CALL historial($ID, $a, $m)");
 
-    echo count($historial);
+    echo 2;
 
     // if (count($historial) == 0) {
     //     echo true;
