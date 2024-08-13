@@ -27,7 +27,7 @@ if (isset($_SESSION['Rol']))
         <link rel="stylesheet" href="../css/registro.css">
     </head>
     <body>
-        <form action="">
+        <div class="form">
             
             <h2>Inicio de Sesión!</h2>
             
@@ -48,7 +48,7 @@ if (isset($_SESSION['Rol']))
         <button  class="botonn"  onclick="iniciarSesion()">Iniciar</button>
         
         ¿No tienes cuenta? <a href="registro.php"> Registrate aquí</a><br>
-    </form>
+        </div>
     
     
     

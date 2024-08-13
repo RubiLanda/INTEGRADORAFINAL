@@ -30,7 +30,7 @@ if (isset($_SESSION['Rol']))
     
 </head>
 <body>
-<form action="">
+<div class="form">
 
 <h2>Registrate Ahora!</h2>
               
@@ -108,7 +108,7 @@ if (isset($_SESSION['Rol']))
                 <button type="button" class="botonn" onclick="validarFormulario()">REGISTRAR</button>
                 
                 ¿Ya tienes cuenta? <a href="login.php"> Inicia Sesión Aquí!</a><br>
-</form>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         const inputTextos = document.querySelectorAll(".nombre");

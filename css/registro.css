@@ -8,7 +8,7 @@ body {
     min-height: 100vh;
 }
 
-form{
+.form{
     background-color: #ffffff;
     box-shadow:0 0 20px rgb(0, 0, 0,0.2) ;
     padding: 50px;
