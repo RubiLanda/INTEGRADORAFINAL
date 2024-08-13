@@ -58,7 +58,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     
                     
 
-                    <label>Nombre Completo:</label>
+                    <label>Nombre(s):</label>
                     <input type="text" name="nombre" class="nombre" id="nombre" minlength="3" maxlength="50" required autocomplete="off">
                     <label>Apellido Paterno:</label>
                     <input type="text" name="paterno" class="nombre"  id="paterno" minlength="3" maxlength="50" required autocomplete="off">
