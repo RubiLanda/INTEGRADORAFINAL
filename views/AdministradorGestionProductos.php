@@ -213,12 +213,11 @@ $menu2 = isset($_GET['estado']) ? false : true;
              pagina = 1;
         }
         function cargarproductos(pagina){
-            var paginaactual = document.getElementById('paginageneral');
             $.ajax({
                 type: 'POST',
                 url: '../php/cargaconsulta.php',
                 // en el apartado de data se encuentran el nombre de las variables que van a mandar los valores al procedimiento almacenado
-                data: {pagina: paginaactual.value},
+                data: {pagina: pagina},
                 success:function(response){
                     $('#consultageneral').html(response);
                     // alert(response);
