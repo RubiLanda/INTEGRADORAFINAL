@@ -209,25 +209,25 @@ in estado varchar(30)
 begin
 
 if estado is not null then
-	select pedidos.id_pedido as ID, tiendas.nombre_tienda as Tienda, tiendas.direccion as Direccion, concat(personas.nombre, ' ', personas.a_p, ' ', personas.a_m) as Cliente, pedidos.f_pedido as Fecha_Pedido, pedidos.f_requerido as Fecha_Requerido, 
-	pedidos.f_entrega as Fecha_entregada, pedidos.estado_pedido as Estado
-	from pedidos
-	inner join tiendas on pedidos.id_tiendas = tiendas.id_tienda
-	inner join cliente_tienda on tiendas.id_tienda = cliente_tienda.id_tienda
-	inner join clientes on cliente_tienda.id_cliente = clientes.id_cliente
-	inner join personas on clientes.id_persona = personas.id_persona
-	where pedidos.id_repartidor = idrepar and pedidos.estado_pedido = estado;
+select PEDIDOS.id_pedido as ID, TIENDAS.nombre_tienda as Tienda, TIENDAS.direccion as Direccion, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Cliente, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_requerido as Fecha_Requerido, 
+PEDIDOS.f_entrega as Fecha_entregada, PEDIDOS.estado_pedido as Estado
+from PEDIDOS
+inner join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
+inner join CLIENTE_TIENDA on TIENDAS.id_tienda = CLIENTE_TIENDA.id_tienda
+inner join CLIENTES on CLIENTE_TIENDA.id_cliente = CLIENTES.id_cliente
+inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+where PEDIDOS.id_repartidor = idrepar and PEDIDOS.estado_pedido = estado;
 else 
-	select pedidos.id_pedido as ID, tiendas.nombre_tienda as Tienda, tiendas.direccion as Direccion, concat(personas.nombre, ' ', personas.a_p, ' ', personas.a_m) as Cliente, pedidos.f_pedido as Fecha_Pedido, pedidos.f_requerido as Fecha_Requerido, 
-	pedidos.f_entrega as Fecha_entregada, pedidos.estado_pedido as Estado
-	from pedidos
-	inner join tiendas on pedidos.id_tiendas = tiendas.id_tienda
-	inner join cliente_tienda on tiendas.id_tienda = cliente_tienda.id_tienda
-	inner join clientes on cliente_tienda.id_cliente = clientes.id_cliente
-	inner join personas on clientes.id_persona = personas.id_persona
-	where pedidos.id_repartidor = idrepar;
+select PEDIDOS.id_pedido as ID, TIENDAS.nombre_tienda as Tienda, TIENDAS.direccion as Direccion, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Cliente, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_requerido as Fecha_Requerido, 
+PEDIDOS.f_entrega as Fecha_entregada, PEDIDOS.estado_pedido as Estado
+from PEDIDOS
+inner join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
+inner join CLIENTE_TIENDA on TIENDAS.id_tienda = CLIENTE_TIENDA.id_tienda
+inner join CLIENTES on CLIENTE_TIENDA.id_cliente = CLIENTES.id_cliente
+inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+where PEDIDOS.id_repartidor = idrepar;
 end if;
-    
+
 end //
 DELIMITER ;
 
