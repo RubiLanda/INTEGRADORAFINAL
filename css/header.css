@@ -5,7 +5,7 @@ a{
     text-decoration: none;
 }
 body {
-    background-color: #ddb892;
+    background-color: #ddb892 !important;
     /* background-color: red; */
 }
 .fondo {
