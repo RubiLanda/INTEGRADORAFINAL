@@ -203,58 +203,16 @@ $menu2 = isset($_GET['estado']) ? false : true;
         echo "</div>";          
     ?>
 
-        <div class="paginacion">
-            <?php if ($total_pages > 1): ?>
-                <?php if ($current_page > 1): ?>
-                    <div>
-                        <a style="border-radius: 30px 0 0 30px;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $current_page - 1; ?>">Anterior</a>
-                    </div>
-                    <?php endif; ?>
-                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                        <?php if ($current_page == 1 && $i == 1): ?>
-                        <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                            <a style="border-radius: 30px 0 0 30px; background-color: #724a32; color: #ddb892; box-shadow: none;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                        </div>
-                    <?php elseif ($i == 1): ?>
-                        <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                            <a href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                        </div>
-                        <?php endif ?>
-        
-                        <?php if ($current_page == $total_pages && $i == $current_page): ?>
-                        <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                            <a style="border-radius: 0 30px 30px 0; background-color: #724a32; color: #ddb892; box-shadow: none;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                        </div>
-                        <?php elseif ($i == $total_pages): ?>
-                            <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                            <a href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                        </div>
-                    <?php endif ?>
-                            
-                    <?php if ($i != 1 && $i != $total_pages): ?>
-                        <?php if ($i == $current_page): ?>
-                            <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                <a style="background-color: #724a32; color: #ddb892; box-shadow: none;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            </div>
-                            <?php else: ?>
-                            <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                <a href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            </div>
-                        <?php endif ?>
-                    <?php endif ?>
-                <?php endfor; ?>
-                <?php if ($current_page < $total_pages): ?>
-                    <div>
-                        <a style="border-radius: 0 30px 30px 0;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $current_page + 1; ?>">Siguiente</a>
-                    </div>
-                <?php endif; ?>
-            <?php endif ?>
-        </div>
+        <div class="paginacion" id="paginacion"></div>
 
         <!--FUNCION DE JAVA PARA INSERTAR IMAGENES -->
         <script>
-
-        function cargarproductos(){
+            var pagina;
+        
+        if (pagina == null){
+             pagina = 1;
+        }
+        function cargarproductos(pagina){
             var paginaactual = document.getElementById('paginageneral');
             $.ajax({
                 type: 'POST',
@@ -268,8 +226,23 @@ $menu2 = isset($_GET['estado']) ? false : true;
             })
         }
         
-        cargarproductos()
-
+        cargarproductos(pagina)
+        function mostrarPaginacion() {
+            $.ajax({
+                type: 'POST',
+                url: '../php/paginacionproductos.php',
+                data: { pagina: pagina },
+                success: function(response) {
+                    $('#paginacion').html(response);
+                }
+            });
+        }
+        mostrarPaginacion()
+        function cambiarPaginacion(cambio) {
+            pagina = cambio;
+            mostrarPaginacion()
+            cargarproductos(pagina)
+        }
             var imagenPuesto = 0;
              document.getElementById('panesimagen').addEventListener('change', function(event){
                 const file = event.target.files[0];
