@@ -73,6 +73,8 @@
     //     echo "</form>";
     //     echo "</div>";
     //     echo "</div>";
+
+
     echo"<div>
    <div class='card contenedor2'>
    <div class='titulo2'>
@@ -108,12 +110,10 @@ foreach($reg as $r){
           </div>
           
           ";
-        }
-        echo "</p>";
+    }
+    echo "</p>";
+    "</div>
     
-    
-    
-        "</div>
         </div>
         </div>";
      ?>
