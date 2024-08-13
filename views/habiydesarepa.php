@@ -2,11 +2,11 @@
 session_start();
 
 require '../php/conexion.php';
-$Conexion = new Database();
-$Conexion->conectarBD();
+$conexion = new Database();
+$conexion->conectarBD();
 $id_usuario = $_SESSION['ID'];
 
-$consulta = $Conexion->selectConsulta("call verificarEstadoCuenta($id_usuario)");
+$consulta = $conexion->selectConsulta("call verificarEstadoCuenta($id_usuario)");
 $estado = $consulta[0]->Estatus;
 if ($estado == 0) {
     header("Location: ../php/cerrarSeccion.php");
