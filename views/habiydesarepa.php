@@ -97,7 +97,7 @@ else{
 
         echo"<div class='Tiendas'>";
         echo"<h1 class='TituloTienda'>INFORMACIÓN DE REPARTIDORES</h1>";
-        echo"<a class=\"refe\" href=\"gestionarepa.php
+        echo"<a class=\"refe\" href=\"gestionrepa.php
         \" >Dar de alta nuevo repartidor!</a>";
        
     
