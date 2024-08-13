@@ -114,6 +114,7 @@ try {
             <div class="Total_Pagar" id="divPagoTotal">
                 <h3 id="fecha_seleccionado"></h3>
                 <h3 id="tienda_seleccionado"></h3>
+                <h3 id="fecha_limite"></h3>
                 <button type="button" data-bs-toggle="modal" data-bs-target="#ModalConfirmarCambioFecha">
                     Cambiar Fecha o Destino
                 </button>
@@ -409,6 +410,20 @@ try {
                 }
             });
         }
+        function mostrar_fecha_limite() {
+            $.ajax({
+                type: 'POST',
+                url: '../php/calcularFechaLimite.php',
+                data: { fecha: fecha },
+                success: function(response) {
+                    fecha_limite.innerHTML = "<b>Destino seleccionado: </b> " + response;
+                }
+            });
+        }
+        if (idTienda == 0) {
+            mostrar_fecha_limite()
+        }
+
         const buttonMenu = document.getElementById('buttonMenu');
         const menu = document.getElementById('menu');
         const buttonRegresar = document.getElementById('regresar');
