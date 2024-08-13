@@ -457,7 +457,9 @@ input[type="reset"]{
     background-color: #e7d2bc;
     border-radius: 15px;
 }
-
+a {
+    color: black;
+}
 
 
 
@@ -611,6 +613,18 @@ input[type="reset"]{
    }
    .div200 b{
     display: flex;
+    justify-content: center;
+   }
+   .titulo2{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px 0;
+    width: 90%;
+   }
+   .botonV{
+    display: flex;
+    width: 25%;
     justify-content: center;
    }
    
