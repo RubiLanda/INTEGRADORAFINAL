@@ -2,7 +2,7 @@
  include '../php/conexion.php';
  $conexion = new Database();
  $conexion->conectarBD();
- $records_per_page = 6;
+ $records_per_page = 5;
  $current_page = $_POST['pagina'];
  
 $offset = ($current_page - 1) * $records_per_page;
