@@ -443,12 +443,14 @@ input[type="reset"]{
     justify-content: center;
     flex-direction: column;
 }
-.botoncat2 .botoncat2 button {
-    background-color: transparent;
-    border: none;
+.botoncat2  {
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
+}
+.botoncat2 button {
+    background-color: transparent;
+    border: none;
 }
 
 
