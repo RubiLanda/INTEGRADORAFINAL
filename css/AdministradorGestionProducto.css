@@ -610,6 +610,7 @@ input[type="reset"]{
     margin: auto;
    }
    .div200 b{
+    display: flex;
     justify-content: center;
    }
    
@@ -709,6 +710,7 @@ input[type="reset"]{
         margin: auto;
        }
        .div200 b{
+        display: flex;
         justify-content: center;
        }
        
@@ -808,6 +810,7 @@ input[type="reset"]{
         margin: auto;
        }
        .div200 b{
+        display: flex;
         justify-content: center;
        }
        
