@@ -610,8 +610,7 @@ input[type="reset"]{
     margin: auto;
    }
    .div200 b{
-    text-align: center;
-    align-items: center;
+    justify-content: center;
    }
    
     
@@ -698,6 +697,21 @@ input[type="reset"]{
         width: 100%;
         border-radius: 0px;
     }
+    .contenedor2{
+        width: 85%;
+       }
+       .inputs{
+        width: 85%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: auto;
+       }
+       .div200 b{
+        justify-content: center;
+       }
+       
     
 }
 @media (max-width: 992px) and (min-width: 769px){  /* lg */
@@ -782,6 +796,21 @@ input[type="reset"]{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+    .contenedor2{
+        width: 85%;
+       }
+       .inputs{
+        width: 85%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: auto;
+       }
+       .div200 b{
+        justify-content: center;
+       }
+       
     
     
 }
