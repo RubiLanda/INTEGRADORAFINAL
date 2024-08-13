@@ -641,6 +641,17 @@ a {
     width: 25%;
     justify-content: center;
    }
+   .botonV a {
+    margin-right: 8px;
+    padding: 10px 20px;
+   }
+   .titulo{
+    width: 60%;
+   }
+   .card-title{
+    display: flex;
+    align-items: center;
+   }
    
     
     
