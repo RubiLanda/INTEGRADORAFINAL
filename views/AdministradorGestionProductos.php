@@ -252,6 +252,9 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     }
                    reader.readAsDataURL(file);
                    imagenPuesto = 1;
+                 mostrarPaginacion()
+                  cargarproductos(pagina)
+
                }
              });
         </script>
