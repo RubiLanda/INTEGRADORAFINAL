@@ -48,7 +48,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
 </head>
 <body style="display: flex; align-items: center; flex-direction: column;">
     <div class="fondo"></div>
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="toastContainer"></div>
     <header>
         <div>
             <button id="buttonMenu" class="boton">
