@@ -11,7 +11,7 @@
                   FROM PERSONAS INNER JOIN USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
                   WHERE USUARIOS.id_usuario = $persona";
      $reg = $Conexion->selectConsulta($consulta);
-    echo "<div>
+    echo "<form>
     <div class=\"card contenedor2\">
         <div class=\"titulo2\">
             <div class=\"botonV\">
@@ -54,5 +54,5 @@ foreach($reg as $r){
     "</div>
 
         </div>
-        </div>";
+        </form>";
      ?>

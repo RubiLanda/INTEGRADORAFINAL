@@ -79,10 +79,10 @@ $menu2 = isset($_GET['estado']) ? false : true;
     cargarInformacionUsuario()
    
     function CambiarInfo(ID) {
-        var nombre = document.getElementById('NombreA');
-        var ApellidoP = document.getElementById('ApellidoP');
-        var ApellidoM = document.getElementById('ApellidoM');
-        var Telefono = document.getElementById('TelefonoA');
+        var nombre = document.getElementById('nombre');
+        var ApellidoP = document.getElementById('paterno');
+        var ApellidoM = document.getElementById('materno');
+        var Telefono = document.getElementById('telefono');
                 $.ajax({
                 type:'POST',
                 url:'../php/modinfousuario.php',
