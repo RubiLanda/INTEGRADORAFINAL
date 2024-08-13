@@ -276,10 +276,10 @@ else{
         }
     });
 
+    alert(1);
     const buttonMenu = document.getElementById('buttonMenu');
         const menu = document.getElementById('menu');
         const buttonRegresar = document.getElementById('regresar');
-        alert(buttonRegresar);
 
         buttonMenu.addEventListener('click', function() {
             menu.classList.toggle('oculto');
