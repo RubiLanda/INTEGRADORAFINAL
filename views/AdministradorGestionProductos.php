@@ -459,7 +459,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     contentType: false,
                     processData: false,
                     success: function(response){
-                        cargarproductos()
+                        cargarproductos(pagina)
 
                         var toastContainer = document.getElementById('toastContainer');
             var newToast = document.createElement('div');  // Crear un nuevo elemento toast
