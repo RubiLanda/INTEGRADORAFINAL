@@ -12,7 +12,7 @@
                   WHERE USUARIOS.id_usuario = $persona";
      $reg = $Conexion->selectConsulta($consulta);
     echo "<div>
-    <div class=\"card contenedor\">
+    <div class=\"card contenedor2\">
         <div class=\"titulo2\">
             <div class=\"botonV\">
                 <a href=\"../views/administrador.php\" class=\"button\">Volver</a>
