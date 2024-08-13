@@ -279,13 +279,13 @@ else{
     const buttonMenu = document.getElementById('buttonMenu');
         const menu = document.getElementById('menu');
         const buttonRegresar = document.getElementById('regresar');
+        alert(buttonRegresar);
 
         buttonMenu.addEventListener('click', function() {
             menu.classList.toggle('oculto');
         });
 
         buttonRegresar.addEventListener('click', function() {
-            alert(1);
             menu.classList.add('oculto');
             menu.classList.remove('mostrar')
         });
