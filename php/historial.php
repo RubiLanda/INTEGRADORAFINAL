@@ -9,7 +9,8 @@ extract($_POST);
 if($_POST)
 {
   // AQUI LLAMAMOS EL PROCEDIMIENTO ALMACENADO PARA FILTRAR LOS PRODUCTOS   
-$historial = $Conexion->selectConsulta("CALL historial($ID, $a, $m)");
+// $historial = $Conexion->selectConsulta("CALL historial($ID, $a, $m)");
+$historial = $Conexion->selectConsulta("CALL historial($ID, null, null)");
 
     echo $historial[0]->IDPEDIDO;
 
