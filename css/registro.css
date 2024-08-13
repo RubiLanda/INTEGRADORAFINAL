@@ -87,10 +87,10 @@ select{
 
 @media (max-width: 576px) {  /* sm */
    form{
-    width: 290px;
+    width: 80% !important;
    }
    .inputs{
-    width: 215px;
+    width: 100%;
    }
    .icono{
     width: 20px;
