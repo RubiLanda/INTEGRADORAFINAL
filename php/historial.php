@@ -27,9 +27,11 @@ $historial = $Conexion->selectConsulta("CALL historial(52, null, null)");
             <div class=\"pedido\">
                 <h1>#{$h->IDPEDIDO}</h1>
                 <h3><b>Estado:</b> {$h->ESTADO}</h3>
-                <h3><b>Fecha Realizada:</b> {$h->FECHAREALIZADA}</h3>
-                <h3><b>Fecha Envío:</b> {$h->FECHAENVIO}</h3>
-                <h3><b>Tienda:</b> {$h->TIENDA}</h3>
+                <h3><b>Fecha Realizada:</b> {$h->FECHAREALIZADA}</h3>";
+                if ($h->FECHAENVIO != null) {
+                    echo "<h3><b>Fecha Envío:</b> {$h->FECHAENVIO}</h3>";
+                }
+                echo "<h3><b>Tienda:</b> {$h->TIENDA}</h3>
                 <br>
                 <button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalDetalles{$h->IDPEDIDO}\">
                     Ver detalles del pedido
