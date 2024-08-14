@@ -9,13 +9,26 @@ extract($_POST);
 if($_POST)
 {
   // AQUI LLAMAMOS EL PROCEDIMIENTO ALMACENADO PARA FILTRAR LOS PRODUCTOS   
+if ($a == "NULL") {
+    echo "Si año";
+}
+else {
+    echo "No año";
+}
+if ($m == "NULL") {
+    echo "Si mes";
+}
+else {
+    echo "No mes";
+}
+
+
 $historial = $Conexion->selectConsulta("CALL historial($ID, $a, $m)");
 
     if (count($historial) == 0) {
         echo true;
     }
     else {
-        echo $historial[0]->resultado;
     //     foreach($historial as $h){
     //         // PROCEDIMIENTO ALMACENADO PARA CALCULAR EL TOTAL A PAGAR DEL PEDIDO MEDIANTE LA ID
     //         $Total_Pagar = $Conexion->selectConsulta("call Calcular_Total_Pagar_Pedido({$h->IDPEDIDO})");
