@@ -902,7 +902,7 @@ try {
                 CalcularTotalCarrito()
                 var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
     
-                if (TotalCarrito >= 19) {
+                if (TotalCarrito > 19) {
                     window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
                 }
                 else {
