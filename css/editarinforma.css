@@ -122,7 +122,12 @@ body {
     display: none;
 }
 
-@media (max-width: 576px) {  /* sm */
+
+/* Estilos responsivos para pantallas menores a 1000px */
+@media (max-width: 1000px) {
+}
+
+@media (max-width: 576px)  {
     .contenedor {
         padding: 15px;
     }
@@ -174,7 +179,7 @@ body {
     }
 }
 
-@media (max-width: 768px) and (min-width: 577px) {  /* md */
+@media (max-width: 768px) and (min-width: 577px) {
     .contenedor {
         padding: 18px;
     }
@@ -219,5 +224,11 @@ body {
         border: 2px solid #ddb892;
         border-radius: 10px;
     }
-    
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+}
+
+@media (max-width: 1200px) and (min-width: 993px) {
+
 }
