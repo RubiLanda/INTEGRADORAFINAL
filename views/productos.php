@@ -177,7 +177,7 @@ try {
         </div>
     </div>
 
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function cargarProductos(pagina) {
             $.ajax({
@@ -185,8 +185,7 @@ try {
                 url: '../php/cargarProductosIndex.php',
                 data: { current_page: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado ?> },
                 success: function(response) {
-                    alert(response);
-                    // $('#productos').html(response);
+                    $('#productos').html(response);
                 }
             });
         }
