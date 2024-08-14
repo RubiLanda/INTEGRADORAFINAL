@@ -135,11 +135,13 @@ $menu2 = isset($_GET['estado']) ? false : true;
             <h4><b>Telefono:</b> {$r->Telefono}</h4>
             <h4><b>Administrador Desde:</b> {$r->FECHA}</h4>
             </p>
+            </div>
             <div class=\"div\">
             <a href=\"administrador2.php
             \" >EDITAR</a>
+            
             </div>
-            </div>
+           
             </div>
             
            </div>";
