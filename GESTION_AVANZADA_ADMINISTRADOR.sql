@@ -2205,3 +2205,8 @@ where USUARIOS.id_usuario = p_id_usuario;
 end if;
 end //
 DELIMITER ;
+
+
+create view ver_categorias
+as select CATEGORIAS.id_categoria as ID, CATEGORIAS.nombre as Nombre 
+from CATEGORIAS;
