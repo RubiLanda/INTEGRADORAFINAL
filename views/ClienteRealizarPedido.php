@@ -893,6 +893,7 @@ try {
                 type: 'POST',
                 url: '../php/calcularTotalCarrito.php',
                 success: function(response) {
+                    alert(seleccionando_fecha);
                     if (mostrarModal == 1 && seleccionando_fecha == false) {
                         var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
                         if (response > 19 && response < 51) {
