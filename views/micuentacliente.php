@@ -75,7 +75,7 @@ else {
             <a href="ClienteRealizarPedido.php">Realizar Pedido</a>
             <a href="ClienteHistorial.php">Ver historial</a>
             <a href="ClienteVerPedidos.php">Ver pedido</a>
-            <a href="#.php">Mi cuenta</a>
+            <a href="#">Mi cuenta</a>
         </div>
     </div>
     <div style="height: 170px;"></div>
@@ -111,7 +111,7 @@ else {
             <h3><b>Cliente Desde:</b> {$perso->FECHA}</h3>
             </p>
             <div class=\"div\">
-            <a href=\"ajaxcambioinfo.php
+            <a class=\"botonesA\" href=\"ajaxcambioinfo.php
             \" >Editar Información Aquí!</a>
             </div>
             </div>

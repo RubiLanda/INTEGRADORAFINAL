@@ -18,7 +18,7 @@
  <div class=\"tiende\">";
  echo "<p class=\"card-text\">";
  echo "<div class=\"div\">
- <a href=\"daraltatienda.php
+ <a class=\"botonesA\" href=\"daraltatienda.php
  \" >Quiero dar de alta una nueva tienda!</a>
  </div>";
  foreach($tiendass as $tienda){
