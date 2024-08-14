@@ -132,6 +132,7 @@ th {
 @media (max-width: 1000px) {
     table, th, td {
         font-size: 20px;
+        width: 80%;
     }
 
     td {
@@ -159,7 +160,7 @@ th {
 @media (max-width: 576px)  {
     .conte {
         margin-bottom: 10%;
-        width: 95%;
+        width: 85%;
         padding: 10px 20px;
     }
 
