@@ -4,6 +4,10 @@
   $Conexion = new Database();
   $Conexion->conectarBD();
   extract($_POST);
+  if ($precio === '')
+      {
+        $precio = 0.00;  
+      }
      if($_POST){             //estas variables $ vienen de los .value del script AJAX
       
       $Conexion->ejecutar("CALL actualizarproducto('$IDPorducto', '$nombre','$precio','$descripcion', @mensaje)");

@@ -494,7 +494,7 @@ set contadorError = contadorError + 1;
 end if;
 
 
-if nuevo_precio = 0 or nuevo_precio is null then
+if nuevo_precio = 0  then
 
 if contadorError = 0 then 
 set mensajeError = 'No puedes dejar el precio del producto vacio';
@@ -542,7 +542,7 @@ end if;
 
 if ModificacionPrecio = 0 then 
 
-if nuevo_precio != 0 or nuevo_precio is not null then
+if nuevo_precio != 0  then
 
 update PRODUCTOS
 set PRODUCTOS.precio = nuevo_precio
