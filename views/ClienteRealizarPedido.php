@@ -894,7 +894,7 @@ try {
                 url: '../php/calcularTotalCarrito.php',
                 success: function(response) {
                     alert(seleccionando_fecha);
-                    if (mostrarModal == 1 && seleccionando_fecha == false) {
+                    if (mostrarModal == 1 && seleccionando_fecha == true) {
                         var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
                         if (response > 19 && response < 51) {
                             window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
