@@ -636,9 +636,7 @@ a {
     margin: 20px 0;
     width: 90%;
    }
-   .titulo{
-    width: 90%;
-   }
+  
    .botonV{
     display: flex;
     width: 25%;
@@ -651,7 +649,7 @@ a {
    .titulo{
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 90%;
     align-items: center;
    }
    .tarjeta2{
