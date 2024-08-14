@@ -1506,9 +1506,6 @@ else
 if length(N_telefono)<10 then
 set message='Numero de telefono invalido';
 else
- if DATE_ADD(N_f_nac, INTERVAL +18 YEAR)>f_ingreso then
- set mensaje='El repartidor aun no nace o aun no tiene 18 años';
-else
 IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
 AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -100 YEAR)
 then
@@ -1525,7 +1522,6 @@ set message ='REGISTRO EXITOSO';
 ELSE
 SET message = 'DEBES SER MAYOR DE EDAD EL ADMIN PARA REGISTRARLO O LA EDAD ES EXCESIVA';
 END IF;
-end if;
 end if;
 end if;
 end if;
