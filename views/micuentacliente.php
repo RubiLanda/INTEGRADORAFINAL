@@ -74,8 +74,8 @@ else {
         <div class="opciones">
             <a href="ClienteRealizarPedido.php">Realizar Pedido</a>
             <a href="ClienteHistorial.php">Ver historial</a>
-            <a href="#">Ver pedido</a>
-            <a href="micuentacliente.php">Mi cuenta</a>
+            <a href="ClienteVerPedidos.php">Ver pedido</a>
+            <a href="#.php">Mi cuenta</a>
         </div>
     </div>
     <div style="height: 170px;"></div>
