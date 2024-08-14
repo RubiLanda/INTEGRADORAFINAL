@@ -29,7 +29,7 @@ $historial = $Conexion->selectConsulta("CALL historial($ID, $a, $m)");
                 <h1>#{$h->IDPEDIDO}</h1>
                 <h3><b>Estado:</b> {$h->ESTADO}</h3>
                 <h3><b>Fecha Realizada:</b> {$h->FECHAREALIZADA}</h3>
-                <h3><b>Fecha Pedido:</b> {$h->FECHAREQUERIDA}</h3>";
+                <h3><b>Fecha Requerida:</b> {$h->FECHAREQUERIDA}</h3>";
                 if ($h->FECHAENVIO != null) {
                     echo "<h3><b>Fecha Envío:</b> {$h->FECHAENVIO}</h3>";
                 }
