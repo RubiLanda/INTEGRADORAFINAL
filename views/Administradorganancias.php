@@ -138,7 +138,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
           var meses = inputMeses.value;
           const selectaños=document.getElementById('años');
           var años= selectaños.value;
-          function Ver_Ventas_Producto(){
+          function Ver_Ventas_Producto(){ 
+            alert(años);
             const selectcate=document.getElementById('categorias');
             var categorias=selectcate.value;
             const selectrepa=document.getElementById('repartidores');
