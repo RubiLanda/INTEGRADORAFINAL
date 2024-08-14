@@ -103,6 +103,7 @@ try {
     <div style="height: 170px;"></div>
     <div class="confirmarCarritoFondo" style="display: flex; justify-content: space-around;">
         <div class="realizarPedido" id="divProductos">
+            <br>
             <a class="botonRegresar" href="ClienteRealizarPedido.php?mostrarMenu=0">Agregar mas Productos</a>
             <hr>
             <div id="VerCarrito"></div>
