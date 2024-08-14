@@ -75,7 +75,7 @@ $usuario = $_SESSION['ID'];
         </div>
     </header>
 
-    <div class="menu mostrar" id="menu">
+    <div class="menu oculto" id="menu">
         <div class="inicioMenu">
             <img src="../img/logo.png">
             <button id="regresar" class="boton">
