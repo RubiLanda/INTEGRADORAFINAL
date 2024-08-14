@@ -10,13 +10,19 @@ if($_POST)
 {
   // AQUI LLAMAMOS EL PROCEDIMIENTO ALMACENADO PARA FILTRAR LOS PRODUCTOS   
 if ($a == "NULL") {
-    $a = null;
+    $año = null;
+}
+else {
+    $año = $a;
 }
 if ($m == "NULL") {
-    $m = null;
+    $mes = null;
+}
+else {
+    $mes = $m;
 }
 
-$historial = $Conexion->selectConsulta("CALL historial($ID, $a, $m)");
+$historial = $Conexion->selectConsulta("CALL historial($ID, $año, $mes)");
 
     if (count($historial) == 0) {
         echo true;
