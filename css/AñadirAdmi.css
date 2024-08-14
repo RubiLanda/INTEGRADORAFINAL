@@ -252,7 +252,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 80%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -298,6 +298,7 @@ h1 {
     background-color: #9c6644;
     border: 3px solid #724a32;
     border-radius: 44px;
+    margin-bottom: 2%;
 }
 
 /* Form styles */
@@ -461,7 +462,6 @@ tbody {
     }
 
     .conte{
-        padding-top: 25%;
         display: flex;
         flex-direction: column;
         justify-content: center;
