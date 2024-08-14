@@ -70,9 +70,10 @@ table, th, td {
 }
 
 th {
-    width: auto; /* Asegúrate de que el ancho sea automático */
-    padding: 8px; /* Ajusta el padding según lo que necesites */
-    text-align: center; /* Alinea el texto al centro */
+    width: auto;
+    padding: 8px;
+    text-align: center;
+    border-bottom: solid 3px #ddb892;
 }
 
 .cantidad {
@@ -151,6 +152,10 @@ th {
         font-size: 20px;
     }
 
+    th{
+        border-bottom: solid 3px #ddb892;
+    }
+
     td {
         display: flex;
         flex-direction: column;
@@ -174,9 +179,6 @@ th {
 }
 
 @media (max-width: 576px)  {
-    body{
-        background-color: chartreuse;
-    }
     .conte {
         margin-bottom: 10%;
         width: 85%;
@@ -197,6 +199,10 @@ th {
         font-size: 17px;
     }
 
+    th{
+        border-bottom: solid 3px #ddb892;
+    }
+
     .cssbuttons-io-button {
         width: 100%;
         font-size: 14px;
@@ -204,9 +210,6 @@ th {
 }
 
 @media (max-width: 768px) and (min-width: 577px) {
-    body{
-        background-color: darkmagenta;
-    }
     .conte {
         margin-bottom: 10%;
         width: 95%;
@@ -226,9 +229,6 @@ th {
 }
 
 @media (max-width: 992px) and (min-width: 769px) {
-    body{
-        background-color: hotpink;
-    }
     .conte {
         margin-bottom: 8%;
         width: 95%;
@@ -243,6 +243,10 @@ th {
     table, th, td {
         font-size: 25px;
     }
+    th{
+        border-bottom: solid 3px #ddb892;
+    }
+    
 
     .cssbuttons-io-button {
         width: 100%;
@@ -269,6 +273,10 @@ th {
         font-size: 30px;
     }
 
+    th{
+        border-bottom: solid 3px #ddb892;
+    }
+    
     form {
         padding-left: 20%;
         padding-top: 5px;
