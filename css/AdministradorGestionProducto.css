@@ -636,6 +636,9 @@ a {
     margin: 20px 0;
     width: 90%;
    }
+   .titulo{
+    width: 90%;
+   }
    .botonV{
     display: flex;
     width: 25%;
@@ -656,7 +659,9 @@ a {
      height: 10%;
      margin-right: 0px;
    }
-
+   .contenedor{
+    width: 90%;
+   }
    
    .card-title2{
     display: flex;
