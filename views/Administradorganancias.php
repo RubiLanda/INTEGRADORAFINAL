@@ -134,11 +134,12 @@ $menu2 = isset($_GET['estado']) ? false : true;
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
           var radiusActivo = 1;
-          const inputMeses = document.getElementById('meses');
-          var meses = inputMeses.value;
+          
+          function Ver_Ventas_Producto(){ 
+            const inputMeses = document.getElementById('meses');
           const selectaños=document.getElementById('años');
-          var años= selectaños.value;
-          function Ver_Ventas_Producto(){
+            var meses = inputMeses.value;
+            var años= selectaños.value;
             const selectcate=document.getElementById('categorias');
             var categorias=selectcate.value;
             const selectrepa=document.getElementById('repartidores');
@@ -205,6 +206,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
             });
 
             function bloquear(input) {
+              const inputMeses = document.getElementById('meses');
+          const selectaños=document.getElementById('años');
               if (input.value != '') {
                 selectaños.disabled = true;
                 inputMeses.disabled = true;
