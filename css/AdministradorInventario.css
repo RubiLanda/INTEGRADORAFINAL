@@ -53,14 +53,14 @@ table, th, td {
     border-bottom: 5px solid #3e2307;
     padding: 10px;
     text-align: center;
-    word-wrap: break-word; /* Asegura que el contenido se ajuste dentro de las celdas */
+    word-wrap: break-word;
 }
 
 th, td {
-    max-width: 1px; /* Limita el ancho máximo para que el contenido no se desborde */
-    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    max-width: 1px;
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Muestra '...' si el texto es muy largo */
+    text-overflow: ellipsis; 
 }
 
 .cantidad {
