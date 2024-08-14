@@ -134,9 +134,10 @@ $menu2 = isset($_GET['estado']) ? false : true;
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
           var radiusActivo = 1;
-          const inputMeses = document.getElementById('meses');
-          const selectaños=document.getElementById('años');
+          
           function Ver_Ventas_Producto(){ 
+            const inputMeses = document.getElementById('meses');
+          const selectaños=document.getElementById('años');
             var meses = inputMeses.value;
             var años= selectaños.value;
             alert(años);
@@ -206,6 +207,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
             });
 
             function bloquear(input) {
+              const inputMeses = document.getElementById('meses');
+          const selectaños=document.getElementById('años');
               if (input.value != '') {
                 selectaños.disabled = true;
                 inputMeses.disabled = true;
