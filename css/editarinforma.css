@@ -155,6 +155,19 @@ body {
         align-items: center;
     }
 
+    .botonV .button{
+        width: 140px;
+        height: 45px;
+        margin: 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ddb892;
+        color: #9c6644;
+        border: 2px solid #ddb892;
+        border-radius: 10px;
+    }
+    
     .titulo2 {
         width: 80%;
         display: flex;
