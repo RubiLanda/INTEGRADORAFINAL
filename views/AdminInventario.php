@@ -123,8 +123,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Producto</th>
-                                    <th>Stock</th>
+                                    <th colspan="2">Producto</th>
                                 </tr>
                             </thead>
                             <tbody>
