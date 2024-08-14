@@ -175,7 +175,7 @@ try {
             pagina = 1;
         }
 
-        if (<?php echo $_GET['mostrarStock']?> == 1) {
+        if (<?php echo $_GET['mostrarStock']?> == 0) {
             $.ajax({
                 type: 'POST',
                 url: '../php/VerificarCarrito.php',
