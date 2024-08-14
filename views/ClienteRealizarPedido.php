@@ -898,8 +898,8 @@ try {
             });
         }
         function IrCarrito(mostrarModal) {
+            CalcularTotalCarrito()
             if (mostrarModal == 1) {
-                CalcularTotalCarrito()
                 var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
                 alert(TotalCarrito);
                 if (TotalCarrito > 19) {
