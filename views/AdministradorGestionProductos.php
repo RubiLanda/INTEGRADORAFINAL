@@ -375,7 +375,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
 
                 <!--AÑADIR CATEGORIAS-->
     
-<div class="radical2"><h2 class="radical2">Añadir Categoria</h2></div>
+<div class="radical2"><h2 class="radical2">Añadir Categoría</h2></div>
 <br>
 <div class="padre">
     <form>
@@ -402,7 +402,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
       
       <!-- GESTIONAR CATEGORIAS-->
        <hr>
-       <div class="radical2"><h2 class="radical2">Gestionar Categoria</h2></div>
+       <div class="radical2"><h2 class="radical2">Gestionar Categoría</h2></div>
        <br>
        <div class="centrarcategorias">
     <?php

@@ -6,9 +6,9 @@
  WHERE CATEGORIAS.estado = 1";
  $reg = $Conexion->selectConsulta($consulta);
  echo "<label class='control-label'>
- Categoria</label>";
+ Categoría</label>";
  echo "<select id='selectcatpan' name='panescategoria' class='form-select'>";
- echo "<option value='0' >Categoria</option>";
+ echo "<option value='0' >Categoría</option>";
  foreach($reg as $value)
  {
      echo "<option value='".$value->id_categoria."'>".$value->nombreC."</option>";

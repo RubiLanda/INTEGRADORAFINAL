@@ -11,7 +11,7 @@ foreach ($tabla as $reg)
 
   // DIV DEL NOMBRE DE LA CATEGORIA
   echo "<div class='div2'>";
-  echo "<label>Nombre de la categoria</label>";
+  echo "<label>Nombre de la categoría</label>";
   echo "<input class='btn' id='C{$reg->nombrecat}'  type='text' maxlength='35' value=\"{$reg->nombrecat}\">";
   echo "</div>";
 
@@ -33,7 +33,7 @@ foreach ($tabla as $reg)
 
                       // DIV DEL INPUT DE TIPO CHECKBOX
                         echo "<div class='div2 checkbox-contenedor'>";
-                        echo "<label>Estado de la categoria</label>";
+                        echo "<label>Estado de la categoría</label>";
                         if($reg->estadocat){
                         echo "<input class='' type='checkbox'  onclick=\"cambiarEstado(this, {$reg->id_categoria})\" checked>";
                         }
