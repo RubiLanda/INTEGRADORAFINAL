@@ -6,7 +6,7 @@ extract($_POST);
 if ($_POST) {
     $listaAdmin = $conexion->selectConsulta("CALL Ver_Administrador_Estado($estatus)");
     echo "<div class=\"Tiendas\">";
-    echo "<h1 class=\"TituloTienda\">INFORMACIÓN ADMINISTRADOR</h1>";
+    echo "<h1 class=\"TituloTienda\">INFORMACIÓN ADMINI</h1>";
     foreach ($listaAdmin as $fila) {
         echo "<div class=\"Tienda\">";
         echo "<h3>$fila->Administrador</h3>";
