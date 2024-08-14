@@ -899,6 +899,7 @@ try {
         }
         function IrCarrito(mostrarModal) {
             if (mostrarModal == 1) {
+                alert(1);
                 CalcularTotalCarrito()
                 var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
     
