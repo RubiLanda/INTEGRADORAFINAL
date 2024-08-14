@@ -169,13 +169,20 @@
 .realizarPedido .producto .botones button {
     margin-bottom: 30px;
 }
-.realizarPedido .producto .botones input, .realizarPedido .producto .botones button, .realizarPedido a {
+.realizarPedido .producto .botones input, .realizarPedido .producto .botones button {
     width: 130px;
     height: 40px;
     background-color: #ddb892;
     border: none;
     border-radius: 15px;
     color: #30231b;
+}
+.botonRegresar {
+    background-color: #ddb892;
+    border: none;
+    border-radius: 15px;
+    color: #30231b;
+    padding: 10px;
 }
 .paginacion {
     display: flex;
