@@ -135,10 +135,10 @@ $menu2 = isset($_GET['estado']) ? false : true;
       <script>
           var radiusActivo = 1;
           const inputMeses = document.getElementById('meses');
-          var meses = inputMeses.value;
           const selectaños=document.getElementById('años');
-          var años= selectaños.value;
           function Ver_Ventas_Producto(){ 
+            var meses = inputMeses.value;
+            var años= selectaños.value;
             alert(años);
             const selectcate=document.getElementById('categorias');
             var categorias=selectcate.value;
