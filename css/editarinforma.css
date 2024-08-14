@@ -139,7 +139,7 @@ body {
         width: 100px;
         height: 35px;
     }
-    
+
     .contenedor {
         color: #ddb892;
         background-color: #9c6644;
@@ -152,6 +152,21 @@ body {
         max-width: 800px;
         margin: 30px auto;
         padding: 20px;
+    }
+
+    .divrefe{
+        display: flex;
+        justify-content: end;
+        width: 90%;
+        margin-top: 5px;
+    }
+    
+    
+    .botonV {
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 }
 
@@ -180,5 +195,20 @@ body {
         max-width: 800px;
         margin: 30px auto;
         padding: 20px;
+    }
+
+    .divrefe{
+        display: flex;
+        justify-content: end;
+        width: 90%;
+        margin-top: 5px;
+    }
+    
+    
+    .botonV {
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 }
