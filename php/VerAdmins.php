@@ -9,7 +9,7 @@ if ($_POST) {
     echo "<h1 class=\"TituloTienda\">T</h1>";
         foreach ($listaAdmin as $fila){
             echo "<div class=\"Tienda\">";
-            echo"<h3>$fila->Nombre</h3>";
+            echo"<h3>$fila->Administrador</h3>";
                 if ($fila->Estatus) {
                 echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\" checked>";
             } else {
