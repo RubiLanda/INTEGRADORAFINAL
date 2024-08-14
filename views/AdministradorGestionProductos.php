@@ -127,7 +127,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     <div class="div1" >
                          <!-- este es un label para transformar una imagen  a un input de tipo file-->
                          <label for="panesimagen">  
-                         <img  src="../Imagenes/Icono de Mas.avif" id="VistaPrevia" width="200px" height="180px" alt="">
+                         <img  src="../img/Icono de Mas.avif" id="VistaPrevia" width="200px" height="180px" alt="">
                          </label>
                          <input class="btn" id="panesimagen" type="file" name="panesimagen" >
                     </div>
