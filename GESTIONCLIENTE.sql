@@ -1360,3 +1360,24 @@ begin
     select p_fecha_limite as Fecha;
 end //
 DELIMITER ;
+
+
+-- calcular el total de productos en el carrito
+DELIMITER //
+create procedure Calcular_Total_Carrito(
+	in p_id_usuario int
+)
+begin
+	declare p_id_cliente int;
+
+	select CLIENTES.id_cliente into p_id_cliente 
+	from CLIENTES
+	inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+	inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
+	where USUARIOS.id_usuario = p_id_usuario;
+    
+    select sum(CARRITO.cantidad) as Total
+    from CARRITO
+    where CARRITO.id_cliente = p_id_cliente;
+end //
+DELIMITER ;

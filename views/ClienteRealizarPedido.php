@@ -206,7 +206,7 @@ try {
                     <button type="button" data-bs-toggle="modal" data-bs-target="#ModalConfirmarCambioFecha">
                         Cambiar Fecha o Destino
                     </button>
-                    <button onclick="IrCarrito()">Confirmar pedido</button>
+                    <button onclick="IrCarrito(1)">Confirmar pedido</button>
                 </div>
             </div>
             <h1>Categorias</h1>
@@ -223,6 +223,21 @@ try {
                         <p>Estas seguro que quieres cambiar de fecha o de tienda</p>
                         <p>Si continua se le borrara el carrito</p>
                         <button type="button" data-bs-dismiss="modal" aria-label="Close" onclick="CambiarFecha()">Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="ModalIrCarrito" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog ModalDetalles modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1>Ir al Carrito</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="botonclose"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>No tienes suficiente productos para realizar un pedido</p>
+                        <p>Tienen que ser mas de 20 productos y menos de 50 productos</p>
+                        <button type="button" onclick="IrCarrito(0)">Continuar</button>
                     </div>
                 </div>
             </div>
@@ -259,6 +274,7 @@ try {
         var formaDePago;
         var mostrarStock;
         var fechasBloqueadas;
+        var TotalCarrito;
         
         var pagina;
         
@@ -872,8 +888,30 @@ try {
                 }
             }
         }
-        function IrCarrito() {
-            window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
+        function CalcularTotalCarrito() {
+            $.ajax({
+                type: 'POST',
+                url: '../php/calcularTotalCarrito.php',
+                success: function(response) {
+                    TotalCarrito = response;
+                }
+            });
+        }
+        function IrCarrito(mostrarModal) {
+            if (mostrarModal == 1) {
+                CalcularTotalCarrito()
+                var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
+    
+                if (TotalCarrito >= 20) {
+                    window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
+                }
+                else {
+                    modal.show();
+                }
+            }
+            else {
+                window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
+            }
         }
 
         const buttonMenu = document.getElementById('buttonMenu');
