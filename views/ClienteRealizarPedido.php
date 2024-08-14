@@ -889,7 +889,7 @@ try {
             }
         }
         function IrCarrito(mostrarModal) {
-            if (seleccionando_fecha == false) {
+            if (seleccionando_fecha == true) {
                 $.ajax({
                     type: 'POST',
                     url: '../php/calcularTotalCarrito.php',
