@@ -1,19 +1,5 @@
 /* Estilos generales */
-
-
-.conte h1{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 85%;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;    
-    border-bottom: solid 3px #ddb892;
-}
-.conte{
-    color: #ddb892;
+.conte {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,7 +21,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 95%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -44,6 +30,7 @@
 }
 
 .cont {
+    background-color: #ddb892;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,24 +43,24 @@
 
 table {
     width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
     margin: 20px auto;
     font-size: 25px;
 }
 
-
 table, th, td {
-    color: #ddb892;
-    border-bottom:none;
+    border-bottom: 5px solid #3e2307;
     padding: 10px;
     text-align: center;
+    word-wrap: break-word; /* Asegura que el contenido se ajuste dentro de las celdas */
 }
 
-th {
-    width: auto;
-    padding: 8px;
-    text-align: center;
-    border-bottom: solid 3px #ddb892;
+th, td {
+    max-width: 1px; /* Limita el ancho máximo para que el contenido no se desborde */
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Muestra '...' si el texto es muy largo */
 }
 
 .cantidad {
@@ -145,15 +132,8 @@ th {
 
 /* Estilos responsivos para pantallas menores a 1000px */
 @media (max-width: 1000px) {
-    body{
-        background-color: aqua;
-    }
     table, th, td {
         font-size: 20px;
-    }
-
-    th{
-        border-bottom: solid 3px #ddb892;
     }
 
     td {
@@ -185,11 +165,6 @@ th {
         padding: 10px 20px;
     }
 
-    .conte h1{
-        font-size: 40px;
-        width: 100%;
-    }
-
     .contenedor {
         width: 100%;
         padding: 10px 20px;
@@ -197,10 +172,6 @@ th {
 
     table, th, td {
         font-size: 17px;
-    }
-
-    th{
-        border-bottom: solid 3px #ddb892;
     }
 
     .cssbuttons-io-button {
@@ -216,8 +187,7 @@ th {
         padding: 10px 20px;
     }
 
-    .contenedor h1{
-        font-size: 20px;
+    .contenedor {
         width: 100%;
         padding: 10px 20px;
     }
@@ -243,10 +213,6 @@ th {
     table, th, td {
         font-size: 25px;
     }
-    th{
-        border-bottom: solid 3px #ddb892;
-    }
-    
 
     .cssbuttons-io-button {
         width: 100%;
@@ -255,9 +221,6 @@ th {
 }
 
 @media (max-width: 1200px) and (min-width: 993px) {
-    body{
-        background-color: indianred;
-    }
     .conte {
         margin-bottom: 8%;
         width: 95%;
@@ -271,10 +234,6 @@ th {
 
     table, th, td {
         font-size: 30px;
-    }
-
-    th{
-        border-bottom: solid 3px #ddb892;
     }
 
     form {
