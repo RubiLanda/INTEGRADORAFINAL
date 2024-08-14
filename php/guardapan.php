@@ -21,14 +21,14 @@
   
  if ($imagenPuesto == 1) {
     if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){
-       $Conexion->ejecutar("CALL NUEVO_PRODUCTO('$panombre2','$pancategoria2','$NombreArchivo', $panprecio2 ,'$pandescripcion2',@mensaje)");
+       $Conexion->ejecutar("CALL NUEVO_PRODUCTO('$panombre2','$pancategoria2','$NombreArchivo', '$panprecio2' ,'$pandescripcion2',@mensaje)");
        $consulta = $Conexion->selectConsulta("SELECT @mensaje as resultado");
        $mensaje = $consulta[0]->resultado;
        echo $mensaje;
     }
  }
  else {
-   $Conexion->ejecutar("CALL NUEVO_PRODUCTO('$panombre2','$pancategoria2', '',$panprecio,'$pandescripcion2',@mensaje)");
+   $Conexion->ejecutar("CALL NUEVO_PRODUCTO('$panombre2','$pancategoria2', '', '$panprecio','$pandescripcion2',@mensaje)");
    $consulta = $Conexion->selectConsulta("SELECT @mensaje as resultado");
    $mensaje = $consulta[0]->resultado;
    echo $mensaje;
