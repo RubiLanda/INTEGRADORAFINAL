@@ -19,7 +19,13 @@ body {
     width: 380px;
 }
 
-
+.divrefe{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
 
 form h2{
     margin-bottom: 30px;
