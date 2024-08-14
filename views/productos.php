@@ -1,21 +1,12 @@
 <?php
 require '../php/conexion.php';
 
-$records_per_page = 12;
 $categoria_seleccionado = isset($_GET['categoria']) ? $_GET['categoria'] : 0;
 
-$offset = ($current_page - 1) * $records_per_page;
 
 $Conexion = new Database();
 $Conexion->conectarBD();
 try {
-    $productos = $Conexion->selectConsulta("call Ver_Productos_Filtros($categoria_seleccionado, null, $offset, $records_per_page)");
-    
-    $productos_totales = $Conexion->selectConsulta("call Ver_Productos_Filtros($categoria_seleccionado, null, null, null)");
-
-    $total_records = count($productos_totales);
-    $total_pages = ceil($total_records / $records_per_page);
-
     $categorias = $Conexion->selectConsulta("select id_categoria as ID, nombre as Nombre from CATEGORIAS where estado = 1");
     
 } catch (Exception $e) {
@@ -128,57 +119,19 @@ try {
         <div class="Productos" id="productos">
             
         </div>
-        <div class="paginacion">
-            <?php if ($total_pages > 1): ?>
-                <?php if ($current_page > 1): ?>
-                    <div>
-                        <a style="border-radius: 30px 0 0 30px;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $current_page - 1; ?>">Anterior</a>
-                    </div>
-                <?php endif; ?>
-                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
-                    <?php if ($current_page == 1 && $i == 1): ?>
-                        <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                            <a style="border-radius: 30px 0 0 30px; background-color: #724a32; color: #ddb892; box-shadow: none;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                        </div>
-                    <?php elseif ($i == 1): ?>
-                        <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                            <a href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                        </div>
-                    <?php endif ?>
-
-                    <?php if ($current_page == $total_pages && $i == $current_page): ?>
-                        <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                            <a style="border-radius: 0 30px 30px 0; background-color: #724a32; color: #ddb892; box-shadow: none;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                        </div>
-                    <?php elseif ($i == $total_pages): ?>
-                        <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                            <a href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                        </div>
-                    <?php endif ?>
-                            
-                    <?php if ($i != 1 && $i != $total_pages): ?>
-                        <?php if ($i == $current_page): ?>
-                            <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                <a style="background-color: #724a32; color: #ddb892; box-shadow: none;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            </div>
-                        <?php else: ?>
-                            <div <?php echo ($i == $current_page) ? 'active' : ''; ?>>
-                                <a href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                            </div>
-                        <?php endif ?>
-                    <?php endif ?>
-                <?php endfor; ?>
-                <?php if ($current_page < $total_pages): ?>
-                    <div>
-                        <a style="border-radius: 0 30px 30px 0;" href="?categoria=<?php echo $categoria_seleccionado?>&&page=<?php echo $current_page + 1; ?>">Siguiente</a>
-                    </div>
-                <?php endif; ?>
-            <?php endif ?>
+        <div class="paginacion" id="paginacion">
+            
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        var pagina;
+        
+        if (pagina == null){
+            pagina = 1;
+        }
+
         function cargarProductos(pagina) {
             $.ajax({
                 type: 'POST',
@@ -189,7 +142,24 @@ try {
                 }
             });
         }
-        cargarProductos(1);
+        cargarProductos(pagina);
+        function mostrarPaginacion() {
+            $.ajax({
+                type: 'POST',
+                url: '../php/MostrarPaginacion.php',
+                data: { pagina: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado?>, tipo: 3 },
+                success: function(response) {
+                    $('#paginacion').html(response);
+                }
+            });
+        }
+        mostrarPaginacion()
+        function cambiarPaginacion(cambio) {
+            pagina = cambio;
+            mostrarPaginacion()
+            mostrarProductos(pagina, <?php echo $categoria_seleccionado ?>)
+        }
+
         // Menu toggle
         const buttonMenu = document.getElementById('buttonMenu');
         const menu = document.getElementById('menu');

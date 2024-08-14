@@ -8,18 +8,29 @@ $Conexion->conectarBD();
 $id_usuario = $_SESSION['ID'];
 
 $current_page = $_POST['pagina'];
-$records_per_page = 5;
-
-$offset = ($current_page - 1) * $records_per_page;
 
 if ($_POST['tipo'] == 1) {
+    $records_per_page = 5;
+    
+    $offset = ($current_page - 1) * $records_per_page;
     $categoria_seleccionado = $_POST['categoria_seleccionado'];
     $productos_totales = $Conexion->selectConsulta("call Ver_Productos_Realizar_Pedido($id_usuario, $categoria_seleccionado, null, null, null)");
     $productos = $Conexion->selectConsulta("call Ver_Productos_Realizar_Pedido($id_usuario, $categoria_seleccionado, null, $offset, $records_per_page)");
 }
 else if ($_POST['tipo'] == 2) {
+    $records_per_page = 5;
+    
+    $offset = ($current_page - 1) * $records_per_page;
     $productos_totales = $Conexion->selectConsulta("call Ver_Carrito($id_usuario, null, null)"); 
     $productos = $Conexion->selectConsulta("call Ver_Carrito($id_usuario, $offset, $records_per_page)");
+}
+else if ($_POST['tipo'] == 3) {
+    $records_per_page = 12;
+    
+    $offset = ($current_page - 1) * $records_per_page;
+    $categoria_seleccionado = $_POST['categoria_seleccionado'];
+    $productos_totales = $Conexion->selectConsulta("call Ver_Productos_Filtros($categoria_seleccionado, null, null, null)");
+    $productos = $Conexion->selectConsulta("call Ver_Productos_Filtros($categoria_seleccionado, null, $offset, $records_per_page)");
 }
 
 if (empty($productos) && $current_page > 1) {
