@@ -183,6 +183,11 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------- -->
     <script>
         
+        var pagina;
+        
+        if (pagina == null){
+            pagina = 1;
+        }
 
         function mostrarTiendas(current_page){
             $.ajax({
