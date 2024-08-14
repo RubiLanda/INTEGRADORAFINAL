@@ -260,11 +260,11 @@ form{
     }
 
     table {
-        width: 100%;
-        border-bottom: 5px solid #3e2307;
         padding: 5px;
         align-items: center;
-        font-size: 30px;
+        width: 75%; /* Cambia el ancho de la tabla al 75% en pantallas grandes */
+        font-size: 28px; /* Ajusta el tamaño de la fuente */
+        
     }
     form{
         padding-left: 20%;
