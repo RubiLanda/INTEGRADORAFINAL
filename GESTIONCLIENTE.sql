@@ -268,8 +268,11 @@ begin
                 if contadorError = 0 and contadorBueno = 0 then 
 					set mensajeBueno = 'Apellido paterno actualizado corectamente';
 				end if;
-                
-				if contadorError > 0 and contadorBueno = 0 then
+                if contadorError = 0 and contadorBueno = 1 then
+					set mensajeBueno = concat(mensajeBueno,' y tambien el apellido paterno');
+				elseif contadorError = 0 and contadorBueno > 1 then
+					set mensajeBueno = concat(mensajeBueno,', apellido paterno');
+				elseif contadorError > 0 and contadorBueno = 0 then
 					set mensajeBueno = ' pero si se modifico el apellido paterno';
 
 				elseif contadorError > 0 and contadorBueno > 1 then
@@ -288,10 +291,14 @@ begin
             
             if contadorError = 0 and contadorBueno = 0 then 
 
-				set mensajeBueno = 'Apellido actualizado corectamente';
+				set mensajeBueno = 'Apellido materno actualizado corectamente';
 			end if;
-            
-			if contadorError > 0 and contadorBueno = 0 then
+
+            if contadorError = 0 and contadorBueno = 1 then
+				set mensajeBueno = concat(mensajeBueno,' y tambien el apellido materno');
+			elseif contadorError = 0 and contadorBueno > 1 then
+				set mensajeBueno = concat(mensajeBueno,', apellido materno');
+			elseif contadorError > 0 and contadorBueno = 0 then
 
 				set mensajeBueno = ' pero si se modifico el apellido materno';
 			elseif contadorError > 0 and contadorBueno > 1 then
@@ -314,8 +321,12 @@ begin
 
 					set mensajeBueno = 'Numero de telefono actualizado corectamente';
 				end if;
-                
-                if contadorError > 0 and contadorBueno = 0 then
+
+                 if contadorError = 0 and contadorBueno = 1 then
+					set mensajeBueno = concat(mensajeBueno,' y tambien el numero de telefono');
+				elseif contadorError = 0 and contadorBueno > 1 then
+					set mensajeBueno =  concat(mensajeBueno,', numero de telefono');
+                elseif  contadorError > 0 and contadorBueno = 0 then
 
 					set mensajeBueno = ' pero si se modifico el numero de telefono';
                 elseif contadorError > 0 and contadorBueno > 1 then
