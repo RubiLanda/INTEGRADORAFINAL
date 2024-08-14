@@ -636,6 +636,7 @@ a {
     margin: 20px 0;
     width: 90%;
    }
+  
    .botonV{
     display: flex;
     width: 25%;
@@ -648,19 +649,38 @@ a {
    .titulo{
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 90%;
     align-items: center;
    }
-   .tarjeta{
+   .tarjeta2{
      width: 20%;
      height: 10%;
      margin-right: 0px;
    }
-
+   .contenedor{
+    width: 90%;
+   }
    
-   .card-title{
+   .card-title2{
     display: flex;
     align-items: center;
+   }
+   .icono{
+    margin-right: 0px;
+   }
+   .div{
+    background-color:#e7d2bc;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+   }
+   .div a{
+    width: 100%;
+    display: flex;
+    justify-content: center;
    }
    
     
