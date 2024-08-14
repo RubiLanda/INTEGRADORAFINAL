@@ -899,20 +899,18 @@ try {
         }
         function IrCarrito(mostrarModal) {
             if (mostrarModal == 1) {
-                alert(1);
-                // CalcularTotalCarrito()
-                // var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
+                CalcularTotalCarrito()
+                var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
     
-                // if (TotalCarrito >= 20) {
-                //     window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
-                // }
-                // else {
-                //     modal.show();
-                // }
+                if (TotalCarrito >= 20) {
+                    window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
+                }
+                else {
+                    modal.show();
+                }
             }
             else {
-                alert(2);
-                // window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
+                window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
             }
         }
 
