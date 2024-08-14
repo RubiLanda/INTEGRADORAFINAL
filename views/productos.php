@@ -157,7 +157,7 @@ try {
         function cambiarPaginacion(cambio) {
             pagina = cambio;
             mostrarPaginacion()
-            mostrarProductos(pagina, <?php echo $categoria_seleccionado ?>)
+            cargarProductos(pagina)
         }
 
         // Menu toggle
