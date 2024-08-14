@@ -55,7 +55,9 @@ table, th, td {
 }
 
 th {
-    background-color: #f2f2f2;
+    width: auto; /* Asegúrate de que el ancho sea automático */
+    padding: 8px; /* Ajusta el padding según lo que necesites */
+    text-align: center; /* Alinea el texto al centro */
 }
 
 .cantidad {
@@ -127,8 +129,12 @@ th {
 
 /* Estilos responsivos para pantallas menores a 1000px */
 @media (max-width: 1000px) {
+    body{
+        background-color: aqua;
+    }
     table, th, td {
         font-size: 20px;
+        width: 70%;
     }
 
     td {
@@ -154,9 +160,12 @@ th {
 }
 
 @media (max-width: 576px)  {
+    body{
+        background-color: chartreuse;
+    }
     .conte {
         margin-bottom: 10%;
-        width: 95%;
+        width: 85%;
         padding: 10px 20px;
     }
 
@@ -176,6 +185,9 @@ th {
 }
 
 @media (max-width: 768px) and (min-width: 577px) {
+    body{
+        background-color: darkmagenta;
+    }
     .conte {
         margin-bottom: 10%;
         width: 95%;
@@ -194,6 +206,9 @@ th {
 }
 
 @media (max-width: 992px) and (min-width: 769px) {
+    body{
+        background-color: hotpink;
+    }
     .conte {
         margin-bottom: 8%;
         width: 95%;
@@ -216,6 +231,9 @@ th {
 }
 
 @media (max-width: 1200px) and (min-width: 993px) {
+    body{
+        background-color: indianred;
+    }
     .conte {
         margin-bottom: 8%;
         width: 95%;
