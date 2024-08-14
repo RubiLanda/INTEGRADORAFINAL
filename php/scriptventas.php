@@ -53,7 +53,7 @@ switch ($radiusActivo) {
     echo"<h2>\${$totalfinal[0]->TF}</h2>";
         }
         else{
-            echo"<h1>No hubo ventas en este periodo</h1>";
+            echo"<h2>No hubo ventas en este periodo</h2>";
         }
 
         break;
@@ -74,7 +74,7 @@ switch ($radiusActivo) {
             echo"<h2>TOTAL FINAL</h2>";
     echo"<h2>\${$totalfinal[0]->TF}</h2>";
         }else{
-            echo"<h1>No hubo ventas en este periodo</h1>";
+            echo"<h2>No hubo ventas en este periodo</h2>";
         }
         break;
 
@@ -93,7 +93,7 @@ switch ($radiusActivo) {
             echo"<h2>TOTAL FINAL</h2>";
             echo"<h2>\${$totalfinal[0]->TF}</h2>";
          }else{
-            echo"<h1>No hubo ventas en este periodo</h1>";
+            echo"<h2>No hubo ventas en este periodo</h2>";
          }
         
         break;
