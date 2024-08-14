@@ -646,8 +646,18 @@ a {
     padding: 10px 20px;
    }
    .titulo{
+    display: flex;
+    flex-direction: column;
     width: 60%;
+    align-items: center;
    }
+   .tarjeta{
+     width: 20%;
+     height: 10%;
+     margin-right: 0px;
+   }
+
+   
    .card-title{
     display: flex;
     align-items: center;
