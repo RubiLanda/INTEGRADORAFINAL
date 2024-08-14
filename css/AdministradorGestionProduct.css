@@ -707,7 +707,10 @@ a {
     justify-content: center;
    }
    
-    
+    .ModalDetalles {
+        max-width: 95%;
+        margin: auto;
+    }
     
 }
 @media (max-width: 768px) and (min-width: 577px){/* md */
