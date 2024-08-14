@@ -7,19 +7,19 @@ if ($_POST) {
     $listaAdmin = $conexion->selectConsulta("CALL Ver_Administrador_Estado($estatus)");
     echo "<div class=\"Tiendas\">";
     echo "<h1 class=\"TituloTienda\">T</h1>";
-        foreach ($listaAdmin as $fila){
-            echo "<div class=\"Tienda\">";
-            echo"<h3>$fila->Administrador</h3>";
-                if ($fila->Estatus) {
-                echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\" checked>";
-            } else {
-                echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\">";
-            }
-            echo"<button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$fila->ID}\">
+    foreach ($listaAdmin as $fila) {
+        echo "<div class=\"Tienda\">";
+        echo "<h3>$fila->Administrador</h3>";
+        if ($fila->Estatus) {
+            echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\" checked>";
+        } else {
+            echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\">";
+        }
+        echo "<button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$fila->ID}\">
     Ver Informacion
     </button>";
-    echo "</div>";
-            echo "<div class=\"modal fade\" id=\"ModalInformacion{$fila->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+        echo "</div>";
+        echo "<div class=\"modal fade\" id=\"ModalInformacion{$fila->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
                     <div class=\"modal-dialog modal-dialog-centered\">
                         <div class=\"modal-content\">
                             <div class=\"modal-header\">
@@ -37,8 +37,6 @@ if ($_POST) {
                         </div>
                     </div>
                 </div>";
-            }
-            echo "</div>";
     }
-
-?>
+    echo "</div>";
+}
