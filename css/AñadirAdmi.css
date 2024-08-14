@@ -150,7 +150,7 @@ hr {
 
 .Tienda {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.3fr;
     border-bottom: solid 3px #ddb892;
     width: 95%;
 }
