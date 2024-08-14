@@ -357,7 +357,7 @@ end if;
 set contadorError = contadorError + 1;
 end if;
 
-if n_precio = '' then 
+if n_precio is NULL or n_precio = '' then 
 
 if contadorError = 0 then
 
