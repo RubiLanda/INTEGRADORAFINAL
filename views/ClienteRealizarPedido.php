@@ -888,30 +888,26 @@ try {
                 }
             }
         }
-        function CalcularTotalCarrito() {
+        function IrCarrito(mostrarModal) {
             $.ajax({
                 type: 'POST',
                 url: '../php/calcularTotalCarrito.php',
                 success: function(response) {
-                    TotalCarrito = response;
+                    if (mostrarModal == 1) {
+                        var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
+                        alert(response);
+                        if (response > 19) {
+                            window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
+                        }
+                        else {
+                            modal.show();
+                        }
+                    }
+                    else {
+                        window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
+                    }
                 }
             });
-        }
-        function IrCarrito(mostrarModal) {
-            CalcularTotalCarrito()
-            if (mostrarModal == 1) {
-                var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
-                alert(TotalCarrito);
-                if (TotalCarrito > 19) {
-                    window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
-                }
-                else {
-                    modal.show();
-                }
-            }
-            else {
-                window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
-            }
         }
 
         const buttonMenu = document.getElementById('buttonMenu');
