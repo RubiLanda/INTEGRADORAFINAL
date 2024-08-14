@@ -169,7 +169,7 @@
 .realizarPedido .producto .botones button {
     margin-bottom: 30px;
 }
-.realizarPedido .producto .botones input, .realizarPedido .producto .botones button {
+.realizarPedido .producto .botones input, .realizarPedido .producto .botones button, .realizarPedido a {
     width: 130px;
     height: 40px;
     background-color: #ddb892;
@@ -323,8 +323,7 @@
 }
 .modal-header {
     background-color: #b48263;
-    border: none;
-    
+    border: none; 
 }
 .modal-header h1 {
     color: #493c2f;
