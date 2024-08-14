@@ -180,12 +180,12 @@ try {
     
     <script>
         function cargarProductos(pagina) {
-            alert(1);
             $.ajax({
                 type: 'POST',
                 url: '../php/cargarProductosIndex.php',
                 data: { current_page: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado ?> },
                 success: function(response) {
+                    alert(1);
                     $('#productos').html(response);
                 }
             });
