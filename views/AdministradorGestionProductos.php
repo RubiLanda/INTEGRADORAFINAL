@@ -340,7 +340,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
                            // en el apartado de data se encuentran el nombre de las variables que van a mandar los valores al procedimiento almacenado
                            data: {IDPorducto: IDPorducto, nombre: nombre.value, precio: precio.value, descripcion: descripcion.value },
                            success:function(response){
-                            cargarproductos()
+                            cargarproductos(pagina)
+                            mostrarPaginacion()
                             var toastContainer = document.getElementById('toastContainer');
             var newToast = document.createElement('div');  // Crear un nuevo elemento toast
             newToast.className = 'toast';
