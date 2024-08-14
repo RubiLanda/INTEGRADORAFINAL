@@ -174,9 +174,13 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         }
     }
     else {
-        echo "<div id=\"consultaTiendas\"></div>";
-
-        echo "<div class=\"paginacion\" id=\"paginacion\"></div>";
+        echo "<div class=\"Tiendas\">";
+            echo "<h1 class=\"TituloTienda\">Tiendas</h1>";
+            
+            echo "<div id=\"consultaTiendas\"></div>";
+            
+            echo "<div class=\"paginacion\" id=\"paginacion\"></div>";
+        echo "</div>";
     }
     ?>
     

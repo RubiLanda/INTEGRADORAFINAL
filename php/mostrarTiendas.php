@@ -11,8 +11,7 @@ $current_page = $_POST['current_page'];
 $offset = ($current_page - 1) * $records_per_page;
 
 $Tiendas = $Conexion->selectConsulta("call Ver_Tiendas($offset, $records_per_page)");  
-echo "<div class=\"Tiendas\">";
-    echo "<h1 class=\"TituloTienda\">Tiendas</h1>";
+
     foreach ($Tiendas as $fila) {
         echo "<div class=\"Tienda\">";
             echo "<h3>{$fila->Tienda}</h3>";
@@ -38,6 +37,5 @@ echo "<div class=\"Tiendas\">";
                 </div>
             </div>";
         }
-echo "</div>";
 
 ?>
