@@ -4,7 +4,7 @@ img {
 }
 .tabla {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 0.3fr;
     column-gap: 30px;
     row-gap: 30px;
 }
