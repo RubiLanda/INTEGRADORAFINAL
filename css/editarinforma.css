@@ -139,6 +139,39 @@ body {
         width: 100px;
         height: 35px;
     }
+
+    .divrefe{
+        display: flex;
+        justify-content: end;
+        width: 90%;
+        margin-top: 5px;
+    }
+    
+    
+    .botonV {
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .botonV .button{
+        width: 140px;
+        height: 45px;
+        margin: 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ddb892;
+        color: #9c6644;
+        border: 2px solid #ddb892;
+        border-radius: 10px;
+    }
+    
+    .titulo2 {
+        width: 80%;
+        display: flex;
+    }
 }
 
 @media (max-width: 768px) and (min-width: 577px) {  /* md */
@@ -153,5 +186,24 @@ body {
     
     .titulo h1 {
         font-size: 28px;
+    }
+
+    .divrefe{
+        display: flex;
+        justify-content: end;
+        width: 90%;
+        margin-top: 5px;
+    }
+    
+    .botonV {
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .titulo2 {
+        width: 80%;
+        display: flex;
     }
 }

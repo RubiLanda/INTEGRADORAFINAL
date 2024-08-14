@@ -4,6 +4,7 @@
   $Conexion = new Database();
   $Conexion->conectarBD();
   extract($_POST);
+  
      if($_POST){             //estas variables $ vienen de los .value del script AJAX
       if ($precio === '')
       {

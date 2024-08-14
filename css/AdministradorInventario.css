@@ -35,7 +35,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 95%;
+    width: 80%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -276,7 +276,7 @@ th {
     th{
         border-bottom: solid 3px #ddb892;
     }
-    
+
     form {
         padding-left: 20%;
         padding-top: 5px;

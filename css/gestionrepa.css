@@ -90,6 +90,9 @@ button{
     display: flex;
     justify-content: center;
 }
+.fechas{
+    width: 90%;
+}
 
 .refe{
     background-color: #ddb892;

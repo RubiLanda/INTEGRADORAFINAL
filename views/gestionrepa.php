@@ -81,11 +81,11 @@ $menu2 = isset($_GET['estado']) ? false : true;
                             <option value="O">Otro</option>
                         </select>
                         <label>Fecha De Nacimiento:</label>
-                        <input type="date" name="nacimiento" id="nacimiento" required >
+                        <input type="date" class="fechas" name="nacimiento" id="nacimiento" required >
                         <label>Teléfono:</label>
                         <input type="tel" name="telefono" id="telefono" maxlength="10" required autocomplete="off" oninput="validartelefono(this)" >
                         <label>Fecha de ingreso:</label>
-                        <input type="date" name="registro" id="ingreso" required >
+                        <input type="date"  class="fechas" name="registro" id="ingreso" required >
                         <label>Folio Licencia De Conducir:</label>
                         <input type="text" name="folio" id="folio" maxlength="11" required autocomplete="off" oninput=" validartelefono(this)" >
                     </div>
