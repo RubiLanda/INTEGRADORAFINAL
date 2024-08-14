@@ -56,6 +56,9 @@ table, th, td {
 
 th {
     background-color: #f2f2f2;
+    width: auto; /* Asegúrate de que el ancho sea automático */
+    padding: 8px; /* Ajusta el padding según lo que necesites */
+    text-align: center; /* Alinea el texto al centro */
 }
 
 .cantidad {
