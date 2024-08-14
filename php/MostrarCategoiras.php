@@ -19,13 +19,13 @@ $temporada = $Conexion->selectConsulta("call Calcular_Fechas_Temporada('$Fecha_P
 $resultado = $Conexion->selectConsulta("SELECT @habilitado as resultado");
 $habilitarTemporada = $resultado[0]->resultado;
 
-echo "<a href=\"?categoria=0\">Todos</a>";
+echo "<a href=\"?categoria=0&&mostrarMenu=0\">Todos</a>";
 foreach ($categorias as $categoria){
     if ($categoria->ID != 4) {
-        echo "<a href=\"?categoria={$categoria->ID}\">{$categoria->Nombre}</a>";
+        echo "<a href=\"?categoria={$categoria->ID}&&mostrarMenu=0\">{$categoria->Nombre}</a>";
     }
     if ($categoria->ID == 4 && $habilitarTemporada == 1) {
-        echo "<a href=\"?categoria={$categoria->ID}\">{$categoria->Nombre}</a>";
+        echo "<a href=\"?categoria={$categoria->ID}&&mostrarMenu=0\">{$categoria->Nombre}</a>";
     }
 }
 ?>
