@@ -140,7 +140,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
           const selectaños=document.getElementById('años');
             var meses = inputMeses.value;
             var años= selectaños.value;
-            alert(años);
             const selectcate=document.getElementById('categorias');
             var categorias=selectcate.value;
             const selectrepa=document.getElementById('repartidores');
