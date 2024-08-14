@@ -169,7 +169,7 @@ body {
     }
 
     .titulo2 {
-        width: 80%;
+        width: 100%;
         display: flex;
     }
 }
@@ -203,10 +203,10 @@ body {
     }
 
     .titulo2 {
-        width: 80%;
+        width: 100%;
         display: flex;
     }
-    
+
     .botonV .button{
         width: 140px;
         height: 45px;
