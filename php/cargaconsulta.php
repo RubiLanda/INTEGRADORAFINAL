@@ -37,7 +37,7 @@ foreach ($productos AS $reg)
            echo "</div>";
            echo "<div class='div2'>";
               // descripcion de los panes
-              echo "<label for='d'>Descripcion del Producto</label>";
+              echo "<label for='d'>Descripción del Producto</label>";
               echo "<textarea class='form-control w-30 btn' maxlength='100' id='D{$reg->ID}'>$reg->Descripcion </textarea>";
               echo "</div>";
                     
