@@ -443,7 +443,6 @@ DELIMITER ;
 
 
 -- 3.4.4  PROCEDIMIENTO PARA ACTUALIZAR LA INFORMACION DE LOS PRODUCTOS CORREGIDO Y CONCATENADO :(
-DROP PROCEDURE actualizarproducto
 DELIMITER //
 CREATE PROCEDURE actualizarproducto(
 in id int,                          
@@ -460,13 +459,13 @@ declare ModificacionDescripcion boolean;
 
 declare mensajeError text;
 declare mensajeBueno text;
-    
+
 declare contadorError int;
 declare contadorBueno int;
-    
+
 set mensajeError = '';
 set mensajeBueno = '';
-    
+
 set contadorError = 0;
 set contadorBueno = 0;
 
@@ -487,107 +486,107 @@ from PRODUCTOS
 where PRODUCTOS.descripcion = nueva_descripcion and PRODUCTOS.id_producto = id;
 
 if ModificacionNombre = 1 and ModificacionPrecio = 1 and ModificacionDescripcion = 1 then
-		set mensaje = 'No se hizo ninguna modificacion';
-	else 
-		if nuevo_nombre = '' then
-			set mensajeError = 'No puedes dejar el nombre del producto vacio';
-			set contadorError = contadorError + 1;
-		end if;
-        
-        
-         if nuevo_precio = '' then
+set mensaje = 'No se hizo ninguna modificacion';
+else 
+if nuevo_nombre = '' then
+set mensajeError = 'No puedes dejar el nombre del producto vacio';
+set contadorError = contadorError + 1;
+end if;
 
-				if contadorError = 0 then 
-				set mensajeError = 'No puedes dejar el precio del producto vacio';
-					elseif contadorError = 1 then
 
-					 set mensajeError = concat(mensajeError, ' ni tampoco el precio del producto');
-						elseif contadorError >1 then 
-					      set mensajeError = concat(mensajeError, ', precio del producto');
-				end if;
-					set contadorError = contadorError + 1;
-		  end if;
-        
-        if nueva_descripcion = '' then
+if nuevo_precio = 0 or nuevo_precio is null then
 
-				if contadorError = 0 then 
+if contadorError = 0 then 
+set mensajeError = 'No puedes dejar el precio del producto vacio';
+elseif contadorError = 1 then
 
-					set mensajeError = 'No puedes dejar la descripcion del producto vacia';
-					elseif contadorError = 1 then
+set mensajeError = concat(mensajeError, ' ni tampoco el precio del producto');
+elseif contadorError >1 then 
+set mensajeError = concat(mensajeError, ', precio del producto');
+end if;
+set contadorError = contadorError + 1;
+end if;
 
-						set mensajeError = concat(mensajeError, ' ni tampoco la descripcion del producto');
-					elseif contadorError > 1 then 
+if nueva_descripcion = '' then
 
-						set mensajeError = concat(mensajeError, ', descripcion del producto');
-				end if;
-					set contadorError = contadorError + 1;
-		end if;
-        
-        if ModificacionNombre = 0 then
+if contadorError = 0 then 
 
-				if nuevo_nombre != '' then
-				update PRODUCTOS
-				set PRODUCTOS.nombre= nuevo_nombre
-				where PRODUCTOS.id_producto = id;
-				
-                if contadorError = 0 then
+set mensajeError = 'No puedes dejar la descripcion del producto vacia';
+elseif contadorError = 1 then
 
-					set mensajeBueno = 'Nombre del producto actualizado corectamente';
-                	  elseif contadorError > 0 then
+set mensajeError = concat(mensajeError, ' ni tampoco la descripcion del producto');
+elseif contadorError > 1 then 
 
-					   set mensajeBueno = ' pero si se modifico el nombre del producto';
-                end if;
-                	set contadorBueno = contadorBueno + 1;
-				end if;
-        end if;
-        
-        if ModificacionPrecio = 0 then 
+set mensajeError = concat(mensajeError, ', descripcion del producto');
+end if;
+set contadorError = contadorError + 1;
+end if;
 
-			if nuevo_precio != '' then
+if ModificacionNombre = 0 then
 
-				update PRODUCTOS
-				set PRODUCTOS.precio = nuevo_precio
-				where PRODUCTOS.id_producto = id;
-                if contadorError = 0 and contadorBueno = 0 then 
-					set mensajeBueno = 'Precio del producto actualizado corectamente';
-				end if;
-                
-				if contadorError > 0 and contadorBueno = 0 then
+if nuevo_nombre != '' then
+update PRODUCTOS
+set PRODUCTOS.nombre= nuevo_nombre
+where PRODUCTOS.id_producto = id;
 
-					set mensajeBueno = ' pero si se modifico el precio del producto';
-				elseif contadorError > 0 and contadorBueno > 1 then
+if contadorError = 0 then
 
-					set mensajeBueno = concat(mensajeBueno, ', precio delproducto');
-				end if;
-                set contadorBueno = contadorBueno + 1;
-			end if;
-        end if;
-        
-        if ModificacionDescripcion = 0 then
+set mensajeBueno = 'Nombre del producto actualizado corectamente';
+elseif contadorError > 0 then
 
-			if nueva_descripcion != '' then
+set mensajeBueno = ' pero si se modifico el nombre del producto';
+end if;
+set contadorBueno = contadorBueno + 1;
+end if;
+end if;
 
-				update PRODUCTOS
-				set PRODUCTOS.descripcion = nueva_descripcion
-				where PRODUCTOS.id_producto = id;
-                if contadorError = 0 and contadorBueno = 0 then 
+if ModificacionPrecio = 0 then 
 
-					set mensajeBueno = 'Descripcion del producto actualizado corectamente';
-				end if;
-                
-                if contadorError > 0 and contadorBueno = 0 then
+if nuevo_precio != 0 or nuevo_precio is not null then
 
-					set mensajeBueno = ' pero si se modifico la descripcion del producto';
-                elseif contadorError > 0 and contadorBueno > 1 then
+update PRODUCTOS
+set PRODUCTOS.precio = nuevo_precio
+where PRODUCTOS.id_producto = id;
+if contadorError = 0 and contadorBueno = 0 then 
+set mensajeBueno = 'Precio del producto actualizado corectamente';
+end if;
 
-					set mensajeBueno = concat(mensajeBueno, ', descripcion del producto');
-				end if;
-                set contadorBueno = contadorBueno + 1;
-			end if;
-        end if;
-        
-    set mensaje = concat(mensajeError, mensajeBueno);
-	end if;
+if contadorError > 0 and contadorBueno = 0 then
+
+set mensajeBueno = ' pero si se modifico el precio del producto';
+elseif contadorError > 0 and contadorBueno > 1 then
+
+set mensajeBueno = concat(mensajeBueno, ', precio delproducto');
+end if;
+set contadorBueno = contadorBueno + 1;
+end if;
+end if;
+
+if ModificacionDescripcion = 0 then
+
+if nueva_descripcion != '' then
+
+update PRODUCTOS
+set PRODUCTOS.descripcion = nueva_descripcion
+where PRODUCTOS.id_producto = id;
+if contadorError = 0 and contadorBueno = 0 then 
+
+set mensajeBueno = 'Descripcion del producto actualizado corectamente';
+end if;
+
+if contadorError > 0 and contadorBueno = 0 then
+
+set mensajeBueno = ' pero si se modifico la descripcion del producto';
+elseif contadorError > 0 and contadorBueno > 1 then
+
+set mensajeBueno = concat(mensajeBueno, ', descripcion del producto');
+end if;
+set contadorBueno = contadorBueno + 1;
+end if;
+end if;
+
+set mensaje = concat(mensajeError, mensajeBueno);
+end if;
 end //
 DELIMITER ;
          
