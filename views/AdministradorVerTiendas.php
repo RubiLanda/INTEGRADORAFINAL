@@ -192,7 +192,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         function mostrarTiendas(current_page){
             $.ajax({
                 type: 'POST',
-                url: '../php/MostrarTiendas.php',
+                url: '../php/mostrarTiendas.php',
                 data: { current_page: current_page },
                 success: function(response) {
                     $('#consultaTiendas').html(response);
