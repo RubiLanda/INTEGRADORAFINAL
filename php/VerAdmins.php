@@ -6,19 +6,15 @@ extract($_POST);
 if ($_POST) {
     $listaAdmin = $conexion->selectConsulta("CALL Ver_Administrador_Estado($estatus)");
 echo"<div class='Tiendas'>";
-        echo"<h1 class='TituloTienda'>INFORMACIÓN DE REPARTIDORES</h1>";
-        echo"<a class=\"refe\" href=\"gestionrepa.php
-        \" >Dar de alta nuevo repartidor!</a>";
+        echo"<h1 class='TituloTienda'>INFORMACIÓN DEE ADMINS</h1>";
     
         foreach ($listaAdmin as $fila){
             echo"<div class='Tienda'>";
-            echo"<h3>$fila->Nombre</h3>";
-            if ($fila->Estatus) {
-                echo "
-                <input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\" checked>";
+                echo"<h3>$fila->Nombre</h3>";
+                if ($fila->Estatus) {
+                echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\" checked>";
             } else {
-                echo "
-                <input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\">";
+                echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\">";
             }
             echo"<button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$fila->ID}\">
             Ver Informacion
