@@ -6,13 +6,13 @@
     $records_per_page = 12;
 
     $current_page = $_POST['current_page'];
-    // $categoria_seleccionado = $_POST['categoria_seleccionado'];
+    $categoria_seleccionado = $_POST['categoria_seleccionado'];
 
     // $offset = ($current_page - 1) * $records_per_page;
 
     // $productos = $Conexion->selectConsulta("call Ver_Productos_Filtros($categoria_seleccionado, null, $offset, $records_per_page)");
 
-    echo $current_page;
+    echo $categoria_seleccionado;
 
     // foreach ($productos as $producto){
     // echo "<div class=\"Producto\">
