@@ -319,7 +319,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 delay: 5000 // Duración del toast en milisegundos
             });
             toast.show();
-            document.getElementById('VistaPrevia').src = "../Imagenes/Icono de Mas.avif";  // <<< Esta línea limpia la vista previa
+            document.getElementById('VistaPrevia').src = "../img/Icono de Mas.avif";  // <<< Esta línea limpia la vista previa
             // Limpiar el campo de entrada de imagen
             fileInput.value = "";  // <<
                 }

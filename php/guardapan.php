@@ -12,12 +12,10 @@
   $panombre=$_POST['nombre'];
   $pancategoria=$_POST['categoria'];
   $panprecio=$_POST['precio'];
-  if ($panprecio != ''){
-    $panprecio = $_POST['precio'];
-  }
-  else {
-    $panprecio = null;
-  }
+  if ($panprecio === '')
+   {
+   $panprecio = 0.00;  
+   }
   $pandescripcion=$_POST['descripcion'];
   $panombre2 = trim($panombre);
   $pancategoria2=trim($pancategoria);

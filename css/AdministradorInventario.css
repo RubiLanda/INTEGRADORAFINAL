@@ -12,6 +12,7 @@
     background-color: #9c6644;
     border: 3px solid #724a32;
     border-radius: 20px;
+    overflow-x: auto; /* Añadido para evitar desbordamientos */
 }
 
 .contenedor {
@@ -27,6 +28,7 @@
     margin-right: auto;
     padding: 20px 40px;
     border-radius: 20px;
+    overflow-x: auto; /* Añadido para evitar desbordamientos */
 }
 
 .cont {
@@ -39,20 +41,23 @@
     margin-right: auto;
     margin-top: 2%;
     padding: auto;
+    overflow-x: auto; /* Añadido para evitar desbordamientos */
 }
 
 table {
     width: 100%;
+    max-width: 100%; /* Asegura que la tabla no se salga del contenedor */
     border-collapse: collapse;
     margin: 20px auto;
     font-size: 25px;
+    overflow-x: auto; /* Añadido para evitar desbordamientos */
 }
-
 
 table, th, td {
     border-bottom: 5px solid #3e2307;
     padding: 10px;
     text-align: center;
+    word-wrap: break-word; /* Asegura que el contenido se ajuste dentro de las celdas */
 }
 
 th {
