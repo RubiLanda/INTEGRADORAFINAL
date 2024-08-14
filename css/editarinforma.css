@@ -154,6 +154,11 @@ body {
         justify-content: flex-end;
         align-items: center;
     }
+
+    .titulo2 {
+        width: 80%;
+        display: flex;
+    }
 }
 
 @media (max-width: 768px) and (min-width: 577px) {  /* md */
@@ -182,5 +187,10 @@ body {
         display: flex;
         justify-content: flex-end;
         align-items: center;
+    }
+
+    .titulo2 {
+        width: 80%;
+        display: flex;
     }
 }
