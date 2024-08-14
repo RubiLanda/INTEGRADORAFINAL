@@ -248,7 +248,7 @@ input[type="reset"]{
     margin: auto;
     flex-direction: column;
     border-radius: 15px;
-    width: 60%;
+    width: 90%;
     margin-top: 30px;
 
     
@@ -421,7 +421,7 @@ input[type="reset"]{
 
 
 .icono{
-    margin-right: 20px;
+    margin-right: 0px;
 }
 .inputs {
     background-color: #ddb892;
@@ -474,7 +474,26 @@ a {
     width: 25%;
     justify-content: center;
    }
-
+   .div7{
+    background-color:#e7d2bc;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+   }
+   .div7 a{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+   }
+   .titulo5{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+   }
 
 
 
@@ -646,7 +665,7 @@ a {
     margin-right: 8px;
     padding: 10px 20px;
    }
-   .titulo{
+   .titulo5{
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -668,7 +687,7 @@ a {
    .icono{
     margin-right: 0px;
    }
-   .div{
+   .div7{
     background-color:#e7d2bc;
     width: 50%;
     display: flex;
@@ -677,7 +696,7 @@ a {
     margin-bottom: 20px;
     border-radius: 10px;
    }
-   .div a{
+   .div7 a{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -805,7 +824,7 @@ a {
        .icono{
         margin-right: 0px;
        }
-       .div{
+       .div7{
         background-color:#e7d2bc;
         width: 50%;
         display: flex;
@@ -814,12 +833,12 @@ a {
         margin-bottom: 20px;
         border-radius: 10px;
        }
-       .div a{
+       .div7 a{
         width: 100%;
         display: flex;
         justify-content: center;
        }
-       .titulo{
+       .titulo5{
         display: flex;
         flex-direction: column;
         width: 90%;
@@ -951,7 +970,7 @@ a {
        .icono{
         margin-right: 0px;
        }
-       .div{
+       .div7{
         background-color:#e7d2bc;
         width: 50%;
         display: flex;
@@ -960,12 +979,12 @@ a {
         margin-bottom: 20px;
         border-radius: 10px;
        }
-       .div a{
+       .div7 a{
         width: 100%;
         display: flex;
         justify-content: center;
        }
-       .titulo{
+       .titulo5{
         display: flex;
         flex-direction: column;
         width: 90%;
@@ -1074,7 +1093,7 @@ a {
        .icono{
         margin-right: 0px;
        }
-       .div{
+       .div7{
         background-color:#e7d2bc;
         width: 50%;
         display: flex;
@@ -1083,12 +1102,12 @@ a {
         margin-bottom: 20px;
         border-radius: 10px;
        }
-       .div a{
+       .div7 a{
         width: 100%;
         display: flex;
         justify-content: center;
        }
-       .titulo{
+       .titulo5{
         display: flex;
         flex-direction: column;
         width: 90%;
@@ -1108,7 +1127,6 @@ a {
     .contenedor{
         width: 90%;
        }
-       
        .card-title2{
         display: flex;
         align-items: center;
@@ -1116,7 +1134,7 @@ a {
        .icono{
         margin-right: 0px;
        }
-       .div{
+       .div7{
         background-color:#e7d2bc;
         width: 50%;
         display: flex;
@@ -1125,12 +1143,12 @@ a {
         margin-bottom: 20px;
         border-radius: 10px;
        }
-       .div a{
+       .div7 a{
         width: 100%;
         display: flex;
         justify-content: center;
        }
-       .titulo{
+       .titulo5{
         display: flex;
         flex-direction: column;
         width: 90%;
