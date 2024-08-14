@@ -41,14 +41,14 @@
 }
 
 table {
-    width: 50%;
+    width: 100%;
     border-collapse: collapse;
     align-items: center;
     margin: 20px auto;
     font-size: 25px;
 }
 
-table, th, td {
+table, th, td:nth-child(2) {
     border-bottom: 5px solid #3e2307;
     padding: 5px;
     align-items: center;
@@ -64,27 +64,27 @@ form{
 }
 .cantidad {
     display: flex;
+    justify-content: center;
+    align-items: center;
 } 
 .cantidad-button {
     background-color: #ddb892;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    max-width: 30px;
+    max-height: 30px;
     border-bottom: 2px solid #3e2307;
     border-top: 2px solid #3e2307;
     border-left: 2px solid #3e2307;
 } 
 .cantidad-button2 {
     background-color: #ddb892;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    max-width: 30px;
+    max-height: 30px;
     border-bottom: 2px solid #3e2307;
     border-top: 2px solid #3e2307;
     border-right: 2px solid #3e2307;
@@ -92,11 +92,9 @@ form{
 
 .cantidad-input {
     background-color: #ddb892;
-    border: none;
-    height: 40px;
-    width: 60px;
+    max-width: 60px;
     text-align: center;
-    font-size: 20px;
+    font-size: 16px;
     color: #694731;
     border-top: 2px solid #3e2307;
     border-bottom: 2px solid #3e2307;
@@ -147,7 +145,7 @@ form{
     .conte {
         margin-bottom: 10%;
         width: 95%;
-        padding: 10px 20px;
+        padding: 10px 10px;
     }
 
     .contenedor {
@@ -193,6 +191,14 @@ form{
 
     .contenedor {
         overflow-x: auto;
+    }
+    .cantidad-button, .cantidad-button2, .cantidad-input {
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+    }
+    table td:nth-child(2){
+        width: 25%;
     }
 
     table {
