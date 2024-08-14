@@ -180,6 +180,7 @@ try {
     
     <script>
         function cargarProductos(pagina) {
+            alert(1);
             $.ajax({
                 type: 'POST',
                 url: '../php/cargarProductosIndex.php',
