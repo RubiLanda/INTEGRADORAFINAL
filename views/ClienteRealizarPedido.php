@@ -895,7 +895,6 @@ try {
                 success: function(response) {
                     if (mostrarModal == 1) {
                         var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
-                        alert(response);
                         if (response > 19) {
                             window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
                         }
