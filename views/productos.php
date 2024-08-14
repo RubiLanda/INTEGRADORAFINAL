@@ -185,8 +185,8 @@ try {
                 url: '../php/cargarProductosIndex.php',
                 data: { current_page: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado ?> },
                 success: function(response) {
-                    alert(1);
-                    $('#productos').html(response);
+                    alert(response);
+                    // $('#productos').html(response);
                 }
             });
         }
