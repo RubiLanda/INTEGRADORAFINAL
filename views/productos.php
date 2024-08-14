@@ -2,7 +2,6 @@
 require '../php/conexion.php';
 
 $records_per_page = 12;
-$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 $categoria_seleccionado = isset($_GET['categoria']) ? $_GET['categoria'] : 0;
 
 $offset = ($current_page - 1) * $records_per_page;
@@ -126,19 +125,8 @@ try {
                 <?php endforeach ?>
             </div>
         </div>
-        <div class="Productos">
-            <?php foreach ($productos as $producto): ?>
-                <div class="Producto">
-                    <img src="../img/productos/<?php echo ($producto->Imagen)?>" alt="">
-                    <div class="sombra">
-                        <h1><?php echo ($producto->Nombre)?></h1>
-                        <div>
-                            <h4><?php echo ($producto->Precio)?></h4>
-                            <p>Ver descripcion</p>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach ?>
+        <div class="Productos" id="productos">
+            
         </div>
         <div class="paginacion">
             <?php if ($total_pages > 1): ?>
@@ -191,6 +179,17 @@ try {
 
     
     <script>
+        function cargarProductos(pagina) {
+            $.ajax({
+                type: 'POST',
+                url: '../php/cargarProductosIndex.php',
+                data: { current_page: pagina, categoria_seleccionado: <?php echo $categoria_seleccionado ?> },
+                success: function(response) {
+                    $('#productos').html(response);
+                }
+            });
+        }
+        cargarProductos(1);
         // Menu toggle
         const buttonMenu = document.getElementById('buttonMenu');
         const menu = document.getElementById('menu');
