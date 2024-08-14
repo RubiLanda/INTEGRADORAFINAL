@@ -28,7 +28,7 @@ else {
     header("Location: login.php");
 }
 
-$menu1 = isset($_GET['estado']) ? false : true;
+$estado = isset($_GET['estado']) ? false : true;
 $menu2 = isset($_GET['estado']) ? false : true;
 $estado = isset($_GET['estado']) ? $_GET['estado'] : 1;
 $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
@@ -91,7 +91,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
     </header>
 
     <?php 
-    if ($menu1 && $menu2) {
+    if (isset($_GET['estado'])) {
         echo "<div class=\"menu mostrar\" id=\"menu\">";
     }
     else {
