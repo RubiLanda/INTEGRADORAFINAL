@@ -913,127 +913,210 @@ create procedure Ventas_Productos(
 in p_mes int,
 in p_año int,
 in fecha_requerida date,
-in p_categoria int
+in p_categoria int,
+out totalfinal decimal
 )
 begin
 if p_mes is not null and p_año is null and p_categoria is null and fecha_requerida is null then
-
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where month (PEDIDOS.f_entrega) = p_mes and PEDIDOS.estado_pedido = 'entregado'
+where month (PEDIDOS.f_entrega)=p_mes and PEDIDOS.estado_pedido='entregado'
 group by Producto;
+
+select sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where month (PEDIDOS.f_entrega)=p_mes and PEDIDOS.estado_pedido='entregado';
 end if;
 
 if p_mes is null and p_año is not null and p_categoria is null and fecha_requerida is null then
-
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where year (PEDIDOS.f_entrega) = p_año and PEDIDOS.estado_pedido = 'entregado'
+where year (PEDIDOS.f_entrega)=p_año and PEDIDOS.estado_pedido='entregado'
 group by Producto;
+
+select   sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where year (PEDIDOS.f_entrega)=p_año and PEDIDOS.estado_pedido='entregado';
+
 end if;
 
 if p_mes is not null and p_año is not null and p_categoria is null and fecha_requerida is null then
-
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where month (PEDIDOS.f_entrega) = p_mes and  year (PEDIDOS.f_entrega) = p_año and PEDIDOS.estado_pedido = 'entregado'
+where month (PEDIDOS.f_entrega)=p_mes and  year (PEDIDOS.f_entrega)=p_año and PEDIDOS.estado_pedido='entregado'
 group by Producto;
+
+select  sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where month (PEDIDOS.f_entrega)=p_mes and  year (PEDIDOS.f_entrega)=p_año and PEDIDOS.estado_pedido='entregado';
+
+
 end if;
 
 if p_mes is null and p_año is null and p_categoria is not null and fecha_requerida is null then
-
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where CATEGORIAS.id_categoria = p_categoria and  PEDIDOS.estado_pedido = 'entregado'
+where CATEGORIAS.id_categoria=p_categoria and  PEDIDOS.estado_pedido='entregado'
 group by Producto;
+
+select  sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where CATEGORIAS.id_categoria=p_categoria and  PEDIDOS.estado_pedido='entregado';
+
 end if;
 
-if p_mes is not null and p_año is null and p_categoria is not null and fecha_requerida is null then
 
+
+if p_mes is not null and p_año is null and p_categoria is not null and fecha_requerida is null then
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where  month (PEDIDOS.f_entrega) = p_mes and CATEGORIAS.id_categoria = p_categoria and PEDIDOS.estado_pedido = 'entregado'
+where  month (PEDIDOS.f_entrega)=p_mes and CATEGORIAS.id_categoria=p_categoria and PEDIDOS.estado_pedido='entregado'
 group by Producto;
+
+select   sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where  month (PEDIDOS.f_entrega)=p_mes and CATEGORIAS.id_categoria=p_categoria and PEDIDOS.estado_pedido='entregado';
+
 end if;
 
 if p_mes is null and p_año is not null and p_categoria is not null and fecha_requerida is null then
-
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where  year (PEDIDOS.f_entrega) = p_año and CATEGORIAS.id_categoria = p_categoria and  PEDIDOS.estado_pedido = 'entregado'
+where  year (PEDIDOS.f_entrega)=p_año and CATEGORIAS.id_categoria=p_categoria and  PEDIDOS.estado_pedido='entregado'
 group by Producto;
+
+select  sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where  year (PEDIDOS.f_entrega)=p_año and CATEGORIAS.id_categoria=p_categoria and  PEDIDOS.estado_pedido='entregado';
+
 end if;
 
 if p_mes is not null and p_año is not null and p_categoria is not null and fecha_requerida is null then
-
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where  month (PEDIDOS.f_entrega) = p_mes and year (PEDIDOS.f_entrega) = p_año and CATEGORIAS.id_categoria = p_categoria and  PEDIDOS.estado_pedido = 'entregado'
+where  month (PEDIDOS.f_entrega)=p_mes and year (PEDIDOS.f_entrega)=p_año and CATEGORIAS.id_categoria=p_categoria and  PEDIDOS.estado_pedido='entregado'
 group by Producto;
+
+select   sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where  month (PEDIDOS.f_entrega)=p_mes and year (PEDIDOS.f_entrega)=p_año and CATEGORIAS.id_categoria=p_categoria and  PEDIDOS.estado_pedido='entregado';
+
 end if;
 
 if p_mes is null and p_año is null and p_categoria is null and fecha_requerida is null then
-
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where PEDIDOS.estado_pedido = 'entregado'
+where PEDIDOS.estado_pedido='entregado'
 group by Producto;
+
+select   sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where PEDIDOS.estado_pedido='entregado';
+
 end if;
 
 if fecha_requerida is not null and p_mes is null and p_año is null and p_categoria IS NULL then
-
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where PEDIDOS.estado_pedido = 'entregado' and date(PEDIDOS.f_entrega) = fecha_requerida
+where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida
 group by Producto;
+
+select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida;
+
 end if ;
 
 if fecha_requerida is not null and p_mes is null and p_año is null and p_categoria IS NOT NULL then
-
 select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
 inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
 inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
-where PEDIDOS.estado_pedido = 'entregado' and date(PEDIDOS.f_entrega) = fecha_requerida and CATEGORIAS.id_categoria=p_categoria 
+where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida and CATEGORIAS.id_categoria=p_categoria 
 group by Producto;
+
+
+select   sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+from DETALLE_PEDIDO
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
+where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida and CATEGORIAS.id_categoria=p_categoria ;
 end if ;
 end //
 DELIMITER ;
@@ -1043,64 +1126,111 @@ DELIMITER ;
 -- * 3.3.1 Ver ventas de Tiendas filtrado por mes, año, por nombre de la tienda y ordenado por mayor número de ganancias 
 DELIMITER //
 create procedure Ver_ventas_Tiendas(
-	in p_Mes int,
-    in p_Año int,
-    in fecha_requerida date
+in p_Mes int,
+in p_Año int,
+in fecha_requerida date,
+out totalfinal decimal
 )
 begin
-	if p_Mes is not null and p_Año is null and fecha_requerida is null then
-		select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from TIENDAS
-        inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where month(PEDIDOS.f_entrega) = p_Mes and PEDIDOS.estado_pedido = 'entregado'
-        group by (Nombre_tienda);
-    end if;
-    
-    if p_Mes is null and p_Año is not null and fecha_requerida is null then
-		select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from TIENDAS
-        inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado'
-        group by (Nombre_tienda);
-    end if;
-    
-    if p_Mes is not null and p_Año is not null and fecha_requerida is null then
-		select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from TIENDAS
-        inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where month(PEDIDOS.f_entrega) = p_Mes and year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado'
-        group by (Nombre_tienda);
-    end if;
-    
-    if p_Mes is null and p_Año is null and fecha_requerida  is not null then
-   select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from TIENDAS
-        inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where date(PEDIDOS.f_entrega)=fecha_requerida;
-        end if;
-    
-    if p_Mes is null and p_Año is null and fecha_requerida is null then	
-		select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from TIENDAS
-        inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where PEDIDOS.estado_pedido = 'entregado'
-        group by (Nombre_tienda);
-    end if;
+if p_Mes is not null and p_Año is null and fecha_requerida is null then
+select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and PEDIDOS.estado_pedido = 'entregado'
+group by (Nombre_tienda);
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is null and p_Año is not null and fecha_requerida is null then
+select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado'
+group by (Nombre_tienda);
+
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is not null and p_Año is not null and fecha_requerida is null then
+select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado'
+group by (Nombre_tienda);
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is null and p_Año is null and fecha_requerida  is not null then
+select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where date(PEDIDOS.f_entrega)=fecha_requerida;
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where date(PEDIDOS.f_entrega)=fecha_requerida;
+end if;
+
+if p_Mes is null and p_Año is null and fecha_requerida is null then	
+select TIENDAS.nombre_tienda as Nombre_tienda, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where PEDIDOS.estado_pedido = 'entregado'
+group by (Nombre_tienda);
+
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from TIENDAS
+inner join PEDIDOS on TIENDAS.id_tienda = PEDIDOS.id_tiendas
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where PEDIDOS.estado_pedido = 'entregado';
+
+end if;
 end //
 DELIMITER ;
 
@@ -1108,125 +1238,226 @@ DELIMITER ;
 -- * 3.3.4 Ver ventas de Repartidores filtrado por mes, año, por nombre del repartidor y ordenado por mayor número de ganancias
 DELIMITER //
 create procedure Ver_Ventas_Repartidores(
-	in p_Mes int,
-    in p_Año int,
-     in fecha_requerida date,
-    in p_nombre_repartidor int
+in p_Mes int,
+in p_Año int,
+in fecha_requerida date,
+in p_nombre_repartidor int,
+out totalfinal decimal
 )
 begin
-	if p_Mes is not null and p_Año is null and p_nombre_repartidor is null and fecha_requerida is null then
-		select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where month(PEDIDOS.f_entrega) = p_Mes and PEDIDOS.estado_pedido = 'entregado'
-        group by (Nombre_repartidor);
-	end if;
-    
-    if p_Mes is null and p_Año is not null and p_nombre_repartidor is null and fecha_requerida is null then
-		select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado'
-        group by (Nombre_repartidor);
-    end if;
-    
-    if p_Mes is not null and p_Año is not null and p_nombre_repartidor is null and fecha_requerida is null then
-		select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where month(PEDIDOS.f_entrega) = p_Mes and year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado'
-        group by (Nombre_repartidor);
-    end if;
-    
-    if p_Mes is null and p_Año is null and p_nombre_repartidor is not null and fecha_requerida is null then
-		select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
-    end if;
-    
-    if p_Mes is not null and p_Año is null and p_nombre_repartidor is not null and fecha_requerida is null then
-		select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where month(PEDIDOS.f_entrega) = p_Mes and REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
-    end if;
-    
-    if p_Mes is null and p_Año is not null and p_nombre_repartidor is not null and fecha_requerida is null then
-		select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where year(PEDIDOS.f_entrega) = p_Año and REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
-    end if;
-    
-    if p_Mes is not null and p_Año is not null and p_nombre_repartidor is not null and fecha_requerida is null then
-		select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where month(PEDIDOS.f_entrega) = p_Mes and year(PEDIDOS.f_entrega) = p_Año and REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
-    end if;
-    
-    if p_Mes is null and p_Año is null and p_nombre_repartidor is null and fecha_requerida is null then
-	select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where PEDIDOS.estado_pedido = 'entregado'
-        group by (Nombre_repartidor);
-    end if;
+if p_Mes is not null and p_Año is null and p_nombre_repartidor is null and fecha_requerida is null then
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and PEDIDOS.estado_pedido = 'entregado'
+group by (Nombre_repartidor);
+
+select  sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is null and p_Año is not null and p_nombre_repartidor is null and fecha_requerida is null then
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado'
+group by (Nombre_repartidor);
+
+select  sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is not null and p_Año is not null and p_nombre_repartidor is null and fecha_requerida is null then
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado'
+group by (Nombre_repartidor);
+
+select  sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and year(PEDIDOS.f_entrega) = p_Año and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is null and p_Año is null and p_nombre_repartidor is not null and fecha_requerida is null then
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
+
+select  sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is not null and p_Año is null and p_nombre_repartidor is not null and fecha_requerida is null then
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
+
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is null and p_Año is not null and p_nombre_repartidor is not null and fecha_requerida is null then
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where year(PEDIDOS.f_entrega) = p_Año and REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where year(PEDIDOS.f_entrega) = p_Año and REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is not null and p_Año is not null and p_nombre_repartidor is not null and fecha_requerida is null then
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and year(PEDIDOS.f_entrega) = p_Año and REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where month(PEDIDOS.f_entrega) = p_Mes and year(PEDIDOS.f_entrega) = p_Año and REPARTIDORES.id_repartidor = p_nombre_repartidor and PEDIDOS.estado_pedido = 'entregado';
+
+end if;
+
+if p_Mes is null and p_Año is null and p_nombre_repartidor is null and fecha_requerida is null then
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where PEDIDOS.estado_pedido = 'entregado'
+group by (Nombre_repartidor);
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where PEDIDOS.estado_pedido = 'entregado';
+end if;
+
 if fecha_requerida is not null and p_Mes is null and p_Año is null and p_nombre_repartidor IS NULL then
-         select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida
-        group by Nombre_repartidor;
-        end if ;
-        
-         if fecha_requerida is not null and p_mes is null and p_año is null and p_nombre_repartidor IS NOT NULL then
-		select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
-        from REPARTIDORES
-        inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
-        inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
-        inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
-        inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida and REPARTIDORES.id_repartidor= p_nombre_repartidor;
-        end if ;
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida
+group by Nombre_repartidor;
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida;
+end if ;
+
+if fecha_requerida is not null and p_mes is null and p_año is null and p_nombre_repartidor IS NOT NULL then
+select PERSONAS.nombre as Nombre_repartidor, sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) as Total
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida and REPARTIDORES.id_repartidor= p_nombre_repartidor;
+
+select sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) into totalfinal
+from REPARTIDORES
+inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
+inner join PEDIDOS on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
+inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida and REPARTIDORES.id_repartidor= p_nombre_repartidor;
+
+end if ;
 end //
 DELIMITER ;
 
