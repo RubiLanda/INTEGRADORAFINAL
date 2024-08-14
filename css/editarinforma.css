@@ -140,20 +140,6 @@ body {
         height: 35px;
     }
 
-    .contenedor {
-        color: #ddb892;
-        background-color: #9c6644;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: 15px;
-        width: 90%;
-        max-width: 800px;
-        margin: 30px auto;
-        padding: 20px;
-    }
-
     .divrefe{
         display: flex;
         justify-content: end;
@@ -183,19 +169,6 @@ body {
     .titulo h1 {
         font-size: 28px;
     }
-    .contenedor {
-        color: #ddb892;
-        background-color: #9c6644;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: 15px;
-        width: 90%;
-        max-width: 800px;
-        margin: 30px auto;
-        padding: 20px;
-    }
 
     .divrefe{
         display: flex;
@@ -203,7 +176,6 @@ body {
         width: 90%;
         margin-top: 5px;
     }
-    
     
     .botonV {
         width: 90%;
