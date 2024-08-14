@@ -1582,18 +1582,35 @@ end //
 DELIMITER ;
 
 
+drop procedure Ver_Tiendas;
 -- * 3.2.1 Procedimiento. Consulta de tiendas filtrado por nombre de tienda.
 DELIMITER //
-create procedure Ver_Tiendas ()
+create procedure Ver_Tiendas (
+in p_offset int,
+in p_records_per_page int
+)
 begin
-    
-	-- seleccionar información de todas las tiendas
+
+if p_offset is not null and p_records_per_page is not null then
+
+select TIENDAS.id_tienda as ID, TIENDAS.nombre_tienda as Tienda, TIENDAS.direccion as Dirección, PERSONAS.nombre as Propietario, PERSONAS.telefono as Telefono
+from TIENDAS
+join CLIENTE_TIENDA on TIENDAS.id_tienda = CLIENTE_TIENDA.id_tienda
+join CLIENTES on CLIENTES.id_cliente = CLIENTE_TIENDA.id_cliente
+join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+limit p_records_per_page
+offset p_offset;
+
+else 
+
 select TIENDAS.id_tienda as ID, TIENDAS.nombre_tienda as Tienda, TIENDAS.direccion as Dirección, PERSONAS.nombre as Propietario, PERSONAS.telefono as Telefono
 from TIENDAS
 join CLIENTE_TIENDA on TIENDAS.id_tienda = CLIENTE_TIENDA.id_tienda
 join CLIENTES on CLIENTES.id_cliente = CLIENTE_TIENDA.id_cliente
 join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona;
-    
+
+end if;
+
 end //
 DELIMITER ;
 

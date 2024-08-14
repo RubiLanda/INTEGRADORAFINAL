@@ -32,6 +32,13 @@ else if ($_POST['tipo'] == 3) {
     $productos_totales = $Conexion->selectConsulta("call Ver_Productos_Filtros($categoria_seleccionado, null, null, null)");
     $productos = $Conexion->selectConsulta("call Ver_Productos_Filtros($categoria_seleccionado, null, $offset, $records_per_page)");
 }
+else if ($_POST['tipo'] == 4) {
+    $records_per_page = 5;
+    
+    $offset = ($current_page - 1) * $records_per_page;
+    $productos_totales = $Conexion->selectConsulta("call Ver_Tiendas(null, null)");
+    $productos = $Conexion->selectConsulta("call Ver_Tiendas($offset, $records_per_page)");
+}
 
 if (empty($productos) && $current_page > 1) {
     $current_page = $current_page - 1;
