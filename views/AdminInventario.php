@@ -139,7 +139,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                                                             <path d=\"m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z\" />
                                                         </svg>
                                                     </button>
-                                                    <input class=\"cantidad-input\" type=\"text\" name=\"n_stock\" id=\"input{$value->id_producto}\" value=\"{$value->Stock}\" oninput=\"validarNumero(this)\" onblur=\"ejecutarBoton({$value->id_producto}, 'input{$value->id_producto}')\" onkeydown=\"if (this.value <= 0 || this.value=='' ) {return event.key !='Enter' ;}\">
+                                                    <input class=\"cantidad-input\" type=\"text\" name=\"n_stock\" id=\"input{$value->id_producto}\" value=\"{$value->Stock}\" oninput=\"validarNumero(this)\" onblur=\"ejecutarBoton({$value->id_producto}, 'input{$value->id_producto}')\" onkeydown=\"if (this.value <= 0 || this.value=='' ) {return event.key !='Enter' ;}\" onkeypress=\"if (event.key === 'Enter') event.preventDefault();\">
                                                     <button class=\"cantidad-button2\" type=\"button\" onclick=\"cambiarCantidad(1, this.previousElementSibling, {$value->id_producto}, 'input{$value->id_producto}')\" style=\"border-radius: 0 15px 15px 0;\">
                                                         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-right-fill\" viewBox=\"0 0 16 16\">
                                                             <path d=\"m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z\" />
@@ -192,6 +192,10 @@ $menu2 = isset($_GET['estado']) ? false : true;
 
         function validarNumero(input, valorInicial) {
             input.value = input.value.replace(/\D/g, '');
+            let cantidad = parseInt(input.value, 10);
+            if (cantidad > 100) {
+                input.value = 100;
+            }
         }
     </script>
     <script>
