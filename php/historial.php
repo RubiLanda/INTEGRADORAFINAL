@@ -9,20 +9,9 @@ extract($_POST);
 if($_POST)
 {
   // AQUI LLAMAMOS EL PROCEDIMIENTO ALMACENADO PARA FILTRAR LOS PRODUCTOS   
-if ($a == "NULL") {
-    $año = null;
-}
-else {
-    $año = $a;
-}
-if ($m == "NULL") {
-    $mes = null;
-}
-else {
-    $mes = $m;
-}
 
-$historial = $Conexion->selectConsulta("CALL historial($ID, $año, $mes)");
+
+$historial = $Conexion->selectConsulta("CALL historial($ID, $a, $m)");
 
     if (count($historial) == 0) {
         echo true;
