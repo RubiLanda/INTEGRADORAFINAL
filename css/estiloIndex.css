@@ -277,6 +277,9 @@ footer div{
     .TodoLosProductos .Productos {
         grid-template-columns: repeat(2, 1fr);
     }
+    .TodoLosProductos .BarraBusqueda {
+        width: 40%;
+    }
 }
 @media (max-width: 992px) and (min-width: 769px){  /* lg */
     body {
