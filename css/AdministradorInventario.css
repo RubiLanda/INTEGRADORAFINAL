@@ -1,3 +1,4 @@
+/* Estilos generales */
 .conte {
     display: flex;
     flex-direction: column;
@@ -43,15 +44,13 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    align-items: center;
     margin: 20px auto;
     font-size: 25px;
 }
 
-table, th, td:nth-child(2) {
+table, th, td {
     border-bottom: 5px solid #3e2307;
-    padding: 5px;
-    align-items: center;
+    padding: 10px;
     text-align: center;
 }
 
@@ -59,53 +58,45 @@ th {
     background-color: #f2f2f2;
 }
 
-form{
-    padding-left: 25%;
-}
 .cantidad {
     display: flex;
     justify-content: center;
     align-items: center;
-} 
+}
+
+.cantidad-button, .cantidad-button2 {
+    background-color: #ddb892;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-bottom: 2px solid #3e2307;
+    border-top: 2px solid #3e2307;
+}
+
 .cantidad-button {
-    background-color: #ddb892;
-    width: 30px;
-    height: 30px;
-    padding: 2px;
-    max-width: 30px;
-    max-height: 30px;
-    border-bottom: 2px solid #3e2307;
-    border-top: 2px solid #3e2307;
     border-left: 2px solid #3e2307;
-} 
+}
+
 .cantidad-button2 {
-    background-color: #ddb892;
-    width: 30px;
-    height: 30px;
-    padding: 2px;
-    max-width: 30px;
-    max-height: 30px;
-    border-bottom: 2px solid #3e2307;
-    border-top: 2px solid #3e2307;
     border-right: 2px solid #3e2307;
-} 
+}
 
 .cantidad-input {
     background-color: #ddb892;
-    max-width: 60px;
+    border: none;
+    height: 40px;
+    width: 60px;
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     color: #694731;
     border-top: 2px solid #3e2307;
     border-bottom: 2px solid #3e2307;
 }
-.cantidad-button  svg {
-    color: #9c6644;
-}
-.cantidad-button2  svg {
-    color: #9c6644;
-}
-.cantidad-svg {
+
+.cantidad-button svg, .cantidad-button2 svg {
     color: #9c6644;
 }
 
@@ -134,18 +125,39 @@ form{
     box-shadow: 0 0.3em 1em -0.5em #3e2307;
 }
 
-/*   */
-@media (max-width: 576px)  { /* sm */
-    body { background-color: rgb(140, 0, 255);}
-    img {
-        width: 19%;
-        padding-right: 10px;
+/* Estilos responsivos para pantallas menores a 1000px */
+@media (max-width: 1000px) {
+    table, th, td {
+        font-size: 20px;
     }
 
+    td {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cantidad {
+        margin-top: 10px;
+    }
+
+    .cantidad-input {
+        width: 50px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .cantidad-button, .cantidad-button2 {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 576px)  {
     .conte {
         margin-bottom: 10%;
         width: 95%;
-        padding: 10px 10px;
+        padding: 10px 20px;
     }
 
     .contenedor {
@@ -153,36 +165,17 @@ form{
         padding: 10px 20px;
     }
 
-    table {
-        width: 100%;
-        border-bottom: 5px solid #3e2307;
-        padding: 5px;
-        align-items: center;
+    table, th, td {
         font-size: 17px;
     }
 
-    td{
-        align-items: center;
-    }
-
-    form{
-        padding-left: 1%;
-    }
-
     .cssbuttons-io-button {
-        width: 100%; /* Full-width buttons on small screens */
+        width: 100%;
         font-size: 14px;
     }
 }
-@media (max-width: 768px) and (min-width: 577px){/* md */
-    body { background-color: rgb(255, 34, 0);}
-    img {
-        width: 10%;
-        padding-right: 10px;
-    }
-    form{
-        padding-left: 5%;
-    }
+
+@media (max-width: 768px) and (min-width: 577px) {
     .conte {
         margin-bottom: 10%;
         width: 95%;
@@ -190,34 +183,17 @@ form{
     }
 
     .contenedor {
-        overflow-x: auto;
-    }
-    .cantidad-button, .cantidad-button2, .cantidad-input {
-        width: 20px;
-        height: 20px;
-        font-size: 14px;
-    }
-    table td:nth-child(2){
-        width: 25%;
-    }
-
-    table {
         width: 100%;
-        font-size: 18px;
+        padding: 10px 20px;
     }
 
     .cssbuttons-io-button {
-        width: 100%; /* Full-width buttons on small screens */
+        width: 100%;
         font-size: 14px;
     }
 }
-@media (max-width: 992px) and (min-width: 769px){  /* lg */
-    body { background-color: rgb(255, 0, 179);}
-    img {
-        width: 12%;
-        padding-right: 15px;
-    }
 
+@media (max-width: 992px) and (min-width: 769px) {
     .conte {
         margin-bottom: 8%;
         width: 95%;
@@ -229,28 +205,17 @@ form{
         padding: 10px 20px;
     }
 
-    table {
-        width: 100%;
-        border-bottom: 5px solid #3e2307;
-        padding: 5px;
-        align-items: center;
+    table, th, td {
         font-size: 25px;
     }
-    form{
-        padding-left: 6%;
-    }
+
     .cssbuttons-io-button {
-        width: 100%; /* Full-width buttons on small screens */
+        width: 100%;
         font-size: 14px;
     }
 }
-@media (max-width: 1200px) and (min-width: 993px) {  /* xl */
-    body { background-color: aqua;}
-    img {
-        width: 12%;
-        padding-right: 15px;
-    }
 
+@media (max-width: 1200px) and (min-width: 993px) {
     .conte {
         margin-bottom: 8%;
         width: 95%;
@@ -262,19 +227,17 @@ form{
         padding: 10px 20px;
     }
 
-    table {
-        padding: 5px;
-        align-items: center;
-        width: 75%; /* Cambia el ancho de la tabla al 75% en pantallas grandes */
-        font-size: 28px; /* Ajusta el tamaño de la fuente */
-        
+    table, th, td {
+        font-size: 30px;
     }
-    form{
+
+    form {
         padding-left: 20%;
         padding-top: 5px;
     }
+
     .cssbuttons-io-button {
-        width: 100%; /* Full-width buttons on small screens */
+        width: 100%;
         font-size: 14px;
     }
 }
