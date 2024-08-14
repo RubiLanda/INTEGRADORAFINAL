@@ -794,6 +794,31 @@ a {
         width: 25%;
         justify-content: center;
        }
+       .contenedor{
+        width: 90%;
+       }
+       
+       .card-title2{
+        display: flex;
+        align-items: center;
+       }
+       .icono{
+        margin-right: 0px;
+       }
+       .div{
+        background-color:#e7d2bc;
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 20px;
+        border-radius: 10px;
+       }
+       .div a{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+       }
        
     
 }
@@ -904,6 +929,31 @@ a {
         width: 25%;
         justify-content: center;
        }
+       .contenedor{
+        width: 90%;
+       }
+       
+       .card-title2{
+        display: flex;
+        align-items: center;
+       }
+       .icono{
+        margin-right: 0px;
+       }
+       .div{
+        background-color:#e7d2bc;
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 20px;
+        border-radius: 10px;
+       }
+       .div a{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+       }
        
     
     
@@ -989,6 +1039,31 @@ a {
        .botonV{
         display: flex;
         width: 25%;
+        justify-content: center;
+       }
+       .contenedor{
+        width: 90%;
+       }
+       
+       .card-title2{
+        display: flex;
+        align-items: center;
+       }
+       .icono{
+        margin-right: 0px;
+       }
+       .div{
+        background-color:#e7d2bc;
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 20px;
+        border-radius: 10px;
+       }
+       .div a{
+        width: 100%;
+        display: flex;
         justify-content: center;
        }
     
