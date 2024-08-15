@@ -46,7 +46,7 @@ else {
                         $conexion->conectarBD();
                         $persona = $_SESSION['ID'];
 
-                        $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$persona'");
+                        $cuenta = $conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$persona'");
 
                         echo "
                         <div class='dropdown text-end'>
@@ -110,6 +110,7 @@ else {
 
         <div>
         <?php
+
         $info=$conexion->selectConsulta("call Ver_Informacion_Usuario($persona)");
         
         foreach($info as $perso){
