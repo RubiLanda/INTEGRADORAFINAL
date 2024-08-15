@@ -1,9 +1,15 @@
 /* Estilos generales */
 .conte {
+    display: flex;
+    text-align: center;
+    margin: auto;
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
     background-color: #9c6644;
-    color: #ddb892;
-    padding: 20px;
-    border-radius: 15px;
+    border: 3px solid #724a32;
+    border-radius: 50px;
 }
 .conte h2 {
     border-bottom: solid 2px #ddb892;
