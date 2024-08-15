@@ -81,7 +81,6 @@ try {
                             <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1' data-popper-placement='bottom-end' style='position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-112px, 34px);'>
                                 <li><h6>hola,</h6></li>
                                 <li><h6>{$cuenta[0]->Nombre}</h6></li>
-                                <li><hr class='dropdown-divider'></li>
                                 <li><hr class='dropdown-divider'></li>";
                             switch ($_SESSION['Rol']){
                                 case 1:
