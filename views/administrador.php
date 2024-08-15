@@ -114,7 +114,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             <a href="habiydesarepa.php">Ver Repartidores</a>
             <a href="AdministradorVerTiendas.php">Ver Administradores</a>
             <a href="AdministradorVerTiendas.php">Ver Tiendas</a>
-            <a href="#">Mi cuenta</a>
+            <a href="#" class="opcionSeleccionado">Mi cuenta</a>
         </div>
     </div>
     <div style="height: 170px;"></div>

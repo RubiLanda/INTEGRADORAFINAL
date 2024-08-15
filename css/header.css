@@ -153,6 +153,9 @@ svg {
 .dropdown li h6 {
     margin-left: 15px;
 }
+.opcionSeleccionado {
+    border-bottom: solid 3px #3d2b1f;
+}
 
 @media (max-width: 576px) {  /* sm */
     .menu {
