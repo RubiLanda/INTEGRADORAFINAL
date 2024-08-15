@@ -319,31 +319,3 @@
         font-size: 14px;
     }
 }
-
-@media (max-width: 1200px) and (min-width: 993px) { /* xl */
-    body { background-color: violet; }
-    .conte {
-        width: 95%;
-        padding: 10px;
-        align-items: center;
-        margin: 10% auto 5% auto;
-    }
-    .contenedor {
-        width: 100%;
-        padding: 10px 20px;
-    }
-    table {
-        width: 100%;
-        border-bottom: 5px solid #3e2307;
-        padding: 5px;
-        align-items: center;
-        font-size: 25px;
-    }
-    form {
-        padding-left: 15%;
-    }
-    .cssbuttons-io-button {
-        width: 100%;
-        font-size: 14px;
-    }
-}
