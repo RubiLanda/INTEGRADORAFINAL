@@ -107,7 +107,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         <div class="opciones">
             <a href="AdministradorVerPedidos.php?mostrarMenu=0">Ver pedidos</a>
             <a href="Administradorganancias.php">Ver Ganancias</a>
-            <a href="#">Gestionar productos y categorías</a>
+            <a href="#" class="opcionSeleccionado">Gestionar productos y categorías</a>
             <a href="AdminInventario.php">Añadir inventario</a>
             <a href="habiydesarepa.php">Ver Repartidores</a>
             <a href="AdminAñadir.php">Ver Administradores</a>
