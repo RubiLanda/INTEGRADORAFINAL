@@ -12,8 +12,6 @@
     background-color: #9c6644;
     border: 3px solid #724a32;
     border-radius: 20px;
-    overflow-x: auto;
-    /* Añadido para evitar desbordamientos */
 }
 
 .contenedor {
@@ -29,8 +27,6 @@
     margin-right: auto;
     padding: 20px 40px;
     border-radius: 20px;
-    overflow-x: auto;
-    /* Añadido para evitar desbordamientos */
 }
 
 .row {
@@ -235,7 +231,7 @@ th {
         width: 100%;
         padding: 10px 20px;
     }
-    
+
     .row {
         justify-content: center;
     }
