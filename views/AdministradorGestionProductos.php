@@ -76,7 +76,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         </div>
     </header>
 
-    <div class="menu oculto" id="menu"></div>
+    <div class="menu oculto" id="menu">
         <div class="inicioMenu">
             <img src="../img/logo.png">
             <button id="regresar" class="boton">
