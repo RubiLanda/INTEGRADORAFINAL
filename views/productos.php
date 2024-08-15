@@ -2,7 +2,7 @@
 require '../php/conexion.php';
 
 $categoria_seleccionado = isset($_GET['categoria']) ? $_GET['categoria'] : 0;
-
+session_start();
 
 $Conexion = new Database();
 $Conexion->conectarBD();
@@ -36,12 +36,9 @@ try {
             <div class="login-registro">
                 <?php
                     if (isset($_SESSION['Rol'])){
-                        session_start();
-                        include '../php/conexion.php';
-                        $conexion=new Database();
-                        $conexion->conectarBD();
+                        
                         $id = $_SESSION['ID'];
-                        $cuenta = $conexion->selectConsulta('select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = $id');
+                        $cuenta = $Conexion->selectConsulta('select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = $id');
 
                         echo "
                         <div class='dropdown text-end'>
