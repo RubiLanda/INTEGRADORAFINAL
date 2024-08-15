@@ -36,7 +36,12 @@ else{
 }
 switch ($radiusActivo) {
     case 1:
-        $consulta = $conexion->selectConsulta("call Ventas_Productos($mes,$año,$fecha,$categoria, @totalfinal)"); //cuando es nulo con comillas y cuando no es nulo sin comillas
+        if ($fecha == "NULL"){
+            $consulta = $conexion->selectConsulta("call Ventas_Productos($mes,$año,$fecha,$categoria, @totalfinal)"); //cuando es nulo con comillas y cuando no es nulo sin comillas
+        }else{
+            $consulta = $conexion->selectConsulta("call Ventas_Productos($mes,$año,'$fecha',$categoria,  @totalfinal)");
+
+        }
         $totalfinal=$conexion->selectConsulta("SELECT @totalfinal as TF");
         if(count($consulta)>0){
 
