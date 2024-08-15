@@ -55,7 +55,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             <div>
                 <?php 
                 if (isset($_SESSION['Rol'])){
-                        $cuenta = $conexion->selectConsulta('select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = $persona');
+                        $cuenta = $conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$persona'");
 
                         echo "
                         <div class='dropdown text-end'>
