@@ -124,7 +124,7 @@ $usuario = $_SESSION['ID'];
                 $reg = $Conexion->selectConsulta($consulta);
                 // DIV GENERAL DE LA CLASE  RADICAL2
                 echo "<div class='radical2'>";
-                         echo "<h2 class='radical2'>HISTORIAL</h2>";
+                         echo "<h2>HISTORIAL</h2>";
                          // DIV CON LA CLASE CONTHISTORIAL
                      echo "<div class='conthistorial'>";
                          // DIV DE LA CLASE 10 (SELECT DE AÑO Y MES)
