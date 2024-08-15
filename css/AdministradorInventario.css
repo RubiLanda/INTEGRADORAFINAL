@@ -54,25 +54,9 @@
     padding: auto;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px auto;
-    font-size: 25px;
-}
-
-
-table, th, td {
-    color: #ddb892;
-    border-bottom:none;
-    padding: 10px;
-    text-align: center;
-}
-
-th {
-    width: auto; /* Asegúrate de que el ancho sea automático */
-    padding: 8px; /* Ajusta el padding según lo que necesites */
-    text-align: center; /* Alinea el texto al centro */
+.tabla {
+    display: grid;
+    grid-template-columns: 2fr 0.5fr;
 }
 
 .cantidad {
