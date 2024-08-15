@@ -1,14 +1,9 @@
 .conte {
     display: flex;
+    text-align: center;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-top: 10%;
-    width: 85%;
     height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px 40px;
     background-color: #9c6644;
     border: 3px solid #724a32;
     border-radius: 50px;
