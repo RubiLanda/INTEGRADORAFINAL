@@ -143,39 +143,32 @@ th {
 }
 
 @media (max-width: 576px) {
-    table {
-        display: block;
-        overflow-x: auto;
+    .conte {
+        margin-bottom: 10%;
+        width: 85%;
+        padding: 5px 5px;
     }
 
-    tr {
-        display: flex;
-        flex-direction: column;
-        border-bottom: 2px solid #3e2307;
-        margin-bottom: 10px;
-    }
-
-    th, td {
-        display: block;
+    .contenedor {
         width: 100%;
-        text-align: left;
-        padding-left: 50%;
-        position: relative;
+        padding: 10px 20px;
     }
 
-    th::before, td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        font-weight: bold;
-        text-transform: uppercase;
+    .row {
+        justify-content: center;
     }
 
-    th, td:last-child {
-        border-bottom: none;
+    table,
+    th,
+    td {
+        font-size: 17px;
+    }
+
+    .cssbuttons-io-button {
+        width: 100%;
+        font-size: 14px;
     }
 }
-
 
 @media (max-width: 768px) and (min-width: 577px) {
     .conte {
