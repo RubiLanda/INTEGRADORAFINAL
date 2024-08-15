@@ -35,8 +35,14 @@ try {
             </button>
             <div class="login-registro">
                 <?php
-                    session_start();
                     if (isset($_SESSION['Rol'])){
+                        session_start();
+                        include '../php/conexion.php';
+                        $conexion=new Database();
+                        $conexion->conectarBD();
+                        $id = $_SESSION['ID'];
+                        $cuenta = $conexion->selectConsulta('select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = $id');
+
                         echo "
                         <div class='dropdown text-end'>
                             <a href='#' class='d-block link-dark text-decoration-none perfil' id='dropdownUser1' data-bs-toggle='dropdown' aria-expanded='false'>
@@ -45,18 +51,27 @@ try {
                                 </svg>
                             </a>
                             <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1' data-popper-placement='bottom-end' style='position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-112px, 34px);'>
-                                <li><a class='dropdown-item' href='#'>New project...</a></li>
-                                <li><a class='dropdown-item' href='#'>Settings</a></li>
-                                <li><a class='dropdown-item' href='#'>Profile</a></li>
-                                <li><hr class='dropdown-divider'></li>
-                                <li><a class='dropdown-item' href='../php/cerrarSeccion.php'>Cerrar Seccion</a></li>
+                                <li>hola</li>
+                                <li>{$cuenta->Nombre}</li>";
+                            switch ($_SESSION['Rol']){
+                                case 1:
+                                    echo "<li><a class='dropdown-item' href='administrador.php'>Mi cuenta</a></li>";
+                                    break;
+                                case 2:
+                                    echo "<li><a class='dropdown-item' href='micuentacliente.php'>Mi cuenta</a></li>";
+                                    break;
+                                case 3:
+                                    echo "<li><a class='dropdown-item' href='RepartidorMicuenta.php'>Mi cuenta</a></li>";
+                                    break;
+                            }
+                            echo "<li><hr class='dropdown-divider'></li>
+                                <li><a class='dropdown-item' href='php/cerrarSeccion.php'>Cerrar Sesion</a></li>
                             </ul>
                         </div>";
                     }
                     else {
-                        echo "<a href='login.php' class = 'boto'>Login</a>";
-                        echo "<a href='sign-up.php' class = 'boto'>Sign-up</a>";
-
+                        echo "<a href='views/login.php' class = 'boto'>Login</a>";
+                        echo "<a href='views/registro.php' class = 'boto'>Sign-up</a>";
                     }
                 ?>
             </div>
