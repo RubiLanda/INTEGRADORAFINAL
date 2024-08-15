@@ -730,6 +730,7 @@ a {
     }
     .radical2 {
         width: 90%;
+        margin-bottom: 50px;
     }
     .padre2{
         display: flex;
