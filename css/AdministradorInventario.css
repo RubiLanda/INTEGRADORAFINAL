@@ -98,27 +98,6 @@
     body{
         background-color: chartreuse;
     }
-    .conte {
-        margin-bottom: 10%;
-        width: 90%;
-        padding: 10px 0;
-    }
-
-    .conte h1{
-        font-size: 32px;
-        width: 90%;
-    }
-
-    .contenedor {
-        width: 100%;
-        padding: 10px 20px;
-    }
-
-
-    .cssbuttons-io-button {
-        width: 100%;
-        font-size: 14px;
-    }
 
     .tabla {
         display: flex;
@@ -130,22 +109,6 @@
     body{
         background-color: darkmagenta;
     }
-    .conte {
-        margin-bottom: 10%;
-        width: 95%;
-        padding: 10px 20px;
-    }
-
-    .contenedor h1{
-        font-size: 20px;
-        width: 100%;
-        padding: 10px 20px;
-    }
-
-    .cssbuttons-io-button {
-        width: 100%;
-        font-size: 14px;
-    }
     .tabla {
         grid-template-columns: 1fr;
     }
@@ -155,53 +118,10 @@
     body{
         background-color: hotpink;
     }
-    .conte {
-        margin-bottom: 8%;
-        width: 95%;
-        padding: 10px 20px;
-    }
-
-    .contenedor {
-        width: 100%;
-        padding: 10px 20px;
-    }
-
-    table, th, td {
-        font-size: 25px;
-    }
-
-    .cssbuttons-io-button {
-        width: 100%;
-        font-size: 14px;
-    }
 }
 
 @media (max-width: 1200px) and (min-width: 993px) {
     body{
         background-color: indianred;
-    }
-    .conte {
-        margin-bottom: 8%;
-        width: 95%;
-        padding: 10px 20px;
-    }
-
-    .contenedor {
-        width: 100%;
-        padding: 10px 20px;
-    }
-
-    table, th, td {
-        font-size: 30px;
-    }
-
-    form {
-        padding-left: 20%;
-        padding-top: 5px;
-    }
-
-    .cssbuttons-io-button {
-        width: 100%;
-        font-size: 14px;
     }
 }
