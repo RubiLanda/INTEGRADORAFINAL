@@ -2,6 +2,11 @@
 .conte {
     background-color: #9c6644;
     color: #ddb892;
+    padding: 20px;
+    border-radius: 15px;
+}
+.conte h2 {
+    border-bottom: solid 2px #ddb892;
 }
 .tabla {
     display: grid;
