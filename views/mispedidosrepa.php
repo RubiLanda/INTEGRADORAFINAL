@@ -46,13 +46,13 @@ else {
     <div class="fondo"></div>
     <header>
         <div>
-        <button id="buttonMenu" class="boton">
+            <button id="buttonMenu" class="boton">
                 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
                 </svg>
             </button>
-        <div>
-        <?php 
+            <div>
+            <?php 
                 if (isset($_SESSION['Rol'])){
                         $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$persona'");
 
@@ -88,12 +88,10 @@ else {
                         echo "<a href='views/registro.php' class = 'boto'>Sign-up</a>";
                     }
                 ?>
-        </div>
+            </div>
         </div>
     </header>
 
-    <div class="menu oculto" id="menu">
-    
     <?php
     if (isset($_GET['mostrarMenu'])) {
         echo "<div class=\"menu oculto\" id=\"menu\">";
