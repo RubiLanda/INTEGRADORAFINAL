@@ -3,13 +3,10 @@
 
 .conte h1 {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 85%;
     height: auto;
-    margin-left: auto;
-    margin-right: auto;    
     border-bottom: solid 3px #ddb892;
 }
 .conte{
@@ -23,32 +20,6 @@
     background-color: #9c6644;
     border: 3px solid #724a32;
     border-radius: 15px;
-}
-
-.contenedor {
-    background: transparent;
-    backdrop-filter: blur;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px 40px;
-    border-radius: 20px;
-}
-
-.cont {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2%;
-    padding: auto;
 }
 
 .tabla {
@@ -84,6 +55,17 @@
     border-right: 2px solid #3e2307;
 }
 
+.cantidad-input {
+    background-color: #ddb892;
+    border: none;
+    height: 40px;
+    width: 60px;
+    text-align: center;
+    font-size: 20px;
+    color: #694731;
+    border-top: 2px solid #3e2307;
+    border-bottom: 2px solid #3e2307;
+}
 
 .cantidad-button svg, .cantidad-button2 svg {
     color: #9c6644;
@@ -91,15 +73,12 @@
 
 .cssbuttons-io-button {
     align-items: center;
-    font-family: inherit;
-    font-weight: 600;
     font-size: 12px;
     padding: 0.7em 1.4em 0.7em 1.1em;
     color: white;
     background: #824e32;
     border: none;
-    letter-spacing: 0.05em;
-    border-radius: 20em;
+    border-radius: 15px;
 }
 
 .cssbuttons-io-button svg {
