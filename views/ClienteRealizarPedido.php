@@ -60,7 +60,7 @@ try {
                 </svg>
             </button>
             <div>
-                    <?php
+                <?php
                     if (isset($_SESSION['Rol'])){
                         $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$id_usuario'");
 
