@@ -117,7 +117,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="toastContainer"></div>
      
         <!-- TITULO DE AÑADIR PRODUCTOS-->
-        <div class="radical2"><h2 class="radical2">Añadir Productos</h2></div>
+        <div class="radical2"><h2>Añadir Productos</h2></div>
             <br>
             <div class="extremo">
                 <form class="padre"  method="post" >
@@ -191,7 +191,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             echo $e->getMessage();
         }      
         ?>
-          <div class="radical2"><h2 class="radical2">Gestionar productos</h2></div>
+          <div class="radical2"><h2>Gestionar productos</h2></div>
           <br>
         <div class="modificarproductos">                 
          <input type="hidden" value="<?php echo $current_page?>" id="paginageneral">
@@ -375,7 +375,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
 
                 <!--AÑADIR CATEGORIAS-->
     
-<div class="radical2"><h2 class="radical2">Añadir Categoría</h2></div>
+<div class="radical2"><h2>Añadir Categoría</h2></div>
 <br>
 <div class="padre">
     <form>
@@ -404,7 +404,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
       
       <!-- GESTIONAR CATEGORIAS-->
        <hr>
-       <div class="radical2"><h2 class="radical2">Gestionar Categoría</h2></div>
+       <div class="radical2"><h2>Gestionar Categoría</h2></div>
        <br>
        <div class="centrarcategorias">
     <?php
