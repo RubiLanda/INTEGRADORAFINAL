@@ -122,6 +122,12 @@
     height: auto; 
 }
 
+h1{
+    margin: 9px;
+    text-align: center;
+    border-bottom: 3px solid #ddb892;
+}
+
 /*CLASE DEL MENSAJE DE NO SE ENCONTRARON RESULTADOS*/
 .sinPedidos {
     background-color:#9c6644;
