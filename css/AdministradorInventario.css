@@ -57,6 +57,8 @@
 .tabla {
     display: grid;
     grid-template-columns: 2fr 0.5fr;
+    column-gap: 20px;
+    row-gap: 10px;
 }
 
 .cantidad {
