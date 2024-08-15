@@ -165,10 +165,16 @@
         margin-left: 20%;
     }
     .conte {
-        width: 95%;
-        padding: 10px;
-        align-items: center;
-        margin: 10% auto 5% auto;
+        display: flex;
+        text-align: center;
+        margin: auto;
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        background-color: #9c6644;
+        border: 3px solid #724a32;
+        border-radius: 50px;
     }
     .radical2{
         font-size: 30px;
