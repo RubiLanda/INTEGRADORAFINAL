@@ -33,7 +33,7 @@ foreach ($productos AS $reg)
                  echo "<input class='btn' id='N{$reg->ID}' type='text' maxlength='40' value='{$reg->Nombre}'>";
              // precio de los panes
                  echo "<label for='p'>Precio del Producto</label>";
-                 echo "<input class='btn' id='P{$reg->ID}' type='text' maxlength='3' oninput='validarprecio(this)' value='{$reg->Precio}'>";
+                 echo "<input class='btn' id='P{$reg->ID}' type='text' oninput='validarprecio(this)' value='{$reg->Precio}'>";
            echo "</div>";
            echo "<div class='div2'>";
               // descripcion de los panes

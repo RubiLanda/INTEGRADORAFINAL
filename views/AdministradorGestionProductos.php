@@ -140,7 +140,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                             <!-- div3 -->
                             <div class="div2">
                             <!-- este es mi imput para asignarle el precio al nuevo producto -->
-                                <input class="dineros btn" type="text" id="inputpreciopan" name="panesprecio" maxlength="3" placeholder="Precio" oninput="validarprecio(this)">
+                                <input class="dineros btn" type="text" id="inputpreciopan" name="panesprecio" placeholder="Precio" oninput="validarprecio(this)">
                             <!-- este es mi select para asignarle una categoria al nuevo producto -->
                                 <?php
                                
@@ -699,37 +699,33 @@ $menu2 = isset($_GET['estado']) ? false : true;
     
         <!--SCRIPT DE JAVA PARA LIMITAR EL USO SOLO NUMEROS Y NO PALABRAS USADO EN AÑADIR NUEVO PRODUCTO Y GESTIONAR PRODUCTO--->   
         <script>
-    //     function validarprecio(inputElement) {
-    //     let value = inputElement.value;
+        function validarprecio(inputElement) {
+        let value = inputElement.value;
 
-    //     // Elimina caracteres no numéricos excepto el punto decimal
-    //     value = value.replace(/[^0-9.]/g, '');
+        // Elimina caracteres no numéricos excepto el punto decimal
+        value = value.replace(/[^0-9.]/g, '');
 
-    //     // Dividir la cadena por el punto decimal
-    //     const parts = value.split('.');
+        // Dividir la cadena por el punto decimal
+        const parts = value.split('.');
 
-    //     // Si hay más de un punto decimal, reconstruir la cadena con solo el primer punto
-    //     if (parts.length > 2) {
-    //         value = parts.shift() + '.' + parts.join('');
-    //     }
-
-    //     // Limitar los dígitos decimales a solo dos
-    //     if (parts[1] && parts[1].length > 2) {
-    //         parts[1] = parts[1].substring(0, 2);
-    //         value = parts.join('.');
-    //     }
-
-    //     if (value > 999) {
-    //         value = 999;
-    //     }
-
-    //     // Actualiza el valor del campo de entrada
-    //     inputElement.value = value;
-    // }
-          function validarprecio(input){
-        // input.value = input.value.replace(/\D/g, '');
-        input.value = input.value.replace(/[^0-9.]/g, '');
+        // Si hay más de un punto decimal, reconstruir la cadena con solo el primer punto
+        if (parts.length > 2) {
+            value = parts.shift() + '.' + parts.join('');
         }
+
+        // Limitar los dígitos decimales a solo dos
+        if (parts[1] && parts[1].length > 2) {
+            parts[1] = parts[1].substring(0, 2);
+            value = parts.join('.');
+        }
+
+        if (value > 999.99) {
+            value = 999.99;
+        }
+
+        // Actualiza el valor del campo de entrada
+        inputElement.value = value;
+    }
         </script>
         
         <script>
