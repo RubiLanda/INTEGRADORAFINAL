@@ -76,14 +76,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         </div>
     </header>
 
-    <?php 
-    if ($menu1 && $menu2) {
-        echo "<div class=\"menu mostrar\" id=\"menu\">";
-    }
-    else {
-        echo "<div class=\"menu oculto\" id=\"menu\">";
-    }
-    ?>
+    <div class="menu oculto" id="menu"></div>
         <div class="inicioMenu">
             <img src="../img/logo.png">
             <button id="regresar" class="boton">

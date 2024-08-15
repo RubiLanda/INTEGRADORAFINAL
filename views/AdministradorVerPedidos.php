@@ -118,7 +118,14 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         </div>
     </header>
 
-    <div class="menu oculto" id="menu"></div>
+    <?php 
+    if ($menu1 && $menu2) {
+        echo "<div class=\"menu mostrar\" id=\"menu\">";
+    }
+    else {
+        echo "<div class=\"menu oculto\" id=\"menu\">";
+    }
+    ?>
         <div class="inicioMenu">
             <img src="../img/logo.png">
             <button id="regresar" class="boton">
