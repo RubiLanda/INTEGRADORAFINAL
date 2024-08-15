@@ -76,6 +76,7 @@ try {
                 ?>
             </div>
         </div>
+        
     </header>
 
     <div class="menu oculto" id="menu">
