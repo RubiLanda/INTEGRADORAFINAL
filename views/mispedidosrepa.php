@@ -92,7 +92,14 @@ else {
         </div>
     </header>
 
-    <div class="menu oculto" id="menu">
+    <?php
+    if (isset($_GET['mostrarMenu'])) {
+        echo "<div class=\"menu oculto\" id=\"menu\">";
+    }
+    else {
+        echo "<div class=\"menu mostrar\" id=\"menu\">";
+    }
+    ?>
         <div class="inicioMenu">
             <img src="../img/logo.png">
             <button id="regresar" class="boton">
