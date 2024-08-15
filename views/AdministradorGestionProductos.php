@@ -117,7 +117,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="toastContainer"></div>
      
         <!-- TITULO DE AÑADIR PRODUCTOS-->
-        <div class="radical2"><h2>Añadir Productos  asasdsa</h2></div>
+        <div class="radical2"><h2>Añadir adsdsa  asddsaasddsadassda</h2></div>
             <br>
             <div class="extremo">
                 <form class="padre"  method="post" >
