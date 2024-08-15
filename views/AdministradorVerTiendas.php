@@ -115,7 +115,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
             </button>
         </div>
         <div class="opciones">
-            <a href="AdministradorVerPedidos.php">Ver pedidos</a>
+            <a href="AdministradorVerPedidos.php?mostrarMenu=0">Ver pedidos</a>
             <a href="Administradorganancias.php">Ver Ganancias</a>
             <a href="AdministradorGestionProductos.php">Gestionar productos y categorías</a>
             <a href="AdminInventario.php">Añadir inventario</a>

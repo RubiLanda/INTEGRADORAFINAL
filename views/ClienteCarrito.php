@@ -117,7 +117,7 @@ try {
             </button>
         </div>
         <div class="opciones">
-            <a href="ClienteRealizarPedido.php">Realizar Pedido</a>
+            <a href="ClienteRealizarPedido.php?mostrarMenu=0">Realizar Pedido</a>
             <a href="ClienteHistorial.php">Ver historial</a>
             <a href="ClienteVerPedidos.php">Ver pedido</a>
             <a href="micuentacliente.php">Mi cuenta</a>
