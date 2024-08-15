@@ -432,8 +432,9 @@ where TIENDAS.id_tienda=idtienda;
 if contadorError=0 and contadorBueno=0 then
 set mensajeBueno='Direccion actualizada correctamente';
 end if;
-
-if contadorError>0 and contadorBueno=0 then
+if contadorError=0 and contadorBueno=1 then
+set mensajeBueno=concat(mensajeBueno, ' y tambien la dirección');
+elseif contadorError>0 and contadorBueno=0 then
 set mensajeBueno= ' pero si se modifico la direccion';
 elseif contadorError>0 and contadorBueno>1 then
 set mensajeBueno=concat(mensajeBueno, ', direccion');

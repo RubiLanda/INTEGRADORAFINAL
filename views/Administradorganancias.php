@@ -136,6 +136,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
           var radiusActivo = 1;
           
           function Ver_Ventas_Producto(){ 
+
             const inputMeses = document.getElementById('meses');
           const selectaños=document.getElementById('años');
             var meses = inputMeses.value;
@@ -146,6 +147,14 @@ $menu2 = isset($_GET['estado']) ? false : true;
             var repas=selectrepa.value;
             const inputdate=document.getElementById('fecha');
             var fechas=inputdate.value;
+
+            if(meses!='' || años!=''){
+              inputdate.disabled=true;
+              inputdate.style.opacity=0.5;
+            }else{
+              inputdate.disabled=false;
+              inputdate.style.opacity=1;
+            }
             $.ajax({
               type: 'POST',                                               //con el metodo ajax hacemos que se envien los datos de esta 
               url: '../php/scriptventas.php',                                       // pagina a otra, con el url, declaramos la constante de 
