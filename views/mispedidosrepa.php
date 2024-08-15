@@ -72,7 +72,7 @@ else {
                                     break;
                             }
                             echo "<li><hr class='dropdown-divider'></li>
-                                <li><a class='dropdown-item' href='php/cerrarSeccion.php'>Cerrar Sesion</a></li>
+                                <li><a class='dropdown-item' href='php/cerrarSeccion.php'>Cerrar Sesión</a></li>
                             </ul>
                         </div>";
                     }
