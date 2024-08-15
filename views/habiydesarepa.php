@@ -82,7 +82,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                                     break;
                             }
                             echo "<li><hr class='dropdown-divider'></li>
-                                <li><a class='dropdown-item' href='php/cerrarSeccion.php'>Cerrar Sesion</a></li>
+                                <li><a class='dropdown-item' href='../php/cerrarSeccion.php'>Cerrar Sesion</a></li>
                             </ul>
                         </div>";
                     }
