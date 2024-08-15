@@ -2030,8 +2030,15 @@ if contM = 0 and contB = 0  then
 set msj_b = 'Apellido Paterno actualizado exitosamente';
 
 end if;
+if contM = 0 and contB = 1 then
+	
+set msj_b =concat(msj_b, 'Y tambien el apellido paterno');
 
-if contM > 0 and contB = 0  then
+elseif contM = 0 and contB > 1 then
+
+set msj_b = concat(msj_b, ', Apellido paterno');
+
+elseif contM > 0 and contB = 0  then
 
 set msj_b = ' Pero si se modifico el apellido paterno';
 
@@ -2061,7 +2068,15 @@ set msj_b = 'Apellido Materno actualizado exitosamente';
 
 end if;
 
-if contM > 0 and contB = 0  then
+if contM = 0 and contB = 1 then
+	
+set msj_b =concat(msj_b, 'Y tambien el apellido materno');
+
+elseif contM = 0 and contB > 1 then
+
+set msj_b = concat(msj_b, ', Apellido materno');
+
+elseif contM > 0 and contB = 0  then
 
 set msj_b = ' Pero si se modifico el apellido materno';
 
@@ -2091,7 +2106,15 @@ set msj_b = 'Telefono actualizado exitosamente';
 
 end if;
 
-if contM > 0 and contB = 0  then
+if contM = 0 and contB = 1 then
+	
+set msj_b =concat(msj_b, 'Y tambien el Telefono');
+
+elseif contM = 0 and contB > 1 then
+
+set msj_b = concat(msj_b, ', Telefono');
+
+elseif contM > 0 and contB = 0  then
 
 set msj_b = ' Pero si se modifico el telefono';
 
@@ -2122,7 +2145,15 @@ set msj_b = 'Folio actualizado exitosamente';
 
 end if;
 
-if contM > 0 and contB = 0  then
+if contM = 0 and contB = 1 then
+	
+set msj_b =concat(msj_b, 'Y tambien el Folio de conducir');
+
+elseif contM = 0 and contB > 1 then
+
+set msj_b = concat(msj_b, ', Folio conducir');
+
+elseif contM > 0 and contB = 0  then
 
 set msj_b = ' Pero si se modifico el folio de conducir';
 
