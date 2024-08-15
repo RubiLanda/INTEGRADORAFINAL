@@ -144,24 +144,43 @@ th {
 
 @media (max-width: 576px) {
     .conte {
-        margin-bottom: 10%;
-        width: 85%;
-        padding: 5px 5px;
+        padding: 10px;
+        margin: 0;
+        width: 100%;
     }
 
     .contenedor {
+        padding: 10px;
         width: 100%;
-        padding: 10px 20px;
     }
 
     .row {
         justify-content: center;
     }
+    table {
+        font-size: 14px;
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
 
-    table,
-    th,
-    td {
-        font-size: 17px;
+    tr {
+        display: block;
+        width: 100%;
+    }
+
+    th, td {
+        display: block;
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        border: none;
+    }
+
+    th::before, td::before {
+        left: 0;
+        padding-left: 0;
     }
 
     .cssbuttons-io-button {
