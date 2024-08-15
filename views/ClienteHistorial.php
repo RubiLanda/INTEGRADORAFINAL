@@ -178,6 +178,12 @@ $usuario = $_SESSION['ID'];
         else {
             seleccionando_fecha = false;
         }
+        if (sessionStorage.getItem("mostrarStock") != null) {
+            mostrarStock = sessionStorage.getItem("mostrarStock");
+        }
+        else {
+            mostrarStock = 0;
+        }
         function IrCarrito(mostrarModal) {
             $.ajax({
                 type: 'POST',
