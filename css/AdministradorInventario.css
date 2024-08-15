@@ -1,3 +1,39 @@
+.Tiendas {
+    background-color: #9c6644;
+    color:#ddb892;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+.Tiendas .TituloTienda {
+    margin-bottom: 20px;
+    font-size: 60px;
+    border-bottom: solid 3px #ddb892;
+    width: 95%;
+    padding-bottom: 15px;
+}
+
+.Tienda {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: solid 3px #ddb892;
+    width: 95%;
+}
+
+.Tienda h3 {
+    font-size: 40px;
+    display: flex;
+    justify-content: start;
+    margin-left: 40px;
+    align-items: center;
+}
+
 /* Estilos generales */
 .conte {
     display: flex;
@@ -149,6 +185,35 @@ th {
         width: 100%;
     }
 
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+
+    .Tiendas .TituloTienda {
+        font-size: 40px;
+        width: 100%;
+    }
+
+    .Tienda {
+        grid-template-columns: 1fr;
+    }
+
+    .Tienda h3 {
+        font-size: 24px;
+        margin-left: 10px;
+    }
+
+    .Tienda button, .Tienda a {
+        font-size: 18px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .Tiendas .TituloTienda{
+        font-size: 20px;
+    }
+
     .contenedor {
         padding: 10px;
         width: 100%;
@@ -246,6 +311,11 @@ th {
         padding: 10px 20px;
     }
 
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+
     .contenedor {
         width: 100%;
         padding: 10px 20px;
@@ -270,4 +340,12 @@ th {
         width: 100%;
         font-size: 14px;
     }
+}
+@media (max-width: 1400px) and (min-width: 1201px){  /* xxl */
+
+    .TituloPedidosTienda {
+        width: 100%;
+        text-align: center;
+    }
+    
 }
