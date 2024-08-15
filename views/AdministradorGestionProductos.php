@@ -726,10 +726,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
         // Actualiza el valor del campo de entrada
         inputElement.value = value;
     }
-          function validarprecio(input){
-        // input.value = input.value.replace(/\D/g, '');
-        input.value = input.value.replace(/[^0-9.]/g, '');
-        }
         </script>
         
         <script>
