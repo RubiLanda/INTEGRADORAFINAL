@@ -109,7 +109,7 @@ else {
             </button>
         </div>
         <div class="opciones">
-            <a href="#.php">Ver pedido</a>
+            <a href="#" class="opcionSeleccionado">Ver pedido</a>
             <a href="RepartidorMicuenta.php">Mi cuenta</a>
         </div>
     </div>
