@@ -171,6 +171,7 @@ $usuario = $_SESSION['ID'];
 
     <!--FUNCION DE JAVA PARA PODER FILTRAR POR MES Y AÑO LOS PEDIDOS DE LOS CLIENTES-->
     <script>
+        var seleccionando_fecha;
         if (sessionStorage.getItem("seleccionando_fecha") != null) {
             seleccionando_fecha = sessionStorage.getItem("seleccionando_fecha");
         }
@@ -197,7 +198,7 @@ $usuario = $_SESSION['ID'];
                 }
             });
         }
-        
+
         function filtrarPedidos() {
             var a = document.getElementById('seleccionaAño').value;
             var m = document.getElementById('seleccionaMes').value;
