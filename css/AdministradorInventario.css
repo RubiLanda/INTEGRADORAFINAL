@@ -12,7 +12,8 @@
     background-color: #9c6644;
     border: 3px solid #724a32;
     border-radius: 20px;
-    overflow-x: auto; /* Añadido para evitar desbordamientos */
+    overflow-x: auto;
+    /* Añadido para evitar desbordamientos */
 }
 
 .contenedor {
@@ -28,7 +29,12 @@
     margin-right: auto;
     padding: 20px 40px;
     border-radius: 20px;
-    overflow-x: auto; /* Añadido para evitar desbordamientos */
+    overflow-x: auto;
+    /* Añadido para evitar desbordamientos */
+}
+
+.row {
+    justify-content: center;
 }
 
 .cont {
@@ -41,29 +47,34 @@
     margin-right: auto;
     margin-top: 2%;
     padding: auto;
-    overflow-x: auto; /* Añadido para evitar desbordamientos */
+    overflow-x: auto;
+    /* Añadido para evitar desbordamientos */
 }
 
 table {
     width: 100%;
-    max-width: 100%; /* Asegura que la tabla no se salga del contenedor */
+    max-width: 100%;
+    /* Asegura que la tabla no se salga del contenedor */
     border-collapse: collapse;
     margin: 20px auto;
     font-size: 25px;
-    overflow-x: auto; /* Añadido para evitar desbordamientos */
+    overflow-x: auto;
+    /* Añadido para evitar desbordamientos */
 }
 
-table, th, td {
+table,
+th,
+td {
     border-bottom: 5px solid #3e2307;
     padding: 10px;
     text-align: center;
-    word-wrap: break-word; /* Asegura que el contenido se ajuste dentro de las celdas */
+    word-wrap: break-word;
 }
 
 th {
-    width: auto; /* Asegúrate de que el ancho sea automático */
-    padding: 8px; /* Ajusta el padding según lo que necesites */
-    text-align: center; /* Alinea el texto al centro */
+    width: auto;
+    padding: 8px;
+    text-align: center;
 }
 
 .cantidad {
@@ -72,7 +83,8 @@ th {
     align-items: center;
 }
 
-.cantidad-button, .cantidad-button2 {
+.cantidad-button,
+.cantidad-button2 {
     background-color: #ddb892;
     border: none;
     display: flex;
@@ -104,7 +116,8 @@ th {
     border-bottom: 2px solid #3e2307;
 }
 
-.cantidad-button svg, .cantidad-button2 svg {
+.cantidad-button svg,
+.cantidad-button2 svg {
     color: #9c6644;
 }
 
@@ -133,39 +146,11 @@ th {
     box-shadow: 0 0.3em 1em -0.5em #3e2307;
 }
 
-/* Estilos responsivos para pantallas menores a 1000px */
-@media (max-width: 1000px) {
-    table, th, td {
-        font-size: 20px;
-    }
-
-    td {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .cantidad {
-        margin-top: 10px;
-    }
-
-    .cantidad-input {
-        width: 50px;
-        height: 30px;
-        font-size: 16px;
-    }
-
-    .cantidad-button, .cantidad-button2 {
-        width: 30px;
-        height: 30px;
-    }
-}
-
-@media (max-width: 576px)  {
+@media (max-width: 576px) {
     .conte {
         margin-bottom: 10%;
         width: 85%;
-        padding: 10px 20px;
+        padding: 5px 5px;
     }
 
     .contenedor {
@@ -173,7 +158,13 @@ th {
         padding: 10px 20px;
     }
 
-    table, th, td {
+    .row {
+        justify-content: center;
+    }
+
+    table,
+    th,
+    td {
         font-size: 17px;
     }
 
@@ -188,6 +179,10 @@ th {
         margin-bottom: 10%;
         width: 95%;
         padding: 10px 20px;
+    }
+
+    .row {
+        justify-content: center;
     }
 
     .contenedor {
@@ -213,7 +208,13 @@ th {
         padding: 10px 20px;
     }
 
-    table, th, td {
+    .row {
+        justify-content: center;
+    }
+
+    table,
+    th,
+    td {
         font-size: 25px;
     }
 
@@ -234,8 +235,14 @@ th {
         width: 100%;
         padding: 10px 20px;
     }
+    
+    .row {
+        justify-content: center;
+    }
 
-    table, th, td {
+    table,
+    th,
+    td {
         font-size: 30px;
     }
 
