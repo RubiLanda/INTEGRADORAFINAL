@@ -126,7 +126,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             <div class=contenedoruno>
                 <div class="dentro1 solo">
                     <label> Crea el usuario:</label>
-                    <input type="text" name="usuario" id="usuario" required autocomplete="off">
+                    <input type="text" name="usuario"  maxlength="100" id="usuario" required autocomplete="off">
                     <label>Contraseña:</label>
                     <input type="password" minlength="7" name="contraseña" id="contraseña" required autocomplete="off">
                     <label>Confirmar Contraseña:</label>
