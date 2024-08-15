@@ -48,12 +48,7 @@ else {
         <div>
         <?php 
                 if (isset($_SESSION['Rol'])){
-                        session_start();
-                        include '../php/conexion.php';
-                        $conexion=new Database();
-                        $conexion->conectarBD();
-                        $id = $_SESSION['ID'];
-                        $cuenta = $conexion->selectConsulta('select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = $id');
+                        $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$persona'");
 
                         echo "
                         <div class='dropdown text-end'>
