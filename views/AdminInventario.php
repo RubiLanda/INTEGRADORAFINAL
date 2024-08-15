@@ -113,33 +113,52 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 WHERE PRODUCTOS.estado = 1";
     // Ejecuta la consulta y almacena los resultados
     $stock = $conexion->selectConsulta($consultastock);
-    echo "<div class=\"Tiendas\">";
-    echo "<h1 class=\"TituloTienda\">AÑADIR STOCK</h1>";
-    foreach ($stock as $value) {
-        echo "<div class=\"Tienda\">";
-        echo "<h3>$value->NombreProd</h3>";
-        echo "</div>";
-        echo"<div class=\"modal-header\">
-                <form class=\"botoncillo\" method=\"POST\" action=\"../php/scriptInventario.php\" onsubmit=\"validarCantidad(this)\">
-                    <input type=\"hidden\" name=\"id_producto\" value=\"{$value->id_producto}\">
-                        <div class=\"cantidad\">
-                            <button class=\"cantidad-button\" type=\"button\" onclick=\"cambiarCantidad(-1, this.nextElementSibling, {$value->id_producto}, 'input{$value->id_producto}')\" style=\"border-radius: 15px 0 0 15px;\">
-                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-left-fill\" viewBox=\"0 0 16 16\">
-                                    <path d=\"m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z\" />
-                                </svg>
-                            </button>
-                    <input autocomplete=\"off\" class=\"cantidad-input\" type=\"text\" name=\"n_stock\" id=\"input{$value->id_producto}\" value=\"{$value->Stock}\" oninput=\"validarNumero(this)\" onblur=\"ejecutarBoton({$value->id_producto}, 'input{$value->id_producto}')\" onkeydown=\"if (this.value <= 0 || this.value=='' ) {return event.key !='Enter' ;}\" onkeypress=\"if (event.key === 'Enter') event.preventDefault();\">
-                            <button class=\"cantidad-button2\" type=\"button\" onclick=\"cambiarCantidad(1, this.previousElementSibling, {$value->id_producto}, 'input{$value->id_producto}')\" style=\"border-radius: 0 15px 15px 0;\">
-                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-right-fill\" viewBox=\"0 0 16 16\">
-                                    <path d=\"m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z\" />
-                                </svg>
-                            </button>
-                        <div>
-                </form>
-            </div>";
-            }
-    echo "</div>";
     ?>
+    <div class="fondo"></div>
+    <div class="conte">
+        <h1>STOCK PRODUCTOS</h1>
+        <div class="contenedor">
+            <div class="cont">
+                <div class="container">
+                    <div class="row">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Producto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($stock as $value) {
+                                    echo "<tr>
+                                        <td>$value->NombreProd</td>
+                                        <td>
+                                            <form class=\"botoncillo\" method=\"POST\" action=\"../php/scriptInventario.php\" onsubmit=\"validarCantidad(this)\">
+                                                <input type=\"hidden\" name=\"id_producto\" value=\"{$value->id_producto}\">
+                                                <div class=\"cantidad\">
+                                                    <button class=\"cantidad-button\" type=\"button\" onclick=\"cambiarCantidad(-1, this.nextElementSibling, {$value->id_producto}, 'input{$value->id_producto}')\" style=\"border-radius: 15px 0 0 15px;\">
+                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-left-fill\" viewBox=\"0 0 16 16\">
+                                                            <path d=\"m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z\" />
+                                                        </svg>
+                                                    </button>
+                                                    <input class=\"cantidad-input\" type=\"text\" name=\"n_stock\" id=\"input{$value->id_producto}\" value=\"{$value->Stock}\" oninput=\"validarNumero(this)\" onblur=\"ejecutarBoton({$value->id_producto}, 'input{$value->id_producto}')\" onkeydown=\"if (this.value <= 0 || this.value=='' ) {return event.key !='Enter' ;}\">
+                                                    <button class=\"cantidad-button2\" type=\"button\" onclick=\"cambiarCantidad(1, this.previousElementSibling, {$value->id_producto}, 'input{$value->id_producto}')\" style=\"border-radius: 0 15px 15px 0;\">
+                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-right-fill\" viewBox=\"0 0 16 16\">
+                                                            <path d=\"m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z\" />
+                                                        </svg>
+                                                    </button>
+                                                <div>
+                                            </form>
+                                        </td>
+                                    </tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function ejecutarBoton(id_producto, id_input) {

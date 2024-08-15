@@ -1,196 +1,96 @@
-/* General Styles */
-img {
-    width: 8.5%;
+/* Estilos generales */
+
+
+.conte h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
     height: auto;
-}
-
-hr {
-    padding: 2px;
-    border-radius: 15px;
-}
-
-/* Grid Layouts */
-.tabla, .dentro1 {
-    display: grid;
-    gap: 30px;
-}
-
-.tabla {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.dentro1 {
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: space-around;
-}
-
-.Tienda, .info {
-    display: grid;
-    gap: 20px;
-}
-
-.Tienda {
-    grid-template-columns: 1fr 0.3fr;
-    width: 95%;
+    margin-left: auto;
+    margin-right: auto;    
     border-bottom: solid 3px #ddb892;
 }
+.conte{
+    color: #ddb892;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 40px;
+    background-color: #9c6644;
+    border: 3px solid #724a32;
+    border-radius: 20px;
+}
 
-.info {
-    grid-template-columns: 2fr 0.4fr 1fr;
+.contenedor {
+    background: transparent;
+    backdrop-filter: blur;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 40px;
+    border-radius: 20px;
+}
+
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    padding: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: 25px;
+}
+
+
+table, th, td {
+    color: #ddb892;
+    border-bottom:none;
+    padding: 10px;
     text-align: center;
 }
 
-/* Flexbox Layouts */
-.detalle, .contebut, .conte, .contenedor, .cont, .contee, .contenedoruno, .cont, .row, .cantidad, .TituloPedidosTienda, .conten, .cuadrado2, .cssbuttons-io-button {
+th {
+    width: auto; /* Asegúrate de que el ancho sea automático */
+    padding: 8px; /* Ajusta el padding según lo que necesites */
+    text-align: center; /* Alinea el texto al centro */
+}
+
+.cantidad {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.conten, .conte, .contenedor, .contenedoruno, .contebut {
-    flex-direction: column;
-    margin: 20px auto;
-    width: 85%;
-    padding: 20px;
-    background-color: #9c6644;
-    border-radius: 20px;
-    border: 3px solid #724a32;
-}
-
-.cont, .contee {
-    width: 100%;
-}
-
-.contenedoruno {
-    padding: 5px;
-}
-
-.cuadrado2 {
-    width: 180px;
-    height: 50px;
-}
-
-/* Header Styles */
-.Titulo, .TituloPedidosTienda, .Tiendas .TituloTienda, .modal-header h1, .pedido h3, .info h3, .info h2, .Tienda h3, th {
-    text-align: center;
-    border-bottom: solid 3px #ddb892;
-}
-
-.Titulo, .modal-header {
-    background-color: #9c6644;
-    border-radius: 15px;
-    color: #ddb892;
-}
-
-.TituloPedidosTienda {
-    width: 62.9%;
-    margin-bottom: 20px;
-    padding: 10px 30px;
-}
-
-.Tiendas .TituloTienda {
-    margin-bottom: 20px;
-    font-size: 60px;
-    width: 95%;
-    padding-bottom: 15px;
-}
-
-/* Button & Link Styles */
-.pedido a, .pedido button, .Cancelar, .Tienda button, .Tienda a, .cssbuttons-io-button {
-    background-color: #ddb892;
-    color: #30231b;
-    border-radius: 15px;
-    border: none;
-    padding: 10px;
-    font-weight: normal;
-    font-size: 25px;
-    margin: 10px;
-    text-align: center;
-}
-
-.pedido button:hover, .conte button:hover {
-    background-color: #ddb892;
-    color: #5a3822;
-    font-size: 20px;
-}
-
-.cssbuttons-io-button {
-    font-family: inherit;
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    border-radius: 20em;
-    padding: 0.7em 1.4em;
-}
-
-.cssbuttons-io-button:hover {
-    box-shadow: 0 0.5em 1.5em -0.5em #3e2307;
-}
-
-.cssbuttons-io-button:active {
-    box-shadow: 0 0.3em 1em -0.5em #3e2307;
-}
-
-.pedido a, .pedido button, .Cancelar {
-    background-color: #ddb892;
-    color: #30231b;
-    font-size: 25px;
-    margin: 10px 20px;
-}
-
-/* Modal Styles */
-.modal-header {
-    background-color: #b48263;
-    border: none;
-}
-
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    background-color: #9c6644;
-    color: #ddb892;
-}
-
-/* Specific Element Styles */
-.check {
-    margin: 20px 0 0 20px;
-    width: 30px;
-    height: 30px;
-}
-
-.pedido b {
-    font-size: 35px;
-    color: #f7d6b5;
-}
-
-.pedido h3 {
-    font-size: 28px;
-}
-
-.pedido {
-    background-color: #9c6644;
-    color: #ddb892;
-    padding: 15px;
-    padding-bottom: 30px;
-    border-radius: 15px;
-}
-
-.refe, .contenedoruno input, .contenedoruno select, .cantidad-input {
-    background-color: #ddb892;
-    border-radius: 15px;
-    color: #000;
-    font-size: 20px;
-    padding: 10px;
-    border: none;
-}
-
 .cantidad-button, .cantidad-button2 {
     background-color: #ddb892;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
-    border-top: 2px solid #3e2307;
     border-bottom: 2px solid #3e2307;
+    border-top: 2px solid #3e2307;
 }
 
 .cantidad-button {
@@ -202,84 +102,150 @@ hr {
 }
 
 .cantidad-input {
+    background-color: #ddb892;
+    border: none;
     height: 40px;
     width: 60px;
+    text-align: center;
     font-size: 20px;
     color: #694731;
-    text-align: center;
+    border-top: 2px solid #3e2307;
+    border-bottom: 2px solid #3e2307;
 }
 
-table, th, td {
-    border-bottom: 1px solid #5a3822;
-    padding: 10px;
-    word-wrap: break-word;
+.cantidad-button svg, .cantidad-button2 svg {
+    color: #9c6644;
 }
 
-th {
-    background-color: #724a32;
-    color: #ddb892;
+.cssbuttons-io-button {
+    align-items: center;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 0.7em 1.4em 0.7em 1.1em;
+    color: white;
+    background: #824e32;
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
 }
 
-tbody {
-    background-color: #b68769;
-    color: #5a3822;
-    font-size: 100%;
-    font-style: oblique;
+.cssbuttons-io-button svg {
+    margin-right: 6px;
 }
 
-/* Media Queries */
-@media (max-width: 576px) {
-    .tabla {
-        grid-template-columns: 1fr;
+.cssbuttons-io-button:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em #3e2307;
+}
+
+.cssbuttons-io-button:active {
+    box-shadow: 0 0.3em 1em -0.5em #3e2307;
+}
+
+/* Estilos responsivos para pantallas menores a 1000px */
+@media (max-width: 576px)  {
+    body{
+        background-color: chartreuse;
+    }
+    .conte {
+        margin-bottom: 10%;
+        width: 90%;
+        padding: 10px 0;
     }
 
-    .conte, .contenedor, .contenedoruno, .solo, .contebut, .Tienda, .contenedoruno {
+    .conte h1{
+        font-size: 32px;
+        width: 90%;
+    }
+
+    .contenedor {
         width: 100%;
-        padding: 10px;
+        padding: 10px 20px;
     }
 
-    table {
+    table, th, td {
+        font-size: 17px;
+    }
+
+    .cssbuttons-io-button {
+        width: 100%;
         font-size: 14px;
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    th, td {
-        display: block;
-        text-align: left;
-        width: 100%;
-        padding: 10px;
     }
 }
 
 @media (max-width: 768px) and (min-width: 577px) {
-    .pedido h3, .pedido b, .pedido button, .pedido a {
+    body{
+        background-color: darkmagenta;
+    }
+    .conte {
+        margin-bottom: 10%;
+        width: 95%;
+        padding: 10px 20px;
+    }
+
+    .contenedor h1{
         font-size: 20px;
-        padding: 5px;
+        width: 100%;
+        padding: 10px 20px;
+    }
+
+    .cssbuttons-io-button {
+        width: 100%;
+        font-size: 14px;
     }
 }
 
 @media (max-width: 992px) and (min-width: 769px) {
-    .pedido h3, .pedido button, .pedido a {
-        font-size: 24px;
-        padding: 8px;
+    body{
+        background-color: hotpink;
     }
-}
+    .conte {
+        margin-bottom: 8%;
+        width: 95%;
+        padding: 10px 20px;
+    }
 
-@media (max-width: 1200px) and (min-width: 993px) {
-    .conte, .contenedor {
+    .contenedor {
+        width: 100%;
         padding: 10px 20px;
     }
 
     table, th, td {
         font-size: 25px;
     }
+
+    .cssbuttons-io-button {
+        width: 100%;
+        font-size: 14px;
+    }
 }
 
-@media (max-width: 1400px) and (min-width: 1201px) {
-    .TituloPedidosTienda {
+@media (max-width: 1200px) and (min-width: 993px) {
+    body{
+        background-color: indianred;
+    }
+    .conte {
+        margin-bottom: 8%;
+        width: 95%;
+        padding: 10px 20px;
+    }
+
+    .contenedor {
         width: 100%;
-        text-align: center;
+        padding: 10px 20px;
+    }
+
+    table, th, td {
+        font-size: 30px;
+    }
+
+    form {
+        padding-left: 20%;
+        padding-top: 5px;
+    }
+
+    .cssbuttons-io-button {
+        width: 100%;
+        font-size: 14px;
     }
 }
