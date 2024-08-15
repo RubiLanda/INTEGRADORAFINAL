@@ -274,7 +274,7 @@ try {
                     <h1>No tienes ningun producto en el carrito</h1>
                     <div>
                         <h3>Para agregar productos dirijite a </h3>
-                        <a href='ClienteVerPedidos.php?mostrarMenu=0'>Realizar Pedido</a>
+                        <a href='ClienteRealizarPedido.php?mostrarMenu=0'>Realizar Pedido</a>
                     </div>
                 </div>`;
                 divProductos.style.paddingBottom = '90px';
