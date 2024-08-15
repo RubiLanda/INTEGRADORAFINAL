@@ -148,7 +148,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             const inputdate=document.getElementById('fecha');
             var fechas=inputdate.value;
 
-            if(meses!='' || años!=''){
+            if(meses!='REPORTE POR MES' || años!='REPORTE POR AÑO'){
               inputdate.disabled=true;
               inputdate.style.opacity=0.5;
             }else{
