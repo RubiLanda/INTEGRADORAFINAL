@@ -135,7 +135,7 @@ input[type="reset"]{
     width: 50%; 
     margin: 0 auto;
     border-radius: 10px;
-
+    margin-bottom: 50px;
 }
 .radical2 h2{
     font-size: 40px;
@@ -730,7 +730,6 @@ a {
     }
     .radical2 {
         width: 90%;
-        margin-bottom: 50px;
     }
     .padre2{
         display: flex;
