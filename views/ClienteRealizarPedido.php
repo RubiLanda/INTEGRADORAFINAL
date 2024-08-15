@@ -122,7 +122,7 @@ try {
             </button>
         </div>
         <div class="opciones">
-            <a href="#">Realizar Pedido</a>
+            <a href="#" class="opcionSeleccionado">Realizar Pedido</a>
             <a href="ClienteHistorial.php">Ver historial</a>
             <a href="ClienteVerPedidos.php">Ver pedido</a>
             <a href="micuentacliente.php">Mi cuenta</a>
