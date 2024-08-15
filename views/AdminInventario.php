@@ -114,7 +114,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
     // Ejecuta la consulta y almacena los resultados
     $stock = $conexion->selectConsulta($consultastock);
     ?>
-    <div class="fondo"></div>
     <div class="conte">
         <h1>STOCK PRODUCTOS</h1>
         <div class="contenedor">

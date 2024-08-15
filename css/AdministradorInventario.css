@@ -157,6 +157,10 @@
         width: 100%;
         font-size: 14px;
     }
+
+    .tabla {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) and (min-width: 577px) {
@@ -178,6 +182,9 @@
     .cssbuttons-io-button {
         width: 100%;
         font-size: 14px;
+    }
+    .tabla {
+        grid-template-columns: 1fr;
     }
 }
 
