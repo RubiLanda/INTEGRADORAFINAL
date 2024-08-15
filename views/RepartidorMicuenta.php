@@ -107,8 +107,13 @@ $menu2 = isset($_GET['estado']) ? false : true;
             </button>
         </div>
         <div class="opciones">
+<<<<<<< HEAD
         <a href="mispedidosrepa.php">Ver pedido</a>
         <a href="#.php">Mi cuenta</a>
+=======
+        <a href="mispedidosrepa.php?mostrarMenu=0">Ver pedido</a>
+        <a href="#" class="opcionSeleccionado">Mi cuenta</a>
+>>>>>>> 3028ae63c298bd0f7aaf59057bb1063a24a2afc0
         </div>
     </div>
     <div style="height: 170px;"></div>

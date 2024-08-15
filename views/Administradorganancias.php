@@ -83,8 +83,13 @@ $menu2 = isset($_GET['estado']) ? false : true;
             </button>
         </div>
         <div class="opciones">
+<<<<<<< HEAD
             <a href="AdministradorVerPedidos.php">Ver pedidos</a>
             <a href="#">Ver Ganancias</a>
+=======
+            <a href="AdministradorVerPedidos.php?mostrarMenu=0">Ver pedidos</a>
+            <a href="#" class="opcionSeleccionado">Ver Ganancias</a>
+>>>>>>> 3028ae63c298bd0f7aaf59057bb1063a24a2afc0
             <a href="AdministradorGestionProductos.php">Gestionar productos y categorías</a>
             <a href="AdminInventario.php">Añadir inventario</a>
             <a href="habiydesarepa.php">Ver Repartidores</a>

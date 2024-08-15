@@ -101,7 +101,7 @@ else {
         <div class="opciones">
             <a href="ClienteRealizarPedido.php?mostrarMenu=0">Realizar Pedido</a>
             <a href="ClienteHistorial.php">Ver historial</a>
-            <a href="#">Ver pedido</a>
+            <a href="#" class="opcionSeleccionado">Ver pedido</a>
             <a href="micuentacliente.php">Mi cuenta</a>
         </div>
     </div>
