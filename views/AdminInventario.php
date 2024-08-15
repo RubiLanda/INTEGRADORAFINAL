@@ -116,27 +116,25 @@ $menu2 = isset($_GET['estado']) ? false : true;
     ?>
     <div class="conte">
         <h1>STOCK PRODUCTOS</h1>
-        <div class="contenedor">
-            <h2>Producto</h2>
-            <div class="tabla">
-                <?php foreach ($stock as $value) {
-                    echo "<h3>$value->NombreProd</h3>
-                        <div class=\"cantidad\">
-                            <button class=\"cantidad-button\" type=\"button\" onclick=\"cambiarCantidad(-1, this.nextElementSibling, {$value->id_producto}, 'input{$value->id_producto}')\" style=\"border-radius: 15px 0 0 15px;\">
-                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-left-fill\" viewBox=\"0 0 16 16\">
-                                    <path d=\"m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z\" />
-                                </svg>
-                            </button>
-                            <input class=\"cantidad-input\" type=\"text\" name=\"n_stock\" id=\"input{$value->id_producto}\" value=\"{$value->Stock}\" oninput=\"validarNumero(this)\" onblur=\"ejecutarBoton({$value->id_producto}, 'input{$value->id_producto}')\" onkeydown=\"if (this.value <= 0 || this.value=='' ) {return event.key !='Enter' ;}\">
-                            <button class=\"cantidad-button2\" type=\"button\" onclick=\"cambiarCantidad(1, this.previousElementSibling, {$value->id_producto}, 'input{$value->id_producto}')\" style=\"border-radius: 0 15px 15px 0;\">
-                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-right-fill\" viewBox=\"0 0 16 16\">
-                                    <path d=\"m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z\" />
-                                </svg>
-                            </button>
-                        </div>";
-                }
-                ?>
-            </div>
+        <h2>Producto</h2>
+        <div class="tabla">
+            <?php foreach ($stock as $value) {
+                echo "<h3>$value->NombreProd</h3>
+                    <div class=\"cantidad\">
+                        <button class=\"cantidad-button\" type=\"button\" onclick=\"cambiarCantidad(-1, this.nextElementSibling, {$value->id_producto}, 'input{$value->id_producto}')\" style=\"border-radius: 15px 0 0 15px;\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-left-fill\" viewBox=\"0 0 16 16\">
+                                <path d=\"m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z\" />
+                            </svg>
+                        </button>
+                        <input class=\"cantidad-input\" type=\"text\" name=\"n_stock\" id=\"input{$value->id_producto}\" value=\"{$value->Stock}\" oninput=\"validarNumero(this)\" onblur=\"ejecutarBoton({$value->id_producto}, 'input{$value->id_producto}')\" onkeydown=\"if (this.value <= 0 || this.value=='' ) {return event.key !='Enter' ;}\">
+                        <button class=\"cantidad-button2\" type=\"button\" onclick=\"cambiarCantidad(1, this.previousElementSibling, {$value->id_producto}, 'input{$value->id_producto}')\" style=\"border-radius: 0 15px 15px 0;\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25\" height=\"25\" fill=\"currentColor\" class=\"bi bi-caret-right-fill\" viewBox=\"0 0 16 16\">
+                                <path d=\"m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z\" />
+                            </svg>
+                        </button>
+                    </div>";
+            }
+            ?>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
