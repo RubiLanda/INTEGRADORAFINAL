@@ -164,7 +164,18 @@ th {
     }
 
     table, th, td {
-        font-size: 17px;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center; }
+    }
+
+    th {
+        text-align: left;
+    }
+
+    td {
+        margin-bottom: 10px;
     }
 
     .cssbuttons-io-button {
