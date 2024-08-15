@@ -255,6 +255,15 @@ begin
 update PEDIDOS
 set PEDIDOS.estado_pedido=estadonuev
 where PEDIDOS.id_pedido=id;
+
+if estadonuev = 'entregado' then
+
+update PEDIDOS
+set PEDIDOS.f_entrega=now()
+where PEDIDOS.id_pedido=id;
+
+end if;
+
 end //
 DELIMITER ;
 

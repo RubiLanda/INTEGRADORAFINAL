@@ -25,8 +25,8 @@ body{
     margin: 25px auto;
     flex-direction: column;
     border-radius: 15px;
-    max-width: 900px;
     padding: 20px;
+    width: 50%;
 }
 
 .contenedor h1{
