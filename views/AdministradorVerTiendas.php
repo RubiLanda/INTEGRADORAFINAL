@@ -105,7 +105,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         </div>
     </header>
 
-    <div class="menu oculto" id="menu"></div>
+    <div class="menu oculto" id="menu">
         <div class="inicioMenu">
             <img src="../img/logo.png">
             <button id="regresar" class="boton">
