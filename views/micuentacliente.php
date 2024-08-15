@@ -271,7 +271,11 @@ else {
         });
     }
 
-    buttonMenu.addEventListener('click', function() {
+    const buttonMenu = document.getElementById('buttonMenu');
+        const menu = document.getElementById('menu');
+        const buttonRegresar = document.getElementById('regresar');
+
+        buttonMenu.addEventListener('click', function() {
             menu.classList.toggle('oculto');
         });
 
