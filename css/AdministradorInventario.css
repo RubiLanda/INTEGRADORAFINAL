@@ -1,19 +1,5 @@
 /* Estilos generales */
-
-
-.conte h1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 85%;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;    
-    border-bottom: solid 3px #ddb892;
-}
-.conte{
-    color: #ddb892;
+.conte {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,6 +12,7 @@
     background-color: #9c6644;
     border: 3px solid #724a32;
     border-radius: 20px;
+    overflow-x: auto; /* Añadido para evitar desbordamientos */
 }
 
 .contenedor {
@@ -41,9 +28,11 @@
     margin-right: auto;
     padding: 20px 40px;
     border-radius: 20px;
+    overflow-x: auto; /* Añadido para evitar desbordamientos */
 }
 
 .cont {
+    background-color: #ddb892;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,21 +41,23 @@
     margin-right: auto;
     margin-top: 2%;
     padding: auto;
+    overflow-x: auto; /* Añadido para evitar desbordamientos */
 }
 
 table {
     width: 100%;
+    max-width: 100%; /* Asegura que la tabla no se salga del contenedor */
     border-collapse: collapse;
     margin: 20px auto;
     font-size: 25px;
+    overflow-x: auto; /* Añadido para evitar desbordamientos */
 }
 
-
 table, th, td {
-    color: #ddb892;
-    border-bottom:none;
+    border-bottom: 5px solid #3e2307;
     padding: 10px;
     text-align: center;
+    word-wrap: break-word; /* Asegura que el contenido se ajuste dentro de las celdas */
 }
 
 th {
@@ -142,19 +133,39 @@ th {
     box-shadow: 0 0.3em 1em -0.5em #3e2307;
 }
 
-@media (max-width: 576px)  {
-    body{
-        background-color: chartreuse;
+/* Estilos responsivos para pantallas menores a 1000px */
+@media (max-width: 1000px) {
+    table, th, td {
+        font-size: 20px;
     }
+
+    td {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cantidad {
+        margin-top: 10px;
+    }
+
+    .cantidad-input {
+        width: 50px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .cantidad-button, .cantidad-button2 {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 576px)  {
     .conte {
         margin-bottom: 10%;
         width: 85%;
         padding: 10px 20px;
-    }
-
-    .conte h1{
-        font-size: 40px;
-        width: 100%;
     }
 
     .contenedor {
@@ -173,17 +184,13 @@ th {
 }
 
 @media (max-width: 768px) and (min-width: 577px) {
-    body{
-        background-color: darkmagenta;
-    }
     .conte {
         margin-bottom: 10%;
         width: 95%;
         padding: 10px 20px;
     }
 
-    .contenedor h1{
-        font-size: 20px;
+    .contenedor {
         width: 100%;
         padding: 10px 20px;
     }
@@ -195,9 +202,6 @@ th {
 }
 
 @media (max-width: 992px) and (min-width: 769px) {
-    body{
-        background-color: hotpink;
-    }
     .conte {
         margin-bottom: 8%;
         width: 95%;
@@ -220,9 +224,6 @@ th {
 }
 
 @media (max-width: 1200px) and (min-width: 993px) {
-    body{
-        background-color: indianred;
-    }
     .conte {
         margin-bottom: 8%;
         width: 95%;
