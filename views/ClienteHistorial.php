@@ -20,7 +20,6 @@ include '../php/conexion.php';
 $Conexion = new Database();
 $Conexion->conectarBD();
 // VARIABLE DE SESSION 
-session_start();
 $usuario = $_SESSION['ID'];
 
 ?>
@@ -54,7 +53,7 @@ $usuario = $_SESSION['ID'];
             <div>
             <?php
                     if (isset($_SESSION['Rol'])){
-                        $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$id_usuario'");
+                        $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$usuario'");
 
                         echo "
                         <div class='dropdown text-end'>
