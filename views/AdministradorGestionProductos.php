@@ -108,8 +108,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
         <!-- SCRIPT PARA QUE FUNCIONES LAS FUNCIONES DE JAVA -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-      <!--FONDO DE LA PAGINA-->
-    <div class="fondo"></div>
     <style>
        
         
