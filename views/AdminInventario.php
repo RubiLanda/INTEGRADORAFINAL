@@ -121,7 +121,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             <div class="cont">
                 <div class="container">
                     <div class="row">
-                        <table class="table table-striped">
+                        <table class="table table-responsive">
                             <thead>
                                 <tr>
                                     <th colspan="2">Producto</th>
