@@ -150,8 +150,8 @@ svg {
 .opciones a:hover{
     color: #9c6644;
 }
-.dropdown li p {
-    margin-left: 30px;
+.dropdown li h6 {
+    margin-left: 10px;
 }
 
 @media (max-width: 576px) {  /* sm */
