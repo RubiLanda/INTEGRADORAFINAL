@@ -1105,7 +1105,7 @@ inner join CATEGORIAS on PRODUCTOS.id_categoria = CATEGORIAS.id_categoria
 where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_requerida
 group by Producto;
 
-select  PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
+select sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) into totalfinal
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
