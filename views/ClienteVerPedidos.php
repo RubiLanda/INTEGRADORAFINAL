@@ -45,6 +45,7 @@ else {
                         require '../php/conexion.php';
                         $Conexion = new Database();
                         $Conexion->conectarBD();
+                        $id_usuario = $_SESSION['ID'];
                         $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$id_usuario'");
 
                         echo "

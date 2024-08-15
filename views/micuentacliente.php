@@ -42,11 +42,11 @@ else {
             <?php
                     if (isset($_SESSION['Rol'])){
                         include '../php/conexion.php';
-                        $Conexion=new Database();
-                        $Conexion->conectarBD();
-                        $id_usuario = $_SESSION['ID'];
+                        $conexion=new Database();
+                        $conexion->conectarBD();
+                        $persona = $_SESSION['ID'];
 
-                        $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$id_usuario'");
+                        $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$persona'");
 
                         echo "
                         <div class='dropdown text-end'>
@@ -110,10 +110,6 @@ else {
 
         <div>
         <?php
-        include '../php/conexion.php';
-        $conexion=new Database();
-        $conexion->conectarBD();
-        $persona = $_SESSION['ID']; // esta id es de usuario no de persona
         $info=$conexion->selectConsulta("call Ver_Informacion_Usuario($persona)");
         
         foreach($info as $perso){
