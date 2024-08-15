@@ -37,7 +37,7 @@
                             </a>
                             <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1' data-popper-placement='bottom-end' style='position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-112px, 34px);'>
                                 <li>hola</li>
-                                <li>{$cuenta->Nombre}</li>";
+                                <li>{$cuenta[0]->Nombre}</li>";
                             switch ($_SESSION['Rol']){
                                 case 1:
                                     echo "<li><a class='dropdown-item' href='administrador.php'>Mi cuenta</a></li>";
