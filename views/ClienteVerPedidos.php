@@ -132,6 +132,32 @@ else {
 
     <!--FUNCION DE JAVA PARA PODER FILTRAR POR MES Y AÑO LOS PEDIDOS DE LOS CLIENTES-->
     <script>
+        if (sessionStorage.getItem("seleccionando_fecha") != null) {
+            seleccionando_fecha = sessionStorage.getItem("seleccionando_fecha");
+        }
+        else {
+            seleccionando_fecha = false;
+        }
+        function IrCarrito(mostrarModal) {
+            $.ajax({
+                type: 'POST',
+                url: '../php/calcularTotalCarrito.php',
+                success: function(response) {
+                    if (mostrarModal == 1 && seleccionando_fecha == true) {
+                        var modal = new bootstrap.Modal(document.getElementById('ModalIrCarrito'));
+                        if (response > 19 && response < 51) {
+                            window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
+                        }
+                        else {
+                            modal.show();
+                        }
+                    }
+                    else {
+                        window.location.href = "ClienteCarrito.php?mostrarStock=" + mostrarStock;
+                    }
+                }
+            });
+        }
         function filtrarPedidos() {
             var E = document.getElementById('SeleccionaEstado');
             $.ajax({
