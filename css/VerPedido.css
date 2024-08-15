@@ -33,11 +33,9 @@
     margin-bottom: 20px;
 }
 .conthistorial{
-    background-color: #9c6644;
-    border-radius: 15px;
-    width: auto;
-    margin: 0 auto;
-    padding: 20px;
+    width: 20%;
+    margin: 0px auto;
+    padding: 17px;
 }
 .conthistorial label{
     color: #ddb892;
