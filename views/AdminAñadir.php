@@ -97,7 +97,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         </div>
     </header>
 
-    <div class="menu oculto" id="menu"></div>
+    <div class="menu oculto" id="menu">
         <div class="inicioMenu">
             <img src="../img/logo.png">
             <button id="regresar" class="boton">
@@ -107,7 +107,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             </button>
         </div>
         <div class="opciones">
-            <a href="AdministradorVerPedidos.php">Ver pedidos</a>
+            <a href="AdministradorVerPedidos.php?mostrarMenu=0">Ver pedidos</a>
             <a href="Administradorganancias.php">Ver Ganancias</a>
             <a href="AdministradorGestionProductos.php">Gestionar productos y categorías</a>
             <a href="AdminInventario.php">Añadir inventario</a>
