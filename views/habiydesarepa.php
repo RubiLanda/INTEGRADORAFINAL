@@ -58,7 +58,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             <div> 
             <?php 
                 if (isset($_SESSION['Rol'])){
-                        $cuenta = $conexion->selectConsulta("SELECT USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$id_usuario'");
+                        $cuenta = $conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$id_usuario'");
 
                         echo "
                         <div class='dropdown text-end'>
@@ -68,8 +68,9 @@ $menu2 = isset($_GET['estado']) ? false : true;
                                 </svg>
                             </a>
                             <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1' data-popper-placement='bottom-end' style='position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-112px, 34px);'>
-                                <li><h6>hola</h6></li>
-                                <li><h6>{$cuenta[0]->Nombre}</h6></li>";
+                                <li><h6>hola,</h6></li>
+                                <li><h6>{$cuenta[0]->Nombre}</h6></li>
+                                <li><hr class='dropdown-divider'></li>";
                             switch ($_SESSION['Rol']){
                                 case 1:
                                     echo "<li><a class='dropdown-item' href='administrador.php'>Mi cuenta</a></li>";
@@ -95,14 +96,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         </div>
     </header>
 
-    <?php 
-    if ($menu1 && $menu2) {
-        echo "<div class=\"menu mostrar\" id=\"menu\">";
-    }
-    else {
-        echo "<div class=\"menu oculto\" id=\"menu\">";
-    }
-    ?>
+    <div class="menu oculto" id="menu">
         <div class="inicioMenu">
             <img src="../img/logo.png">
             <button id="regresar" class="boton">
