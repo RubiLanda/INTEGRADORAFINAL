@@ -149,11 +149,18 @@ else {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="imprimirnoti"></div>
     <script>
+        var seleccionando_fecha;
         if (sessionStorage.getItem("seleccionando_fecha") != null) {
             seleccionando_fecha = sessionStorage.getItem("seleccionando_fecha");
         }
         else {
             seleccionando_fecha = false;
+        }
+        if (sessionStorage.getItem("mostrarStock") != null) {
+            mostrarStock = sessionStorage.getItem("mostrarStock");
+        }
+        else {
+            mostrarStock = 0;
         }
         function IrCarrito(mostrarModal) {
             $.ajax({
@@ -175,7 +182,6 @@ else {
                 }
             });
         }
-        
         function HABILITAR(checkbox, ID){
             var Estado;
             if (checkbox.checked){
