@@ -18,7 +18,7 @@
             <div class=\"sombra\">
                 <h1>{$producto->Nombre}</h1>
                 <div>
-                    <h4>{$producto->Precio}</h4>
+                    <h4>\${$producto->Precio}</h4>
                     <p>Ver descripcion</p>
                 </div>
             </div>
