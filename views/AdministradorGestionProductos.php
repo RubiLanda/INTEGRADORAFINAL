@@ -719,8 +719,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
             value = parts.join('.');
         }
 
-        if (value > 999) {
-            value = 999;
+        if (value > 999.99) {
+            value = 999.99;
         }
 
         // Actualiza el valor del campo de entrada
