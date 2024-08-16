@@ -190,18 +190,15 @@
     align-items: center;
 }
 
-.paginacion a {
-    width: 40px;
-    height: 40px;
+.paginacion button {
+    padding: 20px;
     font-size: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     color: #30231b;
-    border-radius: 4px;
     background-color: #694731;
-    transition: background-color 0.3s ease;
 }
 
 .paginacion .activo {
