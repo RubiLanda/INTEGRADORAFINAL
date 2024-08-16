@@ -37,7 +37,7 @@ foreach($persona as $per){
     <h3><b>Nombre:</b><input type=\"text\" name=\"nombre\" class=\"inputs\" id=\"nombre\" value='{$per->Nombre_A}'oninput=validarinputs(this) minlength=\"3\" maxlength=\"50\"></h3>
     <h3><b>Apellido Paterno:</b><input type=\"text\" name=\"paterno\" class=\"inputs\" id=\"paterno\" value='{$per->AP_A}' oninput=validarinputs(this) minlength=\"3\" maxlength=\"50\"></h3>
     <h3><b>Apellido Materno:</b><input type=\"text\" name=\"materno\" class=\"inputs\" id=\"materno\" value='{$per->AM_A}' oninput=validarinputs(this) minlength=\"3\" maxlength=\"50\"></h3>
-    <h3><b>Telefono:</b> <input type=\"tel\" name=\"telefono\" id=\"telefono\" class=\"inputs\" value='{$per->T_A}' oninput=validartelefono(this) minlength=\"10\" maxlength=\"10\"> </h3>
+    <h3><b>Teléfono:</b> <input type=\"tel\" name=\"telefono\" id=\"telefono\" class=\"inputs\" value='{$per->T_A}' oninput=validartelefono(this) minlength=\"10\" maxlength=\"10\"> </h3>
     <div class='botoncat'>
     <button type='button' onclick=\"CambiarInfo($usuario)\" >
     <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' fill='green' class='bi bi-check-circle-fill' viewBox='0 0 16 16'>
