@@ -78,6 +78,9 @@ begin
 	declare ultimaidtienda int;
     declare p_id_cliente int;
     declare contadortienda int;
+	declare nombre int;
+
+	select count(TIENDAS.nombre) into  nombre from TIENDAS where nombre=t_nombre
     
 
 	select CLIENTES.id_cliente into p_id_cliente
@@ -89,8 +92,11 @@ begin
     select  count(*) into contadortienda
     from CLIENTE_TIENDA
     where CLIENTE_TIENDA.id_cliente= p_id_cliente;
-    
-    if contadortienda>=5 then
+
+	if nombre>0 then
+	set mensaje='Ese nombre ya existe';
+
+	elseif contadortienda>=5 then
 		set mensaje='No puedes tener mas de 5 tiendas';
     
     else    
