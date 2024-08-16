@@ -78,9 +78,11 @@ begin
 	declare ultimaidtienda int;
     declare p_id_cliente int;
     declare contadortienda int;
-	declare nombre int;
+	declare Cnombre int;
 
-	select count(TIENDAS.nombre_tienda) into  nombre from TIENDAS where nombre=t_nombre;
+	select count(TIENDAS.nombre_tienda) into 
+	 Cnombre from TIENDAS
+	where nombre_tienda=t_nombre;
     
 
 	select CLIENTES.id_cliente into p_id_cliente
@@ -93,7 +95,7 @@ begin
     from CLIENTE_TIENDA
     where CLIENTE_TIENDA.id_cliente= p_id_cliente;
 
-	if nombre>0 then
+	if Cnombre>0 then
 	set mensaje='Ese nombre ya existe';
 
 	elseif contadortienda>=5 then
