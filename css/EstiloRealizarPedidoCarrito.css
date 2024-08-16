@@ -198,13 +198,13 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: black;
+    color: #30231b;
     border-radius: 4px;
+    background-color: #694731;
     transition: background-color 0.3s ease;
 }
 
 .paginacion .activo {
-    background-color: #efeeee;
     border-radius: 50%;
 }
 .realizarPedido .Categorias {
