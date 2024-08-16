@@ -196,7 +196,28 @@ hr {
     color: #30231b !important;
 }
 
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.paginacion button {
+    padding: 6px 15px;
+    font-size: 25px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #9c6644;
+    background-color: #ddb892;
+}
+
+.paginacion .activo {
+    background-color: #493c2f;
+    color: #ddb892;
+}
 
 @media (max-width: 576px) {  /* sm */
     body {
