@@ -86,8 +86,8 @@ try {
             </button>
         </div>
         <div class="opciones">
-            <a href="../index.php" class="opcionSeleccionado">Menu</a>
-            <a href="#">Productos</a>
+            <a href="../index.php">Menu</a>
+            <a href="#" class="opcionSeleccionado">Productos</a>
             <a href="">Sobre Nosotros</a>
             <?php
             if (isset($_SESSION['Rol'])){
