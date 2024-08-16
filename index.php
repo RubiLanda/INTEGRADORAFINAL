@@ -112,7 +112,7 @@ $id = $_SESSION['ID'];
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <?php
-                $TopProductos = $Conexion->selectConsulta("select * from TopProductos");
+                $TopProductos = $conexion->selectConsulta("select * from TopProductos");
 
                 for ($i=0; $i < count($TopProductos); $i++) { 
                     if ($i == 0) {
