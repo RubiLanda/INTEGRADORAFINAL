@@ -235,7 +235,7 @@ else{
             <h3><b>Usuario:</b> {$repa->usuario}<h3>
             <h3><b>Nombre:</b> {$repa->Nombre}<h3>
             <h3><b>Fecha Nacimiento:</b> {$repa->Fecha_nacimiento}</h3>
-            <h3><b>Genero:</b> {$repa->Genero}</h3>
+            <h3><b>Género:</b> {$repa->Genero}</h3>
             <h3><b>Teléfono:</b> {$repa->Telefono}</h3>
             <h3><b>Fecha de Ingreso:</b> {$repa->Fecha_Ingreso}</h3>
             <h3><b>Licencia:</b> {$repa->licencia_conducir}</h3>
