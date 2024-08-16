@@ -19,7 +19,7 @@
                 <h1>{$producto->Nombre}</h1>
                 <div>
                     <h4>\${$producto->Precio}</h4>
-                    <p>Ver descripcion</p>
+                    <p>Ver descripción</p>
                 </div>
             </div>
         </div>";
