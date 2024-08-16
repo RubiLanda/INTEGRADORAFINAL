@@ -127,9 +127,9 @@ $menu2 = isset($_GET['estado']) ? false : true;
         <h4><b>Usuario:</b> {$st->Usuario}<h4>
         <h4><b>Nombre:</b> {$st->Nombre}<h4>
         <h4><b>Fecha Nacimiento:</b> {$st->Fecha_nacimiento}</h4>
-        <h4><b>Genero:</b> {$st->Genero}</h4>
+        <h4><b>Género:</b> {$st->Genero}</h4>
         <h4><b>Licencia de conducir:</b> {$st->Licencia_conducir}</h4>
-        <h4><b>Telefono:</b> {$st->Telefono}</h4>
+        <h4><b>Teléfono:</b> {$st->Telefono}</h4>
         <h4><b>Repartidor Desde:</b> {$st->Fecha_Ingreso}</h4>
         
         </p>
