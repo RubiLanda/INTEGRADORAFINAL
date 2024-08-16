@@ -38,7 +38,7 @@ try {
                     if (isset($_SESSION['Rol'])){
                         
                         $id = $_SESSION['ID'];
-                        $cuenta = $Conexion->selectConsulta('select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = $id');
+                        $cuenta = $Conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$id'");
 
                         echo "
                         <div class='dropdown text-end'>
@@ -48,17 +48,18 @@ try {
                                 </svg>
                             </a>
                             <ul class='dropdown-menu text-small' aria-labelledby='dropdownUser1' data-popper-placement='bottom-end' style='position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-112px, 34px);'>
-                                <li>hola</li>
-                                <li>{$cuenta[0]->Nombre}</li>";
+                                <li><h6>hola</h6></li>
+                                <li><h6>{$cuenta[0]->Nombre}</h6></li>
+                                <li><hr class='dropdown-divider'></li>";
                             switch ($_SESSION['Rol']){
                                 case 1:
-                                    echo "<li><a class='dropdown-item' href='administrador.php'>Mi cuenta</a></li>";
+                                    echo "<li><a class='dropdown-item' href='views/administrador.php'>Mi cuenta</a></li>";
                                     break;
                                 case 2:
-                                    echo "<li><a class='dropdown-item' href='micuentacliente.php'>Mi cuenta</a></li>";
+                                    echo "<li><a class='dropdown-item' href='views/micuentacliente.php'>Mi cuenta</a></li>";
                                     break;
                                 case 3:
-                                    echo "<li><a class='dropdown-item' href='RepartidorMicuenta.php'>Mi cuenta</a></li>";
+                                    echo "<li><a class='dropdown-item' href='views/RepartidorMicuenta.php'>Mi cuenta</a></li>";
                                     break;
                             }
                             echo "<li><hr class='dropdown-divider'></li>
