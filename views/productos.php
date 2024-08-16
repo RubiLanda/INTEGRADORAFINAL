@@ -88,7 +88,7 @@ try {
         <div class="opciones">
             <a href="../index.php">Menu</a>
             <a href="#" class="opcionSeleccionado">Productos</a>
-            <a href="">Sobre Nosotros</a>
+            <a href="views/sobrenosotros.php">Sobre Nosotros</a>
             <?php
             if (isset($_SESSION['Rol'])){
                 switch ($_SESSION['Rol']){

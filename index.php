@@ -20,8 +20,8 @@
             </button>
             <div class="login-registro">
                 <?php
+                    session_start();
                     if (isset($_SESSION['Rol'])){
-                        session_start();
                         include 'php/conexion.php';
                         $conexion=new Database();
                         $conexion->conectarBD();
@@ -76,7 +76,7 @@
         <div class="opciones">
             <a href="#" class="opcionSeleccionado">Menu</a>
             <a href="views/productos.php">Productos</a>
-            <a href="">Sobre Nosotros</a>
+            <a href="views/sobrenosotros.php">Sobre Nosotros</a>
             <?php
             if (isset($_SESSION['Rol'])){
                 switch ($_SESSION['Rol']){
