@@ -206,11 +206,11 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                     }
                     ?>
                     <div class="ApartadoPedidos">
-                        <a href="?estado=1" class="<?php ($estado == 1 ? "seleccionado" : "") ?>" >Pendiente</a>
-                        <a href="?estado=2&&TipoCliente=2" class="<?php ($estado == 2 ? "seleccionado" : "") ?>" >Pendiente a Pagar</a>
-                        <a href="?estado=3" class="<?php ($estado == 3 ? "seleccionado" : "") ?>" >Aceptados</a>
-                        <a href="?estado=4" class="<?php ($estado == 4 ? "seleccionado" : "") ?>" >Cancelados</a>
-                        <a href="?estado=5" class="<?php ($estado == 5 ? "seleccionado" : "") ?>" >Entregados</a>
+                        <a href="?estado=1" class="<?php echo $estado == 1 ? "seleccionado" : "" ?>" >Pendiente</a>
+                        <a href="?estado=2&&TipoCliente=2" class="<?php echo $estado == 2 ? "seleccionado" : "" ?>" >Pendiente a Pagar</a>
+                        <a href="?estado=3" class="<?php echo $estado == 3 ? "seleccionado" : "" ?>" >Aceptados</a>
+                        <a href="?estado=4" class="<?php echo $estado == 4 ? "seleccionado" : "" ?>" >Cancelados</a>
+                        <a href="?estado=5" class="<?php echo $estado == 5 ? "seleccionado" : "" ?>" >Entregados</a>
                     </div>
                 </div>
             </div>
