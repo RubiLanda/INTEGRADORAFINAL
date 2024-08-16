@@ -208,11 +208,11 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                     }
                     ?>
                     <div class="ApartadoPedidos">
-                        <a href="?estado=1" <?php ($_GET['estado'] = 1 ? "seleccionado" : "") ?> >Pendiente</a>
-                        <a href="?estado=2&&TipoCliente=2" <?php ($_GET['estado'] = 2 ? "seleccionado" : "") ?> >Pendiente a Pagar</a>
-                        <a href="?estado=3" <?php ($_GET['estado'] = 3 ? "seleccionado" : "") ?> >Aceptados</a>
-                        <a href="?estado=4" <?php ($_GET['estado'] = 4 ? "seleccionado" : "") ?> >Cancelados</a>
-                        <a href="?estado=5" <?php ($_GET['estado'] = 5 ? "seleccionado" : "") ?> >Entregados</a>
+                        <a href="?estado=1" class="<?php ($_GET['estado'] = 1 ? "seleccionado" : "") ?>" >Pendiente</a>
+                        <a href="?estado=2&&TipoCliente=2" class="<?php ($_GET['estado'] = 2 ? "seleccionado" : "") ?>" >Pendiente a Pagar</a>
+                        <a href="?estado=3" class="<?php ($_GET['estado'] = 3 ? "seleccionado" : "") ?>" >Aceptados</a>
+                        <a href="?estado=4" class="<?php ($_GET['estado'] = 4 ? "seleccionado" : "") ?>" >Cancelados</a>
+                        <a href="?estado=5" class="<?php ($_GET['estado'] = 5 ? "seleccionado" : "") ?>" >Entregados</a>
                     </div>
                 </div>
             </div>
