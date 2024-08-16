@@ -77,7 +77,6 @@
             <a href="#" class="opcionSeleccionado">Menu</a>
             <a href="views/productos.php">Productos</a>
             <a href="">Sobre Nosotros</a>
-            <a href="">Contactos</a>
             <?php
             if (isset($_SESSION['Rol'])){
                 switch ($_SESSION['Rol']){
@@ -93,7 +92,7 @@
                 }
             }
             else {
-                echo "<a href='login.php'>Realizar Pedido</a>";
+                echo "<a href='views/login.php'>Realizar Pedido</a>";
             }
             
             ?>
