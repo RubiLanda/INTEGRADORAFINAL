@@ -532,7 +532,7 @@ try {
             $.ajax({
                 type: 'POST',
                 url: '../php/MostrarCategoiras.php',
-                data: { fecha: valorSeleccionado },
+                data: { fecha: valorSeleccionado, categoria_seleccionado: <?php echo $categoria_seleccionado ?> },
                 success: function(response) {
                     $('#categorias').html(response);
                 }
