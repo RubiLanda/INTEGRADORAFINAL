@@ -24,14 +24,14 @@ $Tiendas = $Conexion->selectConsulta("call Ver_Tiendas($offset, $records_per_pag
                 <div class=\"modal-dialog modal-dialog-centered\">
                     <div class=\"modal-content\">
                         <div class=\"modal-header\">
-                            <h1>Informacion</h1>
+                            <h1>Información</h1>
                             <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
                         </div>
                         <div class=\"modal-body\">
                             <h3><b>Tienda:</b> {$fila->Tienda}<h3>
                             <h3><b>Dirección:</b> {$fila->Dirección}</h3>
                             <h3><b>Propietario:</b> {$fila->Propietario}</h3>
-                            <h3><b>Telefono:</b> {$fila->Telefono}</h3>
+                            <h3><b>Teléfono:</b> {$fila->Telefono}</h3>
                         </div>
                     </div>
                 </div>

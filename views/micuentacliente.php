@@ -131,7 +131,7 @@ else {
             <h3><b>Nombre:</b> {$perso->Nombre}<h3>
             <h3><b>Fecha Nacimiento:</b> {$perso->Fecha_nacimiento}</h3>
             <h3><b>Genero:</b> {$perso->Genero}</h3>
-            <h3><b>Telefono:</b> {$perso->Telefono}</h3>
+            <h3><b>Teléfono:</b> {$perso->Telefono}</h3>
             <h3><b>Cliente Desde:</b> {$perso->FECHA}</h3>
             </p>
             <div class=\"div\">

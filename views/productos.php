@@ -121,7 +121,7 @@ try {
                 </button>
         </div>
         <div class="Categorias">
-            <h1>Categorias</h1>
+            <h1>Categorías</h1>
             <div class="Contenido">
                 <a href="?categoria=0">Todos</a>
                 <?php foreach ($categorias as $categoria): ?>

@@ -231,7 +231,7 @@ try {
                     <button onclick="IrCarrito(1)">Confirmar pedido</button>
                 </div>
             </div>
-            <h1>Categorias</h1>
+            <h1>Categorías</h1>
             <div class="Contenido" id="categorias"></div>
         </div>
         <div class="modal fade" id="ModalConfirmarCambioFecha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
