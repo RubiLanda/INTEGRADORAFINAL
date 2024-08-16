@@ -366,6 +366,9 @@
     background-color: #ddd; /* Color de fondo para fechas pasadas */
     color: #888; /* Color del texto para fechas pasadas */
 }
+.seleccionado {
+    color: #30231b !important;
+}
 
 @media (max-width: 576px) {  /* sm */
     .calendario {

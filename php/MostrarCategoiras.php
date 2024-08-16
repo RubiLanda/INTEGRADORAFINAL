@@ -22,10 +22,10 @@ $habilitarTemporada = $resultado[0]->resultado;
 echo "<a href=\"?categoria=0&&mostrarMenu=0\">Todos</a>";
 foreach ($categorias as $categoria){
     if ($categoria->ID != 4) {
-        echo "<a href=\"?categoria={$categoria->ID}&&mostrarMenu=0\">{$categoria->Nombre}</a>";
+        echo "<a href=\"?categoria={$categoria->ID}&&mostrarMenu=0\" class=". ($_GET['categoria'] == $categoria->ID ? "seleccionado" : "") .">{$categoria->Nombre}</a>";
     }
     if ($categoria->ID == 4 && $habilitarTemporada == 1) {
-        echo "<a href=\"?categoria={$categoria->ID}&&mostrarMenu=0\">{$categoria->Nombre}</a>";
+        echo "<a href=\"?categoria={$categoria->ID}&&mostrarMenu=0\" class=". ($_GET['categoria'] == $categoria->ID ? "seleccionado" : "") .">{$categoria->Nombre}</a>";
     }
 }
 ?>
