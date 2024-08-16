@@ -26,7 +26,7 @@
                         $conexion=new Database();
                         $conexion->conectarBD();
                         $id = $_SESSION['ID'];
-                        $cuenta = $conexion->selectConsulta('select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = $id');
+                        $cuenta = $conexion->selectConsulta("select USUARIOS.username as Nombre from USUARIOS where USUARIOS.id_usuario = '$id'");
 
                         echo "
                         <div class='dropdown text-end'>
