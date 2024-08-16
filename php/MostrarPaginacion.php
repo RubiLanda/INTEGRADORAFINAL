@@ -58,21 +58,28 @@ if ($current_page > 1): ?>
 <?php endif;
 
 if ($start > 1): ?>
-    <button style="<?php echo $current_page == 1 ? "border-radius: 15px 0 0 15px;" : "" ?>" onclick="cambiarPaginacion(1)">1</button>
+    <button onclick="cambiarPaginacion(1)">1</button>
     <?php if ($start > 2): ?>
         ...
     <?php endif?>
 <?php endif;
 
-for($i = $start; $i <= $end; $i++): ?>
-    <button onclick="cambiarPaginacion(<?php echo $i?>)" class="<?php if($i == $current_page) echo 'activo'; ?>"><?php echo $i ?></button>
-<?php endfor;
+for($i = $start; $i <= $end; $i++) {
+    if ($i == 1 && $current_page == 1): ?>
+        <button style="border-radius: 15px 0 0 15px;" onclick="cambiarPaginacion(<?php echo $i?>)" class="<?php if($i == $current_page) echo 'activo'; ?>"><?php echo $i ?></button>
+    <?php elseif ($i == $end && $current_page == $end): ?>
+        <button style="border-radius: 0 15px 15px 0;" onclick="cambiarPaginacion(<?php echo $i?>)" class="<?php if($i == $current_page) echo 'activo'; ?>"><?php echo $i ?></button>
+    <?php else: ?>
+        <button onclick="cambiarPaginacion(<?php echo $i?>)" class="<?php if($i == $current_page) echo 'activo'; ?>"><?php echo $i ?></button>
+    <?php endif; 
+
+}
 
 if ($end < $total_pages): ?>
     <?php if ($end < $total_pages - 1): ?>
         ...
     <?php endif ?>
-    <button style="<?php echo $current_page == $total_pages ? "border-radius: 0 15px 15px 0;" : "" ?>" onclick="cambiarPaginacion(<?php echo $total_pages?>)"><?php echo $total_pages?></button>
+    <button onclick="cambiarPaginacion(<?php echo $total_pages?>)"><?php echo $total_pages?></button>
 <?php endif;
 
 if($current_page < $total_pages): ?>
