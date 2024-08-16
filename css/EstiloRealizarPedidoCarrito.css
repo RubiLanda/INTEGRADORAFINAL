@@ -191,14 +191,15 @@
 }
 
 .paginacion button {
-    padding: 20px;
+    padding: 15px 20px;
     font-size: 25px;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: #30231b;
-    background-color: #694731;
+    color: #ddb892;
+    background-color: #9c6644;
 }
 
 .paginacion .activo {
