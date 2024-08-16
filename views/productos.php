@@ -86,14 +86,21 @@ try {
             </button>
         </div>
         <div class="opciones">
-            <a href="../index.php">Menu</a>
+            <a href="../index.php" class="opcionSeleccionado">Menu</a>
             <a href="#">Productos</a>
             <a href="">Sobre Nosotros</a>
-            <a href="">Contactos</a>
             <?php
             if (isset($_SESSION['Rol'])){
-                if ($_SESSION['Rol'] = 2){
-                    echo "<a href='Cliente.php'>Realizar Pedido</a>";
+                switch ($_SESSION['Rol']){
+                    case 1:
+                        echo "<a href='AdministradorVerPedidos.php'>Mi Perfil</a>";
+                        break;
+                    case 2:
+                        echo "<a href='ClienteRealizarPedido.php'>Realizar Pedido</a>";
+                        break;
+                    case 3:
+                        echo "<a href='Repartidor.php'>Mi Perfil</a>";
+                        break;
                 }
             }
             else {
