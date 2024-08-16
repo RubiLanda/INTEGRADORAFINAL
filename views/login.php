@@ -52,7 +52,7 @@ if (isset($_SESSION['Rol']))
         
         <button  class="botonn"  onclick="iniciarSesion()">Iniciar</button>
         
-        ¿No tienes cuenta? <a href="registro.php"> Registrate aquí</a><br>
+        ¿No tienes cuenta? <a href="registro.php"> Regístrate aquí</a><br>
         </div>
     
     
