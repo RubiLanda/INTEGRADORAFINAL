@@ -57,8 +57,8 @@ if ($current_page > 1): ?>
     <button style="border-radius: 15px 0 0 15px;" onclick="cambiarPaginacion(<?php echo ($current_page - 1)?>)"> < </button>
 <?php endif;
 
+echo "<button style=". $current_page == 1 ? "border-radius: 15px 0 0 15px;" : "" ." onclick=\"cambiarPaginacion(1)\">1</button>";
 if ($start > 1): ?>
-    <button style="<?php echo $current_page == 1 ? "border-radius: 15px 0 0 15px;" : "" ?>" onclick="cambiarPaginacion(1)">1</button>
     <?php if ($start > 2): ?>
         ...
     <?php endif?>
