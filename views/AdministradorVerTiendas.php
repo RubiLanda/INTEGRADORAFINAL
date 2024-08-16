@@ -136,7 +136,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         </a>
         </div>";
         if (count($pedidos_tiendas) == 0) {
-            echo "<div class=\"SinPedidos\">Esta tienda aun no tiene ningun pedido</div>";
+            echo "<div class=\"SinPedidos\">Esta tienda aún no tiene ningún pedido</div>";
         }
         else {
             echo "<div class=\"tabla\">";

@@ -16,7 +16,7 @@ $Tiendas = $Conexion->selectConsulta("call Ver_Tiendas($offset, $records_per_pag
         echo "<div class=\"Tienda\">";
             echo "<h3>{$fila->Tienda}</h3>";
             echo "<button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$fila->ID}\">
-                    Ver Informacion
+                    Ver Información
                 </button>";
             echo "<a href=\"?estado=7&&PedidosTienda={$fila->ID}&&NombreTienda={$fila->Tienda}\">Ver pedidos</a>";
         echo "</div>";
