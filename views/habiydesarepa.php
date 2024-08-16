@@ -227,7 +227,7 @@ else{
             <div class=\"modal-dialog modal-dialog-centered\">
             <div class=\"modal-content\">
             <div class=\"modal-header\">
-            <h1>Informacion Del Repartidor</h1>
+            <h1>Información Del Repartidor</h1>
             <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
             </div>
 
@@ -236,7 +236,7 @@ else{
             <h3><b>Nombre:</b> {$repa->Nombre}<h3>
             <h3><b>Fecha Nacimiento:</b> {$repa->Fecha_nacimiento}</h3>
             <h3><b>Genero:</b> {$repa->Genero}</h3>
-            <h3><b>Telefono:</b> {$repa->Telefono}</h3>
+            <h3><b>Teléfono:</b> {$repa->Telefono}</h3>
             <h3><b>Fecha de Ingreso:</b> {$repa->Fecha_Ingreso}</h3>
             <h3><b>Licencia:</b> {$repa->licencia_conducir}</h3>
             </div>
