@@ -207,7 +207,7 @@ try {
             <div class="informacionPedido" id="sinTienda">
                 <p><b>Pago:</b> Deberás ir a la sucursal para pagar tu pedido.</p>
                 <p><b>Plazo de pago:</b> Tienes hasta un día antes de la fecha seleccionada para realizar el pago.</p>
-                <p><b>Recogida:</b> Una vez que hayas pagado, podrás regresar a la sucursal para recoger tu pedido.</p>
+                <p><b>Entrega en tienda:</b> Una vez que hayas pagado, podrás regresar a la sucursal para la entrega en tienda de tu pedido.</p>
                 <p><b>Importante:</b> Si no realizas el pago en el tiempo establecido, tu pedido será cancelado.</p>
             </div>
             <div class="informacionPedido" id="conTienda">

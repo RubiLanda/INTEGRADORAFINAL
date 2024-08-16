@@ -296,7 +296,7 @@ try {
                 <div class='sinCarrito'>
                     <h1>No tienes ningun producto en el carrito</h1>
                     <div>
-                        <h3>Para agregar productos dirijite a </h3>
+                        <h3>Para agregar productos dirigite a </h3>
                         <a href='ClienteRealizarPedido.php?mostrarMenu=0'>Realizar Pedido</a>
                     </div>
                 </div>`;
