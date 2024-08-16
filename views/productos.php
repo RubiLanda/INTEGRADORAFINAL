@@ -108,7 +108,6 @@ try {
             }
             
             ?>
-            <a href="http://localhost/Boostrap/Vistas/cliente.php">Administrador</a>
         </div>
     </div>
 
