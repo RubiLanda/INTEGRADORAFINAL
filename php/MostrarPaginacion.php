@@ -54,7 +54,7 @@ $end = min($total_pages, $current_page + floor($max_links / 2));
 
 
 if ($current_page > 1): ?>
-    <button style="border-radius: 15px 0 15px 0;" onclick="cambiarPaginacion(<?php echo ($current_page - 1)?>)"> < </button>
+    <button style="border-radius: 15px 0 0 15px;" onclick="cambiarPaginacion(<?php echo ($current_page - 1)?>)"> < </button>
 <?php endif;
 
 if ($start > 1): ?>
