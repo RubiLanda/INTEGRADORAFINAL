@@ -193,7 +193,7 @@ hr {
     justify-content: center;
 }
 .seleccionado {
-    color: #30231b;
+    color: #30231b !important;
 }
 
 
