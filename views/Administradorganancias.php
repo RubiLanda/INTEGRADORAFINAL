@@ -161,7 +161,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             </label>
           </div>
           <select class="select" id="categorias" aria-label="Default select example" onchange="Ver_Ventas_Producto()">
-            <option selected> POR CATEGORIA</option>
+            <option selected> POR CATEGORÍA</option>
             <?php
             $consulta="SELECT * FROM ver_categorias;";
             $cate=$conexion->selectConsulta($consulta);
