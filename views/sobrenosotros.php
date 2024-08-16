@@ -124,7 +124,7 @@ try {
     </div>
     <div class="container">
         
-    <p>
+        <p>
             <h3>HISTORIA</h3>    
             <h4>Panadería La Espiga de Matamoros fundada en 1969 por el Sr. Raymundo González García en Matamoros Coahuila. Seguimos manteniendo su tradición ofreciendo un pan casero hecho a la leña mantenido ese sabor tan especial que nos ha caracterizado durante más de 50 años.</h4>
         </p>

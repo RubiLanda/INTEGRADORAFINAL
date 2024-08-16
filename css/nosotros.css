@@ -45,6 +45,9 @@ body{
 .margen{
     margin-top: 3rem;
 }
+.container {
+    background-color: #ddb892;
+}
 .container h3{
     margin-top: 40px;
 display: flex;
