@@ -20,8 +20,8 @@
             </button>
             <div class="login-registro">
                 <?php
-                    session_start();
                     if (isset($_SESSION['Rol'])){
+                        session_start();
                         include 'php/conexion.php';
                         $conexion=new Database();
                         $conexion->conectarBD();
