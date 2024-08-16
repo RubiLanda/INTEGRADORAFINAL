@@ -28,8 +28,6 @@ else {
     header("Location: login.php");
 }
 
-$estado = isset($_GET['estado']) ? false : true;
-$menu2 = isset($_GET['estado']) ? false : true;
 $estado = isset($_GET['estado']) ? $_GET['estado'] : 1;
 $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
 
@@ -201,18 +199,18 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                     <?php
                     if ($estado != 2){
                         echo "<div class=\"ApartadoPedidos moverDerecha\">";
-                        echo "<a href=\"?estado=$estado&&TipoCliente=1\" class=". ($_GET['TipoCliente'] = 1 ? "seleccionado" : "") .">Con Tienda</a>";
-                        echo "<a href=\"?estado=$estado&&TipoCliente=2\" class=". ($_GET['TipoCliente'] = 2 ? "seleccionado" : "") .">Sin Tienda</a>";
+                        echo "<a href=\"?estado=$estado&&TipoCliente=1\" class=". ($TipoCliente = 1 ? "seleccionado" : "no") .">Con Tienda</a>";
+                        echo "<a href=\"?estado=$estado&&TipoCliente=2\" class=". ($TipoCliente = 2 ? "seleccionado" : "no") .">Sin Tienda</a>";
                         echo "</div>";
                         echo "<hr>";
                     }
                     ?>
                     <div class="ApartadoPedidos">
-                        <a href="?estado=1" class="<?php ($_GET['estado'] = 1 ? "seleccionado" : "") ?>" >Pendiente</a>
-                        <a href="?estado=2&&TipoCliente=2" class="<?php ($_GET['estado'] = 2 ? "seleccionado" : "") ?>" >Pendiente a Pagar</a>
-                        <a href="?estado=3" class="<?php ($_GET['estado'] = 3 ? "seleccionado" : "") ?>" >Aceptados</a>
-                        <a href="?estado=4" class="<?php ($_GET['estado'] = 4 ? "seleccionado" : "") ?>" >Cancelados</a>
-                        <a href="?estado=5" class="<?php ($_GET['estado'] = 5 ? "seleccionado" : "") ?>" >Entregados</a>
+                        <a href="?estado=1" class="<?php ($estado = 1 ? "seleccionado" : "no") ?>" >Pendiente</a>
+                        <a href="?estado=2&&TipoCliente=2" class="<?php ($estado = 2 ? "seleccionado" : "no") ?>" >Pendiente a Pagar</a>
+                        <a href="?estado=3" class="<?php ($estado = 3 ? "seleccionado" : "no") ?>" >Aceptados</a>
+                        <a href="?estado=4" class="<?php ($estado = 4 ? "seleccionado" : "no") ?>" >Cancelados</a>
+                        <a href="?estado=5" class="<?php ($estado = 5 ? "seleccionado" : "no") ?>" >Entregados</a>
                     </div>
                 </div>
             </div>
