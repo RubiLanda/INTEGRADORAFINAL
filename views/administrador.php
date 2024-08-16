@@ -147,7 +147,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             <h4><b>Usuario:</b> {$r->usuariop}<h4>
             <h4><b>Nombre Completo:</b> {$r->Nombre}<h4>
             <h4><b>Fecha Nacimiento:</b> {$r->Fecha_nacimiento}</h4>
-            <h4><b>Genero:</b> {$r->Genero}</h4>
+            <h4><b>Género:</b> {$r->Genero}</h4>
             <h4><b>Teléfono:</b> {$r->Telefono}</h4>
             <h4><b>Administrador Desde:</b> {$r->FECHA}</h4>
             </p>
