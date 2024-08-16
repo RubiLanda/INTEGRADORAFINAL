@@ -90,6 +90,7 @@ footer div{
     justify-content: center;
     flex-direction: column;
     width: 93%;
+    padding-bottom: 50px;
 }
 
 .TodoLosProductos .BarraBusqueda {
