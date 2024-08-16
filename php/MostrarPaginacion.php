@@ -64,7 +64,7 @@ if ($start > 1): ?>
     <?php endif?>
 <?php endif;
 
-for($i = $start + 1; $i <= $end - 1; $i++): ?>
+for($i = $start; $i <= $end; $i++): ?>
     <button onclick="cambiarPaginacion(<?php echo $i?>)" class="<?php if($i == $current_page) echo 'activo'; ?>"><?php echo $i ?></button>
 <?php endfor;
 
