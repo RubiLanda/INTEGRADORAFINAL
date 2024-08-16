@@ -110,9 +110,9 @@ try {
         <div class="Categorias">
             <h1>Categorías</h1>
             <div class="Contenido">
-                <a href="?categoria=0">Todos</a>
+                <a href="?categoria=0" class="<?php echo $categoria_seleccionado == 0 ? "seleccionado" : "" ?>">Todos</a>
                 <?php foreach ($categorias as $categoria): ?>
-                    <a href="?categoria=<?php echo ($categoria->ID)?>"><?php echo ($categoria->Nombre)?></a>
+                    <a href="?categoria=<?php echo ($categoria->ID)?>" class="<?php echo $categoria_seleccionado == $categoria->ID ? "seleccionado" : "" ?>"><?php echo ($categoria->Nombre)?></a>
                 <?php endforeach ?>
             </div>
         </div>

@@ -202,6 +202,9 @@ footer div{
     background-color: #81563b;
     color: #ddb892;
 }
+.seleccionado {
+    color: #30231b !important;
+}
 
 /* Personalizar la barra de desplazamiento */
 ::-webkit-scrollbar {
