@@ -201,18 +201,18 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                     <?php
                     if ($estado != 2){
                         echo "<div class=\"ApartadoPedidos moverDerecha\">";
-                        echo "<a href=\"?estado=$estado&&TipoCliente=1\">Con Tienda</a>";
-                        echo "<a href=\"?estado=$estado&&TipoCliente=2\">Sin Tienda</a>";
+                        echo "<a href=\"?estado=$estado&&TipoCliente=1\" class=". ($_GET['TipoCliente'] = 1 ? "seleccionado" : "") .">Con Tienda</a>";
+                        echo "<a href=\"?estado=$estado&&TipoCliente=2\" class=". ($_GET['TipoCliente'] = 2 ? "seleccionado" : "") .">Sin Tienda</a>";
                         echo "</div>";
                         echo "<hr>";
                     }
                     ?>
                     <div class="ApartadoPedidos">
-                        <a href="?estado=1">Pendiente</a>
-                        <a href="?estado=2&&TipoCliente=2">Pendiente a Pagar</a>
-                        <a href="?estado=3">Aceptados</a>
-                        <a href="?estado=4">Cancelados</a>
-                        <a href="?estado=5">Entregados</a>
+                        <a href="?estado=1" <?php ($_GET['estado'] = 1 ? "seleccionado" : "") ?> >Pendiente</a>
+                        <a href="?estado=2&&TipoCliente=2" <?php ($_GET['estado'] = 2 ? "seleccionado" : "") ?> >Pendiente a Pagar</a>
+                        <a href="?estado=3" <?php ($_GET['estado'] = 3 ? "seleccionado" : "") ?> >Aceptados</a>
+                        <a href="?estado=4" <?php ($_GET['estado'] = 4 ? "seleccionado" : "") ?> >Cancelados</a>
+                        <a href="?estado=5" <?php ($_GET['estado'] = 5 ? "seleccionado" : "") ?> >Entregados</a>
                     </div>
                 </div>
             </div>
