@@ -191,7 +191,7 @@
 }
 
 .paginacion button {
-    padding: 15px 20px;
+    padding: 10px 15px;
     font-size: 25px;
     border: none;
     display: flex;
@@ -203,7 +203,8 @@
 }
 
 .paginacion .activo {
-    border-radius: 50%;
+    background-color: #493c2f;
+    color: #ddb892;
 }
 .realizarPedido .Categorias {
     display: flex;
