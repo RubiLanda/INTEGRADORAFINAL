@@ -74,7 +74,7 @@
             </button>
         </div>
         <div class="opciones">
-            <a href="#">Menu</a>
+            <a href="#" class="opcionSeleccionado">Menu</a>
             <a href="views/productos.php">Productos</a>
             <a href="">Sobre Nosotros</a>
             <a href="">Contactos</a>
