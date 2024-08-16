@@ -146,7 +146,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 echo"<div class= \"pedido\">
                 <h1>#{$pedidos->ID}</h1>
                 <h3><b>Tienda:</b> {$pedidos->Tienda}</h3>
-                <h3><b>Direccion:</b> {$pedidos->Direccion}</h3>
+                <h3><b>Dirección:</b> {$pedidos->Direccion}</h3>
                 <h3><b>Cliente:</b> {$pedidos->Cliente}</h3>
                 <h3><b>Fecha Pedido:</b> {$pedidos->Fecha_Pedido}</h3>
                 <h3><b>Fecha Requerido:</b> {$pedidos->Fecha_Requerido}</h3>";          
@@ -212,7 +212,7 @@ else{
 
             }
             echo"<button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$repa->ID}\">
-            Ver Informacion
+            Ver Información
             </button>";
 
             //declaro mi variable y esa variable va a valer el id del repartidor que ya habia sacado anterioremente de mi consulta
