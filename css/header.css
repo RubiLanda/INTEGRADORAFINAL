@@ -17,7 +17,7 @@ body {
     object-fit: cover;
     z-index: -1;
     opacity: 0.3;
-    background-image: url(../img/backgroun.png);
+    background-image: url(../img/pared.png);
 }
 header {
     position: fixed;
