@@ -56,7 +56,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/administrador.css">
+    <link rel="stylesheet" href="../css/administradorVerPedidos.css">
     <title>La Espiga</title>
 </head>
 <body style="display: flex; align-items: center; flex-direction: column;">
@@ -207,7 +207,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                     ?>
                     <div class="ApartadoPedidos">
                         <a href="?estado=1" class="<?php ($estado == 1 ? "seleccionado" : "no") ?>" >Pendiente</a>
-                        <a href="?estado=2&&TipoCliente=2" class="<?php ($estado = 2 ? "seleccionado" : "no") ?>" >Pendiente a Pagar</a>
+                        <a href="?estado=2&&TipoCliente=2" class="<?php ($estado == 2 ? "seleccionado" : "no") ?>" >Pendiente a Pagar</a>
                         <a href="?estado=3" class="<?php ($estado == 3 ? "seleccionado" : "no") ?>" >Aceptados</a>
                         <a href="?estado=4" class="<?php ($estado == 4 ? "seleccionado" : "no") ?>" >Cancelados</a>
                         <a href="?estado=5" class="<?php ($estado == 5 ? "seleccionado" : "no") ?>" >Entregados</a>
