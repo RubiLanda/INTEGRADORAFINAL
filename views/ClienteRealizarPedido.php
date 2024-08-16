@@ -47,7 +47,7 @@ try {
     </script>
     <link rel="icon" type="image/x-icon" href="../img/logo.png">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/clienteRealizarPedidoCarrito.css">
+    <link rel="stylesheet" href="../css/EstiloRealizarPedidoCarrito.css">
     <title>La Espiga</title>
 </head>
 <body style="display: flex; align-items: center; flex-direction: column;">
