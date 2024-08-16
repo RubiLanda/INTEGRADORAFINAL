@@ -53,17 +53,17 @@ try {
                                 <li><hr class='dropdown-divider'></li>";
                             switch ($_SESSION['Rol']){
                                 case 1:
-                                    echo "<li><a class='dropdown-item' href='views/administrador.php'>Mi cuenta</a></li>";
+                                    echo "<li><a class='dropdown-item' href='administrador.php'>Mi cuenta</a></li>";
                                     break;
                                 case 2:
-                                    echo "<li><a class='dropdown-item' href='views/micuentacliente.php'>Mi cuenta</a></li>";
+                                    echo "<li><a class='dropdown-item' href='micuentacliente.php'>Mi cuenta</a></li>";
                                     break;
                                 case 3:
-                                    echo "<li><a class='dropdown-item' href='views/RepartidorMicuenta.php'>Mi cuenta</a></li>";
+                                    echo "<li><a class='dropdown-item' href='RepartidorMicuenta.php'>Mi cuenta</a></li>";
                                     break;
                             }
                             echo "<li><hr class='dropdown-divider'></li>
-                                <li><a class='dropdown-item' href='php/cerrarSeccion.php'>Cerrar Sesion</a></li>
+                                <li><a class='dropdown-item' href='../php/cerrarSeccion.php'>Cerrar Sesion</a></li>
                             </ul>
                         </div>";
                     }
