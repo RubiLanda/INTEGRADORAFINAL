@@ -259,7 +259,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
               } else {
                 select.disabled = true; // Deshabilitar select
                 select.style.opacity=0.5;
-                select.value='POR CATEGORIA';
+                select.value='POR CATEGORÍA';
               }
               if (document.querySelector('input[name="a"][value="2"]').checked) {
                 radiusActivo = 2;
