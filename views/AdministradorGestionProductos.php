@@ -307,6 +307,14 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     contentType: false,
                     processData: false,
                     success: function(response){
+                    if(response=="Producto añadido correctamente")
+                    {
+                       id_nombre.value = '';
+                       id_des.value='';
+                       id_precio.value='0';
+                       id_categoria.value='0';
+                       
+                    }
                         cargarproductos(pagina)
                         mostrarPaginacion()
                          
