@@ -966,19 +966,7 @@ where USUARIOS.id_usuario = p_id_usuario;
 
 select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
 from PEDIDOS
-where PEDIDOS.id_cliente = p_id_cliente and f_requerido = p_fecha_requerido;
-
-if p_tienda_seleccionado is null then
-
-	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
-	from PEDIDOS
-	where PEDIDOS.id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
-
-else 
-	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
-	from PEDIDOS
-	where PEDIDOS.id_cliente = p_id_cliente and id_tiendas = p_tienda_seleccionado and f_requerido = p_fecha_requerido;
-end if;
+where PEDIDOS.id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
 
 select SUM(CARRITO.cantidad) into P_TOTALCARRITO from CARRITO inner join CLIENTES
 on CARRITO.id_cliente = CLIENTES.id_cliente inner join INVENTARIO on 
@@ -994,7 +982,7 @@ else
 if(p_fecha_requerido > date_add(date(now()),interval 6 month))
 then
 -- if para evitar que la fecha elegida sea para fechas mayores a 6 medes y anteriores a hoy
-set mensaje = 'Fecha Invalida para realzar Pedido 1231231';
+set mensaje = 'Fecha Invalida para realzar Pedido';
 
 else
 
@@ -1007,7 +995,7 @@ else
 if day(p_fecha_requerido) = day(now()) and p_tienda_seleccionado = 0 
 then
 
-set mensaje = 'Fecha Invalida para realzar Pedido adsdsadsa';
+set mensaje = 'Fecha Invalida para realzar Pedido';
 
 else
 				-- if para evitar que un cliente con  tienda realize un pedido del mismo dia despues de las 11:00 am
