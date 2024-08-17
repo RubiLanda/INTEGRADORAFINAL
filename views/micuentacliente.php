@@ -288,6 +288,14 @@ else {
             checkbox.checked = false;
             $('#' + Modal).modal('hide');
 
+            $.ajax({
+                type: 'POST',
+                url: '../php/CancelarPedidosTiendaPendiente.php',
+                data: { ID: ID },
+                success: function() {
+                }
+            });
+
             var Estado;
             if (checkbox.checked){
                 Estado = 1;
