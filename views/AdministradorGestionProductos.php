@@ -310,7 +310,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     if(response=="Producto añadido correctamente")
                     {
                        id_nombre.value = '';
-                       id_des.value='';
+                       id_descripcion.value='';
                        id_precio.value='0';
                        id_categoria.value='0';
                        
