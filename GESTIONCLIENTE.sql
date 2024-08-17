@@ -963,6 +963,11 @@ inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
 inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
 where USUARIOS.id_usuario = p_id_usuario;
 
+
+select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
+from PEDIDOS
+where PEDIDOS.id_cliente = p_id_cliente and f_requerido = p_fecha_requerido;
+
 if p_tienda_seleccionado is null then
 
 	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
