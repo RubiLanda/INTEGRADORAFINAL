@@ -185,7 +185,8 @@ else {
             });
         }
         
-        function HABILITAR(checkbox, ID, Modal, botonContinuar){
+        function HABILITAR(checkbox, ID, Modal, botonContinuar, texto){
+            const text = document.getElementById(texto);
             if (checkbox.checked) {
                 var Estado;
                 if (checkbox.checked){
@@ -234,9 +235,11 @@ else {
                         if (response > 0) {
                             $('#' + Modal).modal('show');
                             document.getElementById(botonContinuar).style.display = 'none';
+                            text.innerHTML = "No puedes desactivar la tienda porque tiene pedidos aceptados";
                         }
                         else {
                             document.getElementById(botonContinuar).style.display = 'block';
+                            text.innerHTML = "Si desactivas la tienda se cancelarán todo los pedidos pendientes de esta tienda";
                             $.ajax({
                                 type: 'POST',
                                 url: '../php/ContarPedidoTiendaPendientes.php',

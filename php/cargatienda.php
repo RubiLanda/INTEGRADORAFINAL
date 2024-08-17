@@ -26,9 +26,9 @@
      echo "<h3><b>Nombre de la tienda:</b> <input type=\"text\" name=\"nombre\" class=\"inputs\" id='nombretienda{$tienda->ID}' value='{$tienda->Nombre}' minlength=\"3\" maxlength=\"50\"><h3>
      <h3><b>Dirección: </b> <textarea name=\"direccion\" class=\"inputs direccion\" id='direccion{$tienda->ID}'  minlength=\"20\" maxlength=\"100\">{$tienda->Direccion}</textarea><h3>";
      if($tienda->Estatus){
-         echo"<h3><b>Estado Actual:</b><input type='checkbox' id=\"checkbox{$tienda->ID}\" class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID}, 'ModalConfirmarCheckBox{$tienda->ID}', 'botonConfirmar{$tienda->ID}')\" checked></h3>";
+         echo"<h3><b>Estado Actual:</b><input type='checkbox' id=\"checkbox{$tienda->ID}\" class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID}, 'ModalConfirmarCheckBox{$tienda->ID}', 'botonConfirmar{$tienda->ID}', 'texto{$tienda->ID}')\" checked></h3>";
         }else{
-            echo"<h3><b>Estado Actual:</b><input type='checkbox' id=\"checkbox{$tienda->ID}\" class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID}, 'ModalConfirmarCheckBox{$tienda->ID}', 'botonConfirmar{$tienda->ID}')\"</h3>";
+            echo"<h3><b>Estado Actual:</b><input type='checkbox' id=\"checkbox{$tienda->ID}\" class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID}, 'ModalConfirmarCheckBox{$tienda->ID}', 'botonConfirmar{$tienda->ID}', 'texto{$tienda->ID}')\"</h3>";
         }
         echo"<button type='button' class=\"inputs\" onclick=\"editarinfotienda({$tienda->ID},'nombretienda{$tienda->ID}','direccion{$tienda->ID}')\" class=\"div\">EDITAR</button>";
         echo"<hr>
@@ -40,7 +40,7 @@
                         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" onclick=\"cancelarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}')\"></button>
                     </div>
                     <div class=\"modal-body\">
-                        <p></p>
+                        <p id=\"texto{$tienda->ID}\"></p>
                         <div style=\"display: flex;\">
                             <button type=\"button\" style=\"margin-right: 5px;\" onclick=\"cancelarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}')\">Cancelar</button>
                             <button type=\"button\" style=\"margin-left: 5px;\" id=\"botonConfirmar{$tienda->ID}\" onclick=\"ContinuarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}', {$tienda->ID})\">Continuar</button>
