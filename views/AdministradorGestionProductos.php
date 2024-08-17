@@ -342,9 +342,18 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 delay: 5000 // Duración del toast en milisegundos
             });
             toast.show();
-            document.getElementById('VistaPrevia').src = "../img/Icono de Mas.avif";  // <<< Esta línea limpia la vista previa
-            // Limpiar el campo de entrada de imagen
-            fileInput.value = "";  // <<
+            if(response === "Producto añadido correctamente")
+            {
+                alert(1);
+
+                id_nombre.value = '';
+                id_desc.value = '';
+                id_precio.value = '0';
+                id_categoria.value = '0';
+                document.getElementById('VistaPrevia').src = "../img/Icono de Mas.avif";  
+           
+                 fileInput.value = "";  
+             }
                 }
              });
             
