@@ -41,8 +41,8 @@
                     </div>
                     <div class=\"modal-body\">
                         <p></p>
-                        <button type=\"button\" onclick=\"cancelarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', id=\"checkbox{$tienda->ID}\")\">Cancelar</button>
-                        <button type=\"button\" onclick=\"ContinuarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', id=\"checkbox{$tienda->ID}\", {$tienda->ID})\">Continuar</button>
+                        <button type=\"button\" onclick=\"cancelarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}')\">Cancelar</button>
+                        <button type=\"button\" onclick=\"ContinuarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}', {$tienda->ID})\">Continuar</button>
                     </div>
                 </div>
             </div>
