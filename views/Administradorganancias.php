@@ -230,7 +230,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
               inputdate.style.opacity=1;
             }
 
-            alert(radiusActivo);                              // es 'meses', en donde tenemos 'Consulta' es el Id de donde se va 
             $.ajax({
               type: 'POST',                                               //con el metodo ajax hacemos que se envien los datos de esta 
               url: '../php/scriptventas.php',                                       // pagina a otra, con el url, declaramos la constante de 
@@ -260,7 +259,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
               } else {
                 select.disabled = true; // Deshabilitar select
                 select.style.opacity=0.5;
-                select.value='POR CATEGORIA';
+                select.value='POR CATEGORÍA';
               }
               if (document.querySelector('input[name="a"][value="2"]').checked) {
                 radiusActivo = 2;

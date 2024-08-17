@@ -16,7 +16,7 @@ if($años=="REPORTE POR AÑO"){
 else{
     $año= $años;
 }
-if($categorias == "POR CATEGORIA"){
+if($categorias == "POR CATEGORÍA"){
     $categoria= "NULL";
 }
 else{
@@ -40,7 +40,6 @@ switch ($radiusActivo) {
             $consulta = $conexion->selectConsulta("call Ventas_Productos($mes,$año,$fecha,$categoria, @totalfinal)"); //cuando es nulo con comillas y cuando no es nulo sin comillas
         }else{
             $consulta = $conexion->selectConsulta("call Ventas_Productos($mes,$año,'$fecha',$categoria,  @totalfinal)");
-
         }
         $totalfinal=$conexion->selectConsulta("SELECT @totalfinal as TF");
         if(count($consulta)>0){
@@ -54,7 +53,7 @@ switch ($radiusActivo) {
             }
             echo"<h2></h2>";
             echo"<h2>TOTAL FINAL</h2>";
-    echo"<h2>\${$totalfinal[0]->TF}</h2>";
+            echo"<h2>\${$totalfinal[0]->TF}</h2>";
         }
         else{
             echo"<h2>No hubo ventas en este periodo</h2>";
