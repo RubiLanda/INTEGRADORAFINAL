@@ -163,7 +163,7 @@ try {
                         <option value="0">Seleccionar Tienda</option>
                         <?php
                         foreach ($Tiendas as $fila) {
-                            echo "<option value=\"{$fila->ID}\">{$fila->Nombre}</option>";
+                            echo "<option value=\"{$fila->ID}\">{$fila->Nombre}, {$fila->Direccion}</option>";
                         }
                         ?>
                     </select>

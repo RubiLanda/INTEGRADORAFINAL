@@ -26,7 +26,8 @@ DELIMITER ;
 -- * 3.7.1 Ver pedidos de clientes con tienda por estado 
 DELIMITER //
 create procedure Ver_Pedidos_Clientes_ConTienda_Estado(
-	in p_estado varchar(30)
+	in p_estado varchar(30),
+	in p_semana boolean
 )
 begin
 
