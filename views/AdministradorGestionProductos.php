@@ -307,14 +307,12 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     contentType: false,
                     processData: false,
                     success: function(response){
+                        alert(response);
                     if (response == "Producto añadido correctamente"){
-                        
-                            alert(1);
-
-                        id_nombre.value = '';
-                        id_desc.value = '';
-                        id_precio.value = '0';
-                        id_categoria.value = '0';
+                         id_nombre.value = '';
+                         id_desc.value = '';
+                         id_precio.value = '0';
+                         id_categoria.value = '0';
                         }
                         cargarproductos(pagina)
                         mostrarPaginacion()
@@ -342,18 +340,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 delay: 5000 // Duración del toast en milisegundos
             });
             toast.show();
-            if(response == "Producto añadido correctamente")
-            {
-                alert(1);
-
-                id_nombre.value = '';
-                id_desc.value = '';
-                id_precio.value = '0';
-                id_categoria.value = '0';
-                document.getElementById('VistaPrevia').src = "../img/Icono de Mas.avif";  
-           
-                 fileInput.value = "";  
-             }
                 }
              });
             
