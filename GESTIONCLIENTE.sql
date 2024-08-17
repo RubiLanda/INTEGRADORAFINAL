@@ -1,4 +1,3 @@
--- 1.3.1 ver mis pedidos
 DELIMITER //
 create procedure mispedidos_cliente(
 in iduser INT,
@@ -14,7 +13,8 @@ inner join USUARIOS on PERSONAS.id_usuario=USUARIOS.id_usuario
 where USUARIOS.id_usuario=iduser;
 
 if estado is not null then
-select PEDIDOS.id_pedido as ID, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_requerido as Fecha_Requerida,
+
+select PEDIDOS.id_pedido as ID, PEDIDOS.id_repartidor as Repartidor , PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_requerido as Fecha_Requerida,
 case when
 TIENDAS.id_tienda is null then PEDIDOS.f_limitepago 
 else null 
@@ -30,8 +30,10 @@ left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PED
 left join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
 where PEDIDOS.id_cliente = idcliente and PEDIDOS.estado_pedido = estado 
 order by Fecha_Pedido desc;
+
 else 
-select PEDIDOS.id_pedido as ID, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_requerido as Fecha_Requerida,
+
+select PEDIDOS.id_pedido as ID, PEDIDOS.id_repartidor as Repartidor, PEDIDOS.f_pedido as Fecha_Pedido, PEDIDOS.f_requerido as Fecha_Requerida,
 case when
 TIENDAS.id_tienda is null then PEDIDOS.f_limitepago 
 else null 
@@ -47,6 +49,7 @@ left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PED
 left join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
 where PEDIDOS.id_cliente = idcliente and PEDIDOS.estado_pedido not in ('cancelado', 'entregado')
 order by Fecha_Pedido desc;
+
 end if;
 END //
 DELIMITER ;
