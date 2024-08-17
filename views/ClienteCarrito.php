@@ -200,6 +200,24 @@ try {
             pagina = 1;
         }
 
+        function CambiarFecha() {
+            sessionStorage.setItem("seleccionando_fecha", false);
+            window.location.href = "ClienteRealizarPedido.php";
+            cancelarCarrito()
+        }
+        if (sessionStorage.getItem("mostrarStock") != null) {
+            mostrarStock = sessionStorage.getItem("mostrarStock");
+        }
+        if (sessionStorage.getItem("fecha") != null) {
+            fecha = sessionStorage.getItem("fecha");
+        }
+        else {
+            CambiarFecha()
+        }
+        if (sessionStorage.getItem("formaDePago") != null) {
+            formaDePago = sessionStorage.getItem("formaDePago");
+        }
+
         if (<?php echo $_GET['mostrarStock']?> == 1) {
             $.ajax({
                 type: 'POST',
@@ -262,15 +280,7 @@ try {
             mostrarCarrito(pagina)
         }
 
-        if (sessionStorage.getItem("mostrarStock") != null) {
-            mostrarStock = sessionStorage.getItem("mostrarStock");
-        }
-        if (sessionStorage.getItem("fecha") != null) {
-            fecha = sessionStorage.getItem("fecha");
-        }
-        if (sessionStorage.getItem("formaDePago") != null) {
-            formaDePago = sessionStorage.getItem("formaDePago");
-        }
+        
         idTienda = sessionStorage.getItem("idTienda");
         function cancelarCarrito() {
             $.ajax({
@@ -390,11 +400,6 @@ try {
                     input.value = 50;
                 }
             }
-        }
-        function CambiarFecha() {
-            sessionStorage.setItem("seleccionando_fecha", false);
-            window.location.href = "ClienteRealizarPedido.php";
-            cancelarCarrito()
         }
         function RealizarPedido() {
             $.ajax({
