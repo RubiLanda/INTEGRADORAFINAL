@@ -316,6 +316,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                         id_precio.value = '0';
                         id_categoria.value = '0';
                         }
+                        alert(2);
                         cargarproductos(pagina)
                         mostrarPaginacion()
                          
