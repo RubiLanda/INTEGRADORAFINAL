@@ -132,11 +132,19 @@ else {
 
     <!--FUNCION DE JAVA PARA PODER FILTRAR POR MES Y AÑO LOS PEDIDOS DE LOS CLIENTES-->
     <script>
+        var seleccionando_fecha;
+        var mostrarStock;
         if (sessionStorage.getItem("seleccionando_fecha") != null) {
             seleccionando_fecha = sessionStorage.getItem("seleccionando_fecha");
         }
         else {
             seleccionando_fecha = false;
+        }
+        if (sessionStorage.getItem("mostrarStock") != null) {
+            mostrarStock = sessionStorage.getItem("mostrarStock");
+        }
+        else {
+            mostrarStock = 0;
         }
         function IrCarrito(mostrarModal) {
             $.ajax({
