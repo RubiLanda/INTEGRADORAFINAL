@@ -194,6 +194,19 @@ $menu2 = isset($_GET['estado']) ? false : true;
                         mate:mate, gene:gene, naci:naci, tele:tele,ingreso:ingreso,
                         folio:folio },
                         success: function(response) {
+                            if(response=="REGISTRO EXITOSO"){
+                                user.value='';
+                                contraseña.value='';
+                                vericontraseña.value='';
+                                nombre.value='';
+                                paterno.value='';
+                                materno.value='';
+                                genero.value='0';
+                                nacimiento.value='';
+                                telefono.value='';
+                                folio_licencia.value='';
+                                fecha_ingreso.value='';
+                            }
                             var toastContainer = document.getElementById('imprimirnoti');
                             var newToast = document.createElement('div');  // Crear un nuevo elemento toast
                             newToast.className = 'toast';

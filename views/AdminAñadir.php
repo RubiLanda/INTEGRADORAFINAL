@@ -259,7 +259,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                             nombre.value = '';
                             paterno.value = '';
                             materno.value = '';
-                            genero.value = 'Género';
+                            genero.value = '0';
                             nacimiento.value = '';
                             telefono.value = '';
                             filtroestatus()

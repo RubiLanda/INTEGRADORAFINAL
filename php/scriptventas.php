@@ -47,7 +47,7 @@ switch ($radiusActivo) {
 
             foreach($consulta as $fila){
                 echo"<h3>{$fila->Producto}</h3>";
-                echo"<h3>{$fila->Total}</h3>";
+                echo"<h3>\${$fila->Total}</h3>";
             }
             echo"<h2>TOTAL FINAL</h2>";
     echo"<h2>\${$totalfinal[0]->TF}</h2>";
