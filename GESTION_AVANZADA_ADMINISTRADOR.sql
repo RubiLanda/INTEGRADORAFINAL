@@ -76,7 +76,7 @@ DELIMITER ;
 
 
 
-
+drop procedure Calcular_Total_Pagar_Pedido;
 -- * 3.7.5 Calcular el Total a pagar de un pedido
 DELIMITER //
 create procedure Calcular_Total_Pagar_Pedido(
@@ -85,7 +85,7 @@ create procedure Calcular_Total_Pagar_Pedido(
 begin
 	select case 
     when PEDIDOS.id_tiendas is null then sum(PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) 
-    else sum((PRODUCTOS.precio * DETALLE_PEDIDO.cantidad) - 1) 
+    else sum((PRODUCTOS.precio - (PRODUCTOS.precio * 0.1)) * DETALLE_PEDIDO.cantidad) 
     end as Total
     from PEDIDOS
     inner join DETALLE_PEDIDO on PEDIDOS.id_pedido = DETALLE_PEDIDO.id_pedido
