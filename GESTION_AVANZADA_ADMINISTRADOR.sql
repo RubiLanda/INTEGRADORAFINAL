@@ -820,6 +820,8 @@ end if;
 end //
 DELIMITER ;
 
+
+drop PROCEDURE INSERTAR_REPARTIDORES;
 -- * 3.1.2 DAR DE ALTA  REPARTIDORES
 DELIMITER //
 create PROCEDURE INSERTAR_REPARTIDORES (
@@ -848,51 +850,51 @@ set ine_existente=0;
 IF N_username='' or N_contraseña=''  or N_nombre=''  or N_a_p='' or N_f_nac=''  or 
 N_genero='' or N_telefono=''  or N_folioconducir='' or f_ingreso='' or N_ine=''  -- si cualquiera de los campos son nulos entonces mandara un mensaje de error
 then 
-	set mensaje = 'NO PUEDES DEJAR ALGUN CAMPO VACIO';
+set mensaje = 'NO PUEDES DEJAR ALGUN CAMPO VACIO';
 else
-	select count(USUARIOS.username) into userepetido from USUARIOS where username=N_username;
-	if userepetido>0 then
-		set mensaje='Ya Existe un usuario con ese nombre';
-	else
-		select count(REPARTIDORES.ine) into ine_existente from REPARTIDORES where ine=N_ine;
-        if ine_existente>0 then
-			set mensaje='Esta imagen ya esta asignada en otro repartidor, por favor cambiale el nombre a la imagen';
-            else
-		select count(REPARTIDORES.fol_liconducir) into licrepe from REPARTIDORES where fol_liconducir=N_folioconducir;
-		if licrepe>0 then
-			set mensaje='Ya Esta Registrada esa licencia de conducir, por favor ingresa otra';
-		else
-			if length(N_telefono)<10 then
-				set mensaje='Numero de telefono invalido';
-			else
-				if length(N_folioconducir)<11 then
-					set mensaje='Folio de licencia de conducir invalido';
-				else
-					if f_ingreso<=DATE_ADD(CURDATE(), INTERVAL -50 YEAR) or f_ingreso>DATE_ADD(date(now()), INTERVAL 1 year) then
-						set mensaje='Ingresa una fecha valida';
-					else
-						IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
-						AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -80 YEAR) -- si la fecha de nacimineto es menor que la fecha que se genere de hoy menos 18 años
-						then
-							insert into USUARIOS (username, contraseña, f_registro)  -- insertar en usuarios los datos
-							values (N_username, N_contraseña,now());
-							set ultimaid_usuario = last_insert_id(); -- guardar la ultima id que se genero con el auto-increment
-							insert into ROL_USUARIO (id_rol,id_usuario) -- inmediatamente en la tabla de rol se le dara el rol de administrador
-							values(3,ultimaid_usuario);
-							insert into PERSONAS(nombre, a_p, a_m, f_nac, genero, telefono,id_usuario) -- insertar en la tabla de personas todos los datos personales
-							values (N_nombre, N_a_p, N_a_m, N_f_nac, N_genero, N_telefono,ultimaid_usuario);
-							set ultimaid_persona = last_insert_id(); -- guardar la ultima id de persona generada con el autoincrement 
-							insert into REPARTIDORES(f_ingreso,fol_liconducir,id_persona,estatus,ine) -- inserta en la tabla administradores
-							values(f_ingreso,N_folioconducir,ultimaid_persona,1,N_ine);
-							set mensaje='REGISTRO EXITOSO';
-						else
-							set mensaje = 'DEBES SER MAYOR DE EDAD EL REPARTIDOR PARA REGISTRARLO O LA FECHA QUE INGRESASTE ES EXCESIVA';
-						end if;
-					end if;
-				end if;
-			end if;
-		end if;
-	end if;
+select count(USUARIOS.username) into userepetido from USUARIOS where username=N_username;
+if userepetido>0 then
+set mensaje='Ya Existe un usuario con ese nombre';
+else
+select count(REPARTIDORES.ine) into ine_existente from REPARTIDORES where ine=N_ine;
+if ine_existente>0 then
+set mensaje='Esta imagen ya esta asignada en otro repartidor, por favor cambiale el nombre a la imagen';
+else
+select count(REPARTIDORES.fol_liconducir) into licrepe from REPARTIDORES where fol_liconducir=N_folioconducir;
+if licrepe>0 then
+set mensaje='Ya Esta Registrada esa licencia de conducir, por favor ingresa otra';
+else
+if length(N_telefono)<10 then
+set mensaje='Numero de telefono invalido';
+else
+if length(N_folioconducir)<11 then
+set mensaje='Folio de licencia de conducir invalido';
+else
+if f_ingreso<=DATE_ADD(CURDATE(), INTERVAL -50 YEAR) or f_ingreso>DATE_ADD(date(now()), INTERVAL 1 year) then
+set mensaje='Ingresa una fecha valida';
+else
+IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
+AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -80 YEAR) -- si la fecha de nacimineto es menor que la fecha que se genere de hoy menos 18 años
+then
+insert into USUARIOS (username, contraseña, f_registro)  -- insertar en usuarios los datos
+values (N_username, N_contraseña,now());
+set ultimaid_usuario = last_insert_id(); -- guardar la ultima id que se genero con el auto-increment
+insert into ROL_USUARIO (id_rol,id_usuario) -- inmediatamente en la tabla de rol se le dara el rol de administrador
+values(3,ultimaid_usuario);
+insert into PERSONAS(nombre, a_p, a_m, f_nac, genero, telefono,id_usuario) -- insertar en la tabla de personas todos los datos personales
+values (N_nombre, N_a_p, N_a_m, N_f_nac, N_genero, N_telefono,ultimaid_usuario);
+set ultimaid_persona = last_insert_id(); -- guardar la ultima id de persona generada con el autoincrement 
+insert into REPARTIDORES(f_ingreso,fol_liconducir,id_persona,estatus,ine) -- inserta en la tabla administradores
+values(f_ingreso,N_folioconducir,ultimaid_persona,1,N_ine);
+set mensaje='REGISTRO EXITOSO';
+else
+set mensaje = 'DEBES SER MAYOR DE EDAD EL REPARTIDOR PARA REGISTRARLO O LA FECHA QUE INGRESASTE ES EXCESIVA';
+end if;
+end if;
+end if;
+end if;
+end if;
+end if;
 end if;
 end if;
 end //
