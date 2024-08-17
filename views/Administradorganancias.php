@@ -272,7 +272,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 repa.style.opacity=0.5;
                 repa.selectedIndex = 0;
               }
-            
+              alert(radiusActivo);
               Ver_Ventas_Producto();
             }
            
