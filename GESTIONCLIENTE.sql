@@ -963,10 +963,13 @@ inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
 inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
 where USUARIOS.id_usuario = p_id_usuario;
 
+if p_tienda_seleccionado is null then
 
-select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
-from PEDIDOS
-where PEDIDOS.id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
+	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
+	from PEDIDOS
+	where PEDIDOS.id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
+
+end if;
 
 select SUM(CARRITO.cantidad) into P_TOTALCARRITO from CARRITO inner join CLIENTES
 on CARRITO.id_cliente = CLIENTES.id_cliente inner join INVENTARIO on 
