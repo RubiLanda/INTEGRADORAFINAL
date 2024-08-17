@@ -230,7 +230,12 @@ $menu2 = isset($_GET['estado']) ? false : true;
               inputdate.style.opacity=1;
             }
 
-            alert(radiusActivo);                              // es 'meses', en donde tenemos 'Consulta' es el Id de donde se va 
+            alert(radiusActivo);                              
+            alert(meses);                             
+            alert(años);                              
+            alert(categorias);                              
+            alert(repas);                              
+            alert(fechas);                              
             $.ajax({
               type: 'POST',                                               //con el metodo ajax hacemos que se envien los datos de esta 
               url: '../php/scriptventas.php',                                       // pagina a otra, con el url, declaramos la constante de 
