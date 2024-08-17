@@ -236,7 +236,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 meses: meses, años:años, 
                 categorias:categorias,repas:repas,
               fechas:fechas},                                    //input meses q nos va a tomar los inputs con esa id el cual la Id
-                success: function(response) {                              // es 'meses', en donde tenemos 'Consulta' es el Id de donde se va 
+                success: function(response) {
+                  alert(response);                              // es 'meses', en donde tenemos 'Consulta' es el Id de donde se va 
                   $('#Consulta').html(response);                             // a imprimir el resultado, en data ponemos despues de los puntos
                 }  
               })
@@ -272,7 +273,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 repa.style.opacity=0.5;
                 repa.selectedIndex = 0;
               }
-              alert(radiusActivo);
+              
               Ver_Ventas_Producto();
             }
            
