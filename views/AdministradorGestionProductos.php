@@ -311,8 +311,10 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     if (response == "Producto añadido correctamente "){
                          id_nombre.value = '';
                          id_desc.value = '';
-                         id_precio.value = '0';
+                         id_precio.value = '';
                          id_categoria.value = '0';
+                         document.getElementById('VistaPrevia').src = "../img/Icono de Mas.avif";
+                         fileInput.value = '';
                         }
                         cargarproductos(pagina)
                         mostrarPaginacion()
