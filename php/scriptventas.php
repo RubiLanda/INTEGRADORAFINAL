@@ -44,7 +44,9 @@ switch ($radiusActivo) {
         }
         $totalfinal=$conexion->selectConsulta("SELECT @totalfinal as TF");
         if(count($consulta)>0){
-
+            echo "<h2>Producto</h2>";
+            echo "<h2>Cantidad</h2>";
+            echo "<h2>Ganancia</h2>";
             foreach($consulta as $fila){
                 echo"<h3>{$fila->Producto}</h3>";
                 echo"<h3>{$fila->Cantidad}</h3>";
@@ -68,9 +70,13 @@ switch ($radiusActivo) {
         }
         $totalfinal=$conexion->selectConsulta("SELECT @totalfinal as TF");
         if(count($consulta)>0){
+            echo "<h2>Tiendas</h2>";
+            echo "<h2>Ganancia</h2>";
+            echo "<h2></h2>";
             foreach($consulta as $fila){
                 echo"<h3>{$fila->Nombre_tienda}</h3>";
                 echo"<h3>\${$fila->Total}</h3>";
+                echo"<h3></h3>";
             }
             echo"<h2>TOTAL FINAL</h2>";
     echo"<h2>\${$totalfinal[0]->TF}</h2>";
@@ -87,9 +93,13 @@ switch ($radiusActivo) {
         }
         $totalfinal=$conexion->selectConsulta("SELECT @totalfinal as TF");
          if(count($consulta)>0){
+            echo "<h2>Repartidor</h2>";
+            echo "<h2>Ganancia</h2>";
+            echo "<h2></h2>";
             foreach($consulta as $fila){
                 echo"<h3>{$fila->Nombre_repartidor}</h3>";
                 echo"<h3>\${$fila->Total}</h3>";
+                echo"<h3></h3>";
             }
             echo"<h2>TOTAL FINAL</h2>";
             echo"<h2>\${$totalfinal[0]->TF}</h2>";
