@@ -78,11 +78,11 @@ begin
 	declare ultimaidtienda int;
     declare p_id_cliente int;
     declare contadortienda int;
-	declare Cnombre int;
+	declare Tdireccion int;
 
-	select count(TIENDAS.nombre_tienda) into 
-	 Cnombre from TIENDAS
-	where nombre_tienda=t_nombre;
+	select count(TIENDAS.direccion) into 
+	 Tdireccion from TIENDAS
+	where TIENDAS.direccion = t_direccion;
     
 
 	select CLIENTES.id_cliente into p_id_cliente
@@ -95,15 +95,15 @@ begin
     from CLIENTE_TIENDA
     where CLIENTE_TIENDA.id_cliente= p_id_cliente;
 
-	if Cnombre>0 then
-	set mensaje='Ese nombre ya existe';
+	if Tdireccion >0 then
+	set mensaje='Dirección existente';
 
 	elseif contadortienda>=5 then
 		set mensaje='No puedes tener mas de 5 tiendas';
     
     else    
 		if t_nombre='' or t_direccion='' then 
-			set mensaje = 'NO PUEDES DEJAR ALGUN CAMPO VACIO';
+			set mensaje = 'NO PUEDES DEJAR ALGUN CAMPO VACÍO';
 			
 		else
 			insert into TIENDAS(nombre_tienda,direccion,estatus)values
@@ -118,8 +118,8 @@ begin
 		end if;
     end if;
  end //
- DELIMITER ;
- 
+DELIMITER ;
+
 -- * 1.4.3 procedimiento para actualizar información de un usuario
 DELIMITER //
 create PROCEDURE actualizarinfo(
