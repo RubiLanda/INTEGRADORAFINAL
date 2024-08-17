@@ -192,6 +192,7 @@ else {
                     url: '../php/ContarPedidoTiendaPendientes.php',
                     data: { ID: ID },
                     success: function(cantidad) {
+                        alert(cantidad);
                         if (cantidad > 0) {
                             $('#' + Modal).modal('show');
                         }
