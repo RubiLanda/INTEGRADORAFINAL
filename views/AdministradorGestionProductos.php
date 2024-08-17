@@ -293,8 +293,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
             var formData = new FormData();
             formData.append('nombre', nombre);
             formData.append('categoria',categoria);
-            if (file)
-            {
+            if (file){
+            
                 formData.append('imagen', file);
             }
             formData.append('precio',precio);
@@ -307,14 +307,15 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     contentType: false,
                     processData: false,
                     success: function(response){
-                    if(response=="Producto añadido correctamente")
-                    {
-                       id_nombre.value = '';
-                       id_descripcion.value='';
-                       id_precio.value='0';
-                       id_categoria.value='0';
                        
-                    }
+                    if (response == "Producto añadido correctamente "){
+                         id_nombre.value = '';
+                         id_desc.value = '';
+                         id_precio.value = '';
+                         id_categoria.value = '0';
+                         document.getElementById('VistaPrevia').src = "../img/Icono de Mas.avif";
+                         fileInput.value = '';
+                        }
                         cargarproductos(pagina)
                         mostrarPaginacion()
                          
@@ -341,9 +342,18 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 delay: 5000 // Duración del toast en milisegundos
             });
             toast.show();
-            document.getElementById('VistaPrevia').src = "../img/Icono de Mas.avif";  // <<< Esta línea limpia la vista previa
-            // Limpiar el campo de entrada de imagen
-            fileInput.value = "";  // <<
+            if(response === "Producto añadido correctamente")
+            {
+                alert(1);
+
+                id_nombre.value = '';
+                id_desc.value = '';
+                id_precio.value = '0';
+                id_categoria.value = '0';
+                document.getElementById('VistaPrevia').src = "../img/Icono de Mas.avif";  
+           
+                 fileInput.value = "";  
+             }
                 }
              });
             
