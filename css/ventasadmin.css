@@ -125,7 +125,7 @@ input::placeholder {
 .tabla{
     background-color: #9c6644 ;
     display: grid; /* Es para hacer una tabla  */
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3,1fr);
     color:#ddb892;
     border-radius: 15px;
     padding: 50px;
