@@ -967,14 +967,16 @@ where USUARIOS.id_usuario = p_id_usuario;
 
 select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
 from PEDIDOS
-where PEDIDOS.id_cliente = p_id_cliente and f_requerido = p_fecha_requerido;
+where id_cliente = p_id_cliente and f_requerido = p_fecha_requerido;
 
 if p_tienda_seleccionado is null then
-
-select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
-from PEDIDOS
-where PEDIDOS.id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
-
+	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
+	from PEDIDOS
+	where id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
+else 
+	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
+	from PEDIDOS
+	where id_cliente = p_id_cliente and id_tiendas = p_tienda_seleccionado and f_requerido = p_fecha_requerido;
 end if;
 
 select SUM(CARRITO.cantidad) into P_TOTALCARRITO from CARRITO inner join CLIENTES
