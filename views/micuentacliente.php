@@ -186,7 +186,7 @@ else {
         }
         
         function HABILITAR(checkbox, ID, Modal){
-            if (checkbox.checkbox) {
+            if (!checkbox.checkbox) {
                 alert(4);
                 var Estado;
                 if (checkbox.checked){
