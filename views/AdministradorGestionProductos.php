@@ -156,7 +156,10 @@ $menu2 = isset($_GET['estado']) ? false : true;
                             <!-- div3 -->
                             <div class="div2">
                             <!-- este es mi imput para asignarle el precio al nuevo producto -->
-                                <input class="dineros btn" type="text" id="inputpreciopan" name="panesprecio" placeholder="Precio" oninput="validarprecio(this)">
+                                <div class="simbolo">
+                                    <span>$</span>
+                                    <input class="dineros btn" type="text" id="inputpreciopan" name="panesprecio" placeholder="Precio" oninput="validarprecio(this)">
+                                </div>
                             <!-- este es mi select para asignarle una categoria al nuevo producto -->
                                 <?php
                                

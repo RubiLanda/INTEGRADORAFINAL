@@ -37,6 +37,25 @@ input[type="reset"]{
     opacity: 0.3;
     background-image: url(../img/backgroun.png);
 } */
+
+.simbolo {
+    position: relative;
+    display: inline-block;
+}
+
+.simbolo input {
+    padding-left: 20px; /* Espacio para el símbolo */
+}
+
+.simbolo span {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Evita que se pueda interactuar con el símbolo */
+}
+
+
 .paginacion {
     display: flex;
     margin: 50px 0;
