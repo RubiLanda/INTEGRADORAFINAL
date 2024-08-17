@@ -236,7 +236,7 @@ else {
                             document.getElementById(botonContinuar).style.display = 'none';
                         }
                         else {
-                            document.getElementById(botonContinuar).style.display = 'flex';
+                            document.getElementById(botonContinuar).style.display = 'block';
                             $.ajax({
                                 type: 'POST',
                                 url: '../php/ContarPedidoTiendaPendientes.php',
