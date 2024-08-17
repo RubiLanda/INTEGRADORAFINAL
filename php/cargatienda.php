@@ -37,7 +37,7 @@
                 <div class=\"modal-content\">
                     <div class=\"modal-header\">
                         <h1>Ir al Carrito</h1>
-                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\" id=\"botonclose\"></button>
+                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" onclick=\"cancelarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}')\"></button>
                     </div>
                     <div class=\"modal-body\">
                         <p></p>
