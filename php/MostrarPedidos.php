@@ -235,6 +235,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     echo "<button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalCancelar{$fila->ID}\">
                                 Cancelar
                         </button>";
+                    if ($TipoCliente == 2) {
+                        echo "<button type=\"button\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalEntregar{$fila->ID}\">
+                                Entregar
+                        </button>";
+                    }
                     echo "</div>";
                     
                     echo "<div class=\"modal fade\" id=\"ModalDetalles{$fila->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
@@ -280,8 +285,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                                     </div>
                                     </div>
                                 </div>
+                        </div>
+
+                        <div class=\"modal fade\" id=\"ModalEntregar{$fila->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+                                <div class=\"modal-dialog modal-dialog-centered\">
+                                    <div class=\"modal-content\">
+                                    <div class=\"modal-header\">
+                                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                                    </div>
+                                    <div class=\"modal-body\">
+                                        <h3>Seguro que quieres entregar este pedido</h3>
+                                        <button class=\"Cancelar\" type=\"button\" onclick=\"cambiarEstadoPedido({$fila->ID}, 4)\" data-bs-dismiss=\"modal\" aria-label=\"Close\">Entregar</button>
+                                    </div>
+                                    </div>
+                                </div>
                         </div>";
-                }
+                    }
                 echo "</div>";
             }
             break;

@@ -1183,6 +1183,7 @@ DELIMITER ;
 
 
 
+drop procedure Ver_ventas_Tiendas;
 -- * 3.3.1 Ver ventas de Tiendas filtrado por mes, año, por nombre de la tienda y ordenado por mayor número de ganancias 
 DELIMITER //
 create procedure Ver_ventas_Tiendas(
@@ -1295,6 +1296,8 @@ end //
 DELIMITER ;
 
 
+
+drop procedure Ver_Ventas_Repartidores;
 -- * 3.3.4 Ver ventas de Repartidores filtrado por mes, año, por nombre del repartidor y ordenado por mayor número de ganancias
 DELIMITER //
 create procedure Ver_Ventas_Repartidores(

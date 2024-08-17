@@ -17,6 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         case 3:
             $Conexion->ejecutar("call cambiar_estado($idPedido, 'pendiente a pagar')");
             break;
+        case 4:
+            $Conexion->ejecutar("call cambiar_estado($idPedido, 'entregado')");
+            break;
     }
 
 }
