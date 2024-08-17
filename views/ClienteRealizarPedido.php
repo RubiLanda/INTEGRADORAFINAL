@@ -689,7 +689,7 @@ try {
                                     fechaHoy.checked = false;
                                 }
                             }
-                            if (response.includes(mañanaStr)){
+                            if (response.includes(mañanaStr) && select.value == 0){
                                 fechaMañana.disabled = true;
                                 fechaMañana.parentElement.children[1].style.color = '#ddb8929c';
                             }
