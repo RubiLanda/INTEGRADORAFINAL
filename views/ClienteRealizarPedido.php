@@ -816,7 +816,7 @@ try {
                         return [false, 'ui-state-disabled'];
                     }
 
-                    if (formaDePago == 2) {
+                    if (select.value == 0) {
                         // Deshabilitar fechas bloqueadas y aplicar un estilo especial
                         if (fechasBloqueadas.includes(string)) {
                             return [false, 'ui-state-blocked'];
