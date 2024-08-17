@@ -926,6 +926,7 @@ begin
 end //
 DELIMITER ;
 
+drop procedure Realizar_Pedido;
 -- * 1.2.4 Realizar Pedido 
 DELIMITER //
 create procedure Realizar_Pedido(
@@ -970,9 +971,9 @@ where PEDIDOS.id_cliente = p_id_cliente and f_requerido = p_fecha_requerido;
 
 if p_tienda_seleccionado is null then
 
-	select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
-	from PEDIDOS
-	where PEDIDOS.id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
+select count(id_cliente) as Total into p_total_pedidos_del_mismo_dia
+from PEDIDOS
+where PEDIDOS.id_cliente = p_id_cliente and id_tiendas is null and f_requerido = p_fecha_requerido;
 
 end if;
 
@@ -1014,7 +1015,7 @@ set mensaje = 'Fecha Invalida para realzar Pedido ya pasaron las 11:00 am';
 
 else 
 					-- if para evitar realizar un pedido para el mismo dia 
-if p_total_pedidos_del_mismo_dia > 0 
+if p_total_pedidos_del_mismo_dia > 0 and p_tienda_seleccionado = 0
 then
 
 set mensaje = 'Fecha Invalida para realzar Pedido ya hico un pedido para esta fecha';
