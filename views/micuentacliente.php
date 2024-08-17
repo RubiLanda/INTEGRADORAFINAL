@@ -193,7 +193,6 @@ else {
                     data: { ID: ID },
                     success: function(cantidad) {
                         if (cantidad > 0) {
-                            alert(cantidad);
                             $('#' + Modal).modal('show');
                         }
                         else {
@@ -283,8 +282,10 @@ else {
             const checkbox = document.getElementById(checkboxID);
             checkbox.checked = true;
             $('#' + Modal).modal('hide');
+            alert(1);
         }
         function ContinuarCheckbox(Modal, checkboxID, ID) {
+            alert(2);
             const checkbox = document.getElementById(checkboxID);
             checkbox.checked = false;
             $('#' + Modal).modal('hide');
