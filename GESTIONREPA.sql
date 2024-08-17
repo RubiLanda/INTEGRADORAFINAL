@@ -27,7 +27,7 @@ create procedure Ver_Informacion_Repartidor(
 	in p_id_usuario int
 )
 begin
-    select USUARIOS.id_usuario as id_user, USUARIOS.username as Usuario, CONCAT(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) AS Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, REPARTIDORES.fol_liconducir as Licencia_conducir,PERSONAS.telefono as Telefono, REPARTIDORES.f_ingreso as Fecha_Ingreso
+    select USUARIOS.id_usuario as id_user, USUARIOS.username as Usuario, CONCAT(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) AS Nombre, PERSONAS.f_nac as Fecha_nacimiento, PERSONAS.genero as Genero, REPARTIDORES.fol_liconducir as Licencia_conducir,PERSONAS.telefono as Telefono, REPARTIDORES.f_ingreso as Fecha_Ingreso, REPARTIDORES.ine as INE
     from REPARTIDORES
     inner join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona
     inner join USUARIOS on PERSONAS.id_usuario = USUARIOS.id_usuario
