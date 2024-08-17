@@ -36,7 +36,7 @@
             <div class=\"modal-dialog ModalDetalles modal-dialog-centered modal-dialog-scrollable\">
                 <div class=\"modal-content\">
                     <div class=\"modal-header\">
-                        <h1>Ir al Carrito</h1>
+                        <h1>Desactivar {$tienda->Nombre}</h1>
                         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" onclick=\"cancelarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}')\"></button>
                     </div>
                     <div class=\"modal-body\">
