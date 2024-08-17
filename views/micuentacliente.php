@@ -185,7 +185,7 @@ else {
             });
         }
         
-        function HABILITAR(checkbox, ID, Modal){
+        function HABILITAR(checkbox, ID, Modal, botonContinuar){
             if (checkbox.checked) {
                 var Estado;
                 if (checkbox.checked){
@@ -228,48 +228,62 @@ else {
             else {
                 $.ajax({
                     type: 'POST',
-                    url: '../php/ContarPedidoTiendaPendientes.php',
+                    url: '../php/ContarPedidoTiendaAceptados.php',
                     data: { ID: ID },
-                    success: function(cantidad) {
-                        if (cantidad > 0) {
+                    success: function(response) {
+                        if (response > 0) {
                             $('#' + Modal).modal('show');
+                            document.getElementById(botonContinuar).style.display = 'none';
                         }
                         else {
-                            var Estado;
-                            if (checkbox.checked){
-                                Estado = 1;
-                            }
-                            else {
-                                Estado = 0;
-                            }
+                            document.getElementById(botonContinuar).style.display = 'block';
                             $.ajax({
                                 type: 'POST',
-                                url: '../php/habiydesatienda.php',
-                                data: { ID: ID, Estado: Estado },
-                                success: function(response) {
-                                    var toastContainer = document.getElementById('imprimirnoti');
-                                    var newToast = document.createElement('div');  // Crear un nuevo elemento toast
-                                    newToast.className = 'toast';
-                                    newToast.setAttribute('role', 'alert');
-                                    newToast.setAttribute('aria-live', 'assertive');
-                                    newToast.setAttribute('aria-atomic', 'true');
-                                    newToast.innerHTML = `  
-                                    <div class="toast-header">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                                    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
-                                    </svg><br>
-                                    <strong class="me-auto"> NOTIFICACION </strong>
-                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                                    </div>
-                                    <div class="toast-body">
-                                    ${response}
-                                    </div>
-                                    `;
-                                    toastContainer.appendChild(newToast);  // Añadir el nuevo toast al contenedor
-                                    var toast = new bootstrap.Toast(newToast, {  // Inicializar y mostrar el nuevo toast
-                                        delay: 5000 // Duración del toast en milisegundos
-                                    });
-                                    toast.show();
+                                url: '../php/ContarPedidoTiendaPendientes.php',
+                                data: { ID: ID },
+                                success: function(cantidad) {
+                                    if (cantidad > 0) {
+                                        $('#' + Modal).modal('show');
+                                    }
+                                    else {
+                                        var Estado;
+                                        if (checkbox.checked){
+                                            Estado = 1;
+                                        }
+                                        else {
+                                            Estado = 0;
+                                        }
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '../php/habiydesatienda.php',
+                                            data: { ID: ID, Estado: Estado },
+                                            success: function(response) {
+                                                var toastContainer = document.getElementById('imprimirnoti');
+                                                var newToast = document.createElement('div');  // Crear un nuevo elemento toast
+                                                newToast.className = 'toast';
+                                                newToast.setAttribute('role', 'alert');
+                                                newToast.setAttribute('aria-live', 'assertive');
+                                                newToast.setAttribute('aria-atomic', 'true');
+                                                newToast.innerHTML = `  
+                                                <div class="toast-header">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                                                </svg><br>
+                                                <strong class="me-auto"> NOTIFICACION </strong>
+                                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                                </div>
+                                                <div class="toast-body">
+                                                ${response}
+                                                </div>
+                                                `;
+                                                toastContainer.appendChild(newToast);  // Añadir el nuevo toast al contenedor
+                                                var toast = new bootstrap.Toast(newToast, {  // Inicializar y mostrar el nuevo toast
+                                                    delay: 5000 // Duración del toast en milisegundos
+                                                });
+                                                toast.show();
+                                            }
+                                        });
+                                    }
                                 }
                             });
                         }
