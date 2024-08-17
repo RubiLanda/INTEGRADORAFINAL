@@ -1421,3 +1421,18 @@ begin
     where CARRITO.id_cliente = p_id_cliente;
 end //
 DELIMITER ;
+
+
+DELIMITER //
+create procedure Contar_Pedidos_Tienda_Pendiente(
+	in p_id_tienda int
+)
+begin
+
+select count(*) 
+from PEDIDOS
+inner join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
+where TIENDAS.id_tienda = p_id_tienda and PEDIDOS.estado_pedido = 'pendiente';
+
+end //
+DELIMITER ;
