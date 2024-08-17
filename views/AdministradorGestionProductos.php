@@ -293,8 +293,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
             var formData = new FormData();
             formData.append('nombre', nombre);
             formData.append('categoria',categoria);
-            if (file)
-            {
+            if (file){
+            
                 formData.append('imagen', file);
             }
             formData.append('precio',precio);
@@ -307,8 +307,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     contentType: false,
                     processData: false,
                     success: function(response){
-                        if(response === "Producto añadido correctamente")
-                        {
+                    if (response == "Producto añadido correctamente"){
+                        
                             alert(1);
 
                         id_nombre.value = '';
@@ -342,7 +342,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 delay: 5000 // Duración del toast en milisegundos
             });
             toast.show();
-            if(response === "Producto añadido correctamente")
+            if(response == "Producto añadido correctamente")
             {
                 alert(1);
 
