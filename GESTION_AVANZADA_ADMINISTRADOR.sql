@@ -928,7 +928,7 @@ out totalfinal decimal
 )
 begin
 if p_mes is not null and p_año is null and p_categoria is null and fecha_requerida is null then
-select  DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
@@ -947,7 +947,7 @@ where month (PEDIDOS.f_entrega)=p_mes and PEDIDOS.estado_pedido='entregado';
 end if;
 
 if p_mes is null and p_año is not null and p_categoria is null and fecha_requerida is null then
-select DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
@@ -967,7 +967,7 @@ where year (PEDIDOS.f_entrega)=p_año and PEDIDOS.estado_pedido='entregado';
 end if;
 
 if p_mes is not null and p_año is not null and p_categoria is null and fecha_requerida is null then
-select DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
@@ -988,7 +988,7 @@ where month (PEDIDOS.f_entrega)=p_mes and  year (PEDIDOS.f_entrega)=p_año and P
 end if;
 
 if p_mes is null and p_año is null and p_categoria is not null and fecha_requerida is null then
-select DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
@@ -1010,7 +1010,7 @@ end if;
 
 
 if p_mes is not null and p_año is null and p_categoria is not null and fecha_requerida is null then
-select DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
@@ -1030,7 +1030,7 @@ where  month (PEDIDOS.f_entrega)=p_mes and CATEGORIAS.id_categoria=p_categoria a
 end if;
 
 if p_mes is null and p_año is not null and p_categoria is not null and fecha_requerida is null then
-select DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
@@ -1050,7 +1050,7 @@ where  year (PEDIDOS.f_entrega)=p_año and CATEGORIAS.id_categoria=p_categoria a
 end if;
 
 if p_mes is not null and p_año is not null and p_categoria is not null and fecha_requerida is null then
-select DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
@@ -1070,7 +1070,7 @@ where  month (PEDIDOS.f_entrega)=p_mes and year (PEDIDOS.f_entrega)=p_año and C
 end if;
 
 if p_mes is null and p_año is null and p_categoria is null and fecha_requerida is null then
-select DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
@@ -1090,7 +1090,7 @@ where PEDIDOS.estado_pedido='entregado';
 end if;
 
 if fecha_requerida is not null and p_mes is null and p_año is null and p_categoria IS NULL then
-select DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
@@ -1110,7 +1110,7 @@ where PEDIDOS.estado_pedido= 'entregado' and date(PEDIDOS.f_entrega)=fecha_reque
 end if ;
 
 if fecha_requerida is not null and p_mes is null and p_año is null and p_categoria IS NOT NULL then
-select DETALLE_PEDIDO.cantidad as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
+select sum(DETALLE_PEDIDO.cantidad) as Cantidad, PRODUCTOS.nombre as Producto, sum(DETALLE_PEDIDO.cantidad * PRODUCTOS.precio) as Total
 from DETALLE_PEDIDO
 inner join INVENTARIO on DETALLE_PEDIDO.id_inventario = INVENTARIO.id_inventario
 inner join PEDIDOS on DETALLE_PEDIDO.id_pedido = PEDIDOS.id_pedido
