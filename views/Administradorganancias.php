@@ -229,6 +229,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
               inputdate.disabled=false;
               inputdate.style.opacity=1;
             }
+
+            alert(radiusActivo);                              // es 'meses', en donde tenemos 'Consulta' es el Id de donde se va 
             $.ajax({
               type: 'POST',                                               //con el metodo ajax hacemos que se envien los datos de esta 
               url: '../php/scriptventas.php',                                       // pagina a otra, con el url, declaramos la constante de 
@@ -237,7 +239,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 categorias:categorias,repas:repas,
               fechas:fechas},                                    //input meses q nos va a tomar los inputs con esa id el cual la Id
                 success: function(response) {
-                  alert(response);                              // es 'meses', en donde tenemos 'Consulta' es el Id de donde se va 
                   $('#Consulta').html(response);                             // a imprimir el resultado, en data ponemos despues de los puntos
                 }  
               })
