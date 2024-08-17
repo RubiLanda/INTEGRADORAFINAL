@@ -186,8 +186,8 @@ else {
         }
         
         function HABILITAR(checkbox, ID, Modal){
-            if (!checkbox.checkbox) {
-                alert(checkbox.checkbox);
+            if (!checkbox.checked) {
+                alert(checkbox.checked);
                 var Estado;
                 if (checkbox.checked){
                     Estado = 1;
@@ -227,7 +227,7 @@ else {
                 });
             }
             else {
-                alert(checkbox.checkbox);
+                alert(checkbox.checked);
                 $.ajax({
                     type: 'POST',
                     url: '../php/ContarPedidoTiendaPendientes.php',
