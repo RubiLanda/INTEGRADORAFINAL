@@ -239,6 +239,7 @@ else{
             <h3><b>Teléfono:</b> {$repa->Telefono}</h3>
             <h3><b>Fecha de Ingreso:</b> {$repa->Fecha_Ingreso}</h3>
             <h3><b>Licencia:</b> {$repa->licencia_conducir}</h3>
+            <h3><b>INE:</b> <img src='../img/infopersonal/{$repa->INE}'></h3>
             </div>
             </div>
             </div>
