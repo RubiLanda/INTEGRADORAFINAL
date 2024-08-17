@@ -32,7 +32,7 @@
         }
         echo"<button type='button' class=\"inputs\" onclick=\"editarinfotienda({$tienda->ID},'nombretienda{$tienda->ID}','direccion{$tienda->ID}')\" class=\"div\">EDITAR</button>";
         echo"<hr>
-        <div class=\"modal fade\" id=\"ModalConfirmarCheckBox{$tienda->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+        <div class=\"modal fade\" id=\"ModalConfirmarCheckBox{$tienda->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\" data-bs-backdrop=\"static\" data-bs-keyboard=\"false\">
             <div class=\"modal-dialog ModalDetalles modal-dialog-centered modal-dialog-scrollable\">
                 <div class=\"modal-content\">
                     <div class=\"modal-header\">
