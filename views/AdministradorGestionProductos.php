@@ -307,7 +307,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     contentType: false,
                     processData: false,
                     success: function(response){
-                        alert(response);
+                       
                     if (response == "Producto añadido correctamente "){
                          id_nombre.value = '';
                          id_desc.value = '';
