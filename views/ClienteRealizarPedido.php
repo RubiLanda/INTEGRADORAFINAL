@@ -816,9 +816,11 @@ try {
                         return [false, 'ui-state-disabled'];
                     }
 
-                    // Deshabilitar fechas bloqueadas y aplicar un estilo especial
-                    if (fechasBloqueadas.includes(string)) {
-                        return [false, 'ui-state-blocked'];
+                    if (formaDePago == 2) {
+                        // Deshabilitar fechas bloqueadas y aplicar un estilo especial
+                        if (fechasBloqueadas.includes(string)) {
+                            return [false, 'ui-state-blocked'];
+                        }
                     }
 
                     if (string == todayStr || string == mañanaStr) {
