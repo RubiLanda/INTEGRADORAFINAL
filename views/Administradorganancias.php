@@ -287,7 +287,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                 this.value = this.value.replace(/[^a-zA-Z\sàèìòùáéíóúñÀÈÌÒÙÁÉÍÓÚÑ]/g, '');
               });
             });
-            Ver_Ventas_Producto()
+            
             function bloquear(input) {
               const inputMeses = document.getElementById('meses');
           const selectaños=document.getElementById('años');
