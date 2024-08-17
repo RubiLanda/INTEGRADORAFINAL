@@ -44,16 +44,17 @@ $menu2 = isset($_GET['estado']) ? false : true;
     <body>
         <div class="fondo"></div>
         <form class="contenedor" action="" method="">
-        <div class="divrefe">
+            <div class="divrefe">
             <a class="refe" href="habiydesarepa.php
             " >Volver</a>
             </div>
-
-            <h1>REGISTRAR NUEVO REPARTIDOR</h1>
+            
+            <h1>REGISTRAR NUEVO REPARTIDOR
+            </h1>
             <div class=contenedoruno>
                 <div class="dentro1 solo" >
                     <label> Crea el usuario:</label>
-                    <input type="text" name="usuario"  maxlength="100" id="usuario" required autocomplete="off">
+                    <input type="text" name="usuario" id="usuario" required autocomplete="off">
                     <label>Contraseña:</label>
                     <input type="password" minlength="7" name="contraseña" id="contraseña" required autocomplete="off" >
                     <label>Confirmar Contraseña:</label>
@@ -63,7 +64,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     
                     
 
-                    <label>Nombre(s):</label>
+                    <label>Nombre Completo:</label>
                     <input type="text" name="nombre" class="nombre" id="nombre" minlength="3" maxlength="50" required autocomplete="off">
                     <label>Apellido Paterno:</label>
                     <input type="text" name="paterno" class="nombre"  id="paterno" minlength="3" maxlength="50" required autocomplete="off">
@@ -81,13 +82,19 @@ $menu2 = isset($_GET['estado']) ? false : true;
                             <option value="O">Otro</option>
                         </select>
                         <label>Fecha De Nacimiento:</label>
-                        <input type="date" class="fechas" name="nacimiento" id="nacimiento" required >
+                        <input type="date" name="nacimiento" id="nacimiento" required >
                         <label>Teléfono:</label>
                         <input type="tel" name="telefono" id="telefono" maxlength="10" required autocomplete="off" oninput="validartelefono(this)" >
                         <label>Fecha de ingreso:</label>
-                        <input type="date"  class="fechas" name="registro" id="ingreso" required >
+                        <input type="date" name="registro" id="ingreso" required >
                         <label>Folio Licencia De Conducir:</label>
                         <input type="text" name="folio" id="folio" maxlength="11" required autocomplete="off" oninput=" validartelefono(this)" >
+                        <label for="">INE:</label>
+                        <label for="ine">
+                            <img src="../img/Icono de Mas.avif" width="200px" height="180px" id="vistaprevia">
+                        </label>
+                        <input type="file" id="ine">
+                        
                     </div>
                 </div>
             </div>
@@ -97,6 +104,21 @@ $menu2 = isset($_GET['estado']) ? false : true;
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
+
+        var imagenpuesta=0;
+        document.getElementById('ine').addEventListener('change', function(event){
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                   reader.onload =function(e) {
+                   document.getElementById('vistaprevia').src = e.target.result;
+                    }
+                   reader.readAsDataURL(file);
+                   imagenpuesta = 1;
+               }
+             });
+
+
         const inputTextos = document.querySelectorAll(".nombre");
         inputTextos.forEach(function(inputTexto) {
             inputTexto.addEventListener("input", function() {
@@ -159,6 +181,11 @@ $menu2 = isset($_GET['estado']) ? false : true;
                  
                  var fecha_ingreso= document.getElementById('ingreso');
                  var ingreso=fecha_ingreso.value;
+
+                 var id_imagen =document.getElementById('ine');
+                var inputfile = $(id_imagen)[0];
+                var file = inputfile.files[0];
+                
                  
                  if(contra.length<=7){
                     var toastContainer = document.getElementById('imprimirnoti');
@@ -186,13 +213,30 @@ $menu2 = isset($_GET['estado']) ? false : true;
                             toast.show();
                  }
                  else{
+                    var formData = new FormData();
+            formData.append('nameuser',nameuser );
+            formData.append('contra',contra);
+            formData.append('vericontra',vericontra);
+            formData.append('nom',nom);
+            formData.append('pate',pate);
+            formData.append('mate',mate);
+            formData.append('gene',gene);
+            formData.append('naci',naci);
+            formData.append('tele',tele);
+            formData.append('ingreso',ingreso);
+            formData.append('folio',folio);
+            if (file){
+            
+                formData.append('imagen', file);
+            }
+            formData.append('imagenpuesta',imagenpuesta);
 
                     $.ajax({
                      type: 'POST',
                      url: '../php/altarepa.php',
-                     data: { nameuser: nameuser,contra:contra, vericontra:vericontra, nom:nom, pate:pate,
-                        mate:mate, gene:gene, naci:naci, tele:tele,ingreso:ingreso,
-                        folio:folio },
+                     data: formData,
+                     contentType: false,
+                        processData: false,
                         success: function(response) {
                             if(response=="REGISTRO EXITOSO"){
                                 user.value='';
@@ -206,6 +250,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
                                 telefono.value='';
                                 folio_licencia.value='';
                                 fecha_ingreso.value='';
+                                document.getElementById('vistaprevia').src = "../img/Icono de Mas.avif";
+                                inputfile.value = '';
                             }
                             var toastContainer = document.getElementById('imprimirnoti');
                             var newToast = document.createElement('div');  // Crear un nuevo elemento toast
@@ -232,7 +278,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                             });
                             toast.show();
                         }
-                    });                 }
+                    });}
                  
                  
                 }
