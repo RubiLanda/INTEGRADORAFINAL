@@ -1,5 +1,5 @@
 <?php
- include '../php/conexion.php';
+ include 'conexion.php';
  $conexion=new Database();
  $conexion->conectarBD();
  session_start();
@@ -26,12 +26,27 @@
      echo "<h3><b>Nombre de la tienda:</b> <input type=\"text\" name=\"nombre\" class=\"inputs\" id='nombretienda{$tienda->ID}' value='{$tienda->Nombre}' minlength=\"3\" maxlength=\"50\"><h3>
      <h3><b>Dirección: </b> <textarea name=\"direccion\" class=\"inputs direccion\" id='direccion{$tienda->ID}'  minlength=\"20\" maxlength=\"100\">{$tienda->Direccion}</textarea><h3>";
      if($tienda->Estatus){
-         echo"<h3><b>Estado Actual:</b><input type='checkbox' class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID})\" checked></h3>";
+         echo"<h3><b>Estado Actual:</b><input type='checkbox' id=\"checkbox{$tienda->ID}\" class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID})\" checked></h3>";
         }else{
-            echo"<h3><b>Estado Actual:</b><input type='checkbox'  class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID})\"</h3>";
+            echo"<h3><b>Estado Actual:</b><input type='checkbox' id=\"checkbox{$tienda->ID}\"  class=\"check\" onclick=\"HABILITAR(this,{$tienda->ID})\"</h3>";
         }
         echo"<button type='button' class=\"inputs\" onclick=\"editarinfotienda({$tienda->ID},'nombretienda{$tienda->ID}','direccion{$tienda->ID}')\" class=\"div\">EDITAR</button>";
-        echo"<hr>";
+        echo"<hr>
+        <div class=\"modal fade\" id=\"ModalConfirmarCheckBox{$tienda->ID}\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+            <div class=\"modal-dialog ModalDetalles modal-dialog-centered modal-dialog-scrollable\">
+                <div class=\"modal-content\">
+                    <div class=\"modal-header\">
+                        <h1>Ir al Carrito</h1>
+                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\" id=\"botonclose\"></button>
+                    </div>
+                    <div class=\"modal-body\">
+                        <p></p>
+                        <button type=\"button\" onclick=\"cancelarCheckbox(ModalConfirmarCheckBox{$tienda->ID}, id=\"checkbox{$tienda->ID}\")\">Cancelar</button>
+                        <button type=\"button\" onclick=\"ContinuarCheckbox(ModalConfirmarCheckBox{$tienda->ID}, id=\"checkbox{$tienda->ID}\", {$tienda->ID})\">Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>";
     }
     echo "</p>";
     
@@ -39,7 +54,10 @@
     
     "</div>
     </div>
-    </div>";
+    </div>
+    
+    
+    ";
     
     
     
