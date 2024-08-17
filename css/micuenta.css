@@ -108,10 +108,14 @@ hr{
 }
 
 @media (max-width: 576px) {  /* sm */
-   
+    .ModalDetalles {
+        max-width: 95%; 
+    }
  
   .tiende{
     width: 100%;
+
+    
     
 }
     
