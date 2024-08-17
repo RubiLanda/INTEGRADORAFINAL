@@ -367,13 +367,15 @@ declare modidire boolean;
 
 declare mensajeError text;
 declare mensajeBueno text;
-
+ 
+declare contadorDire int;
 declare contadorError int;
 declare contadorBueno int;
 
 set mensajeError='';
 set mensajeBueno='';
 
+set contadorDire=0 ;
 set contadorError=0;
 set contadorBueno=0;
 
@@ -387,6 +389,10 @@ where TIENDAS.nombre_tienda=nombrenuevo and TIENDAS.id_tienda=idtienda;
 select true into modidire
 from TIENDAS
 where TIENDAS.direccion=direnueva and TIENDAS.id_tienda=idtienda;
+
+select count(*)into contadorDire
+from TIENDAS
+where TIENDAS.direccion = direnueva and TIENDAS.direccion != idtienda;
 
 if modinombre=1 and modidire=1 then
 set mensaje ='No se hizo ninguna modificacion';
@@ -406,6 +412,17 @@ elseif contadorError>1 then
 set mensajeError= concat(mensajeError, ', direccion');
 end if;
 set contadorError=contadorError+1;
+end if;
+
+if contadorDire >0 then 
+if contadorError=0 then
+set mensajeError='Dirección existente';
+elseif conradorError=1 then 
+set mensajeError= concat(mensajeError, ', Dirección existente');
+elseif  contadorError = 1 then
+set mensajeError= concat(mensajeError, ', Dirección existente');
+end if;
+set contadorError = contadorError + 1;
 end if;
 
 if length(direnueva)>100 then
@@ -435,7 +452,7 @@ end if;
 end if;
 
 if modidire=0 then
-if direnueva !=''  then
+if direnueva !='' and contadorDire=0 then
 if length(direnueva)<=100 then
 update TIENDAS
 set direccion=direnueva
@@ -458,6 +475,7 @@ set mensaje=concat(mensajeError,mensajeBueno );
 end if;
 end //
 DELIMITER ;
+
 
 
 drop procedure Ver_Tiendas_Cliente;
