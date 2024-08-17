@@ -417,7 +417,7 @@ end if;
 if contadorDire >0 then 
 if contadorError=0 then
 set mensajeError='Dirección existente';
-elseif conradorError=1 then 
+elseif contadorError=1 then 
 set mensajeError= concat(mensajeError, ', Dirección existente');
 elseif  contadorError = 1 then
 set mensajeError= concat(mensajeError, ', Dirección existente');
