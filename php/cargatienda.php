@@ -42,8 +42,8 @@
                     <div class=\"modal-body\">
                         <p></p>
                         <div style=\"display: flex;\">
-                            <button type=\"button\" style=\"margin-left: 5px;\" onclick=\"cancelarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}')\">Cancelar</button>
-                            <button type=\"button\" style=\"margin-right: 5px;\" id=\"botonConfirmar{$tienda->ID}\" onclick=\"ContinuarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}', {$tienda->ID})\">Continuar</button>
+                            <button type=\"button\" style=\"margin-right: 5px;\" onclick=\"cancelarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}')\">Cancelar</button>
+                            <button type=\"button\" style=\"margin-left: 5px;\" id=\"botonConfirmar{$tienda->ID}\" onclick=\"ContinuarCheckbox('ModalConfirmarCheckBox{$tienda->ID}', 'checkbox{$tienda->ID}', {$tienda->ID})\">Continuar</button>
                         </div>
                     </div>
                 </div>
