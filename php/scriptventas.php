@@ -69,7 +69,7 @@ switch ($radiusActivo) {
         if(count($consulta)>0){
             foreach($consulta as $fila){
                 echo"<h3>{$fila->Nombre_tienda}</h3>";
-                echo"<h3>{$fila->Total}</h3>";
+                echo"<h3>\${$fila->Total}</h3>";
             }
             echo"<h2>TOTAL FINAL</h2>";
     echo"<h2>\${$totalfinal[0]->TF}</h2>";
@@ -88,7 +88,7 @@ switch ($radiusActivo) {
          if(count($consulta)>0){
             foreach($consulta as $fila){
                 echo"<h3>{$fila->Nombre_repartidor}</h3>";
-                echo"<h3>{$fila->Total}</h3>";
+                echo"<h3>\${$fila->Total}</h3>";
             }
             echo"<h2>TOTAL FINAL</h2>";
             echo"<h2>\${$totalfinal[0]->TF}</h2>";
