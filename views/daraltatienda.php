@@ -45,6 +45,10 @@
                         url: '../php/altatienda.php',
                         data: { tienda:tienda, direccion:direccion },
                         success: function(response) {
+                            if(response=="Registro Exitoso"){
+                                tiendas.value='';
+                                direcciones.value='';
+                            }
                             var toastContainer = document.getElementById('imprimirnoti');
                             var newToast = document.createElement('div');  // Crear un nuevo elemento toast
                             newToast.className = 'toast';
