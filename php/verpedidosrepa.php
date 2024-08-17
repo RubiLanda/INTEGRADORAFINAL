@@ -98,7 +98,7 @@
 
                     }
                     else {
-                        echo"<div class=\"SinPedidos\"><h1>Estas libre! no tienes pedidos pendientes</h1></div>";
+                        echo"<div class=\"SinPedidos\"><h1>Estás libre! no tienes pedidos asignados</h1></div>";
                     }
 
                  echo"</div>
