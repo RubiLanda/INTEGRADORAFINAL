@@ -20,7 +20,7 @@
    
 
    if (move_uploaded_file($DireccionTemporal,$DireccionConImagen)){
-      $conexion->ejecutar("CALL Modificar_Imagen_Producto($id,'$NombreArchivo',@mensaje)");
+      $conexion->ejecutar("CALL actualizar_ine($id,'$NombreArchivo',@mensaje)");
       $consulta = $conexion->selectConsulta("SELECT @mensaje as resultado");
       $mensaje = $consulta[0]->resultado;
       echo $mensaje;

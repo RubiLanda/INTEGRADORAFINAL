@@ -131,7 +131,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         <h4><b>Licencia de conducir:</b> {$st->Licencia_conducir}</h4>
         <h4><b>Teléfono:</b> {$st->Telefono}</h4>
         <h4><b>Repartidor Desde:</b> {$st->Fecha_Ingreso}</h4>
-        <h4><b>INE:</b> <img src='../img/infopersonal/{ $st->INE}'></h4>
+        <h4><b>INE:</b> <img src='../img/infopersonal/{ $st->INE}' alt='' width='200px' height='180px'></h4>
         
         </p>
         <div class=\"div\">
@@ -168,6 +168,9 @@ $menu2 = isset($_GET['estado']) ? false : true;
 
     <!-- FUNCION PARA MODIFICAR LA INE DE UN REPARTIDOR-->
     <script>
+          
+
+
         function modificarimagenine(input,idrepa){
         var fileInput = $(input)[0];
         var file = fileInput.files[0];
