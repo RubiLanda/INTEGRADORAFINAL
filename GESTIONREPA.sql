@@ -302,7 +302,7 @@ update REPARTIDORES
 set ine = imagen
 where REPARTIDORES.id_repartidor = N_id_repartidor;
 
-set mensaje = 'Imagen Agregada Correctamente';
+set mensaje = 'INE Agregada Correctamente';
 end if;
 end if;
 end //
