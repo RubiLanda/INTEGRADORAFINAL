@@ -47,14 +47,16 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         }
         if (PorSemana) {
             alert("existe");
-        }
-        if (PorSemana.checked) {
-            checkbox = PorSemana.checked;
+            if (PorSemana.checked) {
+                checkbox = PorSemana.checked;
+            }
+            else {
+                checkbox = null;
+            }
         }
         else {
             checkbox = null;
         }
-
         $.ajax({
             type: 'POST',
             url: '../php/MostrarPedidos.php',
