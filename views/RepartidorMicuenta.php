@@ -134,7 +134,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         <h4><b>INE:</b></h4>
         
         </p>
-        <label><img src='../img/infopersonal/{$st->INE}' alt='' width:'400px' height:'300px'></label>
+        <label><img src='../img/infopersonal/{$st->INE}' alt='' width:'1000px' height:'800px'></label>
         <div class=\"div\">
         <a href=\"../views/RepartidorCargarVista.php
         \" >EDITAR</a>
