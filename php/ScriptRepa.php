@@ -42,7 +42,7 @@ foreach ($reg as $r) {
     <label for='f{$r->ID_R}'>
     <img src='../img/infopersonal/{$r->INE}' alt=''>
     </label>
-    <input id='f{$r->ID_R}' type=\"file\" onchange=\"modificarimagenine(this,{$r->ID_R}\">
+    <input id='f{$r->ID_R}' type=\"file\" onchange=\"modificarimagenine(this,{$r->ID_R})\">
     </h3>
     <div class='botoncat'>
     <button type='button' onclick=\"CambiarInfo($persona)\" >

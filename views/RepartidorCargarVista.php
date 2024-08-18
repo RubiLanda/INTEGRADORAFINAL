@@ -123,14 +123,14 @@ $menu2 = isset($_GET['estado']) ? false : true;
 
      <!-- FUNCION PARA MODIFICAR LA INE DE UN REPARTIDOR-->
      <script>
-          function modificarimagenine(input,idrepa){
+          function modificarimagenine(input,id_repartidor){
           var fileInput = $(input)[0];
           var file = fileInput.files[0];
           if (file)
           {
               var formData = new FormData();
               formData.append('imagen', file);
-              formData.append('id', idrepa);
+              formData.append('id', id_repartidor);
               $.ajax({
                       url: '../php/nuevaine.php',
                       type: 'POST',
