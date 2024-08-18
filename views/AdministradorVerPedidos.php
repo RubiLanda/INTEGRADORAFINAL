@@ -267,7 +267,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                 type: 'POST',
                 url: '../php/CambiarEstadoPedido.php',
                 data: { idPedido: idPedido, estado: estado },
-                success: function(response) {
+                success: function() {
                     MostrarPedidos()
                 }
             });
