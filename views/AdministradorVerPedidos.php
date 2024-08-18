@@ -248,7 +248,6 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
     <script>
 
         function cambiarRepartidor(idPedido, select){
-            alert(1);
             const h1 = document.getElementById('EnProceso' + idPedido);
             if (select.value == "NULL"){
                 h1.innerHTML = "#" + idPedido;
@@ -265,6 +264,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
             });
         }
         function cambiarEstadoPedido(idPedido, estado){
+            alert(1);
             $.ajax({
                 type: 'POST',
                 url: '../php/CambiarEstadoPedido.php',
