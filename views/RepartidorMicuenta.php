@@ -175,7 +175,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
             formData.append('imagen', file);
             formData.append('id', id_producto);
             $.ajax({
-                    url: '../php/nuevaimagen.php',
+                    url: '../php/nuevaine.php',
                     type: 'POST',
                     data: formData,
                     contentType: false,
