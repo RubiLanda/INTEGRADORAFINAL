@@ -9,13 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $buscarID = $_POST['buscarID'];
     $PorSemana = $_POST['PorSemana'];
 
-    if ($PorSemana == true) {
-        $PorSemana = 1;
-    }
-    else {
-        $PorSemana = 0;
-    }
-
     $Repartidores = $Conexion->selectConsulta("call Ver_Repartidores(1)");
 
     switch ($estado) {
