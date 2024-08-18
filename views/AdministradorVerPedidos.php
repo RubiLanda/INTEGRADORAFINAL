@@ -41,26 +41,18 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         const buscarID = document.getElementById('buscarID');
         var ID;
         var checkbox;
-        alert(buscarID.value);
-        if (buscarID.value == '') {
-            ID = 'null';
-        }
-        else {
+        if (buscarID.value != '') {
             ID = buscarID.value;
         }
+        else {
+            ID = 'null';
+        }
         if (inputCheckbox) {
-            if (buscarID.value == '') {
-                checkbox = inputCheckbox.checked;
-            }
-
-            if (inputCheckbox.checked) {
-                ID = 'null';
-            }
+            checkbox = inputCheckbox.checked;
         }
         else {
             checkbox = false;
         }
-        alert(ID);
         $.ajax({
             type: 'POST',
             url: '../php/MostrarPedidos.php',
@@ -208,12 +200,12 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                 break;
         }
         echo "<div class=\"OpcionesFiltro\">";
-            echo "<input type=\"text\" id=\"buscarID\" placeholder=\"Buscar por ID\" oninput=\"MostrarPedidos(); PorSemana.checked = false;\">";
+            echo "<input type=\"text\" id=\"buscarID\" placeholder=\"Buscar por ID\" oninput=\"PorSemana.checked = false; MostrarPedidos();\">";
 
             if ($estado == 1) {
                 echo "<div style=\"display: flex; justify-content: space-around; align-items: center;\">";
                 echo "<h3>Por semana</h3>";
-                echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"PorSemana\" onchange=\"MostrarPedidos(); buscarID.value = '';\" checked>";
+                echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"PorSemana\" onchange=\"buscarID.value = ''; MostrarPedidos();\" checked>";
                 echo "</div>";
             }
         echo "</div>";
