@@ -43,12 +43,20 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         var checkbox;
         if (buscarID.value != '') {
             ID = buscarID.value;
+
+            checkbox = false;
         }
         else {
             ID = 'null';
         }
         if (inputCheckbox) {
-            checkbox = inputCheckbox.checked;
+            if (buscarID.value == '') {
+                checkbox = inputCheckbox.checked;
+            }
+
+            if (inputCheckbox.checked) {
+                ID = 'null';
+            }
         }
         else {
             checkbox = false;

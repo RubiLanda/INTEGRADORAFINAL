@@ -75,7 +75,7 @@ left join (select PEDIDOS.id_pedido as ID, concat(PERSONAS.nombre, ' ', PERSONAS
 from PEDIDOS
 left join REPARTIDORES on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
 left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
-where PEDIDOS.f_requerido between curdate() and date_add(curdate(), interval 1 week)
+where PEDIDOS.f_requerido between curdate() and date_add(curdate(), interval 1 week) and PEDIDOS.estado_pedido = p_estado
 order by PEDIDOS.f_requerido;
 
 else
@@ -251,7 +251,7 @@ from PEDIDOS
 inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente
 inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
 left join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
-where PEDIDOS.id_tiendas is null and PEDIDOS.f_requerido between curdate() and date_add(curdate(), interval 1 week);
+where PEDIDOS.id_tiendas is null and PEDIDOS.f_requerido between curdate() and date_add(curdate(), interval 1 week) and PEDIDOS.estado_pedido = p_estado;
 
 else
 
