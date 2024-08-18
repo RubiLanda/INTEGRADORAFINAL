@@ -51,7 +51,7 @@ left join (select PEDIDOS.id_pedido as ID, concat(PERSONAS.nombre, ' ', PERSONAS
 from PEDIDOS
 left join REPARTIDORES on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
 left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
-where PEDIDOS.id_pedido like p_id_pedido
+where PEDIDOS.id_pedido like concat(p_id_pedido, '%')
 order by PEDIDOS.f_requerido;
 
 else
@@ -235,7 +235,7 @@ from PEDIDOS
 inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente
 inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
 left join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
-where PEDIDOS.id_pedido like p_id_pedido;
+where PEDIDOS.id_pedido like concat(p_id_pedido, '%');
 
 else 
 
