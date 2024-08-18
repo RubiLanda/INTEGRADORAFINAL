@@ -8,7 +8,7 @@ session_start();
 
 $persona = $_SESSION['ID']; // esta id es de usuario no de persona
 $consulta = "SELECT  PERSONAS.nombre as Nombre_A, PERSONAS.a_p as AP_A, PERSONAS.a_m as AM_A, PERSONAS.telefono as T_A, PERSONAS.f_nac as Fecha, REPARTIDORES.fol_liconducir as FL_R,
-                PERSONAS.genero as Genero
+                PERSONAS.genero as Genero, REPARTIDORES.ine as INE
                 FROM PERSONAS INNER JOIN USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
                 INNER JOIN REPARTIDORES ON PERSONAS.id_persona = REPARTIDORES.id_persona
                 WHERE USUARIOS.id_usuario = $persona";
