@@ -187,7 +187,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
             echo "<input type=\"text\" id=\"\" placeholder=\"Buscar por ID\">";
             echo "<div style=\"display: flex; justify-content: space-around; align-items: center;\">";
             echo "<h3>Por semana</h3>";
-            echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"\">";
+            echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"\" checked>";
             echo "</div>";
         echo "</div>";
         ?>
