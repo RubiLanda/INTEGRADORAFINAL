@@ -8,7 +8,7 @@
    $DireccionConImagen = $Direccion.$NombreArchivo;
 
    $id = $_POST['id'];
-   $Imagenes = $conexion->selectConsulta("SELECT * FROM PRODUCTOS WHERE id_producto = $id");
+   $Imagenes = $conexion->selectConsulta("SELECT * FROM REPARTIDORES WHERE id_producto = $id");
    $ImagenAntigua = $Imagenes[0]->imagen;
 
    if($ImagenAntigua && $ImagenAntigua !== $NombreArchivo){

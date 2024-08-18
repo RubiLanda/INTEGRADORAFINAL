@@ -37,9 +37,10 @@ foreach ($reg as $r) {
     <h3><b>Apellido Materno:</b><input type=\"text\" name=\"ApellidoM\" class=\"inputs\" id=\"ApellidoM\" value='{$r->AM_A}' oninput=Validarletras(this) minlength=\"3\" maxlength=\"50\"></h3>
     <h3><b>Teléfono:</b> <input type=\"tel\" name=\"TelefonoA\" id=\"TelefonoA\" class=\"inputs\" value='{$r->T_A}' oninput=validarprecio(this) minlength=\"10\" maxlength=\"10\"> </h3>
     <h3><b>Folio de conducir:</b> <input type=\"text\" name=\"FolCondu\" id=\"FolCondu\" class=\"inputs\" value='{$r->FL_R}' oninput=validarprecio(this) minlength=\"11\" maxlength=\"11\"> </h3>
-    <h3><b>INE</b>
+    <h3><b>INE</b></h3>
+    <h3>
     <label for='f{$r->id_user}'>
-    <img src='../img/infopersonal/{$r->INE}'>
+    <img src='../img/infopersonal/{$r->INE}' alt=''>
     </label>
     <input id='f{$r->id_user}' type='file' onchange=\"modificarimagenine(this,{$r->id_user}\">
     </h3>
