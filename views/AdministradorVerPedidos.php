@@ -264,12 +264,13 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
             });
         }
         function cambiarEstadoPedido(idPedido, estado){
-            alert(1);
+            
             $.ajax({
                 type: 'POST',
                 url: '../php/CambiarEstadoPedido.php',
                 data: { idPedido: idPedido, estado: estado },
-                success: function() {
+                success: function(response) {
+                    alert(response);
                     MostrarPedidos(<?php echo $estado?>, <?php echo $TipoCliente?>)
                 }
             });
