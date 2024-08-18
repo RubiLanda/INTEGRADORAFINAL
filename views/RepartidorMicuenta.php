@@ -132,7 +132,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         <h4><b>Teléfono:</b> {$st->Telefono}</h4>
         <h4><b>Repartidor Desde:</b> {$st->Fecha_Ingreso}</h4>
         <h4><b>INE:</b></h4>
-        <h4><img src='../img/infopersonal/{$st->INE}' alt=''></h4>
+        <h4><img src='../img/infopersonal/{$st->INE}' alt='' withd:'400px' height:'300px'></h4>
         
         </p>
         <div class=\"div\">
