@@ -46,15 +46,10 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
             ID = null;
         }
         if (PorSemana) {
-            if (PorSemana.checked) {
-                checkbox = PorSemana.checked;
-            }
-            else {
-                checkbox = null;
-            }
+            checkbox = PorSemana.checked;
         }
         else {
-            checkbox = null;
+            checkbox = false;
         }
         $.ajax({
             type: 'POST',

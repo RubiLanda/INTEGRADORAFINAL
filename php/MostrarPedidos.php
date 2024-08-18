@@ -6,16 +6,18 @@ $Conexion->conectarBD();
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $estado = $_POST['estado'];
     $TipoCliente = $_POST['TipoCliente'];
+    $buscarID = $_POST['buscarID'];
+    $PorSemana = $_POST['PorSemana'];
 
     $Repartidores = $Conexion->selectConsulta("call Ver_Repartidores(1)");
 
     switch ($estado) {
         case 1:
             if ($TipoCliente == 1) {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('pendiente', null, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('pendiente', $PorSemana, null)");
             } 
             else {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('pendiente', null, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('pendiente', $PorSemana, null)");
             }
             echo "<div class=\"tabla\">";
             if (count($Consulta) == 0) {
