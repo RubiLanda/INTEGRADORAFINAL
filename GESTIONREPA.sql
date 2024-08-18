@@ -265,3 +265,43 @@ else
             end if;
 end //
 DELIMITER ;
+
+
+/*PROCEDIMIENTO PARA CAMBIARLE LA INE AL REAPRTIDOR*/
+DELIMITER //
+create procedure actualizar_ine(
+in N_id_repartidor int,
+in imagen varchar(2083),
+out mensaje text
+)
+begin
+
+declare ine_actual varchar(2083);
+declare ine_existente int;
+
+select  imagen into ine_actual 
+from REPARTIDORES
+where  REPARTIDORES.id_repartidor =N_id_repartidor ;
+
+select COUNT(*) into ine_existente
+from REPARTIDORES
+where REPARTIDORES.ine = imagen and REPARTIDORES.id_repartidor != N_id_repartidor;
+
+if ine_existente > 0 
+then
+set mensaje = 'La imagen de la ine ya esta asignada en otro repartidor';
+else
+if ine_actual = imagen 
+then
+set mensaje = 'Error Imagen Repetida';
+else
+
+update REPARTIDORES
+set ine = imagen
+where REPARTIDORES.id_repartidor = N_id_repartidor;
+
+set mensaje = 'Imagen Agregada Correctamente';
+end if;
+end if;
+end //
+DELIMITER ;
