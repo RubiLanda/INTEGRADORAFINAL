@@ -183,7 +183,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                 }
                 break;
         }
-        echo "<div>";
+        echo "<div class=\"OpcionesFiltro\">";
             echo "<input type=\"text\" id=\"\" placeholder=\"Buscar por ID\">";
             echo "<div>";
             echo "<h3>Por semana</h3>";

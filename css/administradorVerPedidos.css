@@ -110,12 +110,19 @@
     width: 60%;
     padding: 20px 0;
     margin-bottom: 30px;
+    flex-direction: column;
 }
 .Titulo h1 {
     border-bottom: solid 3px #ddb892;
     width: 90%;
     text-align: center;
     padding-bottom: 10px;
+}
+.OpcionesFiltro {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
 }
 hr {
     padding: 2px;
