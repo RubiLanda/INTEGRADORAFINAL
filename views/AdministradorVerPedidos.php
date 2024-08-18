@@ -37,15 +37,16 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     function MostrarPedidos(buscarID){
+        const inputCheckbox = document.getElementById('PorSemana');
         var ID;
         var checkbox;
         if (buscarID != null) {
             ID = buscarID.value;
         }
         else {
-            ID = null;
+            ID = 'null';
         }
-        if (PorSemana) {
+        if (inputCheckbox) {
             checkbox = PorSemana.checked;
         }
         else {
