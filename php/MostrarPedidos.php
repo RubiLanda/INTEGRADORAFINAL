@@ -14,10 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     switch ($estado) {
         case 1:
             if ($TipoCliente == 1) {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('pendiente', $PorSemana, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('pendiente', $PorSemana, $buscarID)");
             } 
             else {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('pendiente', $PorSemana, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('pendiente', $PorSemana, $buscarID)");
             }
             echo "<div class=\"tabla\">";
             if (count($Consulta) == 0) {
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             }
             break;
         case 2:
-            $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('pendiente a pagar', null, null)");
+            $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('pendiente a pagar', null, $buscarID)");
             echo "<div class=\"tabla\">";
             if (count($Consulta) == 0) {
                 echo "<div class=\"pedido\">";
@@ -178,10 +178,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             break;
         case 3: //Aceptados
             if ($TipoCliente == 1) {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('aceptado', null, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('aceptado', null, $buscarID)");
             } 
             else {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('aceptado', null, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('aceptado', null, $buscarID)");
             }
             echo "<div class=\"tabla\">";
             if (count($Consulta) == 0) {
@@ -308,10 +308,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             break;
         case 4: //Cancelados
             if ($TipoCliente == 1) {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('cancelado', null, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('cancelado', null, $buscarID)");
             } 
             else {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('cancelado', null, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('cancelado', null, $buscarID)");
             }
             echo "<div class=\"tabla\">";
             if (count($Consulta) == 0) {
@@ -377,10 +377,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             break;
         case 5: //Entregados
             if ($TipoCliente == 1) {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('entregado', null, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_ConTienda_Estado('entregado', null, $buscarID)");
             } 
             else {
-                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('entregado', null, null)");
+                $Consulta = $Conexion->selectConsulta("call Ver_Pedidos_Clientes_SinTienda_Estado('entregado', null, $buscarID)");
             }
             echo "<div class=\"tabla\">";
             if (count($Consulta) == 0) {
