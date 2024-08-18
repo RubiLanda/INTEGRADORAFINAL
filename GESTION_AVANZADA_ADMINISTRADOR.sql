@@ -182,9 +182,24 @@ DELIMITER ;
 -- * 3.7.2 Ver pedidos de clientes sin tienda por estado
 DELIMITER //
 create procedure Ver_Pedidos_Clientes_SinTienda_Estado(
-in p_estado varchar(30)
+in p_estado varchar(30),
+in p_semana boolean
 )
 begin
+if(p_estado='pendiente' and p_semana=1) then
+
+select PEDIDOS.id_pedido as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Cliente, PEDIDOS.f_pedido as Fecha_Pedido,
+case when PEDIDOS.f_requerido = now() then 'Hoy' 
+when PEDIDOS.f_requerido =  DATE_ADD(now(), INTERVAL 1 day) then 'Mañana'
+else PEDIDOS.f_requerido
+end as Fecha_Requerido,
+PEDIDOS.f_limitepago as Fecha_Limite_Pagar, PEDIDOS.f_entrega as Fecha_entregada, PEDIDOS.estado_pedido as Estado
+from PEDIDOS
+inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente
+inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+left join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
+where PEDIDOS.id_tiendas is null and PEDIDOS.f_requerida between curdate() and date_add(curdate(), interval 1 week);
+else
 
 if p_estado is not null then
 select PEDIDOS.id_pedido as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Cliente, PEDIDOS.f_pedido as Fecha_Pedido,
@@ -198,6 +213,7 @@ inner join CLIENTES on PEDIDOS.id_cliente = CLIENTES.id_cliente
 inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
 left join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
 where PEDIDOS.id_tiendas is null and PEDIDOS.estado_pedido = p_estado;
+
 else
 select PEDIDOS.id_pedido as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Cliente, PEDIDOS.f_pedido as Fecha_Pedido,
 case when PEDIDOS.f_requerido = now() then 'Hoy' 
@@ -211,9 +227,11 @@ inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
 left join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
 where PEDIDOS.id_tiendas is null;
 end if;
+end if;
 
 end //
 DELIMITER ;
+
 
  -- *3.1.4 ver los pedidos de un repartidor desde la vista del admin
 DELIMITER //
