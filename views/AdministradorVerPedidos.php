@@ -198,7 +198,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                 break;
         }
         echo "<div class=\"OpcionesFiltro\">";
-            echo "<input type=\"text\" id=\"buscarID\" placeholder=\"Buscar por ID\" onchange=\"MostrarPedidos(this, null); PorSemana.checked = false;\">";
+            echo "<input type=\"text\" id=\"buscarID\" placeholder=\"Buscar por ID\" oninput=\"MostrarPedidos(this, null); PorSemana.checked = false;\">";
 
             if ($estado == 1) {
                 echo "<div style=\"display: flex; justify-content: space-around; align-items: center;\">";
