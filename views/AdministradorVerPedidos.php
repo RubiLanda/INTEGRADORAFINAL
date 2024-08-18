@@ -52,7 +52,6 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         else {
             checkbox = false;
         }
-        alert(checkbox);
         $.ajax({
             type: 'POST',
             url: '../php/MostrarPedidos.php',
