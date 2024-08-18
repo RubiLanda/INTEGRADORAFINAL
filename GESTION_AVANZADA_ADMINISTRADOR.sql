@@ -30,7 +30,27 @@ create procedure Ver_Pedidos_Clientes_ConTienda_Estado(
 	in p_semana boolean
 )
 begin
-
+if(p_estado='pendiente' and p_semana=1) then
+select PEDIDOS.id_pedido as ID, TIENDAS.nombre_tienda as Tienda, TIENDAS.direccion as Direccion, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Cliente, PEDIDOS.f_pedido as Fecha_Pedido, 
+    case when PEDIDOS.f_requerido = date(now()) then 'Hoy' 
+    when PEDIDOS.f_requerido =  DATE_ADD(date(now()), INTERVAL 1 day) then 'Mañana'
+    else PEDIDOS.f_requerido
+    end as Fecha_Requerido,
+	PEDIDOS.f_entrega as Fecha_entregada, PEDIDOS.estado_pedido as Estado, 
+    case when PEDIDOS.estado_pedido not in ('cancelado', 'entregado') then PEDIDOS.id_repartidor
+    else R.Nombre end as Repartidor
+	from PEDIDOS
+	inner join TIENDAS on PEDIDOS.id_tiendas = TIENDAS.id_tienda
+	inner join CLIENTE_TIENDA on TIENDAS.id_tienda = CLIENTE_TIENDA.id_tienda
+	inner join CLIENTES on CLIENTE_TIENDA.id_cliente = CLIENTES.id_cliente
+	inner join PERSONAS on CLIENTES.id_persona = PERSONAS.id_persona
+    left join (select PEDIDOS.id_pedido as ID, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Nombre
+			   from PEDIDOS
+			   left join REPARTIDORES on PEDIDOS.id_repartidor = REPARTIDORES.id_repartidor
+			   left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
+	where PEDIDOS.f_requerida between curdate() and date_add(curdate(), interval 1 week)
+    order by PEDIDOS.f_requerido;
+else
 if p_estado is not null then
 	select PEDIDOS.id_pedido as ID, TIENDAS.nombre_tienda as Tienda, TIENDAS.direccion as Direccion, concat(PERSONAS.nombre, ' ', PERSONAS.a_p, ' ', PERSONAS.a_m) as Cliente, PEDIDOS.f_pedido as Fecha_Pedido, 
     case when PEDIDOS.f_requerido = date(now()) then 'Hoy' 
@@ -71,10 +91,9 @@ else
 			   left join PERSONAS on REPARTIDORES.id_persona = PERSONAS.id_persona) as R on PEDIDOS.id_pedido = R.ID
 	order by PEDIDOS.f_requerido;
 end if;
-
+end if;
 end //
 DELIMITER ;
-
 
 
 
@@ -878,7 +897,7 @@ else
 IF N_f_nac <= DATE_ADD(CURDATE(), INTERVAL -18 YEAR)
 AND N_f_nac >= DATE_ADD(CURDATE(), INTERVAL -80 YEAR) -- si la fecha de nacimineto es menor que la fecha que se genere de hoy menos 18 años
 then
-insert into USUARIOS (username, contraseña, f_registro)  -- insertar en usuarios los datos
+insert into USUARIOS (username, contrasena, f_registro)  -- insertar en usuarios los datos
 values (N_username, N_contraseña,now());
 set ultimaid_usuario = last_insert_id(); -- guardar la ultima id que se genero con el auto-increment
 insert into ROL_USUARIO (id_rol,id_usuario) -- inmediatamente en la tabla de rol se le dara el rol de administrador

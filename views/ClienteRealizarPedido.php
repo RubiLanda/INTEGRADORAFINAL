@@ -678,7 +678,7 @@ try {
                     fechasBloqueadas = response;
                     if (radiusConTienda.checked) {
                         if (select.value != 0) {
-                            if (response.includes(hoyStr)){
+                            if (response.includes(hoyStr) && select.value == 0){
                                 fechaHoy.disabled = true;
                                 fechaHoy.parentElement.children[1].style.color = '#ddb8929c';
                             }
