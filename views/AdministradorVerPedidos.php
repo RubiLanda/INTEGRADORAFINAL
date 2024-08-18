@@ -36,11 +36,25 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    function MostrarPedidos(estado, TipoCliente){
+    function MostrarPedidos(buscarID, PorSemana){
+        var ID;
+        var checkbox;
+        if (buscarID != null) {
+            ID = buscarID.value;
+        }
+        else {
+            ID = null;
+        }
+        if (PorSemana != null) {
+            checkbox = PorSemana.checked;
+        }
+        else {
+            checkbox = null;
+        }
         $.ajax({
             type: 'POST',
             url: '../php/MostrarPedidos.php',
-            data: { estado: estado, TipoCliente: TipoCliente },
+            data: { estado: <?php echo $estado?>, TipoCliente: <?php echo $TipoCliente?>, buscarID: ID, PorSemana: checkbox},
             success: function(response) {
                 $('#pedidos' + estado).html(response);
             }
@@ -184,11 +198,14 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                 break;
         }
         echo "<div class=\"OpcionesFiltro\">";
-            echo "<input type=\"text\" id=\"\" placeholder=\"Buscar por ID\">";
-            echo "<div style=\"display: flex; justify-content: space-around; align-items: center;\">";
-            echo "<h3>Por semana</h3>";
-            echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"\" checked>";
-            echo "</div>";
+            echo "<input type=\"text\" id=\"buscarID\" placeholder=\"Buscar por ID\" onchange=\"MostrarPedidos(this, null); PorSemana.checked = false;\">";
+
+            if ($estado == 1) {
+                echo "<div style=\"display: flex; justify-content: space-around; align-items: center;\">";
+                echo "<h3>Por semana</h3>";
+                echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"PorSemana\" onchange=\"MostrarPedidos(null, this); buscarID.value = '';\" checked>";
+                echo "</div>";
+            }
         echo "</div>";
         ?>
     </div>
@@ -196,7 +213,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
     <div class="Contenedor">
         <div class="Pedidos">
             <script>
-                MostrarPedidos(<?php echo $estado?>, <?php echo $TipoCliente?>)
+                MostrarPedidos(null, null)
             </script>
             <div id="pedidos<?php echo $estado?>"></div>
         </div>
@@ -225,6 +242,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
     </div>
 
     <script>
+
         function cambiarRepartidor(idPedido, select){
             const h1 = document.getElementById('EnProceso' + idPedido);
             if (select.value == "NULL"){
