@@ -7,7 +7,7 @@ $conexion->conectarBD();
 session_start();
 
 $persona = $_SESSION['ID']; // esta id es de usuario no de persona
-$consulta = "SELECT  PERSONAS.nombre as Nombre_A, PERSONAS.a_p as AP_A, PERSONAS.a_m as AM_A, PERSONAS.telefono as T_A, PERSONAS.f_nac as Fecha, REPARTIDORES.fol_liconducir as FL_R,
+$consulta = "SELECT REPARTIDORES.id_repartidor as ID_R, PERSONAS.nombre as Nombre_A, PERSONAS.a_p as AP_A, PERSONAS.a_m as AM_A, PERSONAS.telefono as T_A, PERSONAS.f_nac as Fecha, REPARTIDORES.fol_liconducir as FL_R,
                 PERSONAS.genero as Genero, REPARTIDORES.ine as INE
                 FROM PERSONAS INNER JOIN USUARIOS ON PERSONAS.id_usuario = USUARIOS.id_usuario
                 INNER JOIN REPARTIDORES ON PERSONAS.id_persona = REPARTIDORES.id_persona
@@ -39,10 +39,10 @@ foreach ($reg as $r) {
     <h3><b>Folio de conducir:</b> <input type=\"text\" name=\"FolCondu\" id=\"FolCondu\" class=\"inputs\" value='{$r->FL_R}' oninput=validarprecio(this) minlength=\"11\" maxlength=\"11\"> </h3>
     <h3><b>INE</b></h3>
     <h3>
-    <label for='f{$r->id_user}'>
+    <label for='f{$r->ID_R}'>
     <img src='../img/infopersonal/{$r->INE}' alt=''>
     </label>
-    <input id='f{$r->id_user}' type='file' onchange=\"modificarimagenine(this,{$r->id_user}\">
+    <input id='f{$r->ID_R}' type=\"file\" onchange=\"modificarimagenine(this,{$r->ID_R}\">
     </h3>
     <div class='botoncat'>
     <button type='button' onclick=\"CambiarInfo($persona)\" >
