@@ -46,6 +46,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
             ID = null;
         }
         if (PorSemana != null) {
+            alert(1);
             checkbox = PorSemana.checked;
         }
         else {
