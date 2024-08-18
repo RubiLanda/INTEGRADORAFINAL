@@ -37,30 +37,11 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     function MostrarPedidos(buscarID){
-        var ID;
-        var checkbox;
-        if (buscarID != null) {
-            ID = buscarID.value;
-        }
-        else {
-            ID = null;
-        }
-        if (PorSemana) {
-            alert("existe");
-            if (PorSemana.checked) {
-                checkbox = PorSemana.checked;
-            }
-            else {
-                checkbox = null;
-            }
-        }
-        else {
-            checkbox = null;
-        }
+
         $.ajax({
             type: 'POST',
             url: '../php/MostrarPedidos.php',
-            data: { estado: <?php echo $estado?>, TipoCliente: <?php echo $TipoCliente?>, buscarID: ID, PorSemana: checkbox},
+            data: { estado: <?php echo $estado?>, TipoCliente: <?php echo $TipoCliente?>},
             success: function(response) {
                 $('#pedidos' + estado).html(response);
             }
