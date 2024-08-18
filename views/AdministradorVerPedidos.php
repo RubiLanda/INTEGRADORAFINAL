@@ -40,10 +40,13 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         const inputCheckbox = document.getElementById('PorSemana');
         var ID;
         var checkbox;
-        if (buscarID != null || buscarID.value != '') {
+        if (buscarID != null) {
             ID = buscarID.value;
         }
         else {
+            ID = 'null';
+        }
+        if (buscarID.value == '') {
             ID = 'null';
         }
         if (inputCheckbox) {
