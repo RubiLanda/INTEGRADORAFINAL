@@ -36,15 +36,13 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    function MostrarPedidos(buscarID){
+    function MostrarPedidos(){
         const inputCheckbox = document.getElementById('PorSemana');
+        const buscarID = document.getElementById('buscarID');
         var ID;
         var checkbox;
-        if (buscarID != null) {
+        if (buscarID.value != '') {
             ID = buscarID.value;
-            if (buscarID.value == '') {
-                ID = 'null';
-            }
         }
         else {
             ID = 'null';
@@ -202,12 +200,12 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                 break;
         }
         echo "<div class=\"OpcionesFiltro\">";
-            echo "<input type=\"text\" id=\"buscarID\" placeholder=\"Buscar por ID\" oninput=\"MostrarPedidos(this); PorSemana.checked = false;\">";
+            echo "<input type=\"text\" id=\"buscarID\" placeholder=\"Buscar por ID\" oninput=\"MostrarPedidos(); PorSemana.checked = false;\">";
 
             if ($estado == 1) {
                 echo "<div style=\"display: flex; justify-content: space-around; align-items: center;\">";
                 echo "<h3>Por semana</h3>";
-                echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"PorSemana\" onchange=\"MostrarPedidos(null); buscarID.value = '';\" checked>";
+                echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"PorSemana\" onchange=\"MostrarPedidos(); buscarID.value = '';\" checked>";
                 echo "</div>";
             }
         echo "</div>";
@@ -217,7 +215,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
     <div class="Contenedor">
         <div class="Pedidos">
             <script>
-                MostrarPedidos(null)
+                MostrarPedidos()
             </script>
             <div id="pedidos<?php echo $estado?>"></div>
         </div>
@@ -270,8 +268,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                 url: '../php/CambiarEstadoPedido.php',
                 data: { idPedido: idPedido, estado: estado },
                 success: function(response) {
-                    alert(response);
-                    MostrarPedidos(<?php echo $estado?>, <?php echo $TipoCliente?>)
+                    MostrarPedidos()
                 }
             });
         }

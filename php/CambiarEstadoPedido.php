@@ -6,7 +6,6 @@ $Conexion->conectarBD();
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $idPedido = $_POST['idPedido'];
     $estado = $_POST['estado'];
-    echo $idPedido;
 
     switch ($estado) {
         case 1:
