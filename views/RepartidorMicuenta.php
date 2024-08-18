@@ -165,6 +165,8 @@ $menu2 = isset($_GET['estado']) ? false : true;
             }
         });
     </script>
+
+    <!-- FUNCION PARA MODIFICAR LA INE DE UN REPARTIDOR-->
     <script>
         function modificarimagenine(input,idrepa){
         var fileInput = $(input)[0];
@@ -173,7 +175,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
         {
             var formData = new FormData();
             formData.append('imagen', file);
-            formData.append('id', id_producto);
+            formData.append('id', idrepa);
             $.ajax({
                     url: '../php/nuevaine.php',
                     type: 'POST',
@@ -181,7 +183,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                     contentType: false,
                     processData: false,
                     success: function(response){
-                        cargarproductos(pagina)
+                      
 
                         var toastContainer = document.getElementById('toastContainer');
             var newToast = document.createElement('div');  // Crear un nuevo elemento toast
