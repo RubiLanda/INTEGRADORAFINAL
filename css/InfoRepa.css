@@ -13,24 +13,6 @@
     background-color: yellowgreen;
 }
 
-.contebut {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3%;
-    width: 85%;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px 40px;
-    background-color: thistle;
-    border: 3px solid #724a32;
-    border-radius: 44px;
-}
-
-
 .contenedor {
     color: #ddb892;
     background-color: #9c6644;
@@ -40,6 +22,7 @@
     margin: auto;
     flex-direction: column;
     border-radius: 15px;
+    width: 80%;
     margin-top: 0px;
 }
 
