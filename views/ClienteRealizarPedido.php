@@ -178,7 +178,7 @@ function limitarTexto($texto, $limite) {
                         <option value="0">Seleccionar Tienda</option>
                         <?php
                         foreach ($Tiendas as $fila) {
-                            echo "<option value=\"{$fila->ID}\">".  limitarTexto(($fila->Nombre." ".$fila->Direccion), 6.0) ."</option>";
+                            echo "<option value=\"{$fila->ID}\">".  limitarTexto(($fila->Nombre." ".$fila->Direccion), 60) ."</option>";
                         }
                         ?>
                     </select>
