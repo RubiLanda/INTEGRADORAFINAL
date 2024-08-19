@@ -27,7 +27,7 @@ $Conexion = new Database();
 $Conexion->conectarBD();
 try {
     $Tiendas = $Conexion->selectConsulta("call Ver_Tiendas_Cliente('$id_usuario', 1)");
-
+    
 } catch (Exception $e) {
     echo $e->getMessage();
 }
