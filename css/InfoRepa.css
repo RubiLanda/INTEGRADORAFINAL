@@ -1,7 +1,3 @@
-
-
-
-
 .conte {
     display: flex;
     flex-direction: column;
@@ -15,22 +11,6 @@
     padding: 20px 40px;
     border-radius: 44px;
     background-color: yellowgreen;
-}
-
-/* Main container styles */
-.contenedor {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5%;
-    width: 85%;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: violet;
-    border: 3px solid #724a32;
-    border-radius: 20px;
 }
 
 .contebut {
@@ -60,10 +40,8 @@
     margin: auto;
     flex-direction: column;
     border-radius: 15px;
-    width: 60%;
-    margin-top: 20px;
-
-
+    width: 100%;
+    margin-top: 0px;
 }
 
 .contenedor a {
