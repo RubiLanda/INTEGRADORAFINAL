@@ -862,34 +862,34 @@ drop procedure Calcular_Total;
 -- 1.2.7 Calcular el total a pagar del carrito
 DELIMITER //
 create procedure Calcular_Total(
-	in p_id_usuario int,
-    in p_tienda_seleccionado int
+in p_id_usuario int,
+in p_tienda_seleccionado int
 )
 begin 
-	declare p_id_cliente int;
-    
-    select CLIENTES.id_cliente into p_id_cliente 
-	from CLIENTES
-	inner join PERSONAS on CLIENTES.id_persona=PERSONAS.id_persona
-	inner join USUARIOS on PERSONAS.id_usuario=USUARIOS.id_usuario
-	where USUARIOS.id_usuario = p_id_usuario;
- 
-	if p_tienda_seleccionado = 0 then
+declare p_id_cliente int;
 
-		select sum(CARRITO.cantidad * PRODUCTOS.precio) as Total
-        from CARRITO
-        inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where CARRITO.id_cliente = p_id_cliente;
-    else
+select CLIENTES.id_cliente into p_id_cliente 
+from CLIENTES
+inner join PERSONAS on CLIENTES.id_persona=PERSONAS.id_persona
+inner join USUARIOS on PERSONAS.id_usuario=USUARIOS.id_usuario
+where USUARIOS.id_usuario = p_id_usuario;
 
-		select sum(CARRITO.cantidad * (PRODUCTOS.precio - (PRODUCTOS.precio * 0.1) )) as Total
-        from CARRITO
-        inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
-        inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
-        where CARRITO.id_cliente = p_id_cliente;
+if p_tienda_seleccionado = 0 then
 
-    end if;
+select sum(CARRITO.cantidad * PRODUCTOS.precio) as Total
+from CARRITO
+inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where CARRITO.id_cliente = p_id_cliente;
+else
+
+select sum(CARRITO.cantidad * (PRODUCTOS.precio - (PRODUCTOS.precio * 0.1) )) as Total
+from CARRITO
+inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
+inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
+where CARRITO.id_cliente = p_id_cliente;
+
+end if;
 end //
 DELIMITER ;
 
