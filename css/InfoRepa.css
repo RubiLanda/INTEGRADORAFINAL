@@ -51,12 +51,20 @@
     border: #ddb892;
 }
 
-.div {
+.div7{
+    background-color:#e7d2bc;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+   }
+   .div7 a{
     width: 100%;
     display: flex;
     justify-content: center;
-
-}
+   }
 
 .tarjeta {
     width: 10%;
@@ -66,7 +74,7 @@
 
 }
 
-.titulo {
+.titulo5 {
     display: flex;
     flex-direction: column;
     width: 90%;
