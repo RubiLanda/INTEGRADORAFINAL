@@ -163,6 +163,8 @@ footer div{
 }
 .Producto button {
     background-color: transparent;
+    border: none;
+    color: white;
 }
 .TodoLosProductos .Productos .Producto img {
     border-radius: 15px;
