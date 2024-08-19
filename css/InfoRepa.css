@@ -57,9 +57,7 @@ img {
 
 /* Responsivo para pantallas más pequeñas */
 @media (max-width: 768px) {
-    img {
-        width: 15%;
-    }
+    
 
     h1{
         font-size: 40px;
@@ -186,7 +184,7 @@ img {
         align-items: center;
        }
 }
-@media (max-width: 1400px) and (min-width: 1201){
+@media (max-width: 1400px) and (min-width: 1201px){
     .div7{
         background-color:#e7d2bc;
         width: 50%;
@@ -211,9 +209,7 @@ img {
 }
 
 @media (max-width: 480px) {
-    img {
-        width: 10px;
-    }
+    
 
     h1{
         font-size: 20px;
