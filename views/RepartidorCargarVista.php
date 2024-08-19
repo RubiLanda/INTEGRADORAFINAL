@@ -138,7 +138,7 @@ $menu2 = isset($_GET['estado']) ? false : true;
                       contentType: false,
                       processData: false,
                       success: function(response){
-                        alert(1);
+                       
                         cargarInformacionUsuario()
   
                           var toastContainer = document.getElementById('toastContainer');
