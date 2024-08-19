@@ -1,4 +1,6 @@
 <?php
+session_start();
+$id = $_SESSION['ID'];
 include '../php/conexion.php';
 $conexion = new Database();
 $conexion->conectarBD();
@@ -10,10 +12,12 @@ if ($_POST) {
     foreach ($listaAdmin as $fila) {
         echo "<div class=\"Tienda\">";
         echo "<h3>$fila->Administrador</h3>";
-        if ($fila->Estatus) {
-            echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\" checked>";
-        } else {
-            echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\">";
+        if ($id == 1) {
+            if ($fila->Estatus) {
+                echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\" checked>";
+            } else {
+                echo "<input type='checkbox' class='check' onclick=\"cambiarEstatus(this,{$fila->ID})\">";
+            }
         }
         echo "<button type=\"button\" class=\"boton\" data-bs-toggle=\"modal\" data-bs-target=\"#ModalInformacion{$fila->ID}\">
     Ver Información
