@@ -60,7 +60,7 @@ img {
     
 
     h1{
-        font-size: 40px;
+        font-size: 30px;
         padding-top: 10px;
     }
 
@@ -163,6 +163,9 @@ img {
         width: 90%;
         align-items: center;
        }
+       .contenedor{
+        width: 50%;
+       }
 }
 
 @media (max-width: 1200px) and (min-width: 993px){
@@ -186,6 +189,7 @@ img {
         width: 90%;
         align-items: center;
        }
+
 }
 @media (max-width: 1400px) and (min-width: 1201px){
     .div7{
@@ -209,6 +213,9 @@ img {
         width: 90%;
         align-items: center;
        }
+    .contenedor{
+        width: 45%;
+    }
 }
 
 @media (max-width: 480px) {
