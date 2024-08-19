@@ -31,6 +31,14 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+
+function limitarTexto($texto, $limite) {
+    if (strlen($texto) > $limite) {
+        return substr($texto, 0, $limite) . '...';
+    } else {
+        return $texto;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -170,7 +178,7 @@ try {
                         <option value="0">Seleccionar Tienda</option>
                         <?php
                         foreach ($Tiendas as $fila) {
-                            echo "<option value=\"{$fila->ID}\">{$fila->Nombre}, {$fila->Direccion}</option>";
+                            echo "<option value=\"{$fila->ID}\">".  limitarTexto(($fila->Nombre." ".$fila->Direccion), 30) ."</option>";
                         }
                         ?>
                     </select>
