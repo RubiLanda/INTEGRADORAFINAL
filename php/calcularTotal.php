@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $subTotal = $fila->Total - (($fila->Precio * 0.1) * $fila->Cantidad);
             echo "<h3>$".$fila->Total."</h3>";
             echo "<h3>- $".(($fila->Precio * 0.1) * $fila->Cantidad)."</h3>";
-            echo "<h3>+ $".$subTotal.".00</h3>";
+            echo "<h3>+ $".$subTotal."</h3>";
         }
     }
     echo "</div>";

@@ -858,6 +858,7 @@ begin
 end //
 DELIMITER ;
 
+drop procedure Calcular_Total;
 -- 1.2.7 Calcular el total a pagar del carrito
 DELIMITER //
 create procedure Calcular_Total(
@@ -882,7 +883,7 @@ begin
         where CARRITO.id_cliente = p_id_cliente;
     else
 
-		select sum(CARRITO.cantidad * (PRODUCTOS.precio - 1 )) as Total
+		select sum(CARRITO.cantidad * (PRODUCTOS.precio - (PRODUCTOS.precio * 0.1) )) as Total
         from CARRITO
         inner join INVENTARIO on CARRITO.id_inventario = INVENTARIO.id_inventario
         inner join PRODUCTOS on INVENTARIO.id_producto = PRODUCTOS.id_producto
