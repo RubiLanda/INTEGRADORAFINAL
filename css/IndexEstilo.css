@@ -161,6 +161,11 @@ footer div{
     border-radius: 15px; 
     transition: transform 0.5s ease;
 }
+.Producto button {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
 .TodoLosProductos .Productos .Producto img {
     border-radius: 15px;
     width: 100%; 
@@ -241,6 +246,29 @@ footer div{
     /* Barra de desplazamiento al pasar el mouse */
 ::-webkit-scrollbar-thumb:hover {
     background: #ddb892;
+}
+
+.modal-content {
+    width: 100%; 
+    height: auto; 
+}
+.modal-body {
+    display: flex;
+    justify-content: center;
+    background-color: #9c6644;
+    color: #ddb892;
+    flex-direction: column;
+}
+
+.modal-body p {
+    font-size: 30px;
+}
+.modal-header {
+    background-color: #b48263;
+    border: none; 
+}
+.modal-header h1 {
+    color: #493c2f;
 }
 
 @media (max-width: 438px) {  /* sm */
