@@ -361,6 +361,7 @@
     color: #30231b;
     padding: 7px 14px;
     font-size: 20px;
+    margin-top: 10px;
 }
 /* Estilos para las fechas bloqueadas */
 .ui-datepicker-calendar .ui-state-blocked {
