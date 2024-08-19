@@ -387,6 +387,7 @@
     .Total_Pagar {
         border-radius: 0;
         margin-bottom: 40px;
+        margin-left: 0;
     }
     .Total_Pagar .tabla h2, .Total_Pagar .tabla h3 {
         font-size: 17px;
@@ -460,6 +461,7 @@
     .Total_Pagar {
         border-radius: 0;
         margin-bottom: 40px;
+        margin-left: 0;
     }
     .realizarPedido {
         width: 90%;
@@ -507,6 +509,7 @@
     .Total_Pagar {
         border-radius: 0;
         margin-bottom: 40px;
+        margin-left: 0;
     }
     .confirmarCarritoFondo {
         flex-direction: column-reverse;
@@ -535,6 +538,7 @@
     .Total_Pagar {
         border-radius: 0;
         margin-bottom: 40px;
+        margin-left: 0;
     }
     .ModificarCarrito {
         display: block;
@@ -550,6 +554,7 @@
     .Total_Pagar {
         border-radius: 0;
         margin-bottom: 40px;
+        margin-left: 0;
     }
     .ModificarCarrito {
         display: block;
