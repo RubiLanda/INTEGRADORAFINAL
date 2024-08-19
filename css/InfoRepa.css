@@ -99,6 +99,11 @@
 input[type="file"]{
     display: none;
 }
+img {
+    width: 180px;
+    height: 135px;
+}
+
 /* Responsivo para pantallas más pequeñas */
 @media (max-width: 768px) {
     img {
