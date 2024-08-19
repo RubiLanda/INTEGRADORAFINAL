@@ -200,7 +200,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
                 break;
         }
         echo "<div class=\"OpcionesFiltro\">";
-            echo "<input type=\"text\" id=\"buscarID\" placeholder=\"Buscar por ID\" oninput=\"PorSemana.checked = false; MostrarPedidos();\">";
+            echo "<input type=\"text\" id=\"buscarID\" placeholder=\"Buscar por ID\" oninput=\"if (document.getElementById('PorSemana')) { PorSemana.checked = false; } MostrarPedidos();\">";
 
             if ($estado == 1) {
                 echo "<div style=\"display: flex; justify-content: space-around; align-items: center;\">";
