@@ -124,6 +124,7 @@
     align-items: center;
     width: 70%;
     flex-wrap: wrap;
+    row-gap: 20px;
 }
 hr {
     padding: 2px;
