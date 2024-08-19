@@ -50,10 +50,10 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
             ID = 'null';
         }
         if (buscarNombre.value != '') {
-            Nombre = String(buscarNombre.value);
+            Nombre = buscarNombre.value;
         }
         else {
-            Nombre = 'null';
+            Nombre = null;
         }
         if (inputCheckbox) {
             checkbox = inputCheckbox.checked;
