@@ -110,7 +110,6 @@ try {
     <div class="menu oculto" id="menu">
         <div class="inicioMenu">
             <?php
-
             if (count($Conexion->selectConsulta("call Ver_Tiendas_Cliente('$id_usuario', 0)")) > 0) {
                 echo "<img src=\"../img/LOGOTConTienda.png\">";
             }
