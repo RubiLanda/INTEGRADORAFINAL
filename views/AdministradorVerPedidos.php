@@ -214,7 +214,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
             if ($estado == 1) {
                 echo "<div style=\"display: flex; justify-content: space-around; align-items: center;\">";
                 echo "<h3>Por semana</h3>";
-                echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"PorSemana\" onchange=\"buscarID.value = ''; MostrarPedidos();\" checked>";
+                echo "<input style=\"margin-left: 20px; height: 20px; width: 20px; \" type=\"checkbox\" id=\"PorSemana\" onchange=\"buscarID.value = ''; buscarNombre.value = ''; MostrarPedidos();\" checked>";
                 echo "</div>";
             }
         echo "</div>";
