@@ -27,9 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<h2>Descuento</h2>";
         echo "<h2>Subtotal</h2>";
         foreach ($productos_totales as $fila) {
-            $subTotal = $fila->Total - $fila->Cantidad;
+            $subTotal = $fila->Total - (($fila->Precio * 0.1) * $fila->Cantidad);
             echo "<h3>$".$fila->Total."</h3>";
-            echo "<h3>- $".$fila->Cantidad."</h3>";
+            echo "<h3>- $".(($fila->Precio * 0.1) * $fila->Cantidad)."</h3>";
             echo "<h3>+ $".$subTotal.".00</h3>";
         }
     }
