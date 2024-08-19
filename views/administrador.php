@@ -133,7 +133,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
      // FOREACH DONDE SE IMPRIME LA INFORMACION DEL USUARIO POR MEDIO DE UNA TARJETA
      foreach($reg as $r){
         echo "<div>
-            
             <div class='card contenedor' >
             <div class='titulo5'>
             <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"tarjeta2\" viewBox=\"0 0 16 16\">
@@ -141,7 +140,6 @@ $menu2 = isset($_GET['estado']) ? false : true;
             </svg>
             <h1 class='card-title'>MI INFORMACIÓN</h1>
             </div>
-            
             <div class='card-body'>
             <p class='card-text'>
             <h4><b>Usuario:</b> {$r->usuariop}<h4>
