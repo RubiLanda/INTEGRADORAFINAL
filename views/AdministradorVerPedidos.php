@@ -50,7 +50,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
             ID = 'null';
         }
         if (buscarNombre.value != '') {
-            Nombre = buscarNombre.value;
+            Nombre = String(buscarNombre.value);
         }
         else {
             Nombre = 'null';
