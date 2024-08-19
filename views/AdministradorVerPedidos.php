@@ -39,13 +39,21 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
     function MostrarPedidos(){
         const inputCheckbox = document.getElementById('PorSemana');
         const buscarID = document.getElementById('buscarID');
+        const buscarNombre = document.getElementById('buscarNombre');
         var ID;
+        var Nombre;
         var checkbox;
         if (buscarID.value != '') {
             ID = buscarID.value;
         }
         else {
             ID = 'null';
+        }
+        if (buscarNombre.value != '') {
+            Nombre = buscarNombre.value;
+        }
+        else {
+            Nombre = 'null';
         }
         if (inputCheckbox) {
             checkbox = inputCheckbox.checked;
@@ -56,7 +64,7 @@ $TipoCliente = isset($_GET['TipoCliente']) ? $_GET['TipoCliente'] : 1;
         $.ajax({
             type: 'POST',
             url: '../php/MostrarPedidos.php',
-            data: { estado: <?php echo $estado?>, TipoCliente: <?php echo $TipoCliente?>, buscarID: ID, PorSemana: checkbox},
+            data: { estado: <?php echo $estado?>, TipoCliente: <?php echo $TipoCliente?>, buscarID: ID, buscarNombre: Nombre, PorSemana: checkbox},
             success: function(response) {
                 $('#pedidos' + <?php echo $estado?>).html(response);
             }
