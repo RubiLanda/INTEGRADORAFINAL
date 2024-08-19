@@ -356,6 +356,11 @@
 }
 .ModificarCarrito {
     display: none;
+    border-radius: 15px;
+    background-color: #ddb892;
+    color: #30231b;
+    padding: 7px 14px;
+    font-size: 20px;
 }
 /* Estilos para las fechas bloqueadas */
 .ui-datepicker-calendar .ui-state-blocked {
