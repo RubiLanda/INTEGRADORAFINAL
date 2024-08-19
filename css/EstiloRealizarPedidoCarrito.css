@@ -354,7 +354,9 @@
 #fechaMañana {
     margin-left: 60px;
 }
-
+.ModificarCarrito {
+    display: none;
+}
 /* Estilos para las fechas bloqueadas */
 .ui-datepicker-calendar .ui-state-blocked {
     background-color: #ff4d4d !important; /* Color de fondo para fechas bloqueadas */
@@ -444,6 +446,9 @@
         width: 90%;
         margin: auto;
     }
+    .ModificarCarrito {
+        display: block;
+    }
 }
 @media (max-width: 768px) and (min-width: 577px){  /* md */
     .fecha_seleccionado {
@@ -488,6 +493,9 @@
     .fecha_sercanos {
         margin-bottom: 25px;
     }
+    .ModificarCarrito {
+        display: block;
+    }
 }
 @media (max-width: 992px) and (min-width: 769px){  /* lg */
     .realizarPedido {
@@ -513,6 +521,9 @@
     .fecha_sercanos {
         margin-bottom: 25px;
     }
+    .ModificarCarrito {
+        display: block;
+    }
 }
 @media (max-width: 1200px) and (min-width: 993px) {  /* xl */
     .realizarPedido {
@@ -525,6 +536,9 @@
         border-radius: 0;
         margin-bottom: 40px;
     }
+    .ModificarCarrito {
+        display: block;
+    }
 }
 @media (max-width: 1400px) and (min-width: 1201px){  /* xxl */
     .realizarPedido {
@@ -536,5 +550,8 @@
     .Total_Pagar {
         border-radius: 0;
         margin-bottom: 40px;
+    }
+    .ModificarCarrito {
+        display: block;
     }
 }

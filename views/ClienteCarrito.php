@@ -156,6 +156,7 @@ try {
                     <h1 style="border-bottom: solid 3px #ddb892; padding: 15px 0;">Total a Pagar</h1>
                     <div id="Total_Pagar"></div>
                 </div>
+                <a href="#VerCarrito" class="ModificarCarrito">Modificar Carrito</a>
                 <h1>Realizar Pedido</h1>
                 <button type="button" data-bs-toggle="modal" data-bs-target="#ModalConfirmarPedido">
                     Confirmar Pedido
