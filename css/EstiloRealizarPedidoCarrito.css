@@ -271,6 +271,7 @@
     display: flex;
     flex-direction: column;
     color: #ddb892;
+    margin-left: 20px;
 }
 .Total_Pagar h1 {
     text-align: center;
