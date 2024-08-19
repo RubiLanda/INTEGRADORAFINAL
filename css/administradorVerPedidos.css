@@ -123,6 +123,7 @@
     justify-content: space-around;
     align-items: center;
     width: 70%;
+    flex-wrap: wrap;
 }
 hr {
     padding: 2px;
