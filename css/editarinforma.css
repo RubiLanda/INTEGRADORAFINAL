@@ -124,10 +124,6 @@ input[type="file"]{
 .botoncat input[type="reset"] {
     display: none;
 }
-img {
-    width: 180px;
-    height: 135px;
-}
 
 
 /* Estilos responsivos para pantallas menores a 1000px */
