@@ -110,6 +110,9 @@ img {
 }
 
 @media (max-width: 576px)  {
+    img{
+        width: 80%;
+    }
     .div7{
         background-color:#e7d2bc;
         width: 50%;
